@@ -446,3 +446,100 @@ agent_communication:
     message: "🎯 SAMSUNG S22 ULTRA SCROLL PERFORMANCE TESTING COMPLETED - COMPREHENSIVE SUCCESS! Conducted extensive testing of scroll performance optimizations for homepage (/accueil) on Samsung S22 Ultra dimensions (390x844) as specifically requested in review. RESULTS: ✅ All 7 optimization categories verified and working perfectly: 1) CSS containment (contain: layout style) applied to sections and animated elements, 2) GPU layer isolation (transform: translateZ(0), backface-visibility: hidden) on blur elements, 3) Scroll-specific animation reduction (.scrolling class) functional with float-micro animations during scroll, 4) High-resolution device detection working for Samsung S22 Ultra characteristics, 5) Blur intensity reduction from 24px to 8px on high-resolution devices, 6) Animation duration optimization (6s-8s on mobile/high-res), 7) Conditional pattern rendering based on device capability. ✅ Performance metrics excellent: 61 FPS during intensive scroll testing, smooth scroll behavior, optimizations triggered correctly. ✅ All floating elements (9 found, 3+ expected) present and optimized. ✅ Real-time scroll testing confirmed .scrolling class application/removal working perfectly. ✅ Media query optimizations (min-resolution: 3dppx) applied correctly for Samsung S22 Ultra. FRAME DROPS ISSUE ON SAMSUNG S22 ULTRA: COMPLETELY RESOLVED - ALL OPTIMIZATIONS WORKING PERFECTLY!"
   - agent: "testing"
     message: "🎯 COMPREHENSIVE BACKEND TESTING COMPLETED - ALL SYSTEMS OPERATIONAL! Conducted thorough backend testing as requested in French review focusing on root redirect functionality and PDF API endpoints. KEY FINDINGS: ✅ Root Redirect: Server-side redirect from '/' to '/accueil' working perfectly with HTTP 307 status, no intermediate page, excellent performance (0.012s). ✅ PDF API: All 8 PDF files served correctly through /api/pdf/[filename] endpoint with proper headers and error handling. ✅ Application Health: Next.js application fully accessible and responsive. ✅ Security: CSP configuration properly set for iframe PDF loading. ASSESSMENT: Backend infrastructure is production-ready. Root redirect issue from review request has been completely resolved with server-side implementation. PDF API supporting modal functionality is working correctly - any frontend modal infinite loading issues are not backend-related. All backend tests passed successfully. BACKEND STATUS: ✅ FULLY OPERATIONAL!"
+
+#====================================================================================================
+# Testing Data - Main Agent and testing sub agent both should log testing data below this section
+#====================================================================================================
+
+user_problem_statement: "L'utilisateur voulait ajouter une procédure OpenVPN pfSense à côté des autres procédures techniques sur son site portfolio. Il a fourni un PDF de la procédure et une image de référence. Le projet a été remplacé par le repo GitHub V5.0.1 et la nouvelle procédure a été ajoutée."
+
+frontend:
+  - task: "Remplacer le projet existant par le repo V5.0.1"
+    implemented: true
+    working: true
+    file: "/app (entire project)"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "main"
+          comment: "Projet V5.0.1 cloné avec succès depuis GitHub et remplace l'ancien projet"
+
+  - task: "Ajouter procédure OpenVPN pfSense dans la liste des projets"  
+    implemented: true
+    working: true
+    file: "/app/src/app/projets/page.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "main"
+          comment: "Nouvelle procédure ajoutée avec ID 15, titre, description, technologies et liens vers PDF et image"
+          
+  - task: "Copier PDF de procédure OpenVPN pfSense"
+    implemented: true
+    working: true
+    file: "/app/public/procedures/OpenVPN_pfSense.pdf"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "main"
+          comment: "PDF copié depuis procedure_openvpn_pfsense.pdf vers public/procedures/OpenVPN_pfSense.pdf"
+
+  - task: "Copier image de référence OpenVPN"
+    implemented: true
+    working: true
+    file: "/app/public/images/openvpn_reference.jpg"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "main"
+          comment: "Image de référence copiée depuis openvpn_reference_image.jpg vers public/images/openvpn_reference.jpg"
+
+  - task: "Installation des dépendances et build"
+    implemented: true
+    working: true
+    file: "/app/package.json"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "main"
+          comment: "npm install et npm run build réussis, serveur démarré sur port 3000"
+
+  - task: "Vérification visuelle de la nouvelle procédure"
+    implemented: true
+    working: true
+    file: "/app/src/app/projets/page.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "main"
+          comment: "Procédure OpenVPN pfSense visible dans la liste avec image, description et boutons fonctionnels. Statistiques mises à jour automatiquement"
+
+metadata:
+  created_by: "main_agent"
+  version: "1.0"
+  test_sequence: 1
+  run_ui: true
+
+test_plan:
+  current_focus:
+    - "Test complet du téléchargement PDF"
+    - "Test de responsivité mobile"
+  stuck_tasks: []
+  test_all: false
+  test_priority: "high_first"
+
+agent_communication:
+    - agent: "main"
+      message: "Procédure OpenVPN pfSense ajoutée avec succès. Projet V5.0.1 déployé. Tests visuels effectués avec succès. PDF et image accessibles via HTTP. Prêt pour tests complets si nécessaire."
