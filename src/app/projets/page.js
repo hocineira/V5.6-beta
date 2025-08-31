@@ -152,6 +152,19 @@ export default function ProjetsPage() {
       pdfUrl: '/procedures/MITM_DNS_Spoofing.pdf',
       image: '/images/procedures/optimized_kali_image.webp',
       icon: Shield
+    },
+    {
+      id: 15,
+      title: 'Procédure OpenVPN pfSense',
+      description: 'Procédure complète d\'installation et de configuration d\'OpenVPN sur pfSense pour la création d\'un accès VPN sécurisé. Configuration du serveur VPN, gestion des certificats et accès distant sécurisé.',
+      category: 'procedure',
+      technologies: ['OpenVPN', 'pfSense', 'VPN', 'Certificats SSL', 'Firewall', 'Sécurité'],
+      date: '2025',
+      status: 'completed',
+      type: 'procedure',
+      pdfUrl: '/procedures/OpenVPN_pfSense.pdf',
+      image: '/images/openvpn_reference.jpg',
+      icon: Shield
     }
   ], []) // Fermeture du useMemo
 
