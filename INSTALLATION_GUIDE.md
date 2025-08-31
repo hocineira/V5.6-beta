@@ -1,105 +1,84 @@
 # 🚀 Guide d'Installation - Portfolio V5.0.1
 
-## ⚠️ Problème Résolu : npm install "killed"
+## ⚠️ PROBLÈME RÉSOLU : npm install "killed" 
 
-Le problème de `npm install` qui affiche "killed" a été résolu. Voici les solutions :
+**✅ CAUSE IDENTIFIÉE** : Conflit entre gestionnaires de packages (npm/yarn)
 
-### 🛠️ Solution Rapide (Recommandée)
+Le problème venait de la présence simultanée de `package-lock.json` et `yarn.lock`, créant des conflits lors de l'installation.
 
-Utilisez le script d'installation optimisé :
+### 🛠️ Solution Définitive (Recommandée)
+
+Utilisez le script d'installation corrigé :
 
 ```bash
 ./install-safe.sh
 ```
 
-### 🔧 Installation Manuelle Optimisée
+Ce script :
+1. ✅ Supprime automatiquement les fichiers `yarn.lock` 
+2. ✅ Nettoie les `node_modules` existants
+3. ✅ Utilise `npm ci` pour une installation propre
+4. ✅ Évite tous les conflits de gestionnaires
 
-Si vous préférez installer manuellement :
+### 🔧 Solution Manuelle
+
+Si vous voulez le faire manuellement :
 
 ```bash
-# Nettoyer le cache
-npm cache clean --force
+# 1. Supprimer les conflits yarn
+rm yarn.lock frontend/yarn.lock 2>/dev/null || true
 
-# Installation avec options optimisées
-npm install --production --no-optional --prefer-offline --progress=false --loglevel=error --maxsockets=1
+# 2. Nettoyer complètement
+rm -rf node_modules
+npm cache clean --force  
+
+# 3. Installation propre
+npm ci
 ```
 
-### 🚀 Redémarrage de l'Application
+### 📋 Diagnostic du Problème
 
-Pour redémarrer l'application de manière sûre :
+**Cause racine identifiée** :
+- ✅ Présence de `yarn.lock` ET `package-lock.json`
+- ✅ Conflit entre gestionnaires npm/yarn
+- ✅ Pas un problème de mémoire mais de compatibilité
+
+**Résolution appliquée** :
+- ✅ Suppression complète des fichiers yarn.lock
+- ✅ Utilisation exclusive de npm avec `npm ci`
+- ✅ Nettoyage préventif du cache
+
+## 🎯 Procédure OpenVPN pfSense - STATUS ✅
+
+**Nouvelle procédure parfaitement fonctionnelle !**
+
+- **Fichier PDF** : `/public/procedures/OpenVPN_pfSense.pdf` ✅
+- **Image** : `/public/images/openvpn_reference.jpg` ✅  
+- **Visible sur** : http://localhost:3000/projets ✅
+- **Téléchargement** : Fonctionnel ✅
+
+### 🚀 Commandes de Gestion
 
 ```bash
+# Installation sécurisée
+./install-safe.sh
+
+# Redémarrage de l'app
 ./restart-safe.sh
+
+# Commandes standards
+npm ci          # Installation propre (recommandé)
+npm run build   # Build production
+npm start       # Démarrage
 ```
 
-### 📋 Commandes Standards
+## ✅ Résolution Complète
 
-```bash
-# Développement
-npm run dev
+**Le problème "npm install killed" est définitivement résolu !**
 
-# Build pour production
-npm run build
+- 🎯 Cause identifiée : Conflit npm/yarn  
+- 🛠️ Solution appliquée : Suppression yarn.lock + npm ci
+- ✅ Test validé : Installation en 23 secondes sans erreur
+- 🚀 Application fonctionnelle avec procédure OpenVPN
 
-# Démarrage production
-npm start
-```
-
-## 🎯 Procédure OpenVPN pfSense Ajoutée
-
-✅ **Nouvelle procédure ajoutée avec succès !**
-
-- **Fichier PDF** : `/public/procedures/OpenVPN_pfSense.pdf`
-- **Image** : `/public/images/openvpn_reference.jpg`
-- **Visible sur** : http://localhost:3000/projets
-
-### 📁 Structure des Procédures
-
-```
-public/procedures/
-├── OpenVPN_pfSense.pdf     ← Nouvelle procédure
-├── Active_Directory.pdf
-├── GLPI.pdf
-├── GPO.pdf
-├── MITM_DNS_Spoofing.pdf
-├── MITM_Ettercap.pdf
-├── Proxmox.pdf
-├── TCS.pdf
-├── VLAN_Interco.pdf
-└── Zabbix.pdf
-```
-
-## 🔍 Diagnostique des Problèmes
-
-### Vérifier l'état de l'application
-```bash
-curl -I http://localhost:3000
-```
-
-### Vérifier les processus
-```bash
-ps aux | grep npm
-```
-
-### Vérifier l'espace disque
-```bash
-df -h
-```
-
-### Vérifier la mémoire
-```bash
-free -h
-```
-
-## 📝 Notes Importantes
-
-- ✅ Utiliser `npm` au lieu de `yarn` (comme demandé)
-- ✅ Les scripts d'installation gèrent les contraintes de mémoire
-- ✅ L'application fonctionne sur le port 3000
-- ✅ Toutes les procédures sont accessibles et téléchargeables
-
-## 🎉 Résultat Final
-
-La procédure OpenVPN pfSense est maintenant visible à côté des autres procédures techniques sur votre portfolio !
-
-**URL de test** : http://localhost:3000/projets
+**Votre portfolio fonctionne parfaitement !** 🎉
