@@ -540,6 +540,20 @@ test_plan:
   test_all: false
   test_priority: "high_first"
 
+  - task: "Résolution problème npm install killed"
+    implemented: true
+    working: true
+    file: "/app/install-safe.sh"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "main"
+          comment: "Problème npm install killed résolu avec options optimisées: --production --no-optional --prefer-offline --progress=false --loglevel=error --maxsockets=1. Scripts d'installation créés."
+
 agent_communication:
     - agent: "main"
       message: "Procédure OpenVPN pfSense ajoutée avec succès. Projet V5.0.1 déployé. Tests visuels effectués avec succès. PDF et image accessibles via HTTP. Prêt pour tests complets si nécessaire."
+    - agent: "main"
+      message: "PROBLÈME RÉSOLU: npm install killed - Créé install-safe.sh et restart-safe.sh pour éviter les problèmes de mémoire. Application fonctionnelle et procédure OpenVPN visible."
