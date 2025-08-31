@@ -155,10 +155,10 @@ export default function ProjetsPage() {
     },
     {
       id: 15,
-      title: 'Procédure OpenVPN pfSense',
-      description: 'Procédure complète d\'installation et de configuration d\'OpenVPN sur pfSense pour la création d\'un accès VPN sécurisé. Configuration du serveur VPN, gestion des certificats et accès distant sécurisé.',
+      title: 'Procédure OpenVPN pfSense avec Active Directory LDAP',
+      description: 'Procédure complète d\'installation et de configuration d\'OpenVPN sur pfSense avec authentification Active Directory LDAP. Configuration du serveur VPN, gestion des certificats, synchronisation AD-LDAP et accès distant sécurisé avec authentification centralisée.',
       category: 'procedure',
-      technologies: ['OpenVPN', 'pfSense', 'VPN', 'Certificats SSL', 'Firewall', 'Sécurité'],
+      technologies: ['OpenVPN', 'pfSense', 'VPN', 'Active Directory', 'LDAP', 'Certificats SSL', 'Firewall', 'Sécurité'],
       date: '2025',
       status: 'completed',
       type: 'procedure',
