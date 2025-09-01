@@ -166,6 +166,31 @@ export default function ProjetsPage() {
       image: '/images/openvpn_reference.jpg',
       icon: Shield
     }
+    },
+    {
+      id: 16,
+      title: 'Procédure SNORT',
+      description: 'Procédure en cours de rédaction.',
+      category: 'procedure',
+      technologies: ['Snort', 'IDS', 'IPS', 'Sécurité', 'Réseau'],
+      date: '2025',
+      status: 'in-progress',
+      type: 'procedure',
+      image: '/images/procedures/snort.webp',
+      icon: Shield
+    },
+    {
+      id: 17,
+      title: 'Procédure Artica Proxy',
+      description: 'Procédure en cours de rédaction.',
+      category: 'procedure',
+      technologies: ['Artica Proxy', 'Proxy', 'Web Filter', 'Sécurité', 'Réseau'],
+      date: '2025',
+      status: 'in-progress',
+      type: 'procedure',
+      image: '/images/procedures/artica_proxy.jpeg',
+      icon: Shield
+    }
   ], []) // Fermeture du useMemo
 
   const filteredProjects = projects
