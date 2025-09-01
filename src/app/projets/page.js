@@ -420,33 +420,44 @@ export default function ProjetsPage() {
                     
                     <div className="flex gap-1 sm:gap-2">
                       {project.type === 'procedure' ? (
-                        <>
+                        project.pdfUrl ? (
+                          <>
+                            <Button 
+                              variant="outline" 
+                              size="sm" 
+                              className="touch-target flex-1 border-gray-300 text-gray-700 hover:bg-purple-50 hover:text-purple-600 hover:border-purple-300 transition-all duration-200 opacity-100 py-2 text-xs sm:text-sm"
+                              onClick={() => openPDFModal(project.pdfUrl, project.title)}
+                            >
+                              <Eye className="w-4 h-4 mr-1 sm:mr-2" />
+                              <span className="hidden sm:inline">Voir</span>
+                              <span className="sm:hidden">PDF</span>
+                            </Button>
+                            <Button 
+                              variant="outline" 
+                              size="sm" 
+                              className="touch-target flex-1 border-gray-300 text-gray-700 hover:bg-purple-50 hover:text-purple-600 hover:border-purple-300 transition-all duration-200 opacity-100 py-2 text-xs sm:text-sm"
+                              onClick={() => {
+                                const link = document.createElement('a');
+                                link.href = project.pdfUrl;
+                                link.download = project.pdfUrl.split('/').pop();
+                                link.click();
+                              }}
+                            >
+                              <Download className="w-4 h-4 mr-1 sm:mr-2" />
+                              <span className="hidden sm:inline">Télécharger</span>
+                              <span className="sm:hidden">DL</span>
+                            </Button>
+                          </>
+                        ) : (
                           <Button 
                             variant="outline" 
                             size="sm" 
-                            className="touch-target flex-1 border-gray-300 text-gray-700 hover:bg-purple-50 hover:text-purple-600 hover:border-purple-300 transition-all duration-200 opacity-100 py-2 text-xs sm:text-sm"
-                            onClick={() => openPDFModal(project.pdfUrl, project.title)}
+                            disabled
+                            className="touch-target flex-1 border-gray-200 text-gray-400 cursor-not-allowed py-2 text-xs sm:text-sm"
                           >
-                            <Eye className="w-4 h-4 mr-1 sm:mr-2" />
-                            <span className="hidden sm:inline">Voir</span>
-                            <span className="sm:hidden">PDF</span>
+                            En cours — bientôt disponible
                           </Button>
-                          <Button 
-                            variant="outline" 
-                            size="sm" 
-                            className="touch-target flex-1 border-gray-300 text-gray-700 hover:bg-purple-50 hover:text-purple-600 hover:border-purple-300 transition-all duration-200 opacity-100 py-2 text-xs sm:text-sm"
-                            onClick={() => {
-                              const link = document.createElement('a');
-                              link.href = project.pdfUrl;
-                              link.download = project.pdfUrl.split('/').pop();
-                              link.click();
-                            }}
-                          >
-                            <Download className="w-4 h-4 mr-1 sm:mr-2" />
-                            <span className="hidden sm:inline">Télécharger</span>
-                            <span className="sm:hidden">DL</span>
-                          </Button>
-                        </>
+                        )
                       ) : project.schemaUrl ? (
                         // For architecture projects with schema
                         <>
