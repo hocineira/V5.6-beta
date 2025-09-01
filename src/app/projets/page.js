@@ -165,7 +165,6 @@ export default function ProjetsPage() {
       pdfUrl: '/procedures/OpenVPN_pfSense.pdf',
       image: '/images/openvpn_reference.jpg',
       icon: Shield
-    }
     },
     {
       id: 16,
