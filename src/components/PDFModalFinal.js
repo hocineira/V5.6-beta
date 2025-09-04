@@ -131,9 +131,10 @@ export default function PDFModalFinal({ isOpen, onClose, pdfUrl, title }) {
     setViewMode('api')
     // Set a shorter timeout for API mode
     const timeout = setTimeout(() => {
+      console.log('API mode timeout, switching to PDF.js mode')
       setIsLoading(false)
       setViewMode('pdfjs')
-    }, 3000)
+    }, 5000) // Increased to 5 seconds for API mode
     setLoadTimeout(timeout)
   }
 
