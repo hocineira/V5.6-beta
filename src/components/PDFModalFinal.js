@@ -24,7 +24,7 @@ export default function PDFModalFinal({ isOpen, onClose, pdfUrl, title }) {
         console.log('PDF loading timeout, switching to API mode')
         setIsLoading(false)
         setViewMode('api')
-      }, 4000) // 4 seconds timeout
+      }, 6000) // Increased to 6 seconds for better reliability
       
       setLoadTimeout(timeout)
     } else {
