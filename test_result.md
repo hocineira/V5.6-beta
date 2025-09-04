@@ -557,3 +557,5 @@ agent_communication:
       message: "Procédure OpenVPN pfSense ajoutée avec succès. Projet V5.0.1 déployé. Tests visuels effectués avec succès. PDF et image accessibles via HTTP. Prêt pour tests complets si nécessaire."
     - agent: "main"
       message: "PROBLÈME RÉSOLU: npm install killed - Créé install-safe.sh et restart-safe.sh pour éviter les problèmes de mémoire. Application fonctionnelle et procédure OpenVPN visible."
+    - agent: "main"
+      message: "SCHÉMA RÉSEAU REMPLACÉ AVEC SUCCÈS: Nouveau schéma réseau personnel téléchargé et optimisé. Image WebP de 73KB créée. Modal et téléchargement fonctionnels. Tests visuels confirment l'application du nouveau schéma avec pfSense, VLANs, DMZ et configurations IP détaillées."
