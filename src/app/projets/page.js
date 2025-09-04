@@ -372,7 +372,7 @@ export default function ProjetsPage() {
             {filteredProjects.slice(1).map((project) => {
               const ProjectIcon = project.icon
               return (
-                <Card key={project.id} className="group mobile-card touch-feedback hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-3 active:translate-y-0 overflow-hidden border-0 shadow-lg">
+                <Card key={project.id} className="group mobile-card touch-feedback hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-3 active:translate-y-0 overflow-hidden border-0 shadow-lg cursor-pointer" onClick={() => handleCardOpen(project)} role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleCardOpen(project); } }}>
                   <div className="relative h-40 sm:h-48 bg-gradient-to-br from-purple-100 to-blue-100 flex items-center justify-center overflow-hidden">
                     {project.image ? (
                       <img 
