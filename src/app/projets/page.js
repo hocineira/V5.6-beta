@@ -473,7 +473,7 @@ export default function ProjetsPage() {
                             variant="outline" 
                             size="sm" 
                             className="touch-target flex-1 border-gray-300 text-gray-700 hover:bg-purple-50 hover:text-purple-600 hover:border-purple-300 transition-all duration-200 opacity-100 py-2 text-xs sm:text-sm"
-                            onClick={() => openImageModal(project.schemaUrl, project.title)}
+                            onClick={(e) => { e.stopPropagation(); openImageModal(project.schemaUrl, project.title); }}
                           >
                             <Eye className="w-4 h-4 mr-1 sm:mr-2" />
                             <span className="hidden sm:inline">Voir Schéma</span>
