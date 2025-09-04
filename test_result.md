@@ -573,3 +573,5 @@ agent_communication:
       message: "SCHÉMA RÉSEAU REMPLACÉ AVEC SUCCÈS: Nouveau schéma réseau personnel téléchargé et optimisé. Image WebP de 73KB créée. Modal et téléchargement fonctionnels. Tests visuels confirment l'application du nouveau schéma avec pfSense, VLANs, DMZ et configurations IP détaillées."
     - agent: "main"
       message: "BUG NPM INSTALL KILLED DÉFINITIVEMENT RÉSOLU: Problème identifié (dépendances optionnelles + cache corrompu). Solution: nettoyage complet + installation optimisée avec --no-optional. npm install fonctionne maintenant en 7s. Scripts de fix créés (fix-npm-killed.sh). Tests validés: build, start, accès web OK."
+    - agent: "main"
+      message: "MENU DÉROULANT PROJETS CRÉÉ AVEC SUCCÈS: Ajout de deux sous-pages 'Projets Professionnels E5' et 'Projets Scolaires E6' avec menu dropdown élégant. Navigation desktop et mobile fonctionnelle avec glassmorphism. Pages E5 (3 projets entreprise) et E6 (4 projets scolaires) créées avec designs distincts bleu/vert. Breadcrumbs et navigation croisée implémentés."
