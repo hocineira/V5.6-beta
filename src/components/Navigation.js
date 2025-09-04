@@ -8,6 +8,7 @@ import { Menu, X, Home, GraduationCap, ShieldCheck, FolderOpen, Eye, Server, Net
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [dropdownOpen, setDropdownOpen] = useState(false)
   const pathname = usePathname()
 
   useEffect(() => {
@@ -19,6 +20,18 @@ export default function Navigation() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  // Fermer le dropdown quand on clique ailleurs
+  useEffect(() => {
+    const handleClickOutside = () => {
+      setDropdownOpen(false)
+    }
+
+    if (dropdownOpen) {
+      document.addEventListener('click', handleClickOutside)
+      return () => document.removeEventListener('click', handleClickOutside)
+    }
+  }, [dropdownOpen])
 
   const navigation = [
     {
@@ -43,7 +56,28 @@ export default function Navigation() {
       name: 'Projets',
       href: '/projets',
       icon: FolderOpen,
-      description: 'Mes réalisations SISR'
+      description: 'Mes réalisations SISR',
+      hasDropdown: true,
+      submenu: [
+        {
+          name: 'Toutes les procédures',
+          href: '/projets',
+          icon: FolderOpen,
+          description: 'Procédures techniques détaillées'
+        },
+        {
+          name: 'Projets Professionnels E5',
+          href: '/projets/professionnels',
+          icon: Building,
+          description: 'Projets réalisés en entreprise'
+        },
+        {
+          name: 'Projets Scolaires E6',
+          href: '/projets/scolaires',
+          icon: BookOpen,
+          description: 'Projets académiques et scolaires'
+        }
+      ]
     },
     {
       name: 'Veilles',
@@ -53,7 +87,16 @@ export default function Navigation() {
     }
   ]
 
-  const isActive = (href) => pathname === href
+  const isActive = (href) => {
+    if (href === '/projets') {
+      return pathname === '/projets' || pathname.startsWith('/projets/')
+    }
+    return pathname === href
+  }
+
+  const isProjectsActive = () => {
+    return pathname === '/projets' || pathname.startsWith('/projets/')
+  }
 
   return (
     <>
