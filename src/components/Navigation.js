@@ -273,6 +273,95 @@ export default function Navigation() {
           <div className="flex flex-col py-6">
             {navigation.map((item, index) => {
               const Icon = item.icon
+              
+              // Menu avec submenu pour mobile
+              if (item.hasDropdown) {
+                return (
+                  <div key={item.name}>
+                    {/* Menu principal */}
+                    <Link
+                      href={item.href}
+                      className={`group flex items-center px-6 py-4 text-base font-medium transition-all duration-200 hover:bg-blue-50/50 dark:hover:bg-gray-800/50 active:scale-95 ${
+                        isProjectsActive()
+                          ? 'text-blue-600 dark:text-blue-400 bg-blue-50/50 dark:bg-blue-900/20 border-r-2 border-blue-600 dark:border-blue-400'
+                          : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
+                      }`}
+                      onClick={() => setIsOpen(false)}
+                      style={{ 
+                        animationDelay: `${index * 50}ms`,
+                        minHeight: '60px' 
+                      }}
+                    >
+                      <div className={`w-10 h-10 rounded-xl flex items-center justify-center mr-4 transition-all duration-200 ${
+                        isProjectsActive()
+                          ? 'bg-blue-600 dark:bg-blue-500 text-white shadow-lg shadow-blue-600/25'
+                          : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 group-hover:bg-blue-100 dark:group-hover:bg-blue-900/50 group-hover:text-blue-600 dark:group-hover:text-blue-400'
+                      }`}>
+                        <Icon className="w-5 h-5" />
+                      </div>
+                      <div className="flex-1">
+                        <div className="font-medium">{item.name}</div>
+                        <div className={`text-sm mt-0.5 ${
+                          isProjectsActive()
+                            ? 'text-blue-500 dark:text-blue-400'
+                            : 'text-gray-500 dark:text-gray-400 group-hover:text-blue-500 dark:group-hover:text-blue-400'
+                        }`}>
+                          {item.description}
+                        </div>
+                      </div>
+                      {isProjectsActive() && (
+                        <div className="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full animate-pulse" />
+                      )}
+                    </Link>
+                    
+                    {/* Sous-menus */}
+                    <div className="ml-6 border-l-2 border-gray-200 dark:border-gray-700">
+                      {item.submenu.map((subItem, subIndex) => {
+                        const SubIcon = subItem.icon
+                        return (
+                          <Link
+                            key={subItem.name}
+                            href={subItem.href}
+                            className={`group flex items-center px-6 py-3 text-sm font-medium transition-all duration-200 hover:bg-blue-50/50 dark:hover:bg-gray-800/50 active:scale-95 ${
+                              isActive(subItem.href)
+                                ? 'text-blue-600 dark:text-blue-400 bg-blue-50/30 dark:bg-blue-900/10'
+                                : 'text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400'
+                            }`}
+                            onClick={() => setIsOpen(false)}
+                            style={{ 
+                              animationDelay: `${(index * 50) + (subIndex * 25)}ms`,
+                              minHeight: '50px' 
+                            }}
+                          >
+                            <div className={`w-8 h-8 rounded-lg flex items-center justify-center mr-3 transition-all duration-200 ${
+                              isActive(subItem.href)
+                                ? 'bg-blue-500 dark:bg-blue-600 text-white shadow-md shadow-blue-500/25'
+                                : 'bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-500 group-hover:bg-blue-100 dark:group-hover:bg-blue-900/50 group-hover:text-blue-600 dark:group-hover:text-blue-400'
+                            }`}>
+                              <SubIcon className="w-4 h-4" />
+                            </div>
+                            <div className="flex-1">
+                              <div className="font-medium">{subItem.name}</div>
+                              <div className={`text-xs mt-0.5 ${
+                                isActive(subItem.href)
+                                  ? 'text-blue-500 dark:text-blue-400'
+                                  : 'text-gray-500 dark:text-gray-400 group-hover:text-blue-500 dark:group-hover:text-blue-400'
+                              }`}>
+                                {subItem.description}
+                              </div>
+                            </div>
+                            {isActive(subItem.href) && (
+                              <div className="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full animate-pulse" />
+                            )}
+                          </Link>
+                        )
+                      })}
+                    </div>
+                  </div>
+                )
+              }
+
+              // Menu normal
               return (
                 <Link
                   key={item.name}
