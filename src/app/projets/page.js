@@ -33,6 +33,14 @@ export default function ProjetsPage() {
     setIsPDFModalOpen(false)
     setSelectedPDF(null)
   }
+  const handleCardOpen = (project) => {
+    if (project.type === 'procedure' && project.pdfUrl) {
+      openPDFModal(project.pdfUrl, project.title)
+    } else if (project.schemaUrl) {
+      openImageModal(project.schemaUrl, project.title)
+    }
+  }
+
 
   // Memoize projects data to prevent re-creation on every render
   const projects = useMemo(() => [
