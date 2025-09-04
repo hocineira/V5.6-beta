@@ -124,6 +124,64 @@ export default function Navigation() {
               <div className="flex items-center space-x-1">
                 {navigation.map((item) => {
                   const Icon = item.icon
+                  
+                  // Menu avec dropdown pour Projets
+                  if (item.hasDropdown) {
+                    return (
+                      <div key={item.name} className="relative">
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            setDropdownOpen(!dropdownOpen)
+                          }}
+                          className={`relative group flex items-center px-4 py-2 rounded-lg text-sm font-normal transition-all duration-300 glass-nav-item glass-shine ${
+                            isProjectsActive() ? 'nav-active' : ''
+                          }`}
+                        >
+                          <Icon className="w-4 h-4 mr-2" />
+                          {item.name}
+                          <ChevronDown className={`w-4 h-4 ml-1 transition-transform duration-200 ${
+                            dropdownOpen ? 'rotate-180' : ''
+                          }`} />
+                          
+                          {/* Tooltip */}
+                          <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 bg-gray-900 dark:bg-gray-800 text-white text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
+                            {item.description}
+                            <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gray-900 dark:bg-gray-800 rotate-45"></div>
+                          </div>
+                        </button>
+
+                        {/* Dropdown Menu */}
+                        {dropdownOpen && (
+                          <div className="absolute top-full left-0 mt-2 w-64 bg-white/95 dark:bg-gray-800/95 backdrop-blur-lg shadow-lg rounded-lg border border-white/20 dark:border-gray-700/20 overflow-hidden z-50">
+                            {item.submenu.map((subItem) => {
+                              const SubIcon = subItem.icon
+                              return (
+                                <Link
+                                  key={subItem.name}
+                                  href={subItem.href}
+                                  className={`flex items-center px-4 py-3 text-sm transition-colors duration-200 hover:bg-gray-100/50 dark:hover:bg-gray-700/50 ${
+                                    isActive(subItem.href) ? 'bg-blue-50/50 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400' : 'text-gray-700 dark:text-gray-300'
+                                  }`}
+                                  onClick={() => setDropdownOpen(false)}
+                                >
+                                  <SubIcon className="w-4 h-4 mr-3" />
+                                  <div>
+                                    <div className="font-medium">{subItem.name}</div>
+                                    <div className="text-xs text-gray-500 dark:text-gray-400">
+                                      {subItem.description}
+                                    </div>
+                                  </div>
+                                </Link>
+                              )
+                            })}
+                          </div>
+                        )}
+                      </div>
+                    )
+                  }
+
+                  // Menu normal
                   return (
                     <Link
                       key={item.name}
