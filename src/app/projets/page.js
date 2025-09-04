@@ -587,7 +587,7 @@ export default function ProjetsPage() {
       />
       
       {/* PDF Modal */}
-      <PDFModalBlob 
+      <PDFModalFinal 
         isOpen={isPDFModalOpen} 
         onClose={closePDFModal} 
         pdfUrl={selectedPDF?.url} 
