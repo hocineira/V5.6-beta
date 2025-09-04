@@ -443,7 +443,8 @@ export default function ProjetsPage() {
                               variant="outline" 
                               size="sm" 
                               className="touch-target flex-1 border-gray-300 text-gray-700 hover:bg-purple-50 hover:text-purple-600 hover:border-purple-300 transition-all duration-200 opacity-100 py-2 text-xs sm:text-sm"
-                              onClick={() => {
+                              onClick={(e) => {
+                                e.stopPropagation();
                                 const link = document.createElement('a');
                                 link.href = project.pdfUrl;
                                 link.download = project.pdfUrl.split('/').pop();
