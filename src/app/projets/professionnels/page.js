@@ -1,9 +1,9 @@
 'use client'
 
 import { useState, useMemo } from 'react'
-import { Badge } from '@/components/ui/badge.jsx'
-import { Button } from '@/components/ui/button.jsx'
-import { Card } from '@/components/ui/card.jsx'
+import { Badge } from '@/components/ui/badge.js'
+import { Button } from '@/components/ui/button.js'
+import { Card } from '@/components/ui/card.js'
 import { 
   Server, Network, ShieldCheck, Database, 
   Eye, Download, Users, Calendar, 
