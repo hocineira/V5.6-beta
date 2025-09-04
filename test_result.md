@@ -256,6 +256,18 @@ metadata:
         agent: "testing"
         comment: "🎯 NAVIGATION TEXT THICKNESS ISSUE FIX VERIFICATION COMPLETED - PERFECT RESOLUTION! Conducted comprehensive testing of navigation menu text thickness issue as requested in French review. RESULTS: ✅ Text Shadow Removal: All navigation links confirmed with 'text-shadow: none' - the main cause of artificial text thickness has been eliminated. ✅ Font Weight Optimization: Normal navigation links use font-weight: 500 (appropriate thickness), active state uses font-weight: 600 (acceptable for emphasis). ✅ Desktop Navigation: All 5 navigation links (Accueil, TCS, BTS SIO, Projets, Veilles) display with normal text thickness, no artificial boldness detected. ✅ Hover States: Hover effects maintain proper font weight without excessive thickness. ✅ Active States: Active navigation items have appropriate emphasis without appearing overly bold. ✅ Mobile Navigation: Bottom navigation bar displays text with normal thickness, no artificial boldness. ✅ Responsive Design: Text thickness remains consistent across desktop (1920x1080), tablet (768x1024), and mobile (390x844) viewports. ✅ CSS Implementation: Verified in globals.css lines 439-440 (text-shadow: none, font-weight: 500) and line 457 (font-weight: 600 for active state). ✅ Visual Confirmation: Screenshots confirm navigation text appears normal without the previous 'gras' (bold) rendering issue. NAVIGATION TEXT THICKNESS PROBLEM: COMPLETELY RESOLVED - READY FOR PRODUCTION!"
 
+  - task: "Remplacement du schéma réseau d'infrastructure"
+    implemented: true
+    working: true
+    file: "/app/public/images/procedures/optimized_mon_schema_reseau_personnel.webp"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "main"
+          comment: "Nouveau schéma réseau personnel téléchargé depuis http://tmpfiles.org/dl/12825232/mon_schema_reseau_personnel.jpg et optimisé en WebP (73KB). Tests visuels confirment l'affichage correct du nouveau schéma avec pfSense, VLANs, DMZ et configurations IP. Modal et boutons de téléchargement fonctionnels."
+
 test_plan:
   current_focus:
     []
