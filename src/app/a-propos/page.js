@@ -344,7 +344,7 @@ export default function AboutPage() {
               <CardHeader>
                 <CardTitle className="text-2xl flex items-center gap-3">
                   <Target className="w-6 h-6 text-purple-600" />
-                  Centres d&apos;intérêt
+                  Centres d'interet
                 </CardTitle>
               </CardHeader>
               <CardContent>
