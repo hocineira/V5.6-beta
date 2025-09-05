@@ -113,6 +113,56 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Education Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50/50 dark:bg-gray-800/20">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              Mon Parcours Scolaire
+            </h2>
+            <p className="text-lg text-gray-600 dark:text-gray-300">
+              Formation et diplomes obtenus
+            </p>
+          </div>
+
+          <div className="space-y-6">
+            {education.map((edu, index) => (
+              <Card key={index} className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <CardContent className="p-6">
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-2">
+                        <GraduationCap className="w-6 h-6 text-blue-600" />
+                        <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                          {edu.degree}
+                        </h3>
+                        <span className={`px-2 py-1 text-xs font-medium rounded-full ${
+                          edu.status === 'En cours' 
+                            ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200' 
+                            : edu.status === 'Obtenu'
+                            ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
+                            : 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200'
+                        }`}>
+                          {edu.status}
+                        </span>
+                      </div>
+                      <p className="text-gray-600 dark:text-gray-300 mb-2">{edu.institution}</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">{edu.description}</p>
+                    </div>
+                    <div className="mt-4 md:mt-0 md:ml-6">
+                      <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                        <Calendar className="w-4 h-4 mr-2" />
+                        {edu.period}
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Bottom Spacing */}
       <div className="h-20 md:h-8"></div>
     </div>
