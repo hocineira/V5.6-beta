@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import { 
   User, 
   GraduationCap, 
@@ -22,8 +23,11 @@ import {
   ExternalLink
 } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card'
+import { useRouter } from 'next/navigation'
 
 export default function AboutPage() {
+  const router = useRouter()
+
   const personalInfo = {
     name: 'Hocine IRATNI',
     age: 20,
@@ -56,15 +60,6 @@ export default function AboutPage() {
       institution: 'Lycée Privé International Alexandre Dumas, Algiers, Algérie',
       status: 'Obtenu',
       description: 'Formation générale avec bases scientifiques solides'
-    }
-  ]
-
-  const experience = [
-    {
-      title: 'Assistant Technique, Fibre Optique',
-      company: 'Entreprise de télécommunications',
-      period: '2020',
-      description: 'J\'ai assisté un technicien dans le montage et le raccordement de la fibre optique. J\'ai acquis une expérience pratique et une compréhension des normes techniques et du service à la clientèle.'
     }
   ]
 
@@ -112,13 +107,6 @@ export default function AboutPage() {
     { name: 'Réseaux et Infrastructures IT', icon: Network },
     { name: 'Technologie et Informatique', icon: Globe },
     { name: 'Sport (Football)', icon: Football }
-  ]
-
-  const qualities = [
-    { name: 'Esprit d\'équipe', description: 'Capacité à travailler efficacement en groupe' },
-    { name: 'Toujours à l\'écoute', description: 'Attentif aux besoins et aux retours' },
-    { name: 'Serviable', description: 'Disponible pour aider et soutenir' },
-    { name: 'Orienté vers la résolution de problèmes', description: 'Approche méthodique' }
   ]
 
   return (
@@ -247,30 +235,29 @@ export default function AboutPage() {
             </h2>
           </div>
 
-          {experience.map((exp, index) => (
-            <Card key={index} className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl">
-              <CardContent className="p-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Briefcase className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-1">
-                      {exp.title}
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300 mb-2">{exp.company}</p>
-                    <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-3">
-                      <Calendar className="w-4 h-4 mr-2" />
-                      {exp.period}
-                    </div>
-                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                      {exp.description}
-                    </p>
-                  </div>
+          <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl">
+            <CardContent className="p-6">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Briefcase className="w-6 h-6 text-white" />
                 </div>
-              </CardContent>
-            </Card>
-          ))}
+                <div className="flex-1">
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-1">
+                    Assistant Technique, Fibre Optique
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300 mb-2">Entreprise de télécommunications</p>
+                  <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-3">
+                    <Calendar className="w-4 h-4 mr-2" />
+                    2020
+                  </div>
+                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                    J&apos;ai assisté un technicien dans le montage et le raccordement de la fibre optique. 
+                    J&apos;ai acquis une expérience pratique et une compréhension des normes techniques et du service à la clientèle.
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
@@ -357,7 +344,7 @@ export default function AboutPage() {
               <CardHeader>
                 <CardTitle className="text-2xl flex items-center gap-3">
                   <Target className="w-6 h-6 text-purple-600" />
-                  Centres d'intérêt
+                  Centres d&apos;intérêt
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -380,40 +367,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Personal Qualities */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50/50 dark:bg-gray-800/20">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Mes Atouts
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300">
-              Qualités personnelles et professionnelles
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {qualities.map((quality, index) => (
-              <Card key={index} className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-lg">
-                <CardContent className="p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-3 h-3 bg-gradient-to-r from-green-400 to-blue-400 rounded-full mt-2 flex-shrink-0"></div>
-                    <div>
-                      <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
-                        {quality.name}
-                      </h3>
-                      <p className="text-sm text-gray-600 dark:text-gray-300">
-                        {quality.description}
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Contact Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
@@ -423,7 +376,7 @@ export default function AboutPage() {
                 Restons en contact
               </h2>
               <p className="text-lg mb-6 text-blue-100">
-                N'hésitez pas à me contacter pour discuter d'opportunités ou de projets
+                N&apos;hésitez pas à me contacter pour discuter d&apos;opportunités ou de projets
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
