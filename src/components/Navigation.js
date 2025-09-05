@@ -41,6 +41,12 @@ export default function Navigation() {
       description: 'Découvrez mon profil'
     },
     {
+      name: 'À propos',
+      href: '/a-propos',
+      icon: User,
+      description: 'Mon parcours et mes compétences'
+    },
+    {
       name: 'TCS',
       href: '/tcs',
       icon: ShieldCheck,
