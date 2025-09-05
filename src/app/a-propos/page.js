@@ -376,7 +376,7 @@ export default function AboutPage() {
                 Restons en contact
               </h2>
               <p className="text-lg mb-6 text-blue-100">
-                N&apos;hésitez pas à me contacter pour discuter d&apos;opportunités ou de projets
+                N'hesitez pas a me contacter pour discuter d'opportunites ou de projets
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
