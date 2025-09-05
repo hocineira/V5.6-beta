@@ -251,8 +251,8 @@ export default function AboutPage() {
                     2020
                   </div>
                   <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                    J&apos;ai assisté un technicien dans le montage et le raccordement de la fibre optique. 
-                    J&apos;ai acquis une expérience pratique et une compréhension des normes techniques et du service à la clientèle.
+                    J'ai assiste un technicien dans le montage et le raccordement de la fibre optique. 
+                    J'ai acquis une experience pratique et une comprehension des normes techniques et du service a la clientele.
                   </p>
                 </div>
               </div>
