@@ -424,7 +424,7 @@ export default function AccueilPage() {
           
           <p className="text-xl text-slate-400 mb-12 max-w-3xl mx-auto leading-relaxed">
             Découvrez mes réalisations en systèmes et réseaux, mes compétences techniques 
-            et mon approche moderne de l'administration IT.
+            et mon approche moderne de l&apos;administration IT.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
