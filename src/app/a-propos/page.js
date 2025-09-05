@@ -25,7 +25,6 @@ import {
   ExternalLink
 } from 'lucide-react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card'
-import { Badge } from '../../components/ui/badge'
 
 export default function AboutPage() {
   const [scrolled, setScrolled] = useState(false)
@@ -239,7 +238,7 @@ export default function AboutPage() {
                             : 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200'
                         }`}>
                           {edu.status}
-                        </Badge>
+                        </span>
                       </div>
                       <p className="text-gray-600 dark:text-gray-300 mb-2">{edu.institution}</p>
                       <p className="text-sm text-gray-500 dark:text-gray-400">{edu.description}</p>
@@ -320,9 +319,9 @@ export default function AboutPage() {
                         <CardTitle className="text-lg text-gray-900 dark:text-white">
                           {skillGroup.category}
                         </CardTitle>
-                        <Badge variant="outline" className="text-xs">
+                        <span className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold text-gray-600 dark:text-gray-300 border-gray-300 dark:border-gray-600">
                           {skillGroup.level}
-                        </Badge>
+                        </span>
                       </div>
                     </div>
                   </CardHeader>
@@ -363,7 +362,9 @@ export default function AboutPage() {
                         <span className="text-2xl">{lang.flag}</span>
                         <span className="font-medium text-gray-900 dark:text-white">{lang.name}</span>
                       </div>
-                      <Badge variant="secondary">{lang.level}</Badge>
+                      <span className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold text-gray-600 dark:text-gray-300 border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-800">
+                        {lang.level}
+                      </span>
                     </div>
                   ))}
                 </div>
