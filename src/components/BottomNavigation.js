@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
-import { Home, ShieldCheck, GraduationCap, FolderOpen, Eye } from 'lucide-react'
+import { Home, User, ShieldCheck, GraduationCap, FolderOpen, Eye } from 'lucide-react'
 
 export default function BottomNavigation() {
   const router = useRouter()
