@@ -231,7 +231,7 @@ export default function AboutPage() {
                         <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
                           {edu.degree}
                         </h3>
-                        <Badge variant={edu.status === 'En cours' ? 'default' : edu.status === 'Obtenu' ? 'success' : 'secondary'}>
+                        <Badge variant={edu.status === 'En cours' ? 'default' : 'secondary'}>
                           {edu.status}
                         </Badge>
                       </div>
