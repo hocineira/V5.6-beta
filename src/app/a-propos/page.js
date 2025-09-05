@@ -1,6 +1,5 @@
 'use client'
 
-import { useState, useEffect } from 'react'
 import { 
   User, 
   GraduationCap, 
@@ -9,7 +8,6 @@ import {
   Phone, 
   Mail, 
   Calendar,
-  Award,
   Code,
   Network,
   Shield,
@@ -19,24 +17,13 @@ import {
   Heart,
   Football,
   Languages,
-  BookOpen,
   Target,
   CheckCircle,
   ExternalLink
 } from 'lucide-react'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card'
 
 export default function AboutPage() {
-  const [scrolled, setScrolled] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
   const personalInfo = {
     name: 'Hocine IRATNI',
     age: 20,
@@ -89,8 +76,8 @@ export default function AboutPage() {
       level: 'Certifié'
     },
     {
-      category: 'Mise en place d\'infrastructures réseau',
-      skills: ['Configuration de VLANs', 'Gestion de switchs', 'Optimisation segmentation', 'Routeur Zyxel', 'pfSense', 'Switch Netgear'],
+      category: 'Infrastructures réseau',
+      skills: ['Configuration de VLANs', 'Gestion de switchs', 'Routeur Zyxel', 'pfSense', 'Switch Netgear'],
       icon: Shield,
       level: 'Avancé'
     },
@@ -102,12 +89,12 @@ export default function AboutPage() {
     },
     {
       category: 'Maintenance informatique',
-      skills: ['Diagnostic pannes matérielles', 'Installation OS Linux Debian Ubuntu', 'Windows Server 2022-2025'],
+      skills: ['Diagnostic pannes matérielles', 'Installation OS Linux', 'Windows Server 2022-2025'],
       icon: Database,
       level: 'Expert'
     },
     {
-      category: 'Programmation en Langage',
+      category: 'Programmation',
       skills: ['Python', 'Java', 'Bases de programmation'],
       icon: Code,
       level: 'Débutant'
@@ -131,7 +118,7 @@ export default function AboutPage() {
     { name: 'Esprit d\'équipe', description: 'Capacité à travailler efficacement en groupe' },
     { name: 'Toujours à l\'écoute', description: 'Attentif aux besoins et aux retours' },
     { name: 'Serviable', description: 'Disponible pour aider et soutenir' },
-    { name: 'Orienté vers la résolution de problèmes', description: 'Approche méthodique et solution-focused' }
+    { name: 'Orienté vers la résolution de problèmes', description: 'Approche méthodique' }
   ]
 
   return (
@@ -140,14 +127,8 @@ export default function AboutPage() {
       <div className="h-16 md:h-20"></div>
 
       {/* Hero Section */}
-      <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-3xl animate-float"></div>
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-green-400/20 to-blue-400/20 rounded-full blur-3xl animate-float-delayed"></div>
-        </div>
-
-        <div className="max-w-4xl mx-auto text-center relative z-10">
+      <section className="relative py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mb-6 shadow-lg">
             <User className="w-10 h-10 text-white" />
           </div>
