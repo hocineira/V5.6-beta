@@ -21,6 +21,11 @@ export default function BottomNavigation() {
       icon: Home,
     },
     {
+      name: 'À propos',
+      href: '/a-propos',
+      icon: User,
+    },
+    {
       name: 'TCS',
       href: '/tcs',
       icon: ShieldCheck,
