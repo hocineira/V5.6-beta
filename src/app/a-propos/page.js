@@ -24,6 +24,30 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card'
 
 export default function AboutPage() {
+  const education = [
+    {
+      degree: 'BTS SIO Option SISR',
+      period: 'De septembre 2024 a juin 2026',
+      institution: 'IFC Marseille',
+      status: 'En cours',
+      description: 'Services Informatiques aux Organisations - Specialite Solutions d Infrastructure, Systemes et Reseaux'
+    },
+    {
+      degree: 'Licence 1 : INFORMATIQUE - MATHEMATIQUES - MECANIQUE - PHYSIQUE',
+      period: 'De septembre 2023 a juillet 2024',
+      institution: 'Aix-Marseille Universite Marseille',
+      status: 'Validee',
+      description: 'Formation pluridisciplinaire couvrant les bases scientifiques et informatiques'
+    },
+    {
+      degree: 'Baccalaureat general',
+      period: 'De septembre 2021 a juin 2022',
+      institution: 'Lycee Prive International Alexandre Dumas, Algiers, Algerie',
+      status: 'Obtenu',
+      description: 'Formation generale avec bases scientifiques solides'
+    }
+  ]
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50/30 to-purple-50/20 dark:from-gray-900 dark:via-blue-900/20 dark:to-purple-900/10">
       {/* Navigation Spacing */}
