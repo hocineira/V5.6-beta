@@ -1,3 +1,5 @@
+# main_agent: PDF preview fix validation run 2025-09-08
+
 frontend:
   - task: "Multi-Page Navigation System"
     implemented: true
