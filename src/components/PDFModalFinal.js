@@ -9,39 +9,45 @@ export default function PDFModalFinal({ isOpen, onClose, pdfUrl, title }) {
   const [isFullscreen, setIsFullscreen] = useState(false)
   const [error, setError] = useState(false)
   const [viewMode, setViewMode] = useState('standard') // 'standard', 'api', 'pdfjs', 'download'
-  const [loadTimeout, setLoadTimeout] = useState(null)
+
+  // IMPORTANT: useRef for timers to avoid re-render loops that reset timeouts
+  const loadTimeoutRef = useRef(null)
   const iframeRef = useRef(null)
 
+  // Setup/cleanup when modal opens/closes
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden'
       setIsLoading(true)
       setError(false)
       setViewMode('standard')
-      
-      // Set up a timeout to detect if iframe fails to load
-      const timeout = setTimeout(() => {
-        console.log('PDF loading timeout, switching to API mode')
+
+      // Clear any previous timer then start a new one
+      if (loadTimeoutRef.current) {
+        clearTimeout(loadTimeoutRef.current)
+        loadTimeoutRef.current = null
+      }
+      loadTimeoutRef.current = setTimeout(() => {
+        // Switch to API mode if standard iframe did not load in time
         setIsLoading(false)
         setViewMode('api')
-      }, 6000) // Increased to 6 seconds for better reliability
-      
-      setLoadTimeout(timeout)
+      }, 6000)
     } else {
       document.body.style.overflow = 'unset'
-      if (loadTimeout) {
-        clearTimeout(loadTimeout)
-        setLoadTimeout(null)
+      if (loadTimeoutRef.current) {
+        clearTimeout(loadTimeoutRef.current)
+        loadTimeoutRef.current = null
       }
     }
 
     return () => {
       document.body.style.overflow = 'unset'
-      if (loadTimeout) {
-        clearTimeout(loadTimeout)
+      if (loadTimeoutRef.current) {
+        clearTimeout(loadTimeoutRef.current)
+        loadTimeoutRef.current = null
       }
     }
-  }, [isOpen, loadTimeout])
+  }, [isOpen])
 
   const handleDownload = () => {
     const link = document.createElement('a')
@@ -60,49 +66,43 @@ export default function PDFModalFinal({ isOpen, onClose, pdfUrl, title }) {
   }
 
   const handleIframeLoad = () => {
-    console.log('PDF iframe loaded successfully')
-    if (loadTimeout) {
-      clearTimeout(loadTimeout)
-      setLoadTimeout(null)
+    // When iframe loads in any mode, clear loading state and timer
+    if (loadTimeoutRef.current) {
+      clearTimeout(loadTimeoutRef.current)
+      loadTimeoutRef.current = null
     }
     setIsLoading(false)
     setError(false)
   }
 
   const handleIframeError = () => {
-    console.log('PDF iframe failed to load, switching to API mode')
-    if (loadTimeout) {
-      clearTimeout(loadTimeout)
-      setLoadTimeout(null)
+    // On error, try API mode next
+    if (loadTimeoutRef.current) {
+      clearTimeout(loadTimeoutRef.current)
+      loadTimeoutRef.current = null
     }
     setIsLoading(false)
     setViewMode('api')
   }
 
-  const toggleFullscreen = () => {
-    setIsFullscreen(!isFullscreen)
-  }
+  const toggleFullscreen = () => setIsFullscreen(!isFullscreen)
 
   const handleKeyDown = (e) => {
-    if (e.key === 'Escape') {
-      onClose()
-    }
+    if (e.key === 'Escape') onClose()
   }
 
   useEffect(() => {
-    if (isOpen) {
-      document.addEventListener('keydown', handleKeyDown)
-      return () => document.removeEventListener('keydown', handleKeyDown)
-    }
+    if (!isOpen) return
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
   }, [isOpen])
 
-  // Get API URL for PDF
+  // Helper URL builders
   const getAPIUrl = () => {
     const filename = pdfUrl.split('/').pop()
     return `/api/pdf/${filename}#toolbar=1&navpanes=1&scrollbar=1&zoom=fit`
   }
 
-  // PDF.js URL generator
   const getPDFJSUrl = () => {
     const filename = pdfUrl.split('/').pop()
     const apiUrl = `${window.location.origin}/api/pdf/${filename}`
@@ -110,47 +110,44 @@ export default function PDFModalFinal({ isOpen, onClose, pdfUrl, title }) {
   }
 
   const handleRetry = () => {
+    if (loadTimeoutRef.current) {
+      clearTimeout(loadTimeoutRef.current)
+      loadTimeoutRef.current = null
+    }
     setIsLoading(true)
     setError(false)
     setViewMode('standard')
-    
-    // Setup timeout again
-    const timeout = setTimeout(() => {
+    loadTimeoutRef.current = setTimeout(() => {
       setIsLoading(false)
       setViewMode('api')
     }, 4000)
-    setLoadTimeout(timeout)
   }
 
   const switchToAPIMode = () => {
-    if (loadTimeout) {
-      clearTimeout(loadTimeout)
-      setLoadTimeout(null)
+    if (loadTimeoutRef.current) {
+      clearTimeout(loadTimeoutRef.current)
+      loadTimeoutRef.current = null
     }
     setIsLoading(true)
     setViewMode('api')
-    // Set a shorter timeout for API mode
-    const timeout = setTimeout(() => {
-      console.log('API mode timeout, switching to PDF.js mode')
+    loadTimeoutRef.current = setTimeout(() => {
+      // If API mode also stalls, try PDF.js
       setIsLoading(false)
       setViewMode('pdfjs')
-    }, 5000) // Increased to 5 seconds for API mode
-    setLoadTimeout(timeout)
+    }, 5000)
   }
 
   const switchToPDFJS = () => {
-    if (loadTimeout) {
-      clearTimeout(loadTimeout)
-      setLoadTimeout(null)
+    if (loadTimeoutRef.current) {
+      clearTimeout(loadTimeoutRef.current)
+      loadTimeoutRef.current = null
     }
     setIsLoading(true)
     setViewMode('pdfjs')
-    // Set timeout for PDF.js
-    const timeout = setTimeout(() => {
+    loadTimeoutRef.current = setTimeout(() => {
       setIsLoading(false)
       setError(true)
     }, 8000)
-    setLoadTimeout(timeout)
   }
 
   if (!isOpen) return null
@@ -400,21 +397,6 @@ export default function PDFModalFinal({ isOpen, onClose, pdfUrl, title }) {
                   Mode compatibilité
                 </Button>
               </div>
-            </div>
-          </div>
-        )}
-        
-        {/* Mobile instructions */}
-        {!isLoading && !error && (
-          <div className="absolute bottom-4 left-4 right-4 sm:hidden">
-            <div className="bg-black/70 text-white text-xs px-3 py-2 rounded-lg backdrop-blur-sm">
-              {viewMode === 'pdfjs' ? (
-                <>🔧 Mode compatibilité : Utilisez les contrôles intégrés</>
-              ) : viewMode === 'api' ? (
-                <>🔧 Mode serveur : PDF optimisé pour votre navigateur</>
-              ) : (
-                <>💡 Pincez pour zoomer, balayez pour naviguer</>
-              )}
             </div>
           </div>
         )}
