@@ -272,9 +272,9 @@ metadata:
 
 test_plan:
   current_focus:
-    []
+    - "PDF Modal Iframe Loading Issue - French Review Request"
   stuck_tasks:
-    []
+    - "PDF Modal Iframe Loading Issue - French Review Request"
   test_all: false
   test_priority: "high_first"
 
