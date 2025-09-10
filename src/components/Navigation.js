@@ -153,8 +153,9 @@ export default function Navigation() {
                 {navigation.map((item) => {
                   const Icon = item.icon
                   
-                  // Menu avec dropdown pour Projets
+                  // Menu avec dropdown pour Projets et À propos
                   if (item.hasDropdown) {
+                    const isMenuActive = item.name === 'Projets' ? isProjectsActive() : isAboutActive()
                     return (
                       <div key={item.name} className="relative">
                         <button
@@ -163,7 +164,7 @@ export default function Navigation() {
                             setDropdownOpen(!dropdownOpen)
                           }}
                           className={`relative group flex items-center px-4 py-2 rounded-lg text-sm font-normal transition-all duration-300 glass-nav-item glass-shine ${
-                            isProjectsActive() ? 'nav-active' : ''
+                            isMenuActive ? 'nav-active' : ''
                           }`}
                         >
                           <Icon className="w-4 h-4 mr-2" />
