@@ -156,12 +156,16 @@ export default function Navigation() {
                   // Menu avec dropdown pour Projets et À propos
                   if (item.hasDropdown) {
                     const isMenuActive = item.name === 'Projets' ? isProjectsActive() : isAboutActive()
+                    const dropdownKey = item.name === 'Projets' ? 'projects' : 'about'
+                    const isThisDropdownOpen = dropdownOpen === dropdownKey
+                    
                     return (
                       <div key={item.name} className="relative">
                         <button
                           onClick={(e) => {
                             e.stopPropagation()
-                            setDropdownOpen(!dropdownOpen)
+                            // Si ce menu est déjà ouvert, le fermer, sinon l'ouvrir et fermer les autres
+                            setDropdownOpen(isThisDropdownOpen ? null : dropdownKey)
                           }}
                           className={`relative group flex items-center px-4 py-2 rounded-lg text-sm font-normal transition-all duration-300 glass-nav-item glass-shine ${
                             isMenuActive ? 'nav-active' : ''
@@ -170,7 +174,7 @@ export default function Navigation() {
                           <Icon className="w-4 h-4 mr-2" />
                           {item.name}
                           <ChevronDown className={`w-4 h-4 ml-1 transition-transform duration-200 ${
-                            dropdownOpen ? 'rotate-180' : ''
+                            isThisDropdownOpen ? 'rotate-180' : ''
                           }`} />
                           
                           {/* Tooltip */}
@@ -181,7 +185,7 @@ export default function Navigation() {
                         </button>
 
                         {/* Dropdown Menu */}
-                        {dropdownOpen && (
+                        {isThisDropdownOpen && (
                           <div className="absolute top-full left-0 mt-2 w-64 bg-white/95 dark:bg-gray-800/95 backdrop-blur-lg shadow-lg rounded-lg border border-white/20 dark:border-gray-700/20 overflow-hidden z-50">
                             {item.submenu.map((subItem) => {
                               const SubIcon = subItem.icon
