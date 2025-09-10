@@ -23,7 +23,11 @@ export default function Navigation() {
 
   // Fermer le dropdown quand on clique ailleurs
   useEffect(() => {
-    const handleClickOutside = () => {
+    const handleClickOutside = (event) => {
+      // Ne pas fermer si on clique sur un bouton de dropdown
+      if (event.target.closest('button[data-dropdown]')) {
+        return
+      }
       setDropdownOpen(null)
     }
 
