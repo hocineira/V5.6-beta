@@ -165,6 +165,61 @@ export default function StagesPage() {
         </div>
       </section>
 
+      {/* À propos de Sauvegarde13 */}
+      <section className="py-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl">
+            <CardHeader className="text-center">
+              <div className="flex items-center justify-center mb-4">
+                <Image
+                  src="/images/stages/sauvegarde13_logo.png"
+                  alt="Logo Sauvegarde13"
+                  width={200}
+                  height={80}
+                  className="h-16 w-auto"
+                />
+              </div>
+              <CardTitle className="text-2xl md:text-3xl flex items-center justify-center gap-3">
+                <Building className="w-8 h-8 text-blue-600" />
+                À propos de Sauvegarde13
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+                    Une association historique
+                  </h3>
+                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                    <strong>Sauvegarde13</strong> est une association implantée dans les Bouches-du-Rhône depuis <strong>1935</strong>. 
+                    Elle s'est développée au fil du temps dans l'objectif de renforcer le lien social et les solidarités.
+                  </p>
+                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                    Au quotidien, elle mène des missions diversifiées et participe à la mise en œuvre des politiques publiques 
+                    en accueillant et en accompagnant des <strong>personnes en situation de handicap</strong>, des <strong>enfants et jeunes majeurs à protéger</strong>, 
+                    ainsi que des <strong>jeunes enfants et leurs familles</strong>.
+                  </p>
+                </div>
+                <div className="space-y-4">
+                  <div className="bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 p-4 rounded-lg border-l-4 border-blue-600">
+                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Protection de l'enfant</h4>
+                    <p className="text-sm text-gray-700 dark:text-gray-300">Accompagnement, prévention, médiation et soutien à la parentalité</p>
+                  </div>
+                  <div className="bg-gradient-to-r from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 p-4 rounded-lg border-l-4 border-green-600">
+                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Handicap</h4>
+                    <p className="text-sm text-gray-700 dark:text-gray-300">Accueil, éducation, soin et accompagnement des personnes en situation de handicap</p>
+                  </div>
+                  <div className="bg-gradient-to-r from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 p-4 rounded-lg border-l-4 border-purple-600">
+                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Petite enfance</h4>
+                    <p className="text-sm text-gray-700 dark:text-gray-300">Accueil collectif et contribution à l'insertion sociale d'enfants en difficulté</p>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
       {/* Missions Section */}
       <section className="py-12 px-4 sm:px-6 lg:px-8 bg-gray-50/50 dark:bg-gray-800/20">
         <div className="max-w-6xl mx-auto">
