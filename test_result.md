@@ -484,6 +484,18 @@ backend:
         agent: "testing"
         comment: "❌ MES STAGES PAGE ACCESS ISSUE IDENTIFIED - FRENCH REVIEW FOLLOW-UP! During French review request testing with viewport 1920x800, discovered navigation issues to /a-propos/stages page. PROBLEMS IDENTIFIED: ❌ Navigation Issue: When clicking 'Mes Stages' link from 'À propos' dropdown menu, page may not load expected stage content. ❌ Content Missing: Expected stage content (Sauvegarde13, Mars 2025, missions section) not found during automated testing. ❌ Page Redirect: Page appears to redirect or not display stage-specific content as expected. TESTING CONTEXT: This issue was discovered during comprehensive French review request testing focusing on dropdown menu bugs and page evaluations. The page may exist but content is not loading properly or navigation is not working as expected. RECOMMENDATION: Investigate /a-propos/stages route implementation and ensure proper content loading."
 
+  - task: "Dropdown Menu State Management Bug - French Review Request"
+    implemented: true
+    working: false
+    file: "/app/src/components/Navigation.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: false
+        agent: "testing"
+        comment: "❌ CRITICAL DROPDOWN MENU BUG CONFIRMED - FRENCH REVIEW REQUEST! Conducted comprehensive testing of dropdown menu functionality as specifically requested in French review with viewport 1920x800. BUG CONFIRMED: ❌ Both 'À propos' and 'Projets' dropdown menus can be open simultaneously, exactly as reported in the French review request. ❌ State Management Issue: The dropdownOpen state in Navigation.js (line 11) is a single boolean that controls both dropdowns, but the logic doesn't properly close one dropdown when opening another. ❌ User Experience Impact: Users can have both dropdown menus open at the same time, creating visual confusion and poor UX. TECHNICAL ANALYSIS: The issue is in the Navigation.js component where the dropdownOpen state is shared between both dropdown menus. When clicking on one dropdown button, it toggles the state but doesn't ensure the other dropdown is closed. SCREENSHOTS CAPTURED: Visual evidence shows both menus open simultaneously with 'À propos' dropdown (left) showing 'À propos de moi' and 'Mes Stages', and 'Projets' dropdown (right) showing 'Toutes les procédures', 'Projets Professionnels E5', and 'Projets Scolaires E6'. RECOMMENDATION: Implement separate state management for each dropdown or modify the logic to ensure only one dropdown can be open at a time."
+
 agent_communication:
   - agent: "testing"
     message: "Starting comprehensive testing of Next.js 15 portfolio for Hocine IRATNI. Will test all sections, animations, responsive design, and functionality."
