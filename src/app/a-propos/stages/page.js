@@ -64,15 +64,15 @@ export default function StagesPage() {
   ]
 
   const images = [
-    { id: 1, src: '/images/stages/stage1.jpg', alt: 'Mission 1', title: 'Réparation ordinateur' },
-    { id: 2, src: '/images/stages/stage2.jpg', alt: 'Mission 2', title: 'Configuration matériel' },
-    { id: 3, src: '/images/stages/stage3.jpg', alt: 'Mission 3', title: 'Active Directory' },
-    { id: 4, src: '/images/stages/stage4.jpg', alt: 'Mission 4', title: 'Installation RJ45' },
-    { id: 5, src: '/images/stages/stage5.jpg', alt: 'Mission 5', title: 'Maintenance téléphones' },
-    { id: 6, src: '/images/stages/stage6.jpg', alt: 'Mission 6', title: 'Configuration réseau' },
-    { id: 7, src: '/images/stages/stage7.jpg', alt: 'Mission 7', title: 'Diagnostic matériel' },
-    { id: 8, src: '/images/stages/stage8.jpg', alt: 'Mission 8', title: 'Support technique' },
-    { id: 9, src: '/images/stages/stage9.jpg', alt: 'Mission 9', title: 'Tests et validation' }
+    { id: 1, src: '/images/stages/stage1.jpg', alt: 'Support technique', title: 'Assistance utilisateur et dépannage' },
+    { id: 2, src: '/images/stages/stage2.jpg', alt: 'Configuration matériel', title: 'Préparation poste de travail' },
+    { id: 3, src: '/images/stages/stage3.jpg', alt: 'Maintenance réseau', title: 'Installation et configuration réseau' },
+    { id: 4, src: '/images/stages/stage4.jpg', alt: 'Gestion Active Directory', title: 'Administration des comptes utilisateurs' },
+    { id: 5, src: '/images/stages/stage5.jpg', alt: 'Réparation matériel', title: 'Diagnostic et réparation PC' },
+    { id: 6, src: '/images/stages/stage6.jpg', alt: 'Installation RJ45', title: 'Câblage réseau et prises murales' },
+    { id: 7, src: '/images/stages/stage7.jpg', alt: 'Maintenance téléphonique', title: 'Support et configuration téléphones' },
+    { id: 8, src: '/images/stages/stage8.jpg', alt: 'Tests et validation', title: 'Vérification du matériel configuré' },
+    { id: 9, src: '/images/stages/stage9.jpg', alt: 'Documentation technique', title: 'Rédaction des procédures et guides' }
   ]
 
   const competences = [
