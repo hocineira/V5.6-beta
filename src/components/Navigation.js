@@ -305,13 +305,14 @@ export default function Navigation() {
               
               // Menu avec submenu pour mobile
               if (item.hasDropdown) {
+                const isMenuActive = item.name === 'Projets' ? isProjectsActive() : isAboutActive()
                 return (
                   <div key={item.name}>
                     {/* Menu principal */}
                     <Link
                       href={item.href}
                       className={`group flex items-center px-6 py-4 text-base font-medium transition-all duration-200 hover:bg-blue-50/50 dark:hover:bg-gray-800/50 active:scale-95 ${
-                        isProjectsActive()
+                        isMenuActive
                           ? 'text-blue-600 dark:text-blue-400 bg-blue-50/50 dark:bg-blue-900/20 border-r-2 border-blue-600 dark:border-blue-400'
                           : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
                       }`}
@@ -322,7 +323,7 @@ export default function Navigation() {
                       }}
                     >
                       <div className={`w-10 h-10 rounded-xl flex items-center justify-center mr-4 transition-all duration-200 ${
-                        isProjectsActive()
+                        isMenuActive
                           ? 'bg-blue-600 dark:bg-blue-500 text-white shadow-lg shadow-blue-600/25'
                           : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 group-hover:bg-blue-100 dark:group-hover:bg-blue-900/50 group-hover:text-blue-600 dark:group-hover:text-blue-400'
                       }`}>
@@ -331,14 +332,14 @@ export default function Navigation() {
                       <div className="flex-1">
                         <div className="font-medium">{item.name}</div>
                         <div className={`text-sm mt-0.5 ${
-                          isProjectsActive()
+                          isMenuActive
                             ? 'text-blue-500 dark:text-blue-400'
                             : 'text-gray-500 dark:text-gray-400 group-hover:text-blue-500 dark:group-hover:text-blue-400'
                         }`}>
                           {item.description}
                         </div>
                       </div>
-                      {isProjectsActive() && (
+                      {isMenuActive && (
                         <div className="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full animate-pulse" />
                       )}
                     </Link>
