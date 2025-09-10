@@ -197,7 +197,10 @@ export default function Navigation() {
 
                         {/* Dropdown Menu */}
                         {isOpen && (
-                          <div className="absolute top-full left-0 mt-2 w-64 bg-white/95 dark:bg-gray-800/95 backdrop-blur-lg shadow-lg rounded-lg border border-white/20 dark:border-gray-700/20 overflow-hidden z-50">
+                          <div 
+                            data-dropdown-content="true"
+                            className="absolute top-full left-0 mt-2 w-64 bg-white/95 dark:bg-gray-800/95 backdrop-blur-lg shadow-lg rounded-lg border border-white/20 dark:border-gray-700/20 overflow-hidden z-50"
+                          >
                             {item.submenu.map((subItem) => {
                               const SubIcon = subItem.icon
                               return (
