@@ -40,10 +40,10 @@ const nextConfig = {
             key: 'X-DNS-Prefetch-Control',
             value: 'on'
           },
-          // Sécurité essentielle
+          // Sécurité essentielle - Allow iframe for preview
           {
             key: 'X-Frame-Options',
-            value: 'SAMEORIGIN'
+            value: 'ALLOWALL'
           },
           {
             key: 'X-Content-Type-Options',
