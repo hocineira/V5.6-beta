@@ -271,38 +271,81 @@ export default function StagesPage() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Photos de mes Missions
+              Galerie de mes Missions
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              Aperçu visuel de mon travail au quotidien
+              Aperçu visuel de mon travail quotidien et des différentes tâches accomplies
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {images.map((image) => (
               <div
                 key={image.id}
-                className="group relative overflow-hidden rounded-lg bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+                className="group relative overflow-hidden rounded-xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:-translate-y-2"
                 onClick={() => setSelectedImage(image)}
               >
-                <div className="aspect-w-16 aspect-h-12 relative">
+                {/* Image Container */}
+                <div className="aspect-w-16 aspect-h-12 relative overflow-hidden">
                   <Image
                     src={image.src}
                     alt={image.alt}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
-                    <Eye className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="bg-white/20 backdrop-blur-sm rounded-full p-4 transform scale-0 group-hover:scale-100 transition-transform duration-300">
+                        <Eye className="w-8 h-8 text-white" />
+                      </div>
+                    </div>
+                  </div>
+                  {/* Mission Category Badge */}
+                  <div className="absolute top-3 left-3">
+                    <span className="px-3 py-1 text-xs font-medium bg-blue-600/90 text-white rounded-full backdrop-blur-sm">
+                      Mission {image.id}
+                    </span>
                   </div>
                 </div>
-                <div className="p-4">
-                  <h3 className="font-medium text-gray-900 dark:text-white text-center">
+                
+                {/* Content */}
+                <div className="p-6">
+                  <h3 className="font-semibold text-lg text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
                     {image.title}
                   </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    {image.alt}
+                  </p>
+                  
+                  {/* Preview Button */}
+                  <div className="mt-4 flex items-center text-blue-600 dark:text-blue-400 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <Eye className="w-4 h-4 mr-2" />
+                    Voir en grand
+                  </div>
                 </div>
               </div>
             ))}
+          </div>
+          
+          {/* Statistics */}
+          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="text-center p-4 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-lg">
+              <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">9</div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">Photos de missions</div>
+            </div>
+            <div className="text-center p-4 bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 rounded-lg">
+              <div className="text-2xl font-bold text-green-600 dark:text-green-400">4</div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">Types de missions</div>
+            </div>
+            <div className="text-center p-4 bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-lg">
+              <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">3</div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">Mois d'expérience</div>
+            </div>
+            <div className="text-center p-4 bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20 rounded-lg">
+              <div className="text-2xl font-bold text-orange-600 dark:text-orange-400">100%</div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">Missions réussies</div>
+            </div>
           </div>
         </div>
       </section>
