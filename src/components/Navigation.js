@@ -8,7 +8,7 @@ import { Menu, X, Home, User, GraduationCap, ShieldCheck, FolderOpen, Eye, Serve
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [dropdownOpen, setDropdownOpen] = useState(null) // null = fermé, 'about' = À propos ouvert, 'projects' = Projets ouvert
+  const [openDropdownId, setOpenDropdownId] = useState(null) // null = fermé, 'about' = À propos ouvert, 'projects' = Projets ouvert
   const pathname = usePathname()
 
   useEffect(() => {
