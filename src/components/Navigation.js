@@ -210,7 +210,7 @@ export default function Navigation() {
                                   className={`flex items-center px-4 py-3 text-sm transition-colors duration-200 hover:bg-gray-100/50 dark:hover:bg-gray-700/50 ${
                                     isActive(subItem.href) ? 'bg-blue-50/50 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400' : 'text-gray-700 dark:text-gray-300'
                                   }`}
-                                  onClick={() => setDropdownOpen(null)}
+                                  onClick={() => setOpenDropdownId(null)}
                                 >
                                   <SubIcon className="w-4 h-4 mr-3" />
                                   <div>
