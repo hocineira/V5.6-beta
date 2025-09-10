@@ -34,10 +34,10 @@ export default function AboutPage() {
     },
     {
       degree: 'Licence 1 : INFORMATIQUE - MATHEMATIQUES - MECANIQUE - PHYSIQUE',
-      period: 'De septembre 2023 a juillet 2024',
+      period: 'Septembre 2023 - Janvier 2024',
       institution: 'Aix-Marseille Universite Marseille',
-      status: 'Validee',
-      description: 'Formation pluridisciplinaire couvrant les bases scientifiques et informatiques'
+      status: 'Reorientation',
+      description: 'Une annee de formation pluridisciplinaire - Reorientation vers le BTS SIO pour se specialiser en informatique'
     },
     {
       degree: 'Baccalaureat general',
