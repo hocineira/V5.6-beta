@@ -163,7 +163,6 @@ export default function Navigation() {
                       <div key={item.name} className="relative">
                         <button
                           onClick={(e) => {
-                            e.stopPropagation()
                             // Si ce menu est déjà ouvert, le fermer, sinon l'ouvrir et fermer les autres
                             setDropdownOpen(isThisDropdownOpen ? null : dropdownKey)
                           }}
