@@ -99,13 +99,21 @@ export default function AboutPage() {
             <CardContent className="space-y-6">
               <div className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
                 <p className="mb-4">
-                  Je suis <strong>passionne par tout ce qui touche a l'informatique et aux nouvelles technologies</strong>. 
-                  Apprenant et travaillant en equipe et cherchant a trouver des solutions aux problemes, 
-                  je suis desireux de contribuer positivement a tout projet qui me sera confie.
+                  Passionné par <strong>l'univers de l'informatique et les technologies émergentes</strong>, j'ai trouvé ma voie 
+                  après une année en licence pluridisciplinaire qui m'a permis de confirmer mon attrait pour le domaine technique. 
+                  Cette réorientation vers le BTS SIO SISR a été une décision réfléchie pour me spécialiser dans ce qui me motive vraiment : 
+                  <strong>l'infrastructure, les systèmes et les réseaux informatiques</strong>.
+                </p>
+                <p className="mb-4">
+                  Curieux de nature et doté d'un esprit analytique, j'aime <strong>résoudre des problèmes complexes</strong> et 
+                  comprendre le fonctionnement des systèmes. Mon approche collaborative et ma capacité d'adaptation me permettent 
+                  de m'intégrer facilement dans une équipe et de contribuer efficacement aux projets qui me sont confiés.
                 </p>
                 <p>
-                  Actuellement etudiant en <strong>deuxieme annee de BTS Services Informatiques aux Organisations (option SISR)</strong>, 
-                  je suis a la recherche d'un stage pratique dans le domaine de l'administration des systemes et reseaux.
+                  Actuellement en <strong>deuxième année de BTS SIO option SISR</strong> à l'IFC Marseille, 
+                  je développe mes compétences en administration système, sécurité réseau et virtualisation. 
+                  Je suis à la recherche d'un <strong>stage pratique</strong> pour mettre en application mes connaissances 
+                  et enrichir mon expérience professionnelle dans un environnement technique stimulant.
                 </p>
               </div>
             </CardContent>
