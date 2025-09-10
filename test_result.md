@@ -272,8 +272,7 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Dropdown Menu State Management Bug - French Review Request"
-    - "Mes Stages Page Implementation and Testing - French Review Request"
+    - "PDF Modal Iframe Loading Issue - French Review Request"
   stuck_tasks:
     - "PDF Modal Iframe Loading Issue - French Review Request"
   test_all: false
