@@ -21,21 +21,27 @@ export default function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Fonction pour basculer un dropdown
+  const toggleDropdown = (dropdownId) => {
+    setOpenDropdownId(prev => prev === dropdownId ? null : dropdownId)
+  }
+
   // Fermer le dropdown quand on clique ailleurs
   useEffect(() => {
     const handleClickOutside = (event) => {
-      // Ne pas fermer si on clique sur un bouton de dropdown
-      if (event.target.closest('button[data-dropdown]')) {
+      // Ne pas fermer si on clique sur un bouton de dropdown ou sur le contenu du dropdown
+      if (event.target.closest('button[data-dropdown]') || 
+          event.target.closest('[data-dropdown-content]')) {
         return
       }
-      setDropdownOpen(null)
+      setOpenDropdownId(null)
     }
 
-    if (dropdownOpen) {
+    if (openDropdownId) {
       document.addEventListener('click', handleClickOutside)
       return () => document.removeEventListener('click', handleClickOutside)
     }
-  }, [dropdownOpen])
+  }, [openDropdownId])
 
   const navigation = [
     {
