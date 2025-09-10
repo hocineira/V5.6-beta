@@ -61,7 +61,7 @@ const nextConfig = {
               "connect-src 'self'",
               "frame-src 'self' blob: data: *",
               "object-src 'self' blob: data:",
-              "frame-ancestors 'self'",
+              "frame-ancestors *",
               "base-uri 'self'",
               "form-action 'self'"
             ].join('; ')
