@@ -151,10 +151,13 @@ export default function StagesPage() {
               </div>
 
               <div className="text-center">
-                <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-4xl mx-auto">
+                <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-4xl mx-auto mb-6">
                   Durant ce stage de 3 mois chez <strong>Sauvegarde13</strong>, j'ai eu l'opportunité de mettre en pratique 
                   mes connaissances théoriques acquises en BTS SIO SISR. Cette expérience m'a permis de découvrir 
                   le monde professionnel de l'informatique et de développer mes compétences techniques dans un environnement réel.
+                </p>
+                <p className="text-base text-gray-600 dark:text-gray-400 leading-relaxed max-w-3xl mx-auto">
+                  {stageInfo.description}
                 </p>
               </div>
             </CardContent>
