@@ -166,6 +166,7 @@ export default function Navigation() {
                     return (
                       <div key={item.name} className="relative">
                         <button
+                          data-dropdown={dropdownKey}
                           onClick={(e) => {
                             // Si ce menu est déjà ouvert, le fermer, sinon l'ouvrir et fermer les autres
                             setDropdownOpen(isThisDropdownOpen ? null : dropdownKey)
