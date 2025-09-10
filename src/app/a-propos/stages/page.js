@@ -31,7 +31,9 @@ export default function StagesPage() {
     periode: 'Mars 2025 - Mai 2025',
     duree: '3 mois',
     lieu: 'Marseille, France',
-    type: 'Stage d\'observation et pratique'
+    type: 'Stage d\'observation et pratique',
+    secteur: 'Association d\'aide sociale',
+    description: 'Association implantée dans les Bouches-du-Rhône depuis 1935, spécialisée dans l\'accompagnement de personnes en situation de handicap, la protection de l\'enfant et l\'accueil de la petite enfance.'
   }
 
   const missions = [
