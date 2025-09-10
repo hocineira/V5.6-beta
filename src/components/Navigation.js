@@ -112,11 +112,18 @@ export default function Navigation() {
     if (href === '/projets') {
       return pathname === '/projets' || pathname.startsWith('/projets/')
     }
+    if (href === '/a-propos') {
+      return pathname === '/a-propos' || pathname.startsWith('/a-propos/')
+    }
     return pathname === href
   }
 
   const isProjectsActive = () => {
     return pathname === '/projets' || pathname.startsWith('/projets/')
+  }
+
+  const isAboutActive = () => {
+    return pathname === '/a-propos' || pathname.startsWith('/a-propos/')
   }
 
   return (
