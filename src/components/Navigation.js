@@ -44,7 +44,22 @@ export default function Navigation() {
       name: 'À propos',
       href: '/a-propos',
       icon: User,
-      description: 'Mon parcours et mes compétences'
+      description: 'Mon parcours et mes compétences',
+      hasDropdown: true,
+      submenu: [
+        {
+          name: 'À propos de moi',
+          href: '/a-propos',
+          icon: User,
+          description: 'Mon parcours et mes compétences'
+        },
+        {
+          name: 'Mes Stages',
+          href: '/a-propos/stages',
+          icon: Building,
+          description: 'Mon expérience en entreprise'
+        }
+      ]
     },
     {
       name: 'TCS',
