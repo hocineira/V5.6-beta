@@ -259,7 +259,7 @@ export default function StagesPage() {
               <Settings className="w-8 h-8 text-white" />
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-              🏭 Environnement de Travail
+              Environnement de Travail
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
               Découvrez l'atelier technique professionnel de Sauvegarde13, conçu pour l'excellence en maintenance IT
