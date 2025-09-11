@@ -65,22 +65,22 @@ export default function StagesPage() {
 
   // Organisation des images par catégories pour une meilleure présentation
   const imagesOrganisees = {
-    support: [
-      { id: 1, src: '/images/stages/stage1.jpg', alt: 'Support technique', title: 'Assistance utilisateur et dépannage', category: 'Support' },
-      { id: 2, src: '/images/stages/stage2.jpg', alt: 'Configuration matériel', title: 'Préparation poste de travail', category: 'Support' },
-      { id: 5, src: '/images/stages/stage5.jpg', alt: 'Réparation matériel', title: 'Diagnostic et réparation PC', category: 'Support' },
+    infrastructure: [
+      { id: 1, src: '/images/stages/raccordement_rj45_murale.jpg', alt: 'Raccordement RJ45 murale', title: 'Installation prise RJ45 murale', category: 'Infrastructure' },
+      { id: 9, src: '/images/stages/intervention_pon_nokia_zyxel.jpg', alt: 'Intervention PON Nokia défectueux', title: 'Remplacement PON Nokia + antenne 5G Zyxel secours', category: 'Infrastructure' },
     ],
-    reseau: [
-      { id: 3, src: '/images/stages/stage3.jpg', alt: 'Maintenance réseau', title: 'Installation et configuration réseau', category: 'Réseau' },
-      { id: 6, src: '/images/stages/stage6.jpg', alt: 'Installation RJ45', title: 'Câblage réseau et prises murales', category: 'Réseau' },
-      { id: 7, src: '/images/stages/stage7.jpg', alt: 'Maintenance téléphonique', title: 'Support et configuration téléphones', category: 'Réseau' },
+    mobile: [
+      { id: 2, src: '/images/stages/reparation_diagnostic_telephone.jpg', alt: 'Réparation téléphone entreprise', title: 'Diagnostic et réparation téléphone professionnel', category: 'Mobile' },
+      { id: 3, src: '/images/stages/flash_rom_knox_samsung_1.jpg', alt: 'Flash ROM KNOX Samsung', title: 'Flash ROM sécurité KNOX Samsung (enrollment)', category: 'Mobile' },
+      { id: 4, src: '/images/stages/flash_rom_knox_samsung_2.jpg', alt: 'Flash ROM KNOX avec logiciel adapté', title: 'Flash ROM KNOX Samsung avec logiciel professionnel', category: 'Mobile' },
     ],
-    administration: [
-      { id: 4, src: '/images/stages/stage4.jpg', alt: 'Gestion Active Directory', title: 'Administration des comptes utilisateurs', category: 'Administration' },
-      { id: 8, src: '/images/stages/stage8.jpg', alt: 'Tests et validation', title: 'Vérification du matériel configuré', category: 'Administration' },
+    maintenance: [
+      { id: 7, src: '/images/stages/reparation_diagnostic_ordinateur.jpg', alt: 'Réparation ordinateur', title: 'Diagnostic et réparation ordinateur', category: 'Maintenance' },
+      { id: 8, src: '/images/stages/ajout_ssd_nvme.jpg', alt: 'Installation SSD NVMe', title: 'Ajout SSD NVMe pour rapidité et fiabilité optimale', category: 'Maintenance' },
     ],
-    documentation: [
-      { id: 9, src: '/images/stages/stage9.jpg', alt: 'Documentation technique', title: 'Rédaction des procédures et guides', category: 'Documentation' },
+    atelier: [
+      { id: 5, src: '/images/stages/atelier_travail_1.jpg', alt: 'Atelier technique principal', title: 'Environnement de travail - Atelier principal', category: 'Atelier' },
+      { id: 6, src: '/images/stages/atelier_travail_2.jpg', alt: 'Atelier technique secondaire', title: 'Environnement de travail - Atelier secondaire', category: 'Atelier' },
     ]
   }
 
