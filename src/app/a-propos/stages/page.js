@@ -240,145 +240,278 @@ export default function StagesPage() {
         </div>
       </section>
 
-      {/* Environnement de Travail - Section Spéciale Atelier */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-indigo-50/50 via-purple-50/30 to-blue-50/50 dark:from-indigo-900/10 dark:via-purple-900/10 dark:to-blue-900/10">
-        <div className="max-w-6xl mx-auto">
-          <Card className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm border-0 shadow-2xl overflow-hidden">
-            <CardContent className="p-0">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 min-h-[500px]">
-                {/* Section Images */}
-                <div className="relative bg-gray-100 dark:bg-gray-800">
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-1 h-full">
-                    {/* Atelier 1 */}
-                    <div 
-                      className="group relative overflow-hidden cursor-pointer min-h-[250px] lg:h-1/2" 
-                      onClick={() => setSelectedImage(imagesOrganisees.atelier[0])}
-                    >
-                      <Image
-                        src="/images/stages/atelier_travail_1.jpg"
-                        alt="Atelier technique principal"
-                        fill
-                        sizes="(max-width: 1024px) 100vw, 50vw"
-                        className="object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-r from-indigo-600/20 to-transparent group-hover:from-indigo-600/40 transition-all duration-300">
-                        <div className="absolute top-4 left-4">
-                          <span className="px-3 py-1 text-xs font-medium bg-indigo-600/90 text-white rounded-full backdrop-blur-sm">
-                            Atelier Principal
-                          </span>
-                        </div>
-                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          <div className="bg-white/20 backdrop-blur-sm rounded-full p-3">
-                            <Eye className="w-6 h-6 text-white" />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    {/* Atelier 2 */}
-                    <div 
-                      className="group relative overflow-hidden cursor-pointer min-h-[250px] lg:h-1/2" 
-                      onClick={() => setSelectedImage(imagesOrganisees.atelier[1])}
-                    >
-                      <Image
-                        src="/images/stages/atelier_travail_2.jpg"
-                        alt="Atelier technique secondaire"
-                        fill
-                        sizes="(max-width: 1024px) 100vw, 50vw"
-                        className="object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-l from-purple-600/20 to-transparent group-hover:from-purple-600/40 transition-all duration-300">
-                        <div className="absolute top-4 right-4">
-                          <span className="px-3 py-1 text-xs font-medium bg-purple-600/90 text-white rounded-full backdrop-blur-sm">
-                            Atelier Secondaire
-                          </span>
-                        </div>
-                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          <div className="bg-white/20 backdrop-blur-sm rounded-full p-3">
-                            <Eye className="w-6 h-6 text-white" />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+      {/* Environnement de Travail - Design Moderne */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-blue-50/70 to-indigo-50/80 dark:from-slate-900/70 dark:via-blue-900/30 dark:to-indigo-900/40 relative overflow-hidden">
+        {/* Éléments décoratifs de fond */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-blue-400/10 to-indigo-400/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-40 h-40 bg-gradient-to-br from-purple-400/10 to-pink-400/10 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-cyan-400/5 to-blue-400/5 rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          {/* En-tête de section moderne */}
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl mb-6 shadow-2xl">
+              <Settings className="w-8 h-8 text-white" />
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+              🏭 Environnement de Travail
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
+              Découvrez l'atelier technique professionnel de Sauvegarde13, conçu pour l'excellence en maintenance IT
+            </p>
+          </div>
+
+          {/* Grille principale avec design cards modernes */}
+          <div className="grid grid-cols-1 xl:grid-cols-3 gap-8 mb-12">
+            
+            {/* Galerie Photos - Plus large */}
+            <div className="xl:col-span-2">
+              <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 dark:border-gray-700/20 overflow-hidden">
+                <div className="p-6 border-b border-gray-100 dark:border-gray-700/50">
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center">
+                    <Camera className="w-6 h-6 mr-3 text-blue-600" />
+                    Galerie de l'Atelier
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300 mt-2">Espaces de travail optimisés pour la maintenance IT</p>
                 </div>
-
-                {/* Section Description */}
-                <div className="p-8 lg:p-10 flex flex-col justify-center bg-white dark:bg-gray-800">
-                  <div className="flex items-center mb-6">
-                    <div className="w-12 h-12 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center mr-4 shadow-lg">
-                      <Settings className="w-6 h-6 text-white" />
-                    </div>
-                    <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
-                      Environnement de Travail
-                    </h3>
-                  </div>
-
-                  <div className="space-y-6 mb-6">
-                    <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                      L'atelier technique de <strong>Sauvegarde13</strong> est un espace de travail professionnel 
-                      spécialement aménagé pour les interventions informatiques et télécommunications.
-                    </p>
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="bg-gradient-to-br from-indigo-50 to-indigo-100 dark:from-indigo-900/20 dark:to-indigo-800/20 p-4 rounded-lg border border-indigo-200 dark:border-indigo-700">
-                        <h4 className="font-semibold text-indigo-900 dark:text-indigo-200 mb-2 flex items-center">
-                          <Monitor className="w-4 h-4 mr-2" />
-                          Organisation
-                        </h4>
-                        <p className="text-sm text-indigo-700 dark:text-indigo-300">
-                          Espace structuré pour diagnostic et réparation
-                        </p>
-                      </div>
-                      <div className="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 p-4 rounded-lg border border-purple-200 dark:border-purple-700">
-                        <h4 className="font-semibold text-purple-900 dark:text-purple-200 mb-2 flex items-center">
-                          <Wrench className="w-4 h-4 mr-2" />
-                          Équipements
-                        </h4>
-                        <p className="text-sm text-purple-700 dark:text-purple-300">
-                          Outils spécialisés pour maintenance IT
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="space-y-4">
-                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
-                      <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
-                      Activités réalisées dans l'atelier :
-                    </h4>
-                    <div className="space-y-3">
-                      {[
-                        "Diagnostic et réparation d'ordinateurs",
-                        "Installation et configuration de composants (SSD NVMe)",
-                        "Flash ROM et sécurisation mobile (KNOX Samsung)",
-                        "Tests et validation du matériel configuré",
-                        "Préparation équipements pour nouveaux employés"
-                      ].map((activite, index) => (
-                        <div key={index} className="flex items-start space-x-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-200">
-                          <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                          <span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">{activite}</span>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
+                  {/* Atelier Principal */}
+                  <div 
+                    className="group relative overflow-hidden cursor-pointer min-h-[300px] hover:z-10 transition-all duration-500"
+                    onClick={() => setSelectedImage(imagesOrganisees.atelier[0])}
+                  >
+                    <Image
+                      src="/images/stages/atelier_travail_1.jpg"
+                      alt="Atelier technique principal"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-blue-600/30 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500">
+                      <div className="absolute bottom-6 left-6 right-6">
+                        <div className="bg-white/20 dark:bg-gray-900/20 backdrop-blur-md rounded-2xl p-4">
+                          <h4 className="text-white font-bold text-lg mb-2 flex items-center">
+                            <Monitor className="w-5 h-5 mr-2" />
+                            Atelier Principal
+                          </h4>
+                          <p className="text-white/90 text-sm">Zone principale de diagnostic et réparation</p>
                         </div>
-                      ))}
+                      </div>
+                      <div className="absolute top-4 left-4">
+                        <span className="px-4 py-2 bg-blue-600/90 text-white rounded-full text-sm font-medium backdrop-blur-sm">
+                          Zone Principale
+                        </span>
+                      </div>
+                    </div>
+                    
+                    {/* Icône d'agrandissement */}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="bg-white/30 backdrop-blur-md rounded-full p-4 transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                        <Eye className="w-8 h-8 text-white" />
+                      </div>
                     </div>
                   </div>
 
-                  <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
-                    <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
-                      <span className="flex items-center">
-                        <Building className="w-4 h-4 mr-2" />
-                        Environnement professionnel
-                      </span>
-                      <span className="flex items-center">
-                        <span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
-                        Espace optimisé
-                      </span>
+                  {/* Atelier Secondaire */}
+                  <div 
+                    className="group relative overflow-hidden cursor-pointer min-h-[300px] hover:z-10 transition-all duration-500"
+                    onClick={() => setSelectedImage(imagesOrganisees.atelier[1])}
+                  >
+                    <Image
+                      src="/images/stages/atelier_travail_2.jpg"
+                      alt="Atelier technique secondaire"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-indigo-900/90 via-indigo-600/30 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500">
+                      <div className="absolute bottom-6 left-6 right-6">
+                        <div className="bg-white/20 dark:bg-gray-900/20 backdrop-blur-md rounded-2xl p-4">
+                          <h4 className="text-white font-bold text-lg mb-2 flex items-center">
+                            <Wrench className="w-5 h-5 mr-2" />
+                            Atelier Spécialisé
+                          </h4>
+                          <p className="text-white/90 text-sm">Zone dédiée aux interventions complexes</p>
+                        </div>
+                      </div>
+                      <div className="absolute top-4 right-4">
+                        <span className="px-4 py-2 bg-indigo-600/90 text-white rounded-full text-sm font-medium backdrop-blur-sm">
+                          Zone Spécialisée
+                        </span>
+                      </div>
+                    </div>
+                    
+                    {/* Icône d'agrandissement */}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="bg-white/30 backdrop-blur-md rounded-full p-4 transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                        <Eye className="w-8 h-8 text-white" />
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+
+            {/* Panneau d'informations - Plus compact */}
+            <div className="space-y-6">
+              
+              {/* Stats rapides */}
+              <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 dark:border-gray-700/20 p-6">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+                  <BarChart className="w-5 h-5 mr-3 text-green-600" />
+                  Statistiques Atelier
+                </h3>
+                
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between p-3 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl">
+                    <div className="flex items-center">
+                      <div className="w-3 h-3 bg-green-500 rounded-full mr-3 animate-pulse"></div>
+                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Interventions réussies</span>
+                    </div>
+                    <span className="font-bold text-green-600 dark:text-green-400">100%</span>
+                  </div>
+                  
+                  <div className="flex items-center justify-between p-3 bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-xl">
+                    <div className="flex items-center">
+                      <div className="w-3 h-3 bg-blue-500 rounded-full mr-3"></div>
+                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Équipements traités</span>
+                    </div>
+                    <span className="font-bold text-blue-600 dark:text-blue-400">50+</span>
+                  </div>
+                  
+                  <div className="flex items-center justify-between p-3 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl">
+                    <div className="flex items-center">
+                      <div className="w-3 h-3 bg-purple-500 rounded-full mr-3"></div>
+                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Zones spécialisées</span>
+                    </div>
+                    <span className="font-bold text-purple-600 dark:text-purple-400">2</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Équipements */}
+              <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 dark:border-gray-700/20 p-6">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+                  <Cpu className="w-5 h-5 mr-3 text-orange-600" />
+                  Équipements Disponibles
+                </h3>
+                
+                <div className="space-y-3">
+                  {[
+                    { icon: Monitor, name: "Stations de diagnostic", color: "blue" },
+                    { icon: Wrench, name: "Outils spécialisés IT", color: "green" },
+                    { icon: Cpu, name: "Bancs de test", color: "purple" },
+                    { icon: Building, name: "Zones sécurisées", color: "orange" }
+                  ].map((item, index) => (
+                    <div key={index} className="flex items-center p-3 rounded-xl bg-gray-50/80 dark:bg-gray-700/30 hover:bg-gray-100/80 dark:hover:bg-gray-700/50 transition-colors duration-200 group">
+                      <div className={`w-10 h-10 bg-gradient-to-br from-${item.color}-500 to-${item.color}-600 rounded-lg flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-200`}>
+                        <item.icon className="w-5 h-5 text-white" />
+                      </div>
+                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-200">
+                        {item.name}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Section Activités - Design horizontal */}
+          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 dark:border-gray-700/20 overflow-hidden">
+            <div className="p-8">
+              <div className="flex items-center mb-8">
+                <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-green-600 rounded-xl flex items-center justify-center mr-4">
+                  <CheckCircle className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Activités Réalisées dans l'Atelier</h3>
+                  <p className="text-gray-600 dark:text-gray-300">Interventions techniques spécialisées</p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {[
+                  {
+                    icon: Monitor,
+                    title: "Diagnostic & Réparation",
+                    desc: "Diagnostic et réparation d'ordinateurs professionnels",
+                    color: "blue"
+                  },
+                  {
+                    icon: Cpu,
+                    title: "Installation Composants", 
+                    desc: "Installation et configuration SSD NVMe",
+                    color: "green"
+                  },
+                  {
+                    icon: Smartphone,
+                    title: "Sécurisation Mobile",
+                    desc: "Flash ROM et sécurisation KNOX Samsung",
+                    color: "purple"
+                  },
+                  {
+                    icon: CheckCircle,
+                    title: "Tests & Validation",
+                    desc: "Tests et validation du matériel configuré",
+                    color: "orange"
+                  },
+                  {
+                    icon: Settings,
+                    title: "Préparation Équipements",
+                    desc: "Préparation pour nouveaux employés",
+                    color: "cyan"
+                  },
+                  {
+                    icon: Wrench,
+                    title: "Maintenance Préventive",
+                    desc: "Entretien et optimisation système",
+                    color: "pink"
+                  }
+                ].map((activite, index) => (
+                  <div key={index} className="group bg-gradient-to-br from-gray-50/80 to-white/80 dark:from-gray-700/30 dark:to-gray-800/30 rounded-2xl p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-100/50 dark:border-gray-600/20">
+                    <div className={`w-12 h-12 bg-gradient-to-br from-${activite.color}-500 to-${activite.color}-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                      <activite.icon className="w-6 h-6 text-white" />
+                    </div>
+                    <h4 className="font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                      {activite.title}
+                    </h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                      {activite.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Footer avec badges */}
+            <div className="bg-gradient-to-r from-gray-50/80 to-blue-50/80 dark:from-gray-800/50 dark:to-blue-900/20 px-8 py-6 border-t border-gray-100/50 dark:border-gray-700/30">
+              <div className="flex flex-wrap items-center justify-between gap-4">
+                <div className="flex items-center space-x-6">
+                  <div className="flex items-center">
+                    <Building className="w-5 h-5 text-blue-600 mr-2" />
+                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Environnement Professionnel</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-3 h-3 bg-green-500 rounded-full mr-2 animate-pulse"></div>
+                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Espace Optimisé</span>
+                  </div>
+                </div>
+                
+                <div className="flex items-center space-x-3">
+                  <span className="px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium">
+                    ⚡ Haute Performance
+                  </span>
+                  <span className="px-4 py-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full text-sm font-medium">
+                    ✅ Certifié Qualité
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
