@@ -38,28 +38,28 @@ export default function StagesPage() {
 
   const missions = [
     {
-      title: 'Réparation et maintenance informatique',
-      description: 'Réparation et maintenance des ordinateurs et téléphones de l\'organisation',
+      title: 'Infrastructure réseau et télécommunications',
+      description: 'Installation de prises RJ45 murales et intervention sur équipements PON Nokia avec solution de secours 5G Zyxel',
+      icon: Network,
+      category: 'Infrastructure'
+    },
+    {
+      title: 'Support mobile et téléphonie d\'entreprise',
+      description: 'Réparation/diagnostic téléphones et flash ROM avec sécurité KNOX Samsung pour enrollment professionnel',
+      icon: Smartphone,
+      category: 'Mobile'
+    },
+    {
+      title: 'Maintenance informatique avancée',
+      description: 'Diagnostic et réparation ordinateurs, optimisation avec ajout SSD NVMe pour performances optimales',
       icon: Wrench,
       category: 'Maintenance'
     },
     {
-      title: 'Préparation matériel nouveaux arrivants',
-      description: 'Préparation du nouveau matériel informatique (téléphones et PC portables) pour les nouveaux employés',
-      icon: Monitor,
-      category: 'Configuration'
-    },
-    {
-      title: 'Gestion Active Directory',
-      description: 'Création et suppression des utilisateurs de l\'Active Directory selon les mouvements du personnel',
-      icon: Users,
-      category: 'Administration'
-    },
-    {
-      title: 'Installation réseau',
-      description: 'Installation des prises RJ45 murales pour l\'infrastructure réseau',
-      icon: Network,
-      category: 'Infrastructure'
+      title: 'Environnement technique et atelier',
+      description: 'Organisation et gestion de l\'espace de travail technique pour interventions et diagnostics',
+      icon: Settings,
+      category: 'Atelier'
     }
   ]
 
