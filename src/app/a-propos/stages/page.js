@@ -63,17 +63,37 @@ export default function StagesPage() {
     }
   ]
 
+  // Organisation des images par catégories pour une meilleure présentation
+  const imagesOrganisees = {
+    support: [
+      { id: 1, src: '/images/stages/stage1.jpg', alt: 'Support technique', title: 'Assistance utilisateur et dépannage', category: 'Support' },
+      { id: 2, src: '/images/stages/stage2.jpg', alt: 'Configuration matériel', title: 'Préparation poste de travail', category: 'Support' },
+      { id: 5, src: '/images/stages/stage5.jpg', alt: 'Réparation matériel', title: 'Diagnostic et réparation PC', category: 'Support' },
+    ],
+    reseau: [
+      { id: 3, src: '/images/stages/stage3.jpg', alt: 'Maintenance réseau', title: 'Installation et configuration réseau', category: 'Réseau' },
+      { id: 6, src: '/images/stages/stage6.jpg', alt: 'Installation RJ45', title: 'Câblage réseau et prises murales', category: 'Réseau' },
+      { id: 7, src: '/images/stages/stage7.jpg', alt: 'Maintenance téléphonique', title: 'Support et configuration téléphones', category: 'Réseau' },
+    ],
+    administration: [
+      { id: 4, src: '/images/stages/stage4.jpg', alt: 'Gestion Active Directory', title: 'Administration des comptes utilisateurs', category: 'Administration' },
+      { id: 8, src: '/images/stages/stage8.jpg', alt: 'Tests et validation', title: 'Vérification du matériel configuré', category: 'Administration' },
+    ],
+    documentation: [
+      { id: 9, src: '/images/stages/stage9.jpg', alt: 'Documentation technique', title: 'Rédaction des procédures et guides', category: 'Documentation' },
+    ]
+  }
+
+  // Toutes les images dans un seul tableau pour la modal
   const images = [
-    { id: 1, src: '/images/stages/stage1.jpg', alt: 'Support technique', title: 'Assistance utilisateur et dépannage' },
-    { id: 2, src: '/images/stages/stage2.jpg', alt: 'Configuration matériel', title: 'Préparation poste de travail' },
-    { id: 3, src: '/images/stages/stage3.jpg', alt: 'Maintenance réseau', title: 'Installation et configuration réseau' },
-    { id: 4, src: '/images/stages/stage4.jpg', alt: 'Gestion Active Directory', title: 'Administration des comptes utilisateurs' },
-    { id: 5, src: '/images/stages/stage5.jpg', alt: 'Réparation matériel', title: 'Diagnostic et réparation PC' },
-    { id: 6, src: '/images/stages/stage6.jpg', alt: 'Installation RJ45', title: 'Câblage réseau et prises murales' },
-    { id: 7, src: '/images/stages/stage7.jpg', alt: 'Maintenance téléphonique', title: 'Support et configuration téléphones' },
-    { id: 8, src: '/images/stages/stage8.jpg', alt: 'Tests et validation', title: 'Vérification du matériel configuré' },
-    { id: 9, src: '/images/stages/stage9.jpg', alt: 'Documentation technique', title: 'Rédaction des procédures et guides' }
+    ...imagesOrganisees.support,
+    ...imagesOrganisees.reseau,
+    ...imagesOrganisees.administration,
+    ...imagesOrganisees.documentation
   ]
+
+  // État pour le filtre des catégories
+  const [filtreActif, setFiltreActif] = useState('tous')
 
   const competences = [
     { nom: 'Dépannage informatique', niveau: '85%' },
