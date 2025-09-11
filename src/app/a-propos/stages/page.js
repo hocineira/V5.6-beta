@@ -16,7 +16,10 @@ import {
   CheckCircle,
   Eye,
   Download,
-  X
+  X,
+  Camera,
+  BarChart,
+  Cpu
 } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
