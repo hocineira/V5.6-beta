@@ -96,11 +96,11 @@ export default function StagesPage() {
   const [filtreActif, setFiltreActif] = useState('tous')
 
   const competences = [
-    { nom: 'Dépannage informatique', niveau: '85%' },
-    { nom: 'Active Directory', niveau: '75%' },
-    { nom: 'Installation réseau', niveau: '70%' },
-    { nom: 'Configuration matériel', niveau: '80%' },
-    { nom: 'Support utilisateur', niveau: '90%' }
+    { nom: 'Installation réseau et télécoms', niveau: '90%' },
+    { nom: 'Flash ROM et sécurité mobile', niveau: '85%' },
+    { nom: 'Diagnostic et réparation PC', niveau: '90%' },
+    { nom: 'Optimisation hardware (SSD)', niveau: '85%' },
+    { nom: 'Intervention technique terrain', niveau: '95%' }
   ]
 
   return (
@@ -355,65 +355,14 @@ export default function StagesPage() {
           {/* Galerie par catégories */}
           {filtreActif === 'tous' && (
             <div className="space-y-12">
-              {/* Section Support */}
-              <div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
-                  <div className="w-3 h-8 bg-gradient-to-b from-green-500 to-green-600 rounded-full mr-3"></div>
-                  Support Technique
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                  {imagesOrganisees.support.map((image) => (
-                    <div
-                      key={image.id}
-                      className="group relative overflow-hidden rounded-xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:-translate-y-2"
-                      onClick={() => setSelectedImage(image)}
-                    >
-                      {/* Image Container */}
-                      <div className="aspect-w-16 aspect-h-12 relative overflow-hidden">
-                        <Image
-                          src={image.src}
-                          alt={image.alt}
-                          fill
-                          className="object-cover group-hover:scale-110 transition-transform duration-500"
-                        />
-                        {/* Overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="bg-white/20 backdrop-blur-sm rounded-full p-4 transform scale-0 group-hover:scale-100 transition-transform duration-300">
-                              <Eye className="w-8 h-8 text-white" />
-                            </div>
-                          </div>
-                        </div>
-                        {/* Category Badge */}
-                        <div className="absolute top-3 left-3">
-                          <span className="px-3 py-1 text-xs font-medium bg-green-600/90 text-white rounded-full backdrop-blur-sm">
-                            {image.category}
-                          </span>
-                        </div>
-                      </div>
-                      
-                      {/* Content */}
-                      <div className="p-4">
-                        <h4 className="font-semibold text-lg text-gray-900 dark:text-white mb-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors duration-300">
-                          {image.title}
-                        </h4>
-                        <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                          {image.alt}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Section Réseau */}
+              {/* Section Infrastructure */}
               <div>
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
                   <div className="w-3 h-8 bg-gradient-to-b from-purple-500 to-purple-600 rounded-full mr-3"></div>
-                  Infrastructure Réseau
+                  Infrastructure & Télécommunications
                 </h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                  {imagesOrganisees.reseau.map((image) => (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                  {imagesOrganisees.infrastructure.map((image) => (
                     <div
                       key={image.id}
                       className="group relative overflow-hidden rounded-xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:-translate-y-2"
@@ -452,14 +401,60 @@ export default function StagesPage() {
                 </div>
               </div>
 
-              {/* Section Administration */}
+              {/* Section Mobile & Téléphonie */}
+              <div>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+                  <div className="w-3 h-8 bg-gradient-to-b from-green-500 to-green-600 rounded-full mr-3"></div>
+                  Support Mobile & Téléphonie
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                  {imagesOrganisees.mobile.map((image) => (
+                    <div
+                      key={image.id}
+                      className="group relative overflow-hidden rounded-xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:-translate-y-2"
+                      onClick={() => setSelectedImage(image)}
+                    >
+                      <div className="aspect-w-16 aspect-h-12 relative overflow-hidden">
+                        <Image
+                          src={image.src}
+                          alt={image.alt}
+                          fill
+                          className="object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="bg-white/20 backdrop-blur-sm rounded-full p-4 transform scale-0 group-hover:scale-100 transition-transform duration-300">
+                              <Eye className="w-8 h-8 text-white" />
+                            </div>
+                          </div>
+                        </div>
+                        <div className="absolute top-3 left-3">
+                          <span className="px-3 py-1 text-xs font-medium bg-green-600/90 text-white rounded-full backdrop-blur-sm">
+                            {image.category}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="p-4">
+                        <h4 className="font-semibold text-lg text-gray-900 dark:text-white mb-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors duration-300">
+                          {image.title}
+                        </h4>
+                        <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                          {image.alt}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Section Maintenance */}
               <div>
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
                   <div className="w-3 h-8 bg-gradient-to-b from-orange-500 to-orange-600 rounded-full mr-3"></div>
-                  Administration Système
+                  Maintenance Informatique
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                  {imagesOrganisees.administration.map((image) => (
+                  {imagesOrganisees.maintenance.map((image) => (
                     <div
                       key={image.id}
                       className="group relative overflow-hidden rounded-xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:-translate-y-2"
@@ -498,14 +493,14 @@ export default function StagesPage() {
                 </div>
               </div>
 
-              {/* Section Documentation */}
+              {/* Section Atelier */}
               <div>
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
                   <div className="w-3 h-8 bg-gradient-to-b from-indigo-500 to-indigo-600 rounded-full mr-3"></div>
-                  Documentation
+                  Environnement de Travail
                 </h3>
-                <div className="grid grid-cols-1 gap-6 mb-8 max-w-md mx-auto">
-                  {imagesOrganisees.documentation.map((image) => (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                  {imagesOrganisees.atelier.map((image) => (
                     <div
                       key={image.id}
                       className="group relative overflow-hidden rounded-xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:-translate-y-2"
@@ -571,9 +566,9 @@ export default function StagesPage() {
                     </div>
                     <div className="absolute top-3 left-3">
                       <span className={`px-3 py-1 text-xs font-medium text-white rounded-full backdrop-blur-sm ${
-                        filtreActif === 'support' ? 'bg-green-600/90' :
-                        filtreActif === 'reseau' ? 'bg-purple-600/90' :
-                        filtreActif === 'administration' ? 'bg-orange-600/90' :
+                        filtreActif === 'infrastructure' ? 'bg-purple-600/90' :
+                        filtreActif === 'mobile' ? 'bg-green-600/90' :
+                        filtreActif === 'maintenance' ? 'bg-orange-600/90' :
                         'bg-indigo-600/90'
                       }`}>
                         {image.category}
@@ -582,9 +577,9 @@ export default function StagesPage() {
                   </div>
                   <div className="p-4">
                     <h4 className={`font-semibold text-lg text-gray-900 dark:text-white mb-2 transition-colors duration-300 ${
-                      filtreActif === 'support' ? 'group-hover:text-green-600 dark:group-hover:text-green-400' :
-                      filtreActif === 'reseau' ? 'group-hover:text-purple-600 dark:group-hover:text-purple-400' :
-                      filtreActif === 'administration' ? 'group-hover:text-orange-600 dark:group-hover:text-orange-400' :
+                      filtreActif === 'infrastructure' ? 'group-hover:text-purple-600 dark:group-hover:text-purple-400' :
+                      filtreActif === 'mobile' ? 'group-hover:text-green-600 dark:group-hover:text-green-400' :
+                      filtreActif === 'maintenance' ? 'group-hover:text-orange-600 dark:group-hover:text-orange-400' :
                       'group-hover:text-indigo-600 dark:group-hover:text-indigo-400'
                     }`}>
                       {image.title}
