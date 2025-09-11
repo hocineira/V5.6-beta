@@ -875,7 +875,7 @@ export default function StagesPage() {
                       className="group relative overflow-hidden rounded-xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:-translate-y-2"
                       onClick={() => setSelectedImage(image)}
                     >
-                      <div className="aspect-w-16 aspect-h-12 relative overflow-hidden">
+                      <div className="relative overflow-hidden h-48 md:h-56">
                         <Image
                           src={image.src}
                           alt={image.alt}
