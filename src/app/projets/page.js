@@ -339,8 +339,8 @@ export default function ProjetsPage() {
                           className="flex-1 border-2 border-amber-500 text-amber-600 hover:bg-amber-50 font-bold py-3 px-6 rounded-xl transform hover:scale-105 transition-all duration-200"
                           onClick={() => {
                             const link = document.createElement('a');
-                            link.href = '/images/procedures/optimized_mon_schema_reseau_personnel.webp';
-                            link.download = 'Mon_Schema_Reseau_Personnel_INFRA_S4P2.jpg';
+                            link.href = '/images/procedures/nouveau_schema_reseau_personnel.png';
+                            link.download = 'Nouveau_Schema_Reseau_Personnel_INFRA_S4P2.png';
                             link.click();
                           }}
                         >
