@@ -18,7 +18,6 @@ import {
   Download,
   X,
   Camera,
-  BarChart,
   Cpu
 } from 'lucide-react'
 import Link from 'next/link'
