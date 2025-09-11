@@ -310,44 +310,44 @@ export default function StagesPage() {
                 Toutes les missions (9)
               </button>
               <button
-                onClick={() => setFiltreActif('support')}
+                onClick={() => setFiltreActif('infrastructure')}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                  filtreActif === 'support' 
-                    ? 'bg-green-600 text-white shadow-lg' 
-                    : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
-                }`}
-              >
-                Support (3)
-              </button>
-              <button
-                onClick={() => setFiltreActif('reseau')}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                  filtreActif === 'reseau' 
+                  filtreActif === 'infrastructure' 
                     ? 'bg-purple-600 text-white shadow-lg' 
                     : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
                 }`}
               >
-                Réseau (3)
+                Infrastructure (2)
               </button>
               <button
-                onClick={() => setFiltreActif('administration')}
+                onClick={() => setFiltreActif('mobile')}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                  filtreActif === 'administration' 
+                  filtreActif === 'mobile' 
+                    ? 'bg-green-600 text-white shadow-lg' 
+                    : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                }`}
+              >
+                Mobile & Téléphonie (3)
+              </button>
+              <button
+                onClick={() => setFiltreActif('maintenance')}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                  filtreActif === 'maintenance' 
                     ? 'bg-orange-600 text-white shadow-lg' 
                     : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
                 }`}
               >
-                Administration (2)
+                Maintenance (2)
               </button>
               <button
-                onClick={() => setFiltreActif('documentation')}
+                onClick={() => setFiltreActif('atelier')}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                  filtreActif === 'documentation' 
+                  filtreActif === 'atelier' 
                     ? 'bg-indigo-600 text-white shadow-lg' 
                     : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
                 }`}
               >
-                Documentation (1)
+                Atelier (2)
               </button>
             </div>
           </div>
