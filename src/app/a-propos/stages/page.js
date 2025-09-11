@@ -474,12 +474,15 @@ export default function StagesPage() {
         <div className="max-w-6xl mx-auto">
           <Card className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm border-0 shadow-2xl overflow-hidden">
             <CardContent className="p-0">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 min-h-[500px]">
                 {/* Section Images */}
-                <div className="relative">
-                  <div className="grid grid-cols-1 gap-0 h-full">
+                <div className="relative bg-gray-100 dark:bg-gray-800">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-1 h-full">
                     {/* Atelier 1 */}
-                    <div className="group relative overflow-hidden cursor-pointer h-48 lg:h-1/2" onClick={() => setSelectedImage(imagesOrganisees.atelier[0])}>
+                    <div 
+                      className="group relative overflow-hidden cursor-pointer min-h-[250px] lg:h-1/2" 
+                      onClick={() => setSelectedImage(imagesOrganisees.atelier[0])}
+                    >
                       <Image
                         src="/images/stages/atelier_travail_1.jpg"
                         alt="Atelier technique principal"
@@ -488,26 +491,39 @@ export default function StagesPage() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-r from-indigo-600/20 to-transparent group-hover:from-indigo-600/40 transition-all duration-300">
                         <div className="absolute top-4 left-4">
-                          <span className="px-3 py-1 text-xs font-medium bg-indigo-600/90 text-white rounded-full">
+                          <span className="px-3 py-1 text-xs font-medium bg-indigo-600/90 text-white rounded-full backdrop-blur-sm">
                             Atelier Principal
                           </span>
+                        </div>
+                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <div className="bg-white/20 backdrop-blur-sm rounded-full p-3">
+                            <Eye className="w-6 h-6 text-white" />
+                          </div>
                         </div>
                       </div>
                     </div>
                     
                     {/* Atelier 2 */}
-                    <div className="group relative overflow-hidden cursor-pointer h-48 lg:h-1/2" onClick={() => setSelectedImage(imagesOrganisees.atelier[1])}>
+                    <div 
+                      className="group relative overflow-hidden cursor-pointer min-h-[250px] lg:h-1/2" 
+                      onClick={() => setSelectedImage(imagesOrganisees.atelier[1])}
+                    >
                       <Image
                         src="/images/stages/atelier_travail_2.jpg"
                         alt="Atelier technique secondaire"
                         fill
                         className="object-cover group-hover:scale-110 transition-transform duration-500"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-l from-indigo-600/20 to-transparent group-hover:from-indigo-600/40 transition-all duration-300">
+                      <div className="absolute inset-0 bg-gradient-to-l from-purple-600/20 to-transparent group-hover:from-purple-600/40 transition-all duration-300">
                         <div className="absolute top-4 right-4">
-                          <span className="px-3 py-1 text-xs font-medium bg-indigo-600/90 text-white rounded-full">
+                          <span className="px-3 py-1 text-xs font-medium bg-purple-600/90 text-white rounded-full backdrop-blur-sm">
                             Atelier Secondaire
                           </span>
+                        </div>
+                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <div className="bg-white/20 backdrop-blur-sm rounded-full p-3">
+                            <Eye className="w-6 h-6 text-white" />
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -515,9 +531,9 @@ export default function StagesPage() {
                 </div>
 
                 {/* Section Description */}
-                <div className="p-8 lg:p-12 flex flex-col justify-center">
+                <div className="p-8 lg:p-10 flex flex-col justify-center bg-white dark:bg-gray-800">
                   <div className="flex items-center mb-6">
-                    <div className="w-12 h-12 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center mr-4">
+                    <div className="w-12 h-12 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center mr-4 shadow-lg">
                       <Settings className="w-6 h-6 text-white" />
                     </div>
                     <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
@@ -525,21 +541,27 @@ export default function StagesPage() {
                     </h3>
                   </div>
 
-                  <div className="space-y-4 mb-6">
+                  <div className="space-y-6 mb-6">
                     <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
                       L'atelier technique de <strong>Sauvegarde13</strong> est un espace de travail professionnel 
                       spécialement aménagé pour les interventions informatiques et télécommunications.
                     </p>
                     
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="bg-gradient-to-br from-indigo-50 to-indigo-100 dark:from-indigo-900/20 dark:to-indigo-800/20 p-4 rounded-lg">
-                        <h4 className="font-semibold text-indigo-900 dark:text-indigo-200 mb-2">Organisation</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="bg-gradient-to-br from-indigo-50 to-indigo-100 dark:from-indigo-900/20 dark:to-indigo-800/20 p-4 rounded-lg border border-indigo-200 dark:border-indigo-700">
+                        <h4 className="font-semibold text-indigo-900 dark:text-indigo-200 mb-2 flex items-center">
+                          <Monitor className="w-4 h-4 mr-2" />
+                          Organisation
+                        </h4>
                         <p className="text-sm text-indigo-700 dark:text-indigo-300">
                           Espace structuré pour diagnostic et réparation
                         </p>
                       </div>
-                      <div className="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 p-4 rounded-lg">
-                        <h4 className="font-semibold text-purple-900 dark:text-purple-200 mb-2">Équipements</h4>
+                      <div className="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 p-4 rounded-lg border border-purple-200 dark:border-purple-700">
+                        <h4 className="font-semibold text-purple-900 dark:text-purple-200 mb-2 flex items-center">
+                          <Wrench className="w-4 h-4 mr-2" />
+                          Équipements
+                        </h4>
                         <p className="text-sm text-purple-700 dark:text-purple-300">
                           Outils spécialisés pour maintenance IT
                         </p>
@@ -547,11 +569,12 @@ export default function StagesPage() {
                     </div>
                   </div>
 
-                  <div className="space-y-3">
-                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                  <div className="space-y-4">
+                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
+                      <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
                       Activités réalisées dans l'atelier :
                     </h4>
-                    <div className="space-y-2">
+                    <div className="space-y-3">
                       {[
                         "Diagnostic et réparation d'ordinateurs",
                         "Installation et configuration de composants (SSD NVMe)",
@@ -559,19 +582,22 @@ export default function StagesPage() {
                         "Tests et validation du matériel configuré",
                         "Préparation équipements pour nouveaux employés"
                       ].map((activite, index) => (
-                        <div key={index} className="flex items-center space-x-3">
-                          <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                          <span className="text-gray-700 dark:text-gray-300">{activite}</span>
+                        <div key={index} className="flex items-start space-x-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-200">
+                          <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                          <span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">{activite}</span>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+                  <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
                     <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
-                      <span>Environnement professionnel</span>
                       <span className="flex items-center">
-                        <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                        <Building className="w-4 h-4 mr-2" />
+                        Environnement professionnel
+                      </span>
+                      <span className="flex items-center">
+                        <span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
                         Espace optimisé
                       </span>
                     </div>
