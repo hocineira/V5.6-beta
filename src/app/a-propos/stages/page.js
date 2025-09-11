@@ -29,7 +29,7 @@ export default function StagesPage() {
   const stageInfo = {
     entreprise: 'Sauvegarde13',
     periode: 'Mars 2025 - Mai 2025',
-    duree: '3 mois',
+    duree: '1 mois',
     lieu: 'Marseille, France',
     type: 'Stage d\'observation et pratique',
     secteur: 'Association d\'aide sociale',
