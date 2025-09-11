@@ -86,10 +86,10 @@ export default function StagesPage() {
 
   // Toutes les images dans un seul tableau pour la modal
   const images = [
-    ...imagesOrganisees.support,
-    ...imagesOrganisees.reseau,
-    ...imagesOrganisees.administration,
-    ...imagesOrganisees.documentation
+    ...imagesOrganisees.infrastructure,
+    ...imagesOrganisees.mobile,
+    ...imagesOrganisees.maintenance,
+    ...imagesOrganisees.atelier
   ]
 
   // État pour le filtre des catégories
