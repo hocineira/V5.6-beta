@@ -240,6 +240,230 @@ export default function StagesPage() {
         </div>
       </section>
 
+      {/* Preview Photos Section */}
+      <section className="py-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              Aperçu de mes Missions
+            </h2>
+            <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
+              Un avant-goût visuel de mon travail quotidien chez Sauvegarde13
+            </p>
+          </div>
+
+          {/* Grid Preview avec 4 photos principales */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+            {/* Photo 1 - RJ45 */}
+            <div className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:-translate-y-2" onClick={() => setSelectedImage(imagesOrganisees.infrastructure[0])}>
+              <div className="aspect-w-1 aspect-h-1 relative">
+                <Image
+                  src="/images/stages/raccordement_rj45_murale.jpg"
+                  alt="Installation RJ45"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-purple-600/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-3 left-3 right-3">
+                    <p className="text-white text-sm font-medium">Installation RJ45</p>
+                    <p className="text-white/80 text-xs">Infrastructure</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Photo 2 - Flash ROM */}
+            <div className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:-translate-y-2" onClick={() => setSelectedImage(imagesOrganisees.mobile[1])}>
+              <div className="aspect-w-1 aspect-h-1 relative">
+                <Image
+                  src="/images/stages/flash_rom_knox_samsung_1.jpg"
+                  alt="Flash ROM KNOX"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-green-600/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-3 left-3 right-3">
+                    <p className="text-white text-sm font-medium">Flash ROM KNOX</p>
+                    <p className="text-white/80 text-xs">Mobile & Sécurité</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Photo 3 - SSD NVMe */}
+            <div className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:-translate-y-2" onClick={() => setSelectedImage(imagesOrganisees.maintenance[1])}>
+              <div className="aspect-w-1 aspect-h-1 relative">
+                <Image
+                  src="/images/stages/ajout_ssd_nvme.jpg"
+                  alt="Installation SSD NVMe"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-orange-600/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-3 left-3 right-3">
+                    <p className="text-white text-sm font-medium">SSD NVMe</p>
+                    <p className="text-white/80 text-xs">Optimisation</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Photo 4 - PON Nokia */}
+            <div className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:-translate-y-2" onClick={() => setSelectedImage(imagesOrganisees.infrastructure[1])}>
+              <div className="aspect-w-1 aspect-h-1 relative">
+                <Image
+                  src="/images/stages/intervention_pon_nokia_zyxel.jpg"
+                  alt="Intervention PON Nokia"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-purple-600/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-3 left-3 right-3">
+                    <p className="text-white text-sm font-medium">PON Nokia</p>
+                    <p className="text-white/80 text-xs">Intervention d'urgence</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Call to action pour voir toutes les photos */}
+          <div className="text-center">
+            <button
+              onClick={() => {
+                const galerieSection = document.querySelector('h2:contains("Galerie de mes Missions")') || 
+                                     Array.from(document.querySelectorAll('h2')).find(h => h.textContent.includes('Galerie de mes Missions'));
+                if (galerieSection) {
+                  galerieSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+              }}
+              className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+            >
+              <Eye className="w-5 h-5 mr-2" />
+              Voir toutes les 9 photos de missions
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Environnement de Travail - Section Spéciale Atelier */}
+      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-indigo-50/50 via-purple-50/30 to-blue-50/50 dark:from-indigo-900/10 dark:via-purple-900/10 dark:to-blue-900/10">
+        <div className="max-w-6xl mx-auto">
+          <Card className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm border-0 shadow-2xl overflow-hidden">
+            <CardContent className="p-0">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+                {/* Section Images */}
+                <div className="relative">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-0 h-full">
+                    {/* Atelier 1 */}
+                    <div className="group relative overflow-hidden cursor-pointer" onClick={() => setSelectedImage(imagesOrganisees.atelier[0])}>
+                      <div className="aspect-w-16 aspect-h-12 lg:aspect-h-6 relative">
+                        <Image
+                          src="/images/stages/atelier_travail_1.jpg"
+                          alt="Atelier technique principal"
+                          fill
+                          className="object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-r from-indigo-600/20 to-transparent group-hover:from-indigo-600/40 transition-all duration-300">
+                          <div className="absolute top-4 left-4">
+                            <span className="px-3 py-1 text-xs font-medium bg-indigo-600/90 text-white rounded-full">
+                              Atelier Principal
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Atelier 2 */}
+                    <div className="group relative overflow-hidden cursor-pointer" onClick={() => setSelectedImage(imagesOrganisees.atelier[1])}>
+                      <div className="aspect-w-16 aspect-h-12 lg:aspect-h-6 relative">
+                        <Image
+                          src="/images/stages/atelier_travail_2.jpg"
+                          alt="Atelier technique secondaire"
+                          fill
+                          className="object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-l from-indigo-600/20 to-transparent group-hover:from-indigo-600/40 transition-all duration-300">
+                          <div className="absolute top-4 right-4">
+                            <span className="px-3 py-1 text-xs font-medium bg-indigo-600/90 text-white rounded-full">
+                              Atelier Secondaire
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Section Description */}
+                <div className="p-8 lg:p-12 flex flex-col justify-center">
+                  <div className="flex items-center mb-6">
+                    <div className="w-12 h-12 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center mr-4">
+                      <Settings className="w-6 h-6 text-white" />
+                    </div>
+                    <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
+                      Environnement de Travail
+                    </h3>
+                  </div>
+
+                  <div className="space-y-4 mb-6">
+                    <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                      L'atelier technique de <strong>Sauvegarde13</strong> est un espace de travail professionnel 
+                      spécialement aménagé pour les interventions informatiques et télécommunications.
+                    </p>
+                    
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="bg-gradient-to-br from-indigo-50 to-indigo-100 dark:from-indigo-900/20 dark:to-indigo-800/20 p-4 rounded-lg">
+                        <h4 className="font-semibold text-indigo-900 dark:text-indigo-200 mb-2">Organisation</h4>
+                        <p className="text-sm text-indigo-700 dark:text-indigo-300">
+                          Espace structuré pour diagnostic et réparation
+                        </p>
+                      </div>
+                      <div className="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 p-4 rounded-lg">
+                        <h4 className="font-semibold text-purple-900 dark:text-purple-200 mb-2">Équipements</h4>
+                        <p className="text-sm text-purple-700 dark:text-purple-300">
+                          Outils spécialisés pour maintenance IT
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-3">
+                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                      Activités réalisées dans l'atelier :
+                    </h4>
+                    <div className="space-y-2">
+                      {[
+                        "Diagnostic et réparation d'ordinateurs",
+                        "Installation et configuration de composants (SSD NVMe)",
+                        "Flash ROM et sécurisation mobile (KNOX Samsung)",
+                        "Tests et validation du matériel configuré",
+                        "Préparation équipements pour nouveaux employés"
+                      ].map((activite, index) => (
+                        <div key={index} className="flex items-center space-x-3">
+                          <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                          <span className="text-gray-700 dark:text-gray-300">{activite}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+                    <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
+                      <span>Environnement professionnel</span>
+                      <span className="flex items-center">
+                        <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                        Espace optimisé
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
       {/* Missions Section */}
       <section className="py-12 px-4 sm:px-6 lg:px-8 bg-gray-50/50 dark:bg-gray-800/20">
         <div className="max-w-6xl mx-auto">
