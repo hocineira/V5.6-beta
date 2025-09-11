@@ -360,40 +360,6 @@ export default function StagesPage() {
 
             {/* Panneau d'informations - Plus compact */}
             <div className="space-y-6">
-              
-              {/* Stats rapides */}
-              <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 dark:border-gray-700/20 p-6">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
-                  <BarChart className="w-5 h-5 mr-3 text-green-600" />
-                  Statistiques Atelier
-                </h3>
-                
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between p-3 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl">
-                    <div className="flex items-center">
-                      <div className="w-3 h-3 bg-green-500 rounded-full mr-3 animate-pulse"></div>
-                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Interventions réussies</span>
-                    </div>
-                    <span className="font-bold text-green-600 dark:text-green-400">100%</span>
-                  </div>
-                  
-                  <div className="flex items-center justify-between p-3 bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-xl">
-                    <div className="flex items-center">
-                      <div className="w-3 h-3 bg-blue-500 rounded-full mr-3"></div>
-                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Équipements traités</span>
-                    </div>
-                    <span className="font-bold text-blue-600 dark:text-blue-400">50+</span>
-                  </div>
-                  
-                  <div className="flex items-center justify-between p-3 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl">
-                    <div className="flex items-center">
-                      <div className="w-3 h-3 bg-purple-500 rounded-full mr-3"></div>
-                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Zones spécialisées</span>
-                    </div>
-                    <span className="font-bold text-purple-600 dark:text-purple-400">2</span>
-                  </div>
-                </div>
-              </div>
 
               {/* Équipements */}
               <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 dark:border-gray-700/20 p-6">
