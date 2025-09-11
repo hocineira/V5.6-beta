@@ -240,8 +240,6 @@ export default function StagesPage() {
         </div>
       </section>
 
-
-
       {/* Environnement de Travail - Section Spéciale Atelier */}
       <section className="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-indigo-50/50 via-purple-50/30 to-blue-50/50 dark:from-indigo-900/10 dark:via-purple-900/10 dark:to-blue-900/10">
         <div className="max-w-6xl mx-auto">
