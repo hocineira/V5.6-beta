@@ -597,7 +597,6 @@ export default function StagesPage() {
               ))}
             </div>
           )}
-          </div>
           
           {/* Statistics */}
           <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
