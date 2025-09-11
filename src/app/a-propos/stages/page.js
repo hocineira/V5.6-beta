@@ -477,41 +477,37 @@ export default function StagesPage() {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
                 {/* Section Images */}
                 <div className="relative">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-0 h-full">
+                  <div className="grid grid-cols-1 gap-0 h-full">
                     {/* Atelier 1 */}
-                    <div className="group relative overflow-hidden cursor-pointer" onClick={() => setSelectedImage(imagesOrganisees.atelier[0])}>
-                      <div className="aspect-w-16 aspect-h-12 lg:aspect-h-6 relative">
-                        <Image
-                          src="/images/stages/atelier_travail_1.jpg"
-                          alt="Atelier technique principal"
-                          fill
-                          className="object-cover group-hover:scale-110 transition-transform duration-500"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-r from-indigo-600/20 to-transparent group-hover:from-indigo-600/40 transition-all duration-300">
-                          <div className="absolute top-4 left-4">
-                            <span className="px-3 py-1 text-xs font-medium bg-indigo-600/90 text-white rounded-full">
-                              Atelier Principal
-                            </span>
-                          </div>
+                    <div className="group relative overflow-hidden cursor-pointer h-48 lg:h-1/2" onClick={() => setSelectedImage(imagesOrganisees.atelier[0])}>
+                      <Image
+                        src="/images/stages/atelier_travail_1.jpg"
+                        alt="Atelier technique principal"
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-r from-indigo-600/20 to-transparent group-hover:from-indigo-600/40 transition-all duration-300">
+                        <div className="absolute top-4 left-4">
+                          <span className="px-3 py-1 text-xs font-medium bg-indigo-600/90 text-white rounded-full">
+                            Atelier Principal
+                          </span>
                         </div>
                       </div>
                     </div>
                     
                     {/* Atelier 2 */}
-                    <div className="group relative overflow-hidden cursor-pointer" onClick={() => setSelectedImage(imagesOrganisees.atelier[1])}>
-                      <div className="aspect-w-16 aspect-h-12 lg:aspect-h-6 relative">
-                        <Image
-                          src="/images/stages/atelier_travail_2.jpg"
-                          alt="Atelier technique secondaire"
-                          fill
-                          className="object-cover group-hover:scale-110 transition-transform duration-500"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-l from-indigo-600/20 to-transparent group-hover:from-indigo-600/40 transition-all duration-300">
-                          <div className="absolute top-4 right-4">
-                            <span className="px-3 py-1 text-xs font-medium bg-indigo-600/90 text-white rounded-full">
-                              Atelier Secondaire
-                            </span>
-                          </div>
+                    <div className="group relative overflow-hidden cursor-pointer h-48 lg:h-1/2" onClick={() => setSelectedImage(imagesOrganisees.atelier[1])}>
+                      <Image
+                        src="/images/stages/atelier_travail_2.jpg"
+                        alt="Atelier technique secondaire"
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-l from-indigo-600/20 to-transparent group-hover:from-indigo-600/40 transition-all duration-300">
+                        <div className="absolute top-4 right-4">
+                          <span className="px-3 py-1 text-xs font-medium bg-indigo-600/90 text-white rounded-full">
+                            Atelier Secondaire
+                          </span>
                         </div>
                       </div>
                     </div>
