@@ -240,7 +240,7 @@ export default function StagesPage() {
         </div>
       </section>
 
-      {/* Preview Photos Section */}
+      {/* Preview Photos Section - corrigé */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-blue-50/50 to-indigo-50/50 dark:from-slate-900/50 dark:via-blue-900/20 dark:to-indigo-900/20">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
@@ -256,11 +256,12 @@ export default function StagesPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             {/* Photo 1 - RJ45 */}
             <div className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:-translate-y-2" onClick={() => setSelectedImage(imagesOrganisees.infrastructure[0])}>
-              <div className="aspect-w-1 aspect-h-1 relative h-48 md:h-56">
+              <div className="relative h-48 md:h-56">
                 <Image
                   src="/images/stages/raccordement_rj45_murale.jpg"
                   alt="Installation RJ45"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 25vw"
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-purple-600/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -279,11 +280,12 @@ export default function StagesPage() {
 
             {/* Photo 2 - Flash ROM */}
             <div className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:-translate-y-2" onClick={() => setSelectedImage(imagesOrganisees.mobile[1])}>
-              <div className="aspect-w-1 aspect-h-1 relative h-48 md:h-56">
+              <div className="relative h-48 md:h-56">
                 <Image
                   src="/images/stages/flash_rom_knox_samsung_1.jpg"
                   alt="Flash ROM KNOX"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 25vw"
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-green-600/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -302,11 +304,12 @@ export default function StagesPage() {
 
             {/* Photo 3 - SSD NVMe */}
             <div className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:-translate-y-2" onClick={() => setSelectedImage(imagesOrganisees.maintenance[1])}>
-              <div className="aspect-w-1 aspect-h-1 relative h-48 md:h-56">
+              <div className="relative h-48 md:h-56">
                 <Image
                   src="/images/stages/ajout_ssd_nvme.jpg"
                   alt="Installation SSD NVMe"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 25vw"
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-orange-600/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -325,11 +328,12 @@ export default function StagesPage() {
 
             {/* Photo 4 - PON Nokia */}
             <div className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:-translate-y-2" onClick={() => setSelectedImage(imagesOrganisees.infrastructure[1])}>
-              <div className="aspect-w-1 aspect-h-1 relative h-48 md:h-56">
+              <div className="relative h-48 md:h-56">
                 <Image
                   src="/images/stages/intervention_pon_nokia_zyxel.jpg"
                   alt="Intervention PON Nokia"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 25vw"
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-red-600/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -351,116 +355,10 @@ export default function StagesPage() {
           <div className="text-center">
             <button
               onClick={() => {
-                // Scroll vers la galerie complète
-                window.scrollTo({ top: 3200, behavior: 'smooth' });
+                const el = document.getElementById('galerie-missions')
+                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
               }}
               className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-            >
-              <Eye className="w-5 h-5 mr-2" />
-              Voir toutes les 9 photos de missions
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* Preview Photos Section */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Aperçu de mes Missions
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
-              Un avant-goût visuel de mon travail quotidien chez Sauvegarde13
-            </p>
-          </div>
-
-          {/* Grid Preview avec 4 photos principales */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-            {/* Photo 1 - RJ45 */}
-            <div className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:-translate-y-2" onClick={() => setSelectedImage(imagesOrganisees.infrastructure[0])}>
-              <div className="aspect-w-1 aspect-h-1 relative">
-                <Image
-                  src="/images/stages/raccordement_rj45_murale.jpg"
-                  alt="Installation RJ45"
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-purple-600/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-3 left-3 right-3">
-                    <p className="text-white text-sm font-medium">Installation RJ45</p>
-                    <p className="text-white/80 text-xs">Infrastructure</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Photo 2 - Flash ROM */}
-            <div className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:-translate-y-2" onClick={() => setSelectedImage(imagesOrganisees.mobile[1])}>
-              <div className="aspect-w-1 aspect-h-1 relative">
-                <Image
-                  src="/images/stages/flash_rom_knox_samsung_1.jpg"
-                  alt="Flash ROM KNOX"
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-green-600/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-3 left-3 right-3">
-                    <p className="text-white text-sm font-medium">Flash ROM KNOX</p>
-                    <p className="text-white/80 text-xs">Mobile & Sécurité</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Photo 3 - SSD NVMe */}
-            <div className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:-translate-y-2" onClick={() => setSelectedImage(imagesOrganisees.maintenance[1])}>
-              <div className="aspect-w-1 aspect-h-1 relative">
-                <Image
-                  src="/images/stages/ajout_ssd_nvme.jpg"
-                  alt="Installation SSD NVMe"
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-orange-600/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-3 left-3 right-3">
-                    <p className="text-white text-sm font-medium">SSD NVMe</p>
-                    <p className="text-white/80 text-xs">Optimisation</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Photo 4 - PON Nokia */}
-            <div className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:-translate-y-2" onClick={() => setSelectedImage(imagesOrganisees.infrastructure[1])}>
-              <div className="aspect-w-1 aspect-h-1 relative">
-                <Image
-                  src="/images/stages/intervention_pon_nokia_zyxel.jpg"
-                  alt="Intervention PON Nokia"
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-purple-600/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-3 left-3 right-3">
-                    <p className="text-white text-sm font-medium">PON Nokia</p>
-                    <p className="text-white/80 text-xs">Intervention d'urgence</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Call to action pour voir toutes les photos */}
-          <div className="text-center">
-            <button
-              onClick={() => {
-                const galerieSection = document.querySelector('h2:contains("Galerie de mes Missions")') || 
-                                     Array.from(document.querySelectorAll('h2')).find(h => h.textContent.includes('Galerie de mes Missions'));
-                if (galerieSection) {
-                  galerieSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-              }}
-              className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
             >
               <Eye className="w-5 h-5 mr-2" />
               Voir toutes les 9 photos de missions
@@ -487,6 +385,7 @@ export default function StagesPage() {
                         src="/images/stages/atelier_travail_1.jpg"
                         alt="Atelier technique principal"
                         fill
+                        sizes="(max-width: 1024px) 100vw, 50vw"
                         className="object-cover group-hover:scale-110 transition-transform duration-500"
                       />
                       <div className="absolute inset-0 bg-gradient-to-r from-indigo-600/20 to-transparent group-hover:from-indigo-600/40 transition-all duration-300">
@@ -512,6 +411,7 @@ export default function StagesPage() {
                         src="/images/stages/atelier_travail_2.jpg"
                         alt="Atelier technique secondaire"
                         fill
+                        sizes="(max-width: 1024px) 100vw, 50vw"
                         className="object-cover group-hover:scale-110 transition-transform duration-500"
                       />
                       <div className="absolute inset-0 bg-gradient-to-l from-purple-600/20 to-transparent group-hover:from-purple-600/40 transition-all duration-300">
@@ -656,7 +556,7 @@ export default function StagesPage() {
       </section>
 
       {/* Photos Section - Galerie Organisée par Catégories */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8">
+      <section id="galerie-missions" className="py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
@@ -742,6 +642,7 @@ export default function StagesPage() {
                           src={image.src}
                           alt={image.alt}
                           fill
+                          sizes="(max-width: 1024px) 100vw, 50vw"
                           className="object-cover group-hover:scale-110 transition-transform duration-500"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -788,6 +689,7 @@ export default function StagesPage() {
                           src={image.src}
                           alt={image.alt}
                           fill
+                          sizes="(max-width: 1024px) 100vw, 33vw"
                           className="object-cover group-hover:scale-110 transition-transform duration-500"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -834,6 +736,7 @@ export default function StagesPage() {
                           src={image.src}
                           alt={image.alt}
                           fill
+                          sizes="(max-width: 1024px) 100vw, 50vw"
                           className="object-cover group-hover:scale-110 transition-transform duration-500"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -880,6 +783,7 @@ export default function StagesPage() {
                           src={image.src}
                           alt={image.alt}
                           fill
+                          sizes="(max-width: 1024px) 100vw, 50vw"
                           className="object-cover group-hover:scale-110 transition-transform duration-500"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -924,6 +828,7 @@ export default function StagesPage() {
                       src={image.src}
                       alt={image.alt}
                       fill
+                      sizes="(max-width: 1024px) 100vw, 33vw"
                       className="object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
