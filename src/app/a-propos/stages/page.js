@@ -359,7 +359,7 @@ export default function StagesPage() {
               <div className="text-sm text-gray-600 dark:text-gray-400">Types de missions</div>
             </div>
             <div className="text-center p-4 bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-lg">
-              <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">3</div>
+              <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">1</div>
               <div className="text-sm text-gray-600 dark:text-gray-400">Mois d'expérience</div>
             </div>
             <div className="text-center p-4 bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20 rounded-lg">
