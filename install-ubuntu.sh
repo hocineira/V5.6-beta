@@ -223,11 +223,12 @@ setup_pm2_service() {
     
     cd "$PORTFOLIO_DIR"
     
-    # Arrêt des processus existants
-    pm2 delete "$SERVICE_NAME" 2>/dev/null || true
-    
-    # Configuration PM2
-    cat > ecosystem.config.js << EOF
+    if [[ $EUID -eq 0 ]]; then
+        # En tant que root, exécuter les commandes PM2 pour l'utilisateur portfolio
+        sudo -u $PORTFOLIO_USER pm2 delete "$SERVICE_NAME" 2>/dev/null || true
+        
+        # Configuration PM2
+        sudo -u $PORTFOLIO_USER cat > ecosystem.config.js << EOF
 module.exports = {
   apps: [{
     name: '$SERVICE_NAME',
@@ -245,13 +246,44 @@ module.exports = {
   }]
 };
 EOF
-    
-    # Démarrage du service avec PM2
-    pm2 start ecosystem.config.js
-    
-    # Configuration du démarrage automatique
-    pm2 startup
-    pm2 save
+        
+        # Démarrage du service avec PM2
+        sudo -u $PORTFOLIO_USER pm2 start ecosystem.config.js
+        
+        # Configuration du démarrage automatique
+        sudo -u $PORTFOLIO_USER pm2 startup
+        sudo -u $PORTFOLIO_USER pm2 save
+    else
+        # Utilisateur normal avec sudo
+        pm2 delete "$SERVICE_NAME" 2>/dev/null || true
+        
+        # Configuration PM2
+        cat > ecosystem.config.js << EOF
+module.exports = {
+  apps: [{
+    name: '$SERVICE_NAME',
+    script: 'npm',
+    args: 'start',
+    cwd: '$PORTFOLIO_DIR',
+    instances: 1,
+    autorestart: true,
+    watch: false,
+    max_memory_restart: '1G',
+    env: {
+      NODE_ENV: 'production',
+      PORT: 3000
+    }
+  }]
+};
+EOF
+        
+        # Démarrage du service avec PM2
+        pm2 start ecosystem.config.js
+        
+        # Configuration du démarrage automatique
+        pm2 startup
+        pm2 save
+    fi
     
     print_success "Service PM2 configuré et démarré"
 }
