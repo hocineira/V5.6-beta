@@ -24,6 +24,7 @@ NGINX_CONFIG="/etc/nginx/sites-available/portfolio"
 SERVICE_NAME="portfolio"
 NODE_VERSION="20"  # Version LTS recommandée
 DOMAIN="localhost"  # Domaine par défaut
+PORTFOLIO_USER=""  # Sera défini dans check_root()
 
 # =================================================================
 # FONCTIONS UTILITAIRES
