@@ -177,7 +177,7 @@ setup_portfolio() {
     # Création du répertoire et modification des permissions
     print_info "Création du répertoire du portfolio..."
     sudo mkdir -p "$PORTFOLIO_DIR"
-    sudo chown -R $USER:$USER "$PORTFOLIO_DIR"
+    sudo chown -R $PORTFOLIO_USER:$PORTFOLIO_USER "$PORTFOLIO_DIR"
     
     # Copie des fichiers du portfolio
     print_info "Copie des fichiers du portfolio..."
