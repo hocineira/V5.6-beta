@@ -186,13 +186,21 @@ setup_portfolio() {
     # Navigation vers le répertoire
     cd "$PORTFOLIO_DIR"
     
-    # Installation des dépendances
+    # Installation des dépendances (en tant qu'utilisateur portfolio)
     print_info "Installation des dépendances npm..."
-    npm install
+    if [[ $EUID -eq 0 ]]; then
+        sudo -u $PORTFOLIO_USER npm install
+    else
+        npm install
+    fi
     
-    # Build de production
+    # Build de production (en tant qu'utilisateur portfolio)
     print_info "Génération du build de production..."
-    npm run build
+    if [[ $EUID -eq 0 ]]; then
+        sudo -u $PORTFOLIO_USER npm run build
+    else
+        npm run build
+    fi
     
     print_success "Portfolio installé et compilé avec succès"
 }
