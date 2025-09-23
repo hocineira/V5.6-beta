@@ -389,12 +389,22 @@ run_tests() {
     
     # Test PM2
     print_info "Vérification du service PM2..."
-    if pm2 list | grep -q "$SERVICE_NAME.*online"; then
-        print_success "Service PM2 en cours d'exécution"
+    if [[ $EUID -eq 0 ]]; then
+        if sudo -u $PORTFOLIO_USER pm2 list | grep -q "$SERVICE_NAME.*online"; then
+            print_success "Service PM2 en cours d'exécution"
+        else
+            print_error "Problème avec le service PM2"
+            sudo -u $PORTFOLIO_USER pm2 logs "$SERVICE_NAME" --lines 10
+            exit 1
+        fi
     else
-        print_error "Problème avec le service PM2"
-        pm2 logs "$SERVICE_NAME" --lines 10
-        exit 1
+        if pm2 list | grep -q "$SERVICE_NAME.*online"; then
+            print_success "Service PM2 en cours d'exécution"
+        else
+            print_error "Problème avec le service PM2"
+            pm2 logs "$SERVICE_NAME" --lines 10
+            exit 1
+        fi
     fi
     
     # Test Nginx
