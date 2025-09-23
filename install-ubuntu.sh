@@ -53,9 +53,31 @@ print_error() {
 
 check_root() {
     if [[ $EUID -eq 0 ]]; then
-        print_error "Ne pas exécuter ce script en tant que root directement!"
-        print_info "Utilisez: bash install-ubuntu.sh"
-        exit 1
+        print_warning "Exécution en tant que root détectée"
+        print_info "Le script va créer un utilisateur dédié pour le portfolio"
+        
+        # Créer un utilisateur portfolio s'il n'existe pas
+        if ! id "portfolio" &>/dev/null; then
+            print_info "Création de l'utilisateur 'portfolio'..."
+            useradd -m -s /bin/bash portfolio
+            usermod -aG sudo portfolio
+            print_success "Utilisateur 'portfolio' créé"
+        fi
+        
+        # Définir l'utilisateur cible pour les opérations non-root
+        PORTFOLIO_USER="portfolio"
+        print_info "Les fichiers du portfolio appartiendront à l'utilisateur 'portfolio'"
+    else
+        # Utilisateur normal avec sudo
+        PORTFOLIO_USER=$USER
+        print_info "Installation en tant qu'utilisateur: $PORTFOLIO_USER"
+        
+        # Vérifier les droits sudo
+        if ! sudo -n true 2>/dev/null; then
+            print_error "Droits sudo requis pour l'installation"
+            print_info "Exécutez: sudo bash install-ubuntu.sh"
+            exit 1
+        fi
     fi
 }
 
