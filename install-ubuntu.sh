@@ -213,7 +213,13 @@ install_pm2() {
     print_header "Installation de PM2 pour la gestion des processus"
     
     # Installation globale de PM2
-    npm install -g pm2
+    if [[ $EUID -eq 0 ]]; then
+        # En tant que root, installer PM2 globalement pour l'utilisateur portfolio
+        sudo -u $PORTFOLIO_USER npm install -g pm2
+    else
+        # Utilisateur normal
+        npm install -g pm2
+    fi
     
     print_success "PM2 installé avec succès"
 }
