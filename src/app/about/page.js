@@ -67,7 +67,7 @@ export default function AboutPage() {
                 </p>
                 <p>
                   Actuellement etudiant en <strong>deuxieme annee de BTS Services Informatiques aux Organisations (option SISR)</strong>, 
-                  je suis a la recherche d'un stage pratique dans le domaine de l'administration des systemes et reseaux.
+                  je suis a la recherche d'une alternance dans le domaine de l'administration des systemes et reseaux.
                 </p>
               </div>
             </CardContent>
