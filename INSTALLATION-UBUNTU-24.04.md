@@ -1,20 +1,31 @@
-# 🚀 Installation Portfolio Simple - Ubuntu Server 24.04
+# 🚀 Installation Portfolio - Ubuntu 24.04 LTS
 
-## Guide d'installation ultra-simple
+> **Portfolio professionnel de Hocine IRATNI**  
+> Next.js 15 + React 19 + Tailwind CSS
 
-Cette procédure remplace complètement l'ancienne installation complexe. **3 commandes suffiront !**
+## ⚡ Installation automatique (Recommandée)
+
+### Une seule commande suffit :
+
+```bash
+chmod +x install-ubuntu.sh && bash install-ubuntu.sh
+```
+
+**Installation complète en moins de 5 minutes !**
 
 ---
 
 ## 📋 Prérequis
 
-- Ubuntu Server 24.04 LTS
-- Accès root ou sudo
+- Ubuntu 24.04 LTS (Server ou Desktop)
+- Accès sudo
 - Connexion Internet
+- 2 GB RAM minimum
+- 5 GB espace disque
 
 ---
 
-## ⚡ Installation Rapide (3 étapes)
+## 🔧 Installation manuelle (Alternative)
 
 ### Étape 1 : Préparation du système
 
