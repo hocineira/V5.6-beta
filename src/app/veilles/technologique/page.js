@@ -194,53 +194,110 @@ export default function VeilleTechnologiquePage() {
               const isLiveData = !loading && !error
               
               return (
-                <Card key={version.id} className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-slate-200">
+                <Card key={version.id || index} className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-slate-200 relative">
+                  {isLiveData && (
+                    <div className="absolute top-4 right-4">
+                      <Badge className="bg-green-100 text-green-800 text-xs px-2 py-1">
+                        ⚡ Live
+                      </Badge>
+                    </div>
+                  )}
+                  
                   <CardHeader className="pb-4">
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                          <Icon className="w-6 h-6 text-blue-600" />
+                        <div className={`w-12 h-12 ${version.category === 'server' ? 'bg-indigo-100' : 'bg-blue-100'} rounded-lg flex items-center justify-center`}>
+                          <Icon className={`w-6 h-6 ${version.category === 'server' ? 'text-indigo-600' : 'text-blue-600'}`} />
                         </div>
-                        <Badge className={getStatusColor(version.status)} variant="outline">
-                          {version.status}
+                        <Badge className={getStatusColor(version.status || getCategoryStatus(version.category))} variant="outline">
+                          {version.status || getCategoryStatus(version.category)}
                         </Badge>
                       </div>
                       <div className="text-sm text-slate-500 flex items-center">
                         <Calendar className="w-4 h-4 mr-1" />
-                        {formatDate(version.releaseDate)}
+                        {version.published_date ? formatDate(version.published_date) : formatDate(version.releaseDate)}
                       </div>
                     </div>
                     <CardTitle className="text-xl text-slate-900 group-hover:text-blue-600 transition-colors mb-2">
-                      {version.version}
+                      {version.title || version.version}
                     </CardTitle>
                     <CardDescription className="text-slate-600 mb-4 leading-relaxed">
                       {version.description}
                     </CardDescription>
-                    <Badge variant="outline" className="w-fit bg-slate-50 text-slate-700 border-slate-300">
-                      {version.category}
-                    </Badge>
+                    <div className="flex gap-2 flex-wrap">
+                      <Badge variant="outline" className={`w-fit ${getCategoryColor(version.category)}`}>
+                        {getCategoryName(version.category)}
+                      </Badge>
+                      {version.version && (
+                        <Badge variant="outline" className="w-fit bg-slate-50 text-slate-700 border-slate-300">
+                          {version.version}
+                        </Badge>
+                      )}
+                      {version.severity && (
+                        <Badge className={getSeverityColor(version.severity)}>
+                          {version.severity}
+                        </Badge>
+                      )}
+                    </div>
                   </CardHeader>
                   
                   <CardContent className="pt-0">
+                    {/* Tags */}
+                    {version.tags && version.tags.length > 0 && (
+                      <div className="mb-4">
+                        <div className="flex gap-1 flex-wrap">
+                          {version.tags.slice(0, 4).map((tag, tagIndex) => (
+                            <Badge key={tagIndex} variant="secondary" className="text-xs">
+                              {tag}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                    
+                    {/* Fonctionnalités ou informations */}
                     <div className="mb-6">
                       <h4 className="font-semibold text-slate-900 mb-3 text-sm uppercase tracking-wide">
-                        Fonctionnalités principales :
+                        {version.features ? 'Fonctionnalités principales :' : 'Informations :'}
                       </h4>
-                      <ul className="space-y-3">
-                        {version.features.map((feature, index) => (
-                          <li key={index} className="flex items-start">
-                            <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                            <span className="text-slate-700 text-sm leading-relaxed">{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
+                      {version.features ? (
+                        <ul className="space-y-3">
+                          {version.features.slice(0, 4).map((feature, featureIndex) => (
+                            <li key={featureIndex} className="flex items-start">
+                              <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                              <span className="text-slate-700 text-sm leading-relaxed">{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <div className="text-slate-700 text-sm leading-relaxed line-clamp-3">
+                          {version.description}
+                        </div>
+                      )}
                     </div>
                     
-                    <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="text-slate-600 font-medium">Support :</span>
-                        <span className="font-semibold text-slate-900">{version.support}</span>
-                      </div>
+                    {/* Lien source et support */}
+                    <div className="space-y-3">
+                      {version.link && (
+                        <a 
+                          href={version.link} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="flex items-center text-blue-600 hover:text-blue-800 text-sm transition-colors"
+                        >
+                          <ExternalLink className="w-4 h-4 mr-2" />
+                          Voir l'article complet
+                        </a>
+                      )}
+                      
+                      {version.support && (
+                        <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                          <div className="flex items-center justify-between text-sm">
+                            <span className="text-slate-600 font-medium">Support :</span>
+                            <span className="font-semibold text-slate-900">{version.support}</span>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </CardContent>
                 </Card>
