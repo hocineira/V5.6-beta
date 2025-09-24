@@ -3,7 +3,11 @@ from datetime import datetime
 from typing import List, Optional
 import os
 from dotenv import load_dotenv
-from .memory_storage import memory_storage
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from services.memory_storage import memory_storage
 
 load_dotenv()
 
