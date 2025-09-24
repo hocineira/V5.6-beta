@@ -98,17 +98,63 @@ export default function VeilleTechnologiquePage() {
     switch (status) {
       case 'Stable': return 'bg-green-100 text-green-800 border-green-200'
       case 'End of Life': return 'bg-red-100 text-red-800 border-red-200'
-      default: return 'bg-blue-100 text-blue-800 border-blue-200'
+      case 'Preview': return 'bg-orange-100 text-orange-800 border-orange-200'
+      case 'Nouveau': return 'bg-blue-100 text-blue-800 border-blue-200'
+      default: return 'bg-slate-100 text-slate-800 border-slate-200'
+    }
+  }
+
+  const getCategoryStatus = (category) => {
+    switch (category) {
+      case 'security': return 'Sécurité'
+      case 'feature': return 'Nouveau' 
+      case 'server': return 'Stable'
+      case 'general': return 'Mise à jour'
+      default: return 'Info'
+    }
+  }
+
+  const getCategoryColor = (category) => {
+    switch (category) {
+      case 'security': return 'bg-red-50 text-red-700 border-red-200'
+      case 'feature': return 'bg-blue-50 text-blue-700 border-blue-200'
+      case 'server': return 'bg-indigo-50 text-indigo-700 border-indigo-200'
+      case 'general': return 'bg-slate-50 text-slate-700 border-slate-200'
+      default: return 'bg-slate-50 text-slate-700 border-slate-200'
+    }
+  }
+
+  const getCategoryName = (category) => {
+    switch (category) {
+      case 'security': return 'Sécurité'
+      case 'feature': return 'Fonctionnalité'
+      case 'server': return 'Windows Server'
+      case 'general': return 'Général'
+      default: return category
+    }
+  }
+
+  const getSeverityColor = (severity) => {
+    switch (severity) {
+      case 'Critical': return 'bg-red-600 text-white'
+      case 'Important': return 'bg-orange-600 text-white'
+      case 'Moderate': return 'bg-yellow-600 text-white'
+      case 'Low': return 'bg-green-600 text-white'
+      default: return 'bg-slate-600 text-white'
     }
   }
 
   const formatDate = (dateString) => {
-    const date = new Date(dateString)
-    return date.toLocaleDateString('fr-FR', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    })
+    try {
+      const date = new Date(dateString)
+      return date.toLocaleDateString('fr-FR', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      })
+    } catch (e) {
+      return dateString
+    }
   }
 
   return (
