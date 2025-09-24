@@ -6,6 +6,7 @@ from typing import List, Dict
 import re
 import time
 from dateutil import parser as date_parser
+from services.translator import translator
 
 class WindowsRSSFetcher:
     def __init__(self):
