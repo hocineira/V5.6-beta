@@ -137,22 +137,37 @@ export default function VeilleTechnologiquePage() {
             </div>
             
             <h1 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900">
-              Veille Technologique
+              Veille Technologique Automatisée
             </h1>
             <p className="text-lg text-slate-600 mb-8 max-w-3xl mx-auto">
-              Suivi des versions de Windows et de leurs évolutions techniques. 
-              Restez informé sur les dernières mises à jour, fonctionnalités et cycles de support.
+              Suivi automatique des versions Windows et de leurs évolutions depuis les sources officielles Microsoft. 
+              Données mises à jour quotidiennement via flux RSS.
             </p>
             <div className="flex justify-center items-center gap-4 mb-8">
               <Badge className="bg-blue-100 text-blue-800 px-4 py-2 text-sm border border-blue-200">
                 <Monitor className="w-4 h-4 mr-2" />
-                4 versions suivies
+                {stats ? stats.total : updates.length} mises à jour suivies
               </Badge>
               <Badge className="bg-indigo-100 text-indigo-800 px-4 py-2 text-sm border border-indigo-200">
                 <Calendar className="w-4 h-4 mr-2" />
-                Mis à jour 2025
+                Mis à jour automatiquement
               </Badge>
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={handleRefresh}
+                disabled={isRefreshing}
+                className="border-green-200 text-green-800 hover:bg-green-50"
+              >
+                {isRefreshing ? (
+                  <Loader className="w-4 h-4 mr-2 animate-spin" />
+                ) : (
+                  <RefreshCw className="w-4 h-4 mr-2" />
+                )}
+                {isRefreshing ? 'Mise à jour...' : 'Actualiser'}
+              </Button>
             </div>
+          </div>
           </div>
         </div>
       </section>
