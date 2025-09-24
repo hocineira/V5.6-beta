@@ -214,7 +214,6 @@ export default function VeilleTechnologiquePage() {
               </Button>
             </div>
           </div>
-          </div>
         </div>
       </section>
 
