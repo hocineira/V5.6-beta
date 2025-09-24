@@ -172,12 +172,27 @@ export default function VeilleTechnologiquePage() {
         </div>
       </section>
 
-      {/* Windows Versions Section */}
+      {/* Windows Updates Section */}
       <section className="py-16">
         <div className="container mx-auto px-4">
+          {loading ? (
+            <div className="text-center py-12">
+              <Loader className="w-8 h-8 animate-spin mx-auto mb-4 text-blue-600" />
+              <p className="text-slate-600">Chargement des mises à jour...</p>
+            </div>
+          ) : error ? (
+            <div className="text-center py-12">
+              <AlertCircle className="w-8 h-8 mx-auto mb-4 text-amber-600" />
+              <p className="text-slate-600 mb-4">Utilisation des données de sauvegarde</p>
+              <Badge className="bg-amber-100 text-amber-800">Mode hors-ligne</Badge>
+            </div>
+          ) : null}
+          
           <div className="grid md:grid-cols-2 gap-8">
-            {windowsVersions.map((version) => {
-              const Icon = version.icon
+            {(loading ? windowsVersions : updates).map((version, index) => {
+              const Icon = version.icon || (version.category === 'server' ? Server : Monitor)
+              const isLiveData = !loading && !error
+              
               return (
                 <Card key={version.id} className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-slate-200">
                   <CardHeader className="pb-4">
