@@ -10,20 +10,29 @@ from dateutil import parser as date_parser
 class WindowsRSSFetcher:
     def __init__(self):
         self.sources = {
+            "microsoft_france": {
+                "url": "https://news.microsoft.com/fr-fr/feed/",
+                "name": "Microsoft France Actualités",
+                "category": "feature",
+                "language": "fr"
+            },
             "microsoft_security": {
                 "url": "https://msrc.microsoft.com/blog/rss",
                 "name": "Microsoft Security Response Center",
-                "category": "security"
+                "category": "security",
+                "language": "en"
             },
             "windows_blog": {
                 "url": "https://blogs.windows.com/feed/",
                 "name": "Official Windows Blog", 
-                "category": "feature"
+                "category": "feature",
+                "language": "en"
             },
             "windows_server": {
                 "url": "https://cloudblogs.microsoft.com/windowsserver/feed/",
                 "name": "Windows Server Blog",
-                "category": "server"
+                "category": "server",
+                "language": "en"
             }
         }
         
