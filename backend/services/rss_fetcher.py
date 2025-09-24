@@ -98,6 +98,16 @@ class WindowsRSSFetcher:
         title = entry.title if hasattr(entry, 'title') else "Sans titre"
         link = entry.link if hasattr(entry, 'link') else ""
         
+        # Traduction en français si nécessaire
+        source_language = source.get("language", "en")
+        if source_language == "en":
+            # Vérifier si le contenu n'est pas déjà en français
+            if not translator.is_french_content(title + " " + description):
+                print(f"🔄 Traduction en cours pour: {title[:50]}...")
+                title = translator.translate_to_french(title)
+                if len(description) > 50:  # Ne traduire que si assez de contenu
+                    description = translator.translate_to_french(description)
+        
         # Détection automatique de version Windows
         version = self._extract_windows_version(title + " " + description)
         
