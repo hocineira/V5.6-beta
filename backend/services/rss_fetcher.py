@@ -110,7 +110,7 @@ class WindowsRSSFetcher:
             "kb_number": kb_number,
             "severity": severity,
             "tags": tags,
-            "source": source_key
+            "source": list(self.sources.keys())[list(self.sources.values()).index(source)]
         }
 
     def _clean_html(self, html_text: str) -> str:
