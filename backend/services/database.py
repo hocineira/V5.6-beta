@@ -32,6 +32,9 @@ class DatabaseService:
         return self.db[collection_name]
     
     def save_windows_update(self, update_data: dict):
+        if not self.use_mongo:
+            return memory_storage.save_windows_update(update_data)
+            
         collection = self.get_collection("windows_updates")
         
         # Vérifie si l'update existe déjà (par titre et lien)
