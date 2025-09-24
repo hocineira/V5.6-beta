@@ -1,9 +1,13 @@
 from fastapi import APIRouter, HTTPException, BackgroundTasks
 from typing import Optional, List
 from datetime import datetime
-from ..models.windows_update import WindowsUpdate, WindowsUpdateResponse
-from ..services.database import db_service
-from ..services.rss_fetcher import rss_fetcher
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from models.windows_update import WindowsUpdate, WindowsUpdateResponse
+from services.database import db_service
+from services.rss_fetcher import rss_fetcher
 
 router = APIRouter(prefix="/api/windows", tags=["Windows Updates"])
 
