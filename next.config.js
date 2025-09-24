@@ -90,9 +90,14 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   
-  // Pas de rewrites complexes
+  // API proxy to backend server
   async rewrites() {
-    return []
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'http://localhost:8001/api/:path*',
+      },
+    ]
   }
 }
 
