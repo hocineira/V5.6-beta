@@ -1,12 +1,28 @@
 'use client'
 
-import { Monitor, Calendar, ArrowLeft, Download, ExternalLink, Server } from 'lucide-react'
+import { Monitor, Calendar, ArrowLeft, Download, ExternalLink, Server, RefreshCw, Loader, AlertCircle } from 'lucide-react'
 import { Button } from '../../../components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../../components/ui/card'
 import { Badge } from '../../../components/ui/badge'
+import { useWindowsUpdates } from '../../../hooks/useWindowsUpdates'
+import { useState } from 'react'
 import Link from 'next/link'
 
 export default function VeilleTechnologiquePage() {
+  const { updates, loading, error, stats, refreshUpdates } = useWindowsUpdates()
+  const [isRefreshing, setIsRefreshing] = useState(false)
+  
+  const handleRefresh = async () => {
+    setIsRefreshing(true)
+    const success = await refreshUpdates()
+    setTimeout(() => setIsRefreshing(false), 3000)
+    
+    if (success) {
+      // Optionnel: afficher une notification de succès
+    }
+  }
+
+  // Données de fallback pour la compatibilité
   const windowsVersions = [
     {
       id: 1,
