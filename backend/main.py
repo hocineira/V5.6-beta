@@ -3,10 +3,11 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 import os
 from datetime import datetime
+from routes.windows_updates import router as windows_router
 
 app = FastAPI(title="Portfolio RSS API", version="1.0.0")
 
-# CORS configuration pour le frontend Next.js
+# CORS configuration pour le frontend Next.js  
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],
@@ -14,6 +15,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Inclusion des routes
+app.include_router(windows_router)
 
 @app.get("/")
 async def root():
