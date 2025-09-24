@@ -84,6 +84,9 @@ class DatabaseService:
         return self.get_windows_updates(limit=limit, sort_by="published_date")
     
     def get_update_stats(self) -> dict:
+        if not self.use_mongo:
+            return memory_storage.get_update_stats()
+            
         collection = self.get_collection("windows_updates")
         
         pipeline = [
