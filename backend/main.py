@@ -3,6 +3,10 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 import os
 from datetime import datetime
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 from routes.windows_updates import router as windows_router
 
 app = FastAPI(title="Portfolio RSS API", version="1.0.0")
