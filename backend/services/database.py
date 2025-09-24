@@ -64,6 +64,9 @@ class DatabaseService:
                            category: Optional[str] = None, 
                            limit: int = 50,
                            sort_by: str = "published_date") -> List[dict]:
+        if not self.use_mongo:
+            return memory_storage.get_windows_updates(category, limit, sort_by)
+            
         collection = self.get_collection("windows_updates")
         
         query = {}
