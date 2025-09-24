@@ -32,6 +32,29 @@ async def root():
 async def health_check():
     return {"status": "healthy", "timestamp": datetime.now()}
 
+@app.on_event("startup")
+async def startup_event():
+    """Démarre le planificateur RSS au démarrage de l'application"""
+    print("🚀 Démarrage du service RSS...")
+    
+    # Effectue une première récupération des données
+    from routes.windows_updates import fetch_and_store_updates
+    try:
+        result = await fetch_and_store_updates()
+        print(f"✅ Données initiales chargées : {result}")
+    except Exception as e:
+        print(f"⚠️  Erreur chargement initial : {e}")
+    
+    # Démarre le planificateur pour les mises à jour automatiques
+    scheduler.start()
+    print("✅ Planificateur RSS démarré")
+
+@app.on_event("shutdown")
+async def shutdown_event():
+    """Arrête le planificateur RSS proprement"""
+    print("🛑 Arrêt du planificateur RSS...")
+    scheduler.stop()
+
 if __name__ == "__main__":
     uvicorn.run(
         "main:app", 
