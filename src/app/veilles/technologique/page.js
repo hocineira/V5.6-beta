@@ -353,14 +353,50 @@ export default function VeilleTechnologiquePage() {
         </div>
       </section>
 
+      {/* Stats Section */}
+      {stats && (
+        <section className="py-12 bg-gradient-to-r from-blue-50 to-indigo-50">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl font-bold text-slate-900 mb-2">
+                Statistiques de la veille
+              </h2>
+              <p className="text-slate-600">Données mises à jour automatiquement</p>
+            </div>
+            
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center max-w-4xl mx-auto">
+              <div className="bg-white rounded-lg p-4 shadow-sm">
+                <div className="text-2xl font-bold text-blue-600">{stats.total}</div>
+                <div className="text-slate-600 text-sm">Total mises à jour</div>
+              </div>
+              <div className="bg-white rounded-lg p-4 shadow-sm">
+                <div className="text-2xl font-bold text-red-600">{stats.by_category?.security || 0}</div>
+                <div className="text-slate-600 text-sm">Sécurité</div>
+              </div>
+              <div className="bg-white rounded-lg p-4 shadow-sm">
+                <div className="text-2xl font-bold text-indigo-600">{stats.by_category?.server || 0}</div>
+                <div className="text-slate-600 text-sm">Windows Server</div>
+              </div>
+              <div className="bg-white rounded-lg p-4 shadow-sm">
+                <div className="text-2xl font-bold text-blue-600">{stats.by_category?.feature || 0}</div>
+                <div className="text-slate-600 text-sm">Fonctionnalités</div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Additional Resources Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-slate-900 mb-4">
-              Ressources complémentaires
+              Sources officielles
             </h2>
             <div className="w-20 h-1 bg-blue-600 mx-auto"></div>
+            <p className="text-slate-600 mt-4">
+              Nos données proviennent directement des flux RSS officiels Microsoft
+            </p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
