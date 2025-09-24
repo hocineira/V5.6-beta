@@ -3,6 +3,7 @@ from datetime import datetime
 from typing import List, Optional
 import os
 from dotenv import load_dotenv
+from .memory_storage import memory_storage
 
 load_dotenv()
 
@@ -12,17 +13,20 @@ class DatabaseService:
         self.db_name = os.getenv("DATABASE_NAME", "portfolio_rss")
         self.client = None
         self.db = None
+        self.use_mongo = False
         self.connect()
 
     def connect(self):
         try:
-            self.client = MongoClient(self.mongo_url)
+            self.client = MongoClient(self.mongo_url, serverSelectionTimeoutMS=3000)
             self.db = self.client[self.db_name]
             # Test la connexion
             self.client.admin.command('ping')
+            self.use_mongo = True
             print(f"✅ Connexion MongoDB réussie : {self.db_name}")
         except Exception as e:
-            print(f"❌ Erreur connexion MongoDB : {e}")
+            print(f"⚠️  MongoDB non disponible, utilisation du stockage en mémoire : {e}")
+            self.use_mongo = False
             
     def get_collection(self, collection_name: str):
         return self.db[collection_name]
