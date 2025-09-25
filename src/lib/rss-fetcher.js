@@ -271,25 +271,46 @@ class WindowsRSSFetcher {
   isRelevantForWindows(update) {
     const text = (update.title + " " + update.description).toLowerCase();
     
-    // Keywords Microsoft généraux (plus inclusif pour les blogs Microsoft)
-    const microsoftKeywords = [
-      'microsoft', 'windows', 'server', 'azure', 'powershell', 
-      'sql', 'dotnet', '.net', 'office', 'exchange'
+    // Keywords Windows/Windows Server prioritaires (BTS SIO SISR focus)
+    const windowsKeywords = [
+      'windows server', 'windows 11', 'windows 10', 'windows', 
+      'server 2025', 'server 2022', 'server 2019', 'active directory', 
+      'hyper-v', 'iis', 'dns', 'dhcp', 'group policy', 'gpo'
     ];
     
-    // Keywords techniques pertinents
-    const techKeywords = [
-      'update', 'security', 'patch', 'kb', 'vulnerability', 
-      'feature', 'upgrade', 'installation', 'release', 'preview',
-      'enterprise', 'cloud', 'datacenter', 'admin', 'management'
+    // Keywords infrastructure et systèmes (domaine BTS SIO)
+    const infraKeywords = [
+      'infrastructure', 'datacenter', 'enterprise', 'admin', 'administration',
+      'deployment', 'migration', 'backup', 'recovery', 'clustering',
+      'virtualization', 'network', 'security', 'patch', 'update', 'hotfix'
     ];
     
-    // Si c'est un blog Microsoft officiel, on accepte avec des critères plus larges
-    const hasMicrosoftKeyword = microsoftKeywords.some(keyword => text.includes(keyword));
-    const hasTechKeyword = techKeywords.some(keyword => text.includes(keyword));
+    // Keywords techniques Windows Server
+    const serverTechKeywords = [
+      'powershell', 'sql server', 'exchange', 'sharepoint', 'system center',
+      'wsus', 'rds', 'terminal services', 'failover cluster', 'storage spaces'
+    ];
     
-    // Accepter si au moins un keyword Microsoft OU technique
-    return hasMicrosoftKeyword || hasTechKeyword;
+    // Vérifier présence keywords Windows (priorité haute)
+    const hasWindowsKeyword = windowsKeywords.some(keyword => text.includes(keyword));
+    
+    // Vérifier infrastructure + technique (pour les articles Microsoft généraux)
+    const hasInfraKeyword = infraKeywords.some(keyword => text.includes(keyword));
+    const hasTechKeyword = serverTechKeywords.some(keyword => text.includes(keyword));
+    
+    // Exclure les articles non pertinents pour BTS SIO SISR
+    const excludeKeywords = [
+      'xbox', 'surface', 'hololens', 'microsoft teams', 'office 365', 
+      'onedrive', 'outlook.com', 'skype', 'bing', 'cortana', 'edge browser'
+    ];
+    const hasExcludeKeyword = excludeKeywords.some(keyword => text.includes(keyword));
+    
+    // Logique de filtrage pour BTS SIO SISR
+    if (hasExcludeKeyword) return false;
+    if (hasWindowsKeyword) return true;
+    if (hasInfraKeyword && hasTechKeyword) return true;
+    
+    return false;
   }
 
   translateSimple(text) {
