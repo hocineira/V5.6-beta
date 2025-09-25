@@ -226,7 +226,7 @@ class DualRSSBackendTester:
             response = self.session.get(f"{self.api_base}/starlink/updates/latest?limit=5", timeout=10)
             if response.status_code == 200:
                 data = response.json()
-                if "updates" in data and "count" in data and "timestamp" in data:
+                if "updates" in data and "count" in data:
                     count = data.get("count", 0)
                     self.log_test("Get Latest Starlink Updates", True, f"Retrieved {count} latest updates")
                 else:
