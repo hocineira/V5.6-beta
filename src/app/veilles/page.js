@@ -110,8 +110,18 @@ export default function VeillesPage() {
                 <Link key={veille.id} href={veille.link}>
                   <Card className="group cursor-pointer hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-3 overflow-hidden border-0 shadow-lg h-full">
                     {/* Header with Gradient - Mobile Optimized */}
-                    <div className={`relative h-24 sm:h-32 bg-gradient-to-r ${veille.bgGradient} flex items-center justify-center overflow-hidden`}>
+                    <div className={`relative h-24 sm:h-32 bg-gradient-to-r ${veille.bgGradient} flex items-center justify-center overflow-hidden ${
+                      veille.id === 'starlink' ? 'text-white' : ''
+                    }`}>
                       <div className="absolute inset-0 bg-black/10"></div>
+                      {/* Étoiles pour le thème Starlink */}
+                      {veille.id === 'starlink' && (
+                        <>
+                          <div className="absolute top-2 left-4 w-1 h-1 bg-white rounded-full animate-pulse"></div>
+                          <div className="absolute top-4 right-6 w-1 h-1 bg-blue-300 rounded-full animate-pulse delay-500"></div>
+                          <div className="absolute bottom-3 left-8 w-1 h-1 bg-white rounded-full animate-pulse delay-1000"></div>
+                        </>
+                      )}
                       <div className="relative z-10">
                         <Icon className="w-10 h-10 sm:w-12 sm:h-12 text-white drop-shadow-lg" />
                       </div>
