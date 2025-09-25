@@ -6,11 +6,11 @@ import { fr } from 'date-fns/locale';
 class WindowsRSSFetcher {
   constructor() {
     this.sources = {
-      microsoft_france: {
-        url: "https://news.microsoft.com/fr-fr/feed/",
-        name: "Microsoft France Actualités",
-        category: "feature",
-        language: "fr"
+      windows_server: {
+        url: "https://cloudblogs.microsoft.com/windowsserver/feed/",
+        name: "Windows Server Blog",
+        category: "server",
+        language: "en"
       },
       microsoft_security: {
         url: "https://msrc.microsoft.com/blog/rss",
@@ -18,16 +18,34 @@ class WindowsRSSFetcher {
         category: "security", 
         language: "en"
       },
-      windows_blog: {
-        url: "https://blogs.windows.com/feed/",
-        name: "Official Windows Blog",
-        category: "feature",
+      system_center: {
+        url: "https://cloudblogs.microsoft.com/systemcenter/feed/",
+        name: "System Center Blog", 
+        category: "server",
         language: "en"
       },
-      windows_server: {
-        url: "https://cloudblogs.microsoft.com/windowsserver/feed/",
-        name: "Windows Server Blog",
+      exchange_server: {
+        url: "https://techcommunity.microsoft.com/plugins/custom/microsoft/o365/custom-blog-rss?tid=-5804064304129947060",
+        name: "Exchange Server",
         category: "server",
+        language: "en"
+      },
+      sql_server: {
+        url: "https://cloudblogs.microsoft.com/sqlserver/feed/",
+        name: "SQL Server Blog",
+        category: "server",
+        language: "en"
+      },
+      azure_updates: {
+        url: "https://azure.microsoft.com/en-us/updates/feed/",
+        name: "Azure Updates",
+        category: "cloud",
+        language: "en"
+      },
+      windows_it_pro: {
+        url: "https://techcommunity.microsoft.com/plugins/custom/microsoft/o365/custom-blog-rss?tid=-8648868647972695810",
+        name: "Windows IT Pro Blog",
+        category: "enterprise",
         language: "en"
       }
     };
