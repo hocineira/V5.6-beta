@@ -171,12 +171,24 @@ export default function VeillesPage() {
                         </ul>
                       </div>
                       
-                      <div className={`${veille.color === 'blue' ? 'bg-blue-50 group-hover:bg-blue-100' : 'bg-indigo-50 group-hover:bg-indigo-100'} p-3 sm:p-4 rounded-lg transition-colors duration-300`}>
+                      <div className={`${
+                        veille.color === 'blue' ? 'bg-blue-50 group-hover:bg-blue-100' : 
+                        veille.color === 'slate' ? 'bg-slate-50 group-hover:bg-slate-100' :
+                        'bg-indigo-50 group-hover:bg-indigo-100'
+                      } p-3 sm:p-4 rounded-lg transition-colors duration-300`}>
                         <div className="flex items-center justify-between">
-                          <span className={`${veille.color === 'blue' ? 'text-blue-800' : 'text-indigo-800'} font-medium text-xs sm:text-sm`}>
+                          <span className={`${
+                            veille.color === 'blue' ? 'text-blue-800' : 
+                            veille.color === 'slate' ? 'text-slate-800' : 
+                            'text-indigo-800'
+                          } font-medium text-xs sm:text-sm`}>
                             Accéder à la veille
                           </span>
-                          <ArrowRight className={`w-3 h-3 sm:w-4 sm:h-4 ${veille.color === 'blue' ? 'text-blue-700' : 'text-indigo-700'} group-hover:transform group-hover:translate-x-1 transition-all duration-300`} />
+                          <ArrowRight className={`w-3 h-3 sm:w-4 sm:h-4 ${
+                            veille.color === 'blue' ? 'text-blue-700' : 
+                            veille.color === 'slate' ? 'text-slate-700' : 
+                            'text-indigo-700'
+                          } group-hover:transform group-hover:translate-x-1 transition-all duration-300`} />
                         </div>
                       </div>
                     </CardContent>
