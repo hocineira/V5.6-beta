@@ -55,9 +55,9 @@ class JSONStorage {
         ...data,
         updates: data.updates.map(update => ({
           ...update,
-          published_date: update.published_date.toISOString(),
-          created_at: update.created_at.toISOString(),
-          updated_at: update.updated_at.toISOString()
+          published_date: update.published_date instanceof Date ? update.published_date.toISOString() : update.published_date,
+          created_at: update.created_at instanceof Date ? update.created_at.toISOString() : update.created_at,
+          updated_at: update.updated_at instanceof Date ? update.updated_at.toISOString() : update.updated_at
         })),
         lastUpdated: new Date().toISOString()
       };
