@@ -1,62 +1,31 @@
-'use client'
+import { storage } from '../../../lib/storage.js'
 
-import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
-
-export default function VeilleTechnologique() {
-  const [updates, setUpdates] = useState([])
-  const [stats, setStats] = useState({ total: 0 })
-  const [loading, setLoading] = useState(true)
-  const [refreshing, setRefreshing] = useState(false)
-
-  const fetchData = async () => {
-    try {
-      setLoading(true)
-      
-      // Récupère les données directement depuis l'API
-      const [updatesRes, statsRes] = await Promise.all([
-        fetch('/api/windows/updates?limit=20'),
-        fetch('/api/windows/updates/stats')
-      ])
-
-      if (updatesRes.ok && statsRes.ok) {
-        const updatesData = await updatesRes.json()
-        const statsData = await statsRes.json()
-        
-        setUpdates(updatesData.updates || [])
-        setStats(statsData)
-      } else {
-        // Données de fallback si API indisponible
-        setUpdates(getFallbackData())
-        setStats({ total: 4, last_updated: new Date().toISOString() })
-      }
-    } catch (error) {
-      console.error('Erreur chargement:', error)
-      setUpdates(getFallbackData())
-      setStats({ total: 4, last_updated: new Date().toISOString() })
-    } finally {
-      setLoading(false)
+async function getUpdatesData() {
+  try {
+    // Récupère directement depuis le stockage local
+    const updates = await storage.getAllUpdates(20)
+    const stats = await storage.getStats()
+    
+    return {
+      updates: updates.map(update => ({
+        ...update,
+        published_date: update.published_date.toISOString(),
+        created_at: update.created_at.toISOString(),
+        updated_at: update.updated_at.toISOString()
+      })),
+      stats
+    }
+  } catch (error) {
+    console.error('Erreur chargement données:', error)
+    return {
+      updates: getFallbackData(),
+      stats: { total: 4, last_updated: new Date().toISOString() }
     }
   }
+}
 
-  const handleRefresh = async () => {
-    setRefreshing(true)
-    try {
-      await fetch('/api/windows/updates/refresh', { method: 'POST' })
-      // Attendre un peu puis recharger
-      setTimeout(() => {
-        fetchData()
-        setRefreshing(false)
-      }, 3000)
-    } catch (error) {
-      console.error('Erreur refresh:', error)
-      setRefreshing(false)
-    }
-  }
-
-  useEffect(() => {
-    fetchData()
-  }, [])
+export default async function VeilleTechnologique() {
+  const { updates, stats } = await getUpdatesData()
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
