@@ -241,9 +241,9 @@ class DualRSSBackendTester:
             response = self.session.get(f"{self.api_base}/starlink/updates/stats", timeout=10)
             if response.status_code == 200:
                 data = response.json()
-                if "total" in data and "by_category" in data:
+                if "total" in data and "categories" in data:
                     total = data.get("total", 0)
-                    categories = data.get("by_category", {})
+                    categories = data.get("categories", {})
                     self.log_test("Get Starlink Updates Stats", True, f"Total: {total}, Categories: {list(categories.keys())}")
                     
                     # Verify we have the expected 38 articles from starlink-cache.json
