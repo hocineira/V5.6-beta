@@ -1,161 +1,62 @@
 'use client'
 
-import { Monitor, Calendar, ArrowLeft, Download, ExternalLink, Server, RefreshCw, Loader, AlertCircle } from 'lucide-react'
-import { Button } from '../../../components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../../components/ui/card'
-import { Badge } from '../../../components/ui/badge'
-import { useWindowsUpdates } from '../../../hooks/useWindowsUpdates'
-import { useState } from 'react'
-import Link from 'next/link'
+import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
 
-export default function VeilleTechnologiquePage() {
-  const { updates, loading, error, stats, refreshUpdates } = useWindowsUpdates()
-  const [isRefreshing, setIsRefreshing] = useState(false)
-  
-  const handleRefresh = async () => {
-    setIsRefreshing(true)
-    const success = await refreshUpdates()
-    setTimeout(() => setIsRefreshing(false), 3000)
-    
-    if (success) {
-      // Optionnel: afficher une notification de succès
-    }
-  }
+export default function VeilleTechnologique() {
+  const [updates, setUpdates] = useState([])
+  const [stats, setStats] = useState({ total: 0 })
+  const [loading, setLoading] = useState(true)
+  const [refreshing, setRefreshing] = useState(false)
 
-  // Données de fallback pour la compatibilité
-  const windowsVersions = [
-    {
-      id: 1,
-      version: 'Windows 11 24H2',
-      releaseDate: '2024-10-01',
-      description: 'La dernière mise à jour majeure de Windows 11 apportant de nouvelles fonctionnalités de sécurité et de productivité.',
-      features: [
-        'Nouvelles options de sécurité avancées',
-        'Interface utilisateur améliorée',
-        'Copilot intégré nativement',
-        'Performances optimisées pour l\'IA',
-        'Gestion améliorée de la batterie'
-      ],
-      support: 'Jusqu\'en octobre 2029',
-      status: 'Stable',
-      category: 'Major Update',
-      icon: Monitor
-    },
-    {
-      id: 2,
-      version: 'Windows Server 2025',
-      releaseDate: '2024-11-01',
-      description: 'La nouvelle version de Windows Server avec des fonctionnalités cloud natives et une sécurité renforcée.',
-      features: [
-        'Containers Windows améliorés',
-        'Sécurité Zero Trust native',
-        'Azure Arc intégré par défaut',
-        'Gestion hybride avancée',
-        'Support Kubernetes natif'
-      ],
-      support: 'Support étendu jusqu\'en 2034',
-      status: 'Stable',
-      category: 'Server Edition',
-      icon: Server
-    },
-    {
-      id: 3,
-      version: 'Windows 10 22H2',
-      releaseDate: '2022-10-18',
-      description: 'Dernière version de Windows 10 avant la fin du support principal. Migration recommandée vers Windows 11.',
-      features: [
-        'Améliorations de sécurité finales',
-        'Optimisations de performance',
-        'Corrections de bugs critiques',
-        'Compatibilité étendue matériel ancien',
-        'Transition vers Windows 11 facilitée'
-      ],
-      support: 'Fin de support : octobre 2025',
-      status: 'End of Life',
-      category: 'Legacy Version',
-      icon: Monitor
-    },
-    {
-      id: 4,
-      version: 'Windows 11 23H2',
-      releaseDate: '2023-10-31',
-      description: 'Version précédente de Windows 11 avec stabilité éprouvée et fonctionnalités matures.',
-      features: [
-        'Copilot en version bêta',
-        'Améliorations du menu Démarrer',
-        'Nouvelles applications natives',
-        'Gestion des widgets optimisée',
-        'Performance globale stabilisée'
-      ],
-      support: 'Support jusqu\'en octobre 2026',
-      status: 'Stable',
-      category: 'Previous Stable',
-      icon: Monitor
-    }
-  ]
-
-  const getStatusColor = (status) => {
-    switch (status) {
-      case 'Stable': return 'bg-green-100 text-green-800 border-green-200'
-      case 'End of Life': return 'bg-red-100 text-red-800 border-red-200'
-      case 'Preview': return 'bg-orange-100 text-orange-800 border-orange-200'
-      case 'Nouveau': return 'bg-blue-100 text-blue-800 border-blue-200'
-      default: return 'bg-slate-100 text-slate-800 border-slate-200'
-    }
-  }
-
-  const getCategoryStatus = (category) => {
-    switch (category) {
-      case 'security': return 'Sécurité'
-      case 'feature': return 'Nouveau' 
-      case 'server': return 'Stable'
-      case 'general': return 'Mise à jour'
-      default: return 'Info'
-    }
-  }
-
-  const getCategoryColor = (category) => {
-    switch (category) {
-      case 'security': return 'bg-red-50 text-red-700 border-red-200'
-      case 'feature': return 'bg-blue-50 text-blue-700 border-blue-200'
-      case 'server': return 'bg-indigo-50 text-indigo-700 border-indigo-200'
-      case 'general': return 'bg-slate-50 text-slate-700 border-slate-200'
-      default: return 'bg-slate-50 text-slate-700 border-slate-200'
-    }
-  }
-
-  const getCategoryName = (category) => {
-    switch (category) {
-      case 'security': return 'Sécurité'
-      case 'feature': return 'Fonctionnalité'
-      case 'server': return 'Windows Server'
-      case 'general': return 'Général'
-      default: return category
-    }
-  }
-
-  const getSeverityColor = (severity) => {
-    switch (severity) {
-      case 'Critical': return 'bg-red-600 text-white'
-      case 'Important': return 'bg-orange-600 text-white'
-      case 'Moderate': return 'bg-yellow-600 text-white'
-      case 'Low': return 'bg-green-600 text-white'
-      default: return 'bg-slate-600 text-white'
-    }
-  }
-
-  const formatDate = (dateString) => {
+  const fetchData = async () => {
     try {
-      const date = new Date(dateString)
-      return date.toLocaleDateString('fr-FR', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      })
-    } catch (e) {
-      return dateString
+      setLoading(true)
+      
+      // Récupère les données directement depuis l'API
+      const [updatesRes, statsRes] = await Promise.all([
+        fetch('/api/windows/updates?limit=20'),
+        fetch('/api/windows/updates/stats')
+      ])
+
+      if (updatesRes.ok && statsRes.ok) {
+        const updatesData = await updatesRes.json()
+        const statsData = await statsRes.json()
+        
+        setUpdates(updatesData.updates || [])
+        setStats(statsData)
+      } else {
+        // Données de fallback si API indisponible
+        setUpdates(getFallbackData())
+        setStats({ total: 4, last_updated: new Date().toISOString() })
+      }
+    } catch (error) {
+      console.error('Erreur chargement:', error)
+      setUpdates(getFallbackData())
+      setStats({ total: 4, last_updated: new Date().toISOString() })
+    } finally {
+      setLoading(false)
     }
   }
+
+  const handleRefresh = async () => {
+    setRefreshing(true)
+    try {
+      await fetch('/api/windows/updates/refresh', { method: 'POST' })
+      // Attendre un peu puis recharger
+      setTimeout(() => {
+        fetchData()
+        setRefreshing(false)
+      }, 3000)
+    } catch (error) {
+      console.error('Erreur refresh:', error)
+      setRefreshing(false)
+    }
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
@@ -167,318 +68,276 @@ export default function VeilleTechnologiquePage() {
         </div>
 
         <div className="relative container mx-auto px-4">
-          {/* Back Button */}
-          <Link href="/veilles">
-            <Button variant="outline" className="mb-8 hover:bg-blue-50 text-slate-700 border-slate-300">
-              <ArrowLeft className="w-4 h-4 mr-2" />
+          <a href="/veilles">
+            <button className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border bg-background hover:text-accent-foreground h-10 px-4 py-2 mb-8 hover:bg-blue-50 text-slate-700 border-slate-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-left w-4 h-4 mr-2" aria-hidden="true">
+                <path d="m12 19-7-7 7-7"></path>
+                <path d="M19 12H5"></path>
+              </svg>
               Retour aux veilles
-            </Button>
-          </Link>
+            </button>
+          </a>
 
           <div className="text-center">
             <div className="flex justify-center mb-8">
               <div className="w-20 h-20 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full flex items-center justify-center shadow-lg">
-                <Monitor className="w-10 h-10 text-white" />
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-monitor w-10 h-10 text-white" aria-hidden="true">
+                  <rect width="20" height="14" x="2" y="3" rx="2"></rect>
+                  <line x1="8" x2="16" y1="21" y2="21"></line>
+                  <line x1="12" x2="12" y1="17" y2="21"></line>
+                </svg>
               </div>
             </div>
-            
+
             <h1 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900">
-              Veille Technologique Automatisée
+              Veille Technologique Windows
             </h1>
             <p className="text-lg text-slate-600 mb-8 max-w-3xl mx-auto">
-              Suivi automatique des versions Windows et de leurs évolutions depuis les sources officielles Microsoft. 
-              Données mises à jour quotidiennement via flux RSS.
+              Suivi automatique des mises à jour Windows depuis les sources officielles Microsoft. 
+              Données récupérées via flux RSS et traduites en français.
             </p>
+
             <div className="flex justify-center items-center gap-4 mb-8">
-              <Badge className="bg-blue-100 text-blue-800 px-4 py-2 text-sm border border-blue-200">
-                <Monitor className="w-4 h-4 mr-2" />
-                {stats ? stats.total : updates.length} mises à jour suivies
-              </Badge>
-              <Badge className="bg-indigo-100 text-indigo-800 px-4 py-2 text-sm border border-indigo-200">
-                <Calendar className="w-4 h-4 mr-2" />
+              <div className="inline-flex items-center rounded-full font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 hover:bg-primary/80 bg-blue-100 text-blue-800 px-4 py-2 text-sm border border-blue-200">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-monitor w-4 h-4 mr-2" aria-hidden="true">
+                  <rect width="20" height="14" x="2" y="3" rx="2"></rect>
+                  <line x1="8" x2="16" y1="21" y2="21"></line>
+                  <line x1="12" x2="12" y1="17" y2="21"></line>
+                </svg>
+                {stats.total} mises à jour suivies
+              </div>
+
+              <div className="inline-flex items-center rounded-full font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 hover:bg-primary/80 bg-indigo-100 text-indigo-800 px-4 py-2 text-sm border border-indigo-200">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-calendar w-4 h-4 mr-2" aria-hidden="true">
+                  <path d="M8 2v4"></path>
+                  <path d="M16 2v4"></path>
+                  <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+                  <path d="M3 10h18"></path>
+                </svg>
                 Mis à jour automatiquement
-              </Badge>
-              <Button
-                size="sm"
-                variant="outline"
+              </div>
+
+              <button 
                 onClick={handleRefresh}
-                disabled={isRefreshing}
-                className="border-green-200 text-green-800 hover:bg-green-50"
+                disabled={refreshing}
+                className="inline-flex items-center justify-center text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border bg-background hover:text-accent-foreground h-9 rounded-md px-3 border-green-200 text-green-800 hover:bg-green-50"
               >
-                {isRefreshing ? (
-                  <Loader className="w-4 h-4 mr-2 animate-spin" />
-                ) : (
-                  <RefreshCw className="w-4 h-4 mr-2" />
-                )}
-                {isRefreshing ? 'Mise à jour...' : 'Actualiser'}
-              </Button>
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="24" 
+                  height="24" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  strokeWidth="2" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  className={`lucide lucide-refresh-cw w-4 h-4 mr-2 ${refreshing ? 'animate-spin' : ''}`} 
+                  aria-hidden="true"
+                >
+                  <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path>
+                  <path d="M21 3v5h-5"></path>
+                  <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path>
+                  <path d="M8 16H3v5"></path>
+                </svg>
+                {refreshing ? 'Actualisation...' : 'Actualiser'}
+              </button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Windows Updates Section */}
+      {/* Content Section */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           {loading ? (
             <div className="text-center py-12">
-              <Loader className="w-8 h-8 animate-spin mx-auto mb-4 text-blue-600" />
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-loader w-8 h-8 animate-spin mx-auto mb-4 text-blue-600" aria-hidden="true">
+                <path d="M12 2v4"></path>
+                <path d="m16.2 7.8 2.9-2.9"></path>
+                <path d="M18 12h4"></path>
+                <path d="m16.2 16.2 2.9 2.9"></path>
+                <path d="M12 18v4"></path>
+                <path d="m4.9 19.1 2.9-2.9"></path>
+                <path d="M2 12h4"></path>
+                <path d="m4.9 4.9 2.9 2.9"></path>
+              </svg>
               <p className="text-slate-600">Chargement des mises à jour...</p>
             </div>
-          ) : error ? (
-            <div className="text-center py-12">
-              <AlertCircle className="w-8 h-8 mx-auto mb-4 text-amber-600" />
-              <p className="text-slate-600 mb-4">Utilisation des données de sauvegarde</p>
-              <Badge className="bg-amber-100 text-amber-800">Mode hors-ligne</Badge>
-            </div>
-          ) : null}
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            {(loading ? windowsVersions : updates).map((version, index) => {
-              const Icon = version.icon || (version.category === 'server' ? Server : Monitor)
-              const isLiveData = !loading && !error
-              
-              return (
-                <Card key={version.id || index} className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-slate-200 relative">
-                  {isLiveData && (
-                    <div className="absolute top-4 right-4">
-                      <Badge className="bg-green-100 text-green-800 text-xs px-2 py-1">
-                        ⚡ Live
-                      </Badge>
-                    </div>
-                  )}
-                  
-                  <CardHeader className="pb-4">
+          ) : (
+            <div className="grid md:grid-cols-2 gap-8">
+              {updates.map((update, index) => (
+                <motion.div
+                  key={update.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="rounded-lg bg-card text-card-foreground shadow-sm group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-slate-200 relative"
+                >
+                  <div className="flex flex-col space-y-1.5 p-6 pb-4">
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex items-center gap-3">
-                        <div className={`w-12 h-12 ${version.category === 'server' ? 'bg-indigo-100' : 'bg-blue-100'} rounded-lg flex items-center justify-center`}>
-                          <Icon className={`w-6 h-6 ${version.category === 'server' ? 'text-indigo-600' : 'text-blue-600'}`} />
+                        <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                          {update.category === 'server' ? (
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-server w-6 h-6 text-blue-600" aria-hidden="true">
+                              <rect width="20" height="8" x="2" y="2" rx="2" ry="2"></rect>
+                              <rect width="20" height="8" x="2" y="14" rx="2" ry="2"></rect>
+                              <line x1="6" x2="6.01" y1="6" y2="6"></line>
+                              <line x1="6" x2="6.01" y1="18" y2="18"></line>
+                            </svg>
+                          ) : (
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-monitor w-6 h-6 text-blue-600" aria-hidden="true">
+                              <rect width="20" height="14" x="2" y="3" rx="2"></rect>
+                              <line x1="8" x2="16" y1="21" y2="21"></line>
+                              <line x1="12" x2="12" y1="17" y2="21"></line>
+                            </svg>
+                          )}
                         </div>
-                        <Badge className={getStatusColor(version.status || getCategoryStatus(version.category))} variant="outline">
-                          {version.status || getCategoryStatus(version.category)}
-                        </Badge>
+                        <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-green-100 text-green-800 border-green-200">
+                          Officiel
+                        </div>
                       </div>
                       <div className="text-sm text-slate-500 flex items-center">
-                        <Calendar className="w-4 h-4 mr-1" />
-                        {version.published_date ? formatDate(version.published_date) : formatDate(version.releaseDate)}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-calendar w-4 h-4 mr-1" aria-hidden="true">
+                          <path d="M8 2v4"></path>
+                          <path d="M16 2v4"></path>
+                          <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+                          <path d="M3 10h18"></path>
+                        </svg>
+                        {new Date(update.published_date).toLocaleDateString('fr-FR')}
                       </div>
                     </div>
-                    <CardTitle className="text-xl text-slate-900 group-hover:text-blue-600 transition-colors mb-2">
-                      {version.title || version.version}
-                    </CardTitle>
-                    <CardDescription className="text-slate-600 mb-4 leading-relaxed">
-                      {version.description}
-                    </CardDescription>
+
+                    <h3 className="font-semibold tracking-tight text-xl text-slate-900 group-hover:text-blue-600 transition-colors mb-2">
+                      {update.title}
+                    </h3>
+                    
+                    <p className="text-sm text-slate-600 mb-4 leading-relaxed line-clamp-3">
+                      {update.description?.replace(/L'article.*?est paru en premier.*?\.\n?\]?\]?>?$/g, '').substring(0, 200)}...
+                    </p>
+
                     <div className="flex gap-2 flex-wrap">
-                      <Badge variant="outline" className={`w-fit ${getCategoryColor(version.category)}`}>
-                        {getCategoryName(version.category)}
-                      </Badge>
-                      {version.version && (
-                        <Badge variant="outline" className="w-fit bg-slate-50 text-slate-700 border-slate-300">
-                          {version.version}
-                        </Badge>
+                      {update.category && (
+                        <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 w-fit bg-slate-50 text-slate-700 border-slate-200">
+                          {update.category === 'server' ? 'Windows Server' : 'Windows Client'}
+                        </div>
                       )}
-                      {version.severity && (
-                        <Badge className={getSeverityColor(version.severity)}>
-                          {version.severity}
-                        </Badge>
+                      {update.version && (
+                        <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 w-fit bg-slate-50 text-slate-700 border-slate-300">
+                          {update.version}
+                        </div>
                       )}
                     </div>
-                  </CardHeader>
-                  
-                  <CardContent className="pt-0">
-                    {/* Tags */}
-                    {version.tags && version.tags.length > 0 && (
-                      <div className="mb-4">
-                        <div className="flex gap-1 flex-wrap">
-                          {version.tags.slice(0, 4).map((tag, tagIndex) => (
-                            <Badge key={tagIndex} variant="secondary" className="text-xs">
-                              {tag}
-                            </Badge>
-                          ))}
+                  </div>
+
+                  <div className="p-6 pt-0">
+                    <div className="space-y-3">
+                      <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                        <div className="flex items-center justify-between text-sm">
+                          <span className="text-slate-600 font-medium">Source :</span>
+                          <span className="font-semibold text-slate-900">{update.source}</span>
                         </div>
                       </div>
-                    )}
-                    
-                    {/* Fonctionnalités ou informations */}
-                    <div className="mb-6">
-                      <h4 className="font-semibold text-slate-900 mb-3 text-sm uppercase tracking-wide">
-                        {version.features ? 'Fonctionnalités principales :' : 'Informations :'}
-                      </h4>
-                      {version.features ? (
-                        <ul className="space-y-3">
-                          {version.features.slice(0, 4).map((feature, featureIndex) => (
-                            <li key={featureIndex} className="flex items-start">
-                              <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                              <span className="text-slate-700 text-sm leading-relaxed">{feature}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      ) : (
-                        <div className="text-slate-700 text-sm leading-relaxed line-clamp-3">
-                          {version.description}
-                        </div>
-                      )}
-                    </div>
-                    
-                    {/* Lien source et support */}
-                    <div className="space-y-3">
-                      {version.link && (
+                      
+                      {update.link && (
                         <a 
-                          href={version.link} 
+                          href={update.link} 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="flex items-center text-blue-600 hover:text-blue-800 text-sm transition-colors"
+                          className="inline-flex items-center justify-center text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-blue-600 text-white hover:bg-blue-700 h-9 rounded-md px-3 w-full"
                         >
-                          <ExternalLink className="w-4 h-4 mr-2" />
-                          Voir l'article complet
+                          Lire l'article complet
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-external-link ml-2 w-4 h-4" aria-hidden="true">
+                            <path d="M15 3h6v6"></path>
+                            <path d="M10 14 21 3"></path>
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                          </svg>
                         </a>
                       )}
-                      
-                      {version.support && (
-                        <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
-                          <div className="flex items-center justify-between text-sm">
-                            <span className="text-slate-600 font-medium">Support :</span>
-                            <span className="font-semibold text-slate-900">{version.support}</span>
-                          </div>
-                        </div>
-                      )}
                     </div>
-                  </CardContent>
-                </Card>
-              )
-            })}
-          </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
-      {/* Stats Section */}
-      {stats && (
-        <section className="py-12 bg-gradient-to-r from-blue-50 to-indigo-50">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-8">
-              <h2 className="text-2xl font-bold text-slate-900 mb-2">
-                Statistiques de la veille
-              </h2>
-              <p className="text-slate-600">Données mises à jour automatiquement</p>
-            </div>
-            
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center max-w-4xl mx-auto">
-              <div className="bg-white rounded-lg p-4 shadow-sm">
-                <div className="text-2xl font-bold text-blue-600">{stats.total}</div>
-                <div className="text-slate-600 text-sm">Total mises à jour</div>
-              </div>
-              <div className="bg-white rounded-lg p-4 shadow-sm">
-                <div className="text-2xl font-bold text-red-600">{stats.by_category?.security || 0}</div>
-                <div className="text-slate-600 text-sm">Sécurité</div>
-              </div>
-              <div className="bg-white rounded-lg p-4 shadow-sm">
-                <div className="text-2xl font-bold text-indigo-600">{stats.by_category?.server || 0}</div>
-                <div className="text-slate-600 text-sm">Windows Server</div>
-              </div>
-              <div className="bg-white rounded-lg p-4 shadow-sm">
-                <div className="text-2xl font-bold text-blue-600">{stats.by_category?.feature || 0}</div>
-                <div className="text-slate-600 text-sm">Fonctionnalités</div>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Additional Resources Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">
-              Sources officielles
-            </h2>
-            <div className="w-20 h-1 bg-blue-600 mx-auto"></div>
-            <p className="text-slate-600 mt-4">
-              Nos données proviennent directement des flux RSS officiels Microsoft
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <Card 
-              className="text-center hover:shadow-lg transition-shadow border border-slate-200 cursor-pointer transform hover:-translate-y-1"
-              onClick={() => window.open('https://docs.microsoft.com/fr-fr/windows/', '_blank')}
-            >
-              <CardHeader>
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Download className="w-6 h-6 text-blue-600" />
-                </div>
-                <CardTitle className="text-lg text-slate-900">Documentation officielle</CardTitle>
-                <CardDescription className="text-slate-600">
-                  Accédez aux documentations Microsoft pour chaque version.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card 
-              className="text-center hover:shadow-lg transition-shadow border border-slate-200 cursor-pointer transform hover:-translate-y-1"
-              onClick={() => window.open('https://docs.microsoft.com/fr-fr/lifecycle/', '_blank')}
-            >
-              <CardHeader>
-                <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Monitor className="w-6 h-6 text-indigo-600" />
-                </div>
-                <CardTitle className="text-lg text-slate-900">Cycles de vie</CardTitle>
-                <CardDescription className="text-slate-600">
-                  Planifiez vos migrations avec les calendriers de support.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card 
-              className="text-center hover:shadow-lg transition-shadow border border-slate-200 cursor-pointer transform hover:-translate-y-1"
-              onClick={() => window.open('https://support.microsoft.com/fr-fr/windows', '_blank')}
-            >
-              <CardHeader>
-                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <ExternalLink className="w-6 h-6 text-green-600" />
-                </div>
-                <CardTitle className="text-lg text-slate-900">Mises à jour</CardTitle>
-                <CardDescription className="text-slate-600">
-                  Suivez les dernières mises à jour de sécurité et fonctionnelles.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
+      {/* Footer Section */}
       <section className="py-16 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6 text-white">
-            Questions sur ces technologies ?
-          </h2>
+          <h2 className="text-3xl font-bold mb-6 text-white">Questions sur ces technologies ?</h2>
           <p className="text-lg text-blue-100 mb-8 max-w-2xl mx-auto">
             N'hésitez pas à me contacter pour discuter de stratégies de migration, 
             de planification des mises à jour ou de conseil en infrastructure Windows.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              size="lg"
-              className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-3 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg"
-              onClick={() => window.location.href = 'mailto:hocineira@gmail.com'}
-            >
+            <button className="inline-flex items-center justify-center text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 bg-white text-blue-600 hover:bg-blue-50 px-8 py-3 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg">
               Me contacter
-              <ExternalLink className="ml-2 w-5 h-5" />
-            </Button>
-            <Link href="/veilles">
-              <Button 
-                variant="outline"
-                size="lg"
-                className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-3 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg"
-              >
-                <ArrowLeft className="mr-2 w-5 h-5" />
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-external-link ml-2 w-5 h-5" aria-hidden="true">
+                <path d="M15 3h6v6"></path>
+                <path d="M10 14 21 3"></path>
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              </svg>
+            </button>
+            <a href="/veilles">
+              <button className="inline-flex items-center justify-center text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border bg-background h-11 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-3 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-left mr-2 w-5 h-5" aria-hidden="true">
+                  <path d="m12 19-7-7 7-7"></path>
+                  <path d="M19 12H5"></path>
+                </svg>
                 Retour aux veilles
-              </Button>
-            </Link>
+              </button>
+            </a>
           </div>
         </div>
       </section>
     </div>
   )
+}
+
+// Données de fallback si l'API est indisponible
+function getFallbackData() {
+  return [
+    {
+      id: '1',
+      title: 'Windows Server 2025 - Disponibilité Générale',
+      description: 'Microsoft annonce la disponibilité générale de Windows Server 2025 avec des fonctionnalités avancées de sécurité, des performances améliorées et une agilité cloud.',
+      link: 'https://www.microsoft.com/windows-server/blog/',
+      published_date: '2024-11-04T15:30:00.000Z',
+      category: 'server',
+      version: 'Windows Server 2025',
+      source: 'Microsoft Windows Server Blog'
+    },
+    {
+      id: '2',
+      title: 'Hotpatching pour Windows Server - Fini les redémarrages !',
+      description: 'Le hotpatching pour Windows Server 2025 devient disponible en tant que service par abonnement, éliminant le besoin de redémarrages fréquents.',
+      link: 'https://www.microsoft.com/windows-server/blog/',
+      published_date: '2025-04-24T15:00:00.000Z',
+      category: 'server',
+      version: 'Windows Server 2025',
+      source: 'Microsoft Windows Server Blog'
+    },
+    {
+      id: '3',
+      title: 'Windows 11 24H2 - Nouvelles Fonctionnalités IA',
+      description: 'La dernière mise à jour de Windows 11 intègre nativement Copilot et offre des optimisations pour l\'intelligence artificielle.',
+      link: 'https://blogs.windows.com/windows-insider/',
+      published_date: '2024-10-01T00:00:00.000Z',
+      category: 'client',
+      version: 'Windows 11 24H2',
+      source: 'Windows Insider Blog'
+    },
+    {
+      id: '4',
+      title: 'Microsoft System Center 2025 - Disponible Maintenant',
+      description: 'System Center 2025 apporte une gestion d\'infrastructure améliorée et des capacités cloud pour des opérations IT efficaces.',
+      link: 'https://www.microsoft.com/windows-server/blog/',
+      published_date: '2024-11-06T17:00:00.000Z',
+      category: 'server',
+      version: 'System Center 2025',
+      source: 'Microsoft Windows Server Blog'
+    }
+  ]
 }
