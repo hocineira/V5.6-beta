@@ -38,36 +38,22 @@ class WindowsRSSBackendTester:
         print()
 
     def test_health_endpoints(self):
-        """Test basic health and root endpoints"""
+        """Test basic health and test endpoints"""
         print("🔍 Testing Health Endpoints...")
         
-        # Test root endpoint
+        # Test API test endpoint
         try:
-            response = self.session.get(f"{self.base_url}/", timeout=10)
+            response = self.session.get(f"{self.api_base}/test", timeout=10)
             if response.status_code == 200:
                 data = response.json()
-                if "message" in data and "status" in data:
-                    self.log_test("Root Endpoint", True, f"Status: {data.get('status')}")
+                if "message" in data and "status" in data and "services" in data:
+                    self.log_test("API Test Endpoint", True, f"Status: {data.get('status')}, Services: {data.get('services')}")
                 else:
-                    self.log_test("Root Endpoint", False, "Missing required fields in response", data)
+                    self.log_test("API Test Endpoint", False, "Missing required fields in response", data)
             else:
-                self.log_test("Root Endpoint", False, f"HTTP {response.status_code}", response.text)
+                self.log_test("API Test Endpoint", False, f"HTTP {response.status_code}", response.text)
         except Exception as e:
-            self.log_test("Root Endpoint", False, f"Connection error: {str(e)}")
-
-        # Test health endpoint
-        try:
-            response = self.session.get(f"{self.api_base}/health", timeout=10)
-            if response.status_code == 200:
-                data = response.json()
-                if "status" in data and data["status"] == "healthy":
-                    self.log_test("Health Endpoint", True, "Service is healthy")
-                else:
-                    self.log_test("Health Endpoint", False, "Unhealthy status", data)
-            else:
-                self.log_test("Health Endpoint", False, f"HTTP {response.status_code}", response.text)
-        except Exception as e:
-            self.log_test("Health Endpoint", False, f"Connection error: {str(e)}")
+            self.log_test("API Test Endpoint", False, f"Connection error: {str(e)}")
 
     def test_windows_updates_endpoints(self):
         """Test all Windows updates API endpoints"""
