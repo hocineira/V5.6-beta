@@ -15,8 +15,8 @@
         "server"
       ],
       "source": "Windows Server Blog",
-      "created_at": "2025-09-25T14:08:55.587Z",
-      "updated_at": "2025-09-25T14:09:01.659Z"
+      "created_at": "2025-09-25T19:21:10.467Z",
+      "updated_at": "2025-09-25T19:21:17.672Z"
     },
     {
       "id": "1654343685",
@@ -32,8 +32,8 @@
         "server"
       ],
       "source": "Windows Server Blog",
-      "created_at": "2025-09-25T14:08:55.587Z",
-      "updated_at": "2025-09-25T14:09:01.661Z"
+      "created_at": "2025-09-25T19:21:10.467Z",
+      "updated_at": "2025-09-25T19:21:17.674Z"
     },
     {
       "id": "1537353743",
@@ -49,8 +49,8 @@
         "server"
       ],
       "source": "Windows Server Blog",
-      "created_at": "2025-09-25T14:08:55.587Z",
-      "updated_at": "2025-09-25T14:09:01.669Z"
+      "created_at": "2025-09-25T19:21:10.468Z",
+      "updated_at": "2025-09-25T19:21:17.675Z"
     },
     {
       "id": "556598133",
@@ -66,8 +66,8 @@
         "server"
       ],
       "source": "Windows Server Blog",
-      "created_at": "2025-09-25T14:08:55.587Z",
-      "updated_at": "2025-09-25T14:09:01.669Z"
+      "created_at": "2025-09-25T19:21:10.469Z",
+      "updated_at": "2025-09-25T19:21:17.676Z"
     },
     {
       "id": "724746763",
@@ -83,8 +83,8 @@
         "server"
       ],
       "source": "Windows Server Blog",
-      "created_at": "2025-09-25T14:08:55.587Z",
-      "updated_at": "2025-09-25T14:09:01.670Z"
+      "created_at": "2025-09-25T19:21:10.470Z",
+      "updated_at": "2025-09-25T19:21:17.677Z"
     },
     {
       "id": "1236966278",
@@ -100,8 +100,8 @@
         "server"
       ],
       "source": "Windows Server Blog",
-      "created_at": "2025-09-25T14:08:55.587Z",
-      "updated_at": "2025-09-25T14:09:01.671Z"
+      "created_at": "2025-09-25T19:21:10.470Z",
+      "updated_at": "2025-09-25T19:21:17.677Z"
     },
     {
       "id": "904795062",
@@ -135,8 +135,8 @@
         "server"
       ],
       "source": "Windows Server Blog",
-      "created_at": "2025-09-25T14:08:55.588Z",
-      "updated_at": "2025-09-25T14:09:01.674Z"
+      "created_at": "2025-09-25T19:21:10.470Z",
+      "updated_at": "2025-09-25T19:21:17.678Z"
     },
     {
       "id": "1519018241",
@@ -152,8 +152,8 @@
         "server"
       ],
       "source": "Windows Server Blog",
-      "created_at": "2025-09-25T14:08:55.588Z",
-      "updated_at": "2025-09-25T14:09:01.675Z"
+      "created_at": "2025-09-25T19:21:10.471Z",
+      "updated_at": "2025-09-25T19:21:17.679Z"
     },
     {
       "id": "807578675",
@@ -170,8 +170,8 @@
         "feature"
       ],
       "source": "Windows Server Blog",
-      "created_at": "2025-09-25T14:08:55.589Z",
-      "updated_at": "2025-09-25T14:09:01.676Z"
+      "created_at": "2025-09-25T19:21:10.471Z",
+      "updated_at": "2025-09-25T19:21:17.680Z"
     },
     {
       "id": "1447286004",
@@ -204,8 +204,8 @@
         "security"
       ],
       "source": "Microsoft Security Response Center",
-      "created_at": "2025-09-25T14:08:56.592Z",
-      "updated_at": "2025-09-25T14:09:01.616Z"
+      "created_at": "2025-09-25T19:21:11.650Z",
+      "updated_at": "2025-09-25T19:21:17.670Z"
     },
     {
       "id": "1090758720",
@@ -1060,6 +1060,6 @@
       "updated_at": "2025-09-25T14:09:01.621Z"
     }
   ],
-  "lastUpdated": "2025-09-25T14:09:01.676Z",
+  "lastUpdated": "2025-09-25T19:21:17.680Z",
   "version": "1.0"
 }
