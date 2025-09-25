@@ -13,7 +13,7 @@ from typing import Dict, List, Any
 
 class WindowsRSSBackendTester:
     def __init__(self):
-        self.base_url = "http://localhost:8001"
+        self.base_url = "http://localhost:3000"
         self.api_base = f"{self.base_url}/api"
         self.test_results = []
         self.session = requests.Session()
