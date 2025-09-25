@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 
 // Utilise les API routes Next.js intégrées
-const API_BASE_URL = ''
+const API_BASE_URL = process.env.NODE_ENV === 'production' ? '' : ''
 
 export function useWindowsUpdates(category = null, limit = 50) {
   const [updates, setUpdates] = useState([])
