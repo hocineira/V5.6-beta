@@ -2,9 +2,6 @@
 
 import { useState, useEffect } from 'react'
 
-// Utilise les API routes Next.js intégrées
-const API_BASE_URL = process.env.NODE_ENV === 'production' ? '' : ''
-
 export function useWindowsUpdates(category = null, limit = 50) {
   const [updates, setUpdates] = useState([])
   const [loading, setLoading] = useState(true)
@@ -20,13 +17,15 @@ export function useWindowsUpdates(category = null, limit = 50) {
       if (category) params.append('category', category)
       params.append('limit', limit.toString())
       
-      const response = await fetch(`${API_BASE_URL}/api/windows/updates?${params}`)
+      console.log('Fetching updates from API...')
+      const response = await fetch(`/api/windows/updates?${params}`)
       
       if (!response.ok) {
         throw new Error(`Erreur API: ${response.status}`)
       }
       
       const data = await response.json()
+      console.log('Updates received:', data)
       setUpdates(data.updates || [])
       
     } catch (err) {
@@ -41,9 +40,10 @@ export function useWindowsUpdates(category = null, limit = 50) {
 
   const fetchStats = async () => {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/windows/updates/stats`)
+      const response = await fetch(`/api/windows/updates/stats`)
       if (response.ok) {
         const data = await response.json()
+        console.log('Stats received:', data)
         setStats(data)
       }
     } catch (err) {
@@ -53,16 +53,20 @@ export function useWindowsUpdates(category = null, limit = 50) {
 
   const refreshUpdates = async () => {
     try {
+      console.log('Refreshing RSS feeds...')
       // Déclenche la mise à jour RSS
-      await fetch(`${API_BASE_URL}/api/windows/updates/refresh`, {
+      const refreshResponse = await fetch(`/api/windows/updates/refresh`, {
         method: 'POST'
       })
       
-      // Attend un peu puis rafraîchit les données
-      setTimeout(() => {
-        fetchUpdates()
-        fetchStats()
-      }, 5000)
+      if (refreshResponse.ok) {
+        console.log('RSS refresh successful')
+        // Attend un peu puis rafraîchit les données
+        setTimeout(() => {
+          fetchUpdates()
+          fetchStats()
+        }, 3000)
+      }
       
       return true
     } catch (err) {
@@ -72,6 +76,7 @@ export function useWindowsUpdates(category = null, limit = 50) {
   }
 
   useEffect(() => {
+    console.log('useWindowsUpdates: Initial fetch')
     fetchUpdates()
     fetchStats()
   }, [category, limit])
@@ -145,12 +150,15 @@ export function useLatestUpdates(limit = 10) {
     const fetchLatest = async () => {
       try {
         setLoading(true)
-        const response = await fetch(`${API_BASE_URL}/api/windows/updates/latest?limit=${limit}`)
+        console.log('Fetching latest updates...')
+        const response = await fetch(`/api/windows/updates/latest?limit=${limit}`)
         
         if (response.ok) {
           const data = await response.json()
+          console.log('Latest updates received:', data)
           setUpdates(data.updates || [])
         } else {
+          console.log('Using fallback data for latest updates')
           setUpdates(getDefaultUpdates().slice(0, limit))
         }
       } catch (err) {
