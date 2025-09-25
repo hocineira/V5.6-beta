@@ -261,12 +261,25 @@ class WindowsRSSFetcher {
   isRelevantForWindows(update) {
     const text = (update.title + " " + update.description).toLowerCase();
     
-    const relevantKeywords = [
-      'windows', 'server', 'update', 'security', 'patch', 'kb',
-      'vulnerability', 'feature', 'upgrade', 'installation'
+    // Keywords Microsoft généraux (plus inclusif pour les blogs Microsoft)
+    const microsoftKeywords = [
+      'microsoft', 'windows', 'server', 'azure', 'powershell', 
+      'sql', 'dotnet', '.net', 'office', 'exchange'
     ];
     
-    return relevantKeywords.some(keyword => text.includes(keyword));
+    // Keywords techniques pertinents
+    const techKeywords = [
+      'update', 'security', 'patch', 'kb', 'vulnerability', 
+      'feature', 'upgrade', 'installation', 'release', 'preview',
+      'enterprise', 'cloud', 'datacenter', 'admin', 'management'
+    ];
+    
+    // Si c'est un blog Microsoft officiel, on accepte avec des critères plus larges
+    const hasMicrosoftKeyword = microsoftKeywords.some(keyword => text.includes(keyword));
+    const hasTechKeyword = techKeywords.some(keyword => text.includes(keyword));
+    
+    // Accepter si au moins un keyword Microsoft OU technique
+    return hasMicrosoftKeyword || hasTechKeyword;
   }
 
   translateSimple(text) {
