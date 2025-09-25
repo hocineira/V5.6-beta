@@ -238,7 +238,7 @@ export default function VeillesPage() {
             Besoin d'informations complémentaires ?
           </h2>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Pour toute question sur ces veilles ou pour discuter de vos besoins spécifiques en matière technologique et juridique.
+            Pour toute question sur ces veilles ou pour discuter de vos besoins spécifiques en matière technologique, spatiale et juridique.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
