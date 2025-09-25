@@ -498,18 +498,22 @@ class WindowsRSSBackendTester:
             self.log_test("Non-existent Endpoint", False, f"Error: {str(e)}")
 
     def run_all_tests(self):
-        """Run all backend tests"""
-        print("🚀 Starting Comprehensive Backend Testing for Windows RSS System")
+        """Run all backend tests for corrected RSS system"""
+        print("🚀 Testing Corrected Windows RSS System (6 sources, ~60 articles)")
         print("=" * 70)
         
         start_time = datetime.now()
         
-        # Run all test suites
+        # Run all test suites - focus on corrected system validation
         self.test_health_endpoints()
+        self.test_corrected_rss_system()
+        self.test_source_diversity()
+        self.test_translation_quality()
+        self.test_category_filtering()
+        self.test_data_cleanliness()
         self.test_windows_updates_endpoints()
-        self.test_refresh_endpoint()
+        self.test_refresh_functionality()
         self.test_data_quality()
-        self.test_rss_sources()
         self.test_error_handling()
         
         end_time = datetime.now()
@@ -521,7 +525,7 @@ class WindowsRSSBackendTester:
         failed_tests = total_tests - passed_tests
         
         print("=" * 70)
-        print("🎯 TEST SUMMARY")
+        print("🎯 CORRECTED RSS SYSTEM TEST SUMMARY")
         print(f"Total Tests: {total_tests}")
         print(f"✅ Passed: {passed_tests}")
         print(f"❌ Failed: {failed_tests}")
