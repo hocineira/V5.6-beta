@@ -119,30 +119,12 @@ export default async function VeilleTechnologique() {
       {/* Content Section */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          {loading ? (
-            <div className="text-center py-12">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-loader w-8 h-8 animate-spin mx-auto mb-4 text-blue-600" aria-hidden="true">
-                <path d="M12 2v4"></path>
-                <path d="m16.2 7.8 2.9-2.9"></path>
-                <path d="M18 12h4"></path>
-                <path d="m16.2 16.2 2.9 2.9"></path>
-                <path d="M12 18v4"></path>
-                <path d="m4.9 19.1 2.9-2.9"></path>
-                <path d="M2 12h4"></path>
-                <path d="m4.9 4.9 2.9 2.9"></path>
-              </svg>
-              <p className="text-slate-600">Chargement des mises à jour...</p>
-            </div>
-          ) : (
-            <div className="grid md:grid-cols-2 gap-8">
-              {updates.map((update, index) => (
-                <motion.div
-                  key={update.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="rounded-lg bg-card text-card-foreground shadow-sm group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-slate-200 relative"
-                >
+          <div className="grid md:grid-cols-2 gap-8">
+            {updates.map((update, index) => (
+              <div
+                key={update.id}
+                className="rounded-lg bg-card text-card-foreground shadow-sm group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-slate-200 relative"
+              >
                   <div className="flex flex-col space-y-1.5 p-6 pb-4">
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex items-center gap-3">
