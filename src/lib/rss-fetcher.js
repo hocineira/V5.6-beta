@@ -18,33 +18,27 @@ class WindowsRSSFetcher {
         category: "security", 
         language: "en"
       },
-      system_center: {
-        url: "https://cloudblogs.microsoft.com/systemcenter/feed/",
-        name: "System Center Blog", 
-        category: "server",
-        language: "en"
-      },
-      exchange_server: {
-        url: "https://techcommunity.microsoft.com/plugins/custom/microsoft/o365/custom-blog-rss?tid=-5804064304129947060",
-        name: "Exchange Server",
-        category: "server",
-        language: "en"
-      },
       sql_server: {
-        url: "https://cloudblogs.microsoft.com/sqlserver/feed/",
+        url: "https://www.microsoft.com/en-us/sql-server/blog/feed/",
         name: "SQL Server Blog",
         category: "server",
         language: "en"
       },
-      azure_updates: {
-        url: "https://azure.microsoft.com/en-us/updates/feed/",
-        name: "Azure Updates",
+      azure_blog: {
+        url: "https://azure.microsoft.com/fr-fr/blog/feed/",
+        name: "Azure Blog",
         category: "cloud",
         language: "en"
       },
-      windows_it_pro: {
-        url: "https://techcommunity.microsoft.com/plugins/custom/microsoft/o365/custom-blog-rss?tid=-8648868647972695810",
-        name: "Windows IT Pro Blog",
+      powershell: {
+        url: "https://devblogs.microsoft.com/powershell/feed/",
+        name: "PowerShell Blog",
+        category: "enterprise",
+        language: "en"
+      },
+      dotnet: {
+        url: "https://devblogs.microsoft.com/dotnet/feed/",
+        name: ".NET Blog",
         category: "enterprise",
         language: "en"
       }
