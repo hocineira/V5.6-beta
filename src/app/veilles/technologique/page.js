@@ -1,6 +1,17 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+
 export default function VeilleTechnologique() {
-  // Données RSS intégrées directement dans la page
-  const updates = [
+  const [updates, setUpdates] = useState([]);
+  const [stats, setStats] = useState({ total: 0 });
+  const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
+  const [error, setError] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState('all');
+
+  // Données de fallback en cas d'erreur
+  const fallbackUpdates = [
     {
       id: '1',
       title: 'Windows Server 2025 - Disponibilité Générale',
@@ -9,7 +20,8 @@ export default function VeilleTechnologique() {
       published_date: '2024-11-04T15:30:00.000Z',
       category: 'server',
       version: 'Windows Server 2025',
-      source: 'Microsoft Windows Server Blog'
+      source: 'Microsoft Windows Server Blog',
+      tags: ['server', 'feature']
     },
     {
       id: '2',
@@ -19,51 +31,116 @@ export default function VeilleTechnologique() {
       published_date: '2025-04-24T15:00:00.000Z',
       category: 'server',
       version: 'Windows Server 2025',
-      source: 'Microsoft Windows Server Blog'
-    },
-    {
-      id: '3',
-      title: 'Windows 11 24H2 - Nouvelles Fonctionnalités IA',
-      description: 'La dernière mise à jour de Windows 11 intègre nativement Copilot et offre des optimisations significatives pour les applications d\'intelligence artificielle.',
-      link: 'https://blogs.windows.com/windows-insider/2024/10/01/windows-11-24h2/',
-      published_date: '2024-10-01T00:00:00.000Z',
-      category: 'client',
-      version: 'Windows 11 24H2',
-      source: 'Windows Insider Blog'
-    },
-    {
-      id: '4',
-      title: 'Microsoft System Center 2025 - Disponible Maintenant',
-      description: 'System Center 2025 apporte une gestion d\'infrastructure améliorée, des capacités cloud étendues et des outils de surveillance avancés pour des opérations IT efficaces.',
-      link: 'https://www.microsoft.com/en-us/windows-server/blog/2024/11/06/microsoft-system-center-2025-is-now-generally-available/',
-      published_date: '2024-11-06T17:00:00.000Z',
-      category: 'server',
-      version: 'System Center 2025',
-      source: 'Microsoft Windows Server Blog'
-    },
-    {
-      id: '5',
-      title: 'Sécurité Renforcée - Windows Server 2025',
-      description: 'Découvrez les nouvelles fonctionnalités de sécurité de Windows Server 2025, incluant Zero Trust natif, chiffrement avancé et protection contre les menaces modernes.',
-      link: 'https://www.microsoft.com/en-us/windows-server/blog/2024/05/29/gain-enhanced-security-and-performance-with-windows-server-2025/',
-      published_date: '2024-05-29T19:00:00.000Z',
-      category: 'server',
-      version: 'Windows Server 2025',
-      source: 'Microsoft Windows Server Blog'
-    },
-    {
-      id: '6',
-      title: 'Windows Server Summit 2025 - Innovations à venir',
-      description: 'Participez au Windows Server Summit 2025 et découvrez nos dernières innovations en matière d\'infrastructure cloud, containers et gestion hybride.',
-      link: 'https://www.microsoft.com/en-us/windows-server/blog/2025/04/02/join-us-at-windows-server-summit-2025-and-learn-more-about-our-latest-innovations/',
-      published_date: '2025-04-02T15:00:00.000Z',
-      category: 'server',
-      version: null,
-      source: 'Microsoft Windows Server Blog'
+      source: 'Microsoft Windows Server Blog',
+      tags: ['server', 'security']
     }
-  ]
+  ];
 
-  const stats = { total: updates.length }
+  const categories = [
+    { key: 'all', label: 'Tous', icon: '📊' },
+    { key: 'server', label: 'Windows Server', icon: '🖥️' },
+    { key: 'security', label: 'Sécurité', icon: '🔒' },
+    { key: 'cloud', label: 'Cloud & Azure', icon: '☁️' },
+    { key: 'enterprise', label: 'Entreprise', icon: '🏢' }
+  ];
+
+  useEffect(() => {
+    fetchUpdates();
+  }, []);
+
+  const fetchUpdates = async () => {
+    try {
+      setError(null);
+      const response = await fetch('/api/windows/updates?limit=20');
+      
+      if (!response.ok) {
+        throw new Error(`Erreur HTTP: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      
+      if (data.updates && data.updates.length > 0) {
+        setUpdates(data.updates);
+        setStats({ total: data.total });
+      } else {
+        // Utiliser les données de fallback si aucune donnée n'est disponible
+        setUpdates(fallbackUpdates);
+        setStats({ total: fallbackUpdates.length });
+      }
+    } catch (error) {
+      console.error('Erreur lors du chargement des données:', error);
+      setError(error.message);
+      // Utiliser les données de fallback en cas d'erreur
+      setUpdates(fallbackUpdates);
+      setStats({ total: fallbackUpdates.length });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const refreshRSS = async () => {
+    try {
+      setRefreshing(true);
+      const response = await fetch('/api/windows/updates/refresh', {
+        method: 'POST'
+      });
+      
+      if (response.ok) {
+        await fetchUpdates();
+      } else {
+        throw new Error('Erreur lors du refresh RSS');
+      }
+    } catch (error) {
+      console.error('Erreur refresh RSS:', error);
+      setError('Erreur lors du rafraîchissement des données RSS');
+    } finally {
+      setRefreshing(false);
+    }
+  };
+
+  const filteredUpdates = selectedCategory === 'all' 
+    ? updates 
+    : updates.filter(update => update.category === selectedCategory);
+
+  const getCategoryIcon = (category) => {
+    const categoryMap = {
+      'server': '🖥️',
+      'security': '🔒',
+      'cloud': '☁️',
+      'enterprise': '🏢',
+      'feature': '⭐'
+    };
+    return categoryMap[category] || '📄';
+  };
+
+  const formatDate = (dateString) => {
+    return new Date(dateString).toLocaleDateString('fr-FR', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  };
+
+  const getSeverityColor = (severity) => {
+    const colors = {
+      'Critical': 'bg-red-100 text-red-800 border-red-200',
+      'Important': 'bg-orange-100 text-orange-800 border-orange-200',
+      'Moderate': 'bg-yellow-100 text-yellow-800 border-yellow-200',
+      'Low': 'bg-blue-100 text-blue-800 border-blue-200'
+    };
+    return colors[severity] || 'bg-gray-100 text-gray-800 border-gray-200';
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-slate-600">Chargement de la veille technologique...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
