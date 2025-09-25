@@ -303,10 +303,9 @@ class DualRSSBackendTester:
         try:
             with open("/app/data/rss-cache.json", "r") as f:
                 windows_data = json.load(f)
-                if "updates" in windows_data and "total" in windows_data:
-                    total_windows = windows_data.get("total", 0)
+                if "updates" in windows_data:
                     updates_count = len(windows_data.get("updates", []))
-                    self.log_test("Windows JSON Storage", True, f"Found {updates_count} Windows updates in storage (total: {total_windows})")
+                    self.log_test("Windows JSON Storage", True, f"Found {updates_count} Windows updates in storage")
                 else:
                     self.log_test("Windows JSON Storage", False, "Invalid Windows data structure")
         except Exception as e:
