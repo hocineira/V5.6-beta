@@ -295,97 +295,84 @@ class WindowsRSSFetcher {
   translateSimple(text) {
     if (!text) return text;
 
+    // Improved translation with better context handling
     const translations = {
-      // Technical terms - fixed translations
-      'hotpatching': 'correctifs à chaud',
-      'patching': 'correctifs',
-      'server': 'serveur',
-      'restarts': 'redémarrages',
-      'tired of': 'fatigué de',
-      'get ': 'obtenir ',
-      'join us at': 'rejoignez-nous à',
-      'learn more about': 'en savoir plus sur',
-      'latest innovations': 'dernières innovations',
-      'now generally available': 'maintenant généralement disponible',
-      'enhanced security': 'sécurité renforcée',
-      'improved performance': 'performance améliorée',
-      'cloud agility': 'agilité cloud',
-      'advanced security': 'sécurité avancée',
-      'generally available': 'généralement disponible',
+      // Phrases complètes d'abord (ordre important)
+      'tired of all the restarts? get hotpatching for windows server': 'fatigué de tous les redémarrages ? obtenez les correctifs à chaud pour Windows Server',
+      'join us at windows server summit': 'rejoignez-nous au Windows Server Summit',
+      'learn more about our latest innovations': 'en savoir plus sur nos dernières innovations',
+      'now generally available with advanced security': 'maintenant généralement disponible avec une sécurité avancée',
+      'enhanced security and performance': 'sécurité et performances améliorées',
+      'improved performance and cloud agility': 'performances améliorées et agilité cloud',
       'subscription service': 'service par abonnement',
       'infrastructure management': 'gestion d\'infrastructure',
       'cloud capabilities': 'capacités cloud',
-      'efficient IT operations': 'opérations IT efficaces',
+      'efficient it operations': 'opérations IT efficaces',
+      'we are excited to announce': 'nous avons le plaisir d\'annoncer',
+      'we are pleased to announce': 'nous sommes heureux d\'annoncer',
+      'appeared first on': 'est paru en premier sur',
+      'the post': 'l\'article',
+      'this post': 'cet article',
       
-      // Common Windows terms
-      'Windows Server': 'Windows Server',
-      'Windows 11': 'Windows 11', 
-      'Windows 10': 'Windows 10',
-      'Windows': 'Windows',
-      'Microsoft': 'Microsoft',
-      'System Center': 'System Center',
-      'update': 'mise à jour',
-      'security update': 'mise à jour de sécurité',
+      // Technical terms
+      'hotpatching': 'correctifs à chaud',
+      'patching': 'application de correctifs',
+      'restarts': 'redémarrages',
+      'reboot': 'redémarrage',
+      'windows server': 'Windows Server',
+      'server': 'serveur',
       'security': 'sécurité',
+      'update': 'mise à jour',
+      'updates': 'mises à jour',
       'patch': 'correctif',
+      'patches': 'correctifs',
       'vulnerability': 'vulnérabilité',
-      'critical': 'critique',
-      'important': 'important',
-      'moderate': 'modéré',
-      'low': 'faible',
-      'release': 'version',
+      'vulnerabilities': 'vulnérabilités',
       'feature': 'fonctionnalité',
       'features': 'fonctionnalités',
       'new features': 'nouvelles fonctionnalités',
-      'performance': 'performance',
+      'performance': 'performances',
       'improvements': 'améliorations',
-      'bug fix': 'correction de bug',
-      'bug fixes': 'corrections de bugs',
-      'hotfix': 'correctif urgent',
-      'enterprise': 'entreprise',
-      'datacenter': 'centre de données',
-      'cloud': 'cloud',
-      'Azure': 'Azure',
-      'download': 'télécharger',
-      'install': 'installer',
-      'installation': 'installation',
-      'upgrade': 'mise à niveau',
-      'support': 'support',
-      'end of support': 'fin de support',
-      'end-of-life': 'fin de vie',
+      'enhancement': 'amélioration',
+      'enhancements': 'améliorations',
+      'release': 'version',
       'preview': 'aperçu',
-      'beta': 'bêta',
-      'stable': 'stable',
       'available': 'disponible',
       'now available': 'maintenant disponible',
+      'generally available': 'généralement disponible',
       'public preview': 'aperçu public',
+      'enterprise': 'entreprise',
+      'cloud': 'cloud',
+      'datacenter': 'centre de données',
+      'support': 'prise en charge',
+      'management': 'gestion',
+      'administration': 'administration',
+      'deployment': 'déploiement',
+      'configuration': 'configuration',
+      'installation': 'installation',
+      'upgrade': 'mise à niveau',
+      'migration': 'migration',
       
-      // Common phrases
-      'This post': 'Cet article',
-      'The post': 'L\'article',
-      'appeared first on': 'est paru en premier sur',
-      'Get started with': 'Commencer avec',
-      'How to': 'Comment',
-      'What\'s new': 'Nouveautés',
-      'Announcing': 'Annonce',
-      'We are excited to announce': 'Nous sommes ravis d\'annoncer',
-      'We are pleased to announce': 'Nous avons le plaisir d\'annoncer',
-      'Check out': 'Découvrez',
-      'Register now for': 'Inscrivez-vous maintenant pour',
-      'Gain ': 'Obtenez ',
-      'How ': 'Comment ',
-      'New options for': 'Nouvelles options pour',
-      'Secure ': 'Sécurisez ',
-      'workloads with options from': 'charges de travail avec les options de'
+      // Time expressions
+      'and': 'et',
+      'with': 'avec',
+      'for': 'pour',
+      'from': 'de',
+      'to': 'vers',
+      'in': 'dans',
+      'on': 'sur',
+      'at': 'à'
     };
     
     let translatedText = text;
     
-    // Apply translations in order of length (longest first to avoid partial replacements)
+    // Apply translations in order of length (longest phrases first)
     const sortedTranslations = Object.entries(translations).sort((a, b) => b[0].length - a[0].length);
     
     for (const [english, french] of sortedTranslations) {
-      translatedText = translatedText.replace(new RegExp(english.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi'), french);
+      // Use case-insensitive replacement with word boundaries when appropriate
+      const regex = new RegExp(`\\b${english.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'gi');
+      translatedText = translatedText.replace(regex, french);
     }
     
     return translatedText;
