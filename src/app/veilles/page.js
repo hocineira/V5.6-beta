@@ -11,18 +11,34 @@ export default function VeillesPage() {
     {
       id: 'technologique',
       title: 'Veille Technologique',
-      description: 'Suivez les dernières évolutions des versions de Windows et des technologies Microsoft.',
+      description: 'Suivez les dernières évolutions Windows/Windows Server et technologies Microsoft pour votre spécialisation BTS SIO SISR.',
       icon: Monitor,
       color: 'blue',
       bgGradient: 'from-blue-500 to-indigo-600',
       items: [
-        'Windows 11 24H2',
         'Windows Server 2025',
-        'Windows 10 22H2',
-        'Windows 11 23H2'
+        'Windows 11 24H2',
+        'Sécurité Microsoft',
+        'Infrastructure IT'
       ],
       link: '/veilles/technologique',
-      stats: '4 versions suivies'
+      stats: 'Focus Windows Server'
+    },
+    {
+      id: 'starlink',
+      title: 'Veille Starlink & SpaceX',
+      description: 'Découvrez l\'écosystème Starlink : constellation satellitaire, lancements SpaceX, innovations spatiales et internet global.',
+      icon: () => <div className="text-2xl">🛰️</div>,
+      color: 'slate',
+      bgGradient: 'from-slate-700 via-blue-800 to-black',
+      items: [
+        'Lancements Starlink',
+        'Constellation satellites',
+        'Missions SpaceX',
+        'Innovations spatiales'
+      ],
+      link: '/veilles/starlink',
+      stats: 'Suivi en temps réel'
     },
     {
       id: 'juridique',
