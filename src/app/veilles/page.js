@@ -103,7 +103,7 @@ export default function VeillesPage() {
       {/* Veilles Cards Section - Mobile Optimized */}
       <section className="py-12 sm:py-20">
         <div className="container mx-auto px-3 sm:px-4">
-          <div className="grid gap-6 sm:gap-8 md:grid-cols-2 max-w-6xl mx-auto">
+          <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
             {veillesCategories.map((veille) => {
               const Icon = veille.icon
               return (
