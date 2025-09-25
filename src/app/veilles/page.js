@@ -85,7 +85,11 @@ export default function VeillesPage() {
             <div className="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4 mb-6 sm:mb-8">
               <Badge className="bg-blue-100 text-blue-800 px-3 py-2 sm:px-4 text-xs sm:text-sm">
                 <Monitor className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
-                Technologique
+                Windows/Microsoft
+              </Badge>
+              <Badge className="bg-slate-100 text-slate-800 px-3 py-2 sm:px-4 text-xs sm:text-sm">
+                <div className="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-sm">🛰️</div>
+                Starlink/SpaceX
               </Badge>
               <Badge className="bg-indigo-100 text-indigo-800 px-3 py-2 sm:px-4 text-xs sm:text-sm">
                 <Shield className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
