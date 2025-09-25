@@ -145,265 +145,288 @@ export default function VeilleTechnologique() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
       {/* Header Section */}
-      <section className="relative overflow-hidden py-16">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-blue-400/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-400/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        </div>
-
+      <section className="relative overflow-hidden py-12 bg-gradient-to-r from-blue-600 to-indigo-700">
+        <div className="absolute inset-0 bg-black/10"></div>
         <div className="relative container mx-auto px-4">
-          <a href="/veilles">
-            <button className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border bg-background hover:text-accent-foreground h-10 px-4 py-2 mb-8 hover:bg-blue-50 text-slate-700 border-slate-300">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-left w-4 h-4 mr-2" aria-hidden="true">
-                <path d="m12 19-7-7 7-7"></path>
-                <path d="M19 12H5"></path>
+          <a href="/veilles" className="inline-block mb-6">
+            <button className="flex items-center space-x-2 px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg text-white transition-colors backdrop-blur-sm">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
-              Retour aux veilles
+              <span>Retour aux veilles</span>
             </button>
           </a>
 
-          <div className="text-center">
-            <div className="flex justify-center mb-8">
-              <div className="w-20 h-20 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full flex items-center justify-center shadow-lg">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-monitor w-10 h-10 text-white" aria-hidden="true">
-                  <rect width="20" height="14" x="2" y="3" rx="2"></rect>
-                  <line x1="8" x2="16" y1="21" y2="21"></line>
-                  <line x1="12" x2="12" y1="17" y2="21"></line>
+          <div className="text-center text-white">
+            <div className="flex justify-center mb-6">
+              <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center backdrop-blur-sm">
+                <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <rect width="20" height="14" x="2" y="3" rx="2"/>
+                  <line x1="8" x2="16" y1="21" y2="21"/>
+                  <line x1="12" x2="12" y1="17" y2="21"/>
                 </svg>
               </div>
             </div>
 
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900">
-              Veille Technologique Windows
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              Veille Technologique Microsoft
             </h1>
-            <p className="text-lg text-slate-600 mb-8 max-w-3xl mx-auto">
-              Suivi des dernières évolutions Windows et Windows Server depuis les sources officielles Microsoft. 
-              Données récupérées et traduites automatiquement via flux RSS.
+            <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto leading-relaxed">
+              Surveillance en temps réel des innovations Microsoft : Windows Server, sécurité, cloud et technologies d'entreprise
             </p>
 
-            <div className="flex justify-center items-center gap-4 mb-8">
-              <div className="inline-flex items-center rounded-full font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 hover:bg-primary/80 bg-blue-100 text-blue-800 px-4 py-2 text-sm border border-blue-200">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-monitor w-4 h-4 mr-2" aria-hidden="true">
-                  <rect width="20" height="14" x="2" y="3" rx="2"></rect>
-                  <line x1="8" x2="16" y1="21" y2="21"></line>
-                  <line x1="12" x2="12" y1="17" y2="21"></line>
-                </svg>
-                {stats.total} articles de veille
+            <div className="flex flex-wrap justify-center items-center gap-4 mb-6">
+              <div className="bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 flex items-center space-x-2">
+                <span className="text-2xl font-bold">{stats.total}</span>
+                <span className="text-blue-100">articles</span>
               </div>
-
-              <div className="inline-flex items-center rounded-full font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 hover:bg-primary/80 bg-indigo-100 text-indigo-800 px-4 py-2 text-sm border border-indigo-200">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-calendar w-4 h-4 mr-2" aria-hidden="true">
-                  <path d="M8 2v4"></path>
-                  <path d="M16 2v4"></path>
-                  <rect width="18" height="18" x="3" y="4" rx="2"></rect>
-                  <path d="M3 10h18"></path>
+              
+              <button
+                onClick={refreshRSS}
+                disabled={refreshing}
+                className="bg-green-500 hover:bg-green-600 disabled:bg-green-400 text-white rounded-full px-6 py-3 flex items-center space-x-2 transition-colors"
+              >
+                <svg className={`w-5 h-5 ${refreshing ? 'animate-spin' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                 </svg>
-                Sources officielles RSS
-              </div>
-
-              <a href="/api/windows/updates/refresh" className="inline-flex items-center justify-center text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border bg-background hover:text-accent-foreground h-9 rounded-md px-3 border-green-200 text-green-800 hover:bg-green-50">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-refresh-cw w-4 h-4 mr-2" aria-hidden="true">
-                  <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path>
-                  <path d="M21 3v5h-5"></path>
-                  <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path>
-                  <path d="M8 16H3v5"></path>
-                </svg>
-                Actualiser RSS
-              </a>
+                <span>{refreshing ? 'Actualisation...' : 'Actualiser RSS'}</span>
+              </button>
             </div>
+
+            {error && (
+              <div className="bg-red-500/20 backdrop-blur-sm border border-red-300 text-red-100 px-4 py-2 rounded-lg max-w-md mx-auto">
+                ⚠️ {error}
+              </div>
+            )}
           </div>
         </div>
       </section>
 
-      {/* Content Section */}
-      <section className="py-16">
+      {/* Categories Filter */}
+      <section className="py-8 bg-white/50 backdrop-blur-sm border-b border-slate-200">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-8">
-            {updates.map((update, index) => (
-              <div
-                key={update.id}
-                className="rounded-lg bg-card text-card-foreground shadow-sm group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-slate-200 relative"
+          <div className="flex flex-wrap justify-center gap-3">
+            {categories.map((category) => (
+              <button
+                key={category.key}
+                onClick={() => setSelectedCategory(category.key)}
+                className={`flex items-center space-x-2 px-6 py-3 rounded-full transition-all duration-200 ${
+                  selectedCategory === category.key
+                    ? 'bg-blue-600 text-white shadow-lg transform scale-105'
+                    : 'bg-white text-slate-700 hover:bg-blue-50 shadow-sm hover:shadow-md'
+                }`}
               >
-                <div className="flex flex-col space-y-1.5 p-6 pb-4">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                        {update.category === 'server' ? (
-                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-server w-6 h-6 text-blue-600" aria-hidden="true">
-                            <rect width="20" height="8" x="2" y="2" rx="2" ry="2"></rect>
-                            <rect width="20" height="8" x="2" y="14" rx="2" ry="2"></rect>
-                            <line x1="6" x2="6.01" y1="6" y2="6"></line>
-                            <line x1="6" x2="6.01" y1="18" y2="18"></line>
-                          </svg>
-                        ) : (
-                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-monitor w-6 h-6 text-blue-600" aria-hidden="true">
-                            <rect width="20" height="14" x="2" y="3" rx="2"></rect>
-                            <line x1="8" x2="16" y1="21" y2="21"></line>
-                            <line x1="12" x2="12" y1="17" y2="21"></line>
-                          </svg>
-                        )}
-                      </div>
-                      <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-green-100 text-green-800 border-green-200">
-                        Officiel Microsoft
-                      </div>
-                    </div>
-                    <div className="text-sm text-slate-500 flex items-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-calendar w-4 h-4 mr-1" aria-hidden="true">
-                        <path d="M8 2v4"></path>
-                        <path d="M16 2v4"></path>
-                        <rect width="18" height="18" x="3" y="4" rx="2"></rect>
-                        <path d="M3 10h18"></path>
-                      </svg>
-                      {new Date(update.published_date).toLocaleDateString('fr-FR')}
-                    </div>
-                  </div>
-
-                  <h3 className="font-semibold tracking-tight text-xl text-slate-900 group-hover:text-blue-600 transition-colors mb-2">
-                    {update.title}
-                  </h3>
-                  
-                  <p className="text-sm text-slate-600 mb-4 leading-relaxed">
-                    {update.description}
-                  </p>
-
-                  <div className="flex gap-2 flex-wrap">
-                    {update.category && (
-                      <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 w-fit bg-slate-50 text-slate-700 border-slate-200">
-                        {update.category === 'server' ? 'Windows Server' : 'Windows Client'}
-                      </div>
-                    )}
-                    {update.version && (
-                      <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 w-fit bg-slate-50 text-slate-700 border-slate-300">
-                        {update.version}
-                      </div>
-                    )}
-                  </div>
-                </div>
-
-                <div className="p-6 pt-0">
-                  <div className="space-y-3">
-                    <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="text-slate-600 font-medium">Source :</span>
-                        <span className="font-semibold text-slate-900">{update.source}</span>
-                      </div>
-                    </div>
-                    
-                    {update.link && (
-                      <a 
-                        href={update.link} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-blue-600 text-white hover:bg-blue-700 h-9 rounded-md px-3 w-full"
-                      >
-                        Lire l'article complet
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-external-link ml-2 w-4 h-4" aria-hidden="true">
-                          <path d="M15 3h6v6"></path>
-                          <path d="M10 14 21 3"></path>
-                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                        </svg>
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </div>
+                <span className="text-lg">{category.icon}</span>
+                <span className="font-medium">{category.label}</span>
+                <span className={`text-xs px-2 py-1 rounded-full ${
+                  selectedCategory === category.key 
+                    ? 'bg-white/20 text-white' 
+                    : 'bg-slate-100 text-slate-600'
+                }`}>
+                  {category.key === 'all' ? stats.total : updates.filter(u => u.category === category.key).length}
+                </span>
+              </button>
             ))}
           </div>
         </div>
       </section>
 
+      {/* Content Section */}
+      <section className="py-12">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-6">
+            {filteredUpdates.map((update, index) => (
+              <article
+                key={update.id}
+                className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-slate-100"
+              >
+                {/* Card Header */}
+                <div className="p-6 pb-4">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-xl flex items-center justify-center text-2xl">
+                        {getCategoryIcon(update.category)}
+                      </div>
+                      <div className="space-y-1">
+                        <div className="flex items-center space-x-2">
+                          <span className="bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full border border-green-200">
+                            ✓ Microsoft
+                          </span>
+                          {update.severity && (
+                            <span className={`text-xs font-semibold px-3 py-1 rounded-full border ${getSeverityColor(update.severity)}`}>
+                              {update.severity}
+                            </span>
+                          )}
+                        </div>
+                        <p className="text-sm text-slate-500 flex items-center">
+                          <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                          </svg>
+                          {formatDate(update.published_date)}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <h3 className="text-lg font-semibold text-slate-900 mb-3 leading-tight hover:text-blue-600 transition-colors line-clamp-2">
+                    {update.title}
+                  </h3>
+                  
+                  <p className="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">
+                    {update.description}
+                  </p>
+
+                  {/* Tags and Version */}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {update.version && (
+                      <span className="bg-blue-50 text-blue-700 text-xs font-medium px-3 py-1 rounded-full border border-blue-200">
+                        {update.version}
+                      </span>
+                    )}
+                    {update.kb_number && (
+                      <span className="bg-purple-50 text-purple-700 text-xs font-medium px-3 py-1 rounded-full border border-purple-200">
+                        {update.kb_number}
+                      </span>
+                    )}
+                    {update.tags && update.tags.slice(0, 2).map((tag, tagIndex) => (
+                      <span key={tagIndex} className="bg-slate-50 text-slate-600 text-xs font-medium px-3 py-1 rounded-full border border-slate-200 capitalize">
+                        #{tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Card Footer */}
+                <div className="px-6 pb-6">
+                  <div className="bg-slate-50 rounded-xl p-4 mb-4">
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-slate-500 font-medium">Source:</span>
+                      <span className="font-semibold text-slate-900 text-right">{update.source}</span>
+                    </div>
+                  </div>
+                  
+                  {update.link && (
+                    <a 
+                      href={update.link} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-xl py-3 px-4 flex items-center justify-center space-x-2 transition-all duration-200 transform hover:scale-105 shadow-sm hover:shadow-lg"
+                    >
+                      <span className="font-medium">Lire l'article complet</span>
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </a>
+                  )}
+                </div>
+              </article>
+            ))}
+          </div>
+
+          {filteredUpdates.length === 0 && !loading && (
+            <div className="text-center py-12">
+              <div className="w-24 h-24 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-12 h-12 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+              </div>
+              <h3 className="text-lg font-semibold text-slate-900 mb-2">Aucun article trouvé</h3>
+              <p className="text-slate-600">Aucun article n'est disponible pour cette catégorie actuellement.</p>
+            </div>
+          )}
+        </div>
+      </section>
+
       {/* Info Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-gradient-to-br from-slate-50 to-blue-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-slate-900 mb-4">Système de Veille Automatisée</h2>
-            <div className="w-20 h-1 bg-blue-600 mx-auto"></div>
-            <p className="text-slate-600 mt-4">
-              Cette page présente ma veille technologique sur l'écosystème Windows, avec récupération automatique 
-              des données depuis les flux RSS officiels Microsoft.
+            <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mb-4"></div>
+            <p className="text-slate-600 max-w-2xl mx-auto leading-relaxed">
+              Surveillance continue des écosystèmes Microsoft professionnels avec récupération automatique depuis 
+              les flux RSS officiels, traduction intelligente et classification par domaine d'expertise.
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div className="rounded-lg bg-card text-card-foreground shadow-sm text-center hover:shadow-lg transition-shadow border border-slate-200 cursor-pointer transform hover:-translate-y-1">
-              <div className="flex flex-col space-y-1.5 p-6">
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-rss w-6 h-6 text-blue-600" aria-hidden="true">
-                    <path d="M4 11a9 9 0 0 1 9 9"></path>
-                    <path d="M4 4a16 16 0 0 1 16 16"></path>
-                    <circle cx="5" cy="19" r="1"></circle>
-                  </svg>
-                </div>
-                <h3 className="font-semibold tracking-tight text-lg text-slate-900">Flux RSS Automatisés</h3>
-                <p className="text-sm text-slate-600">
-                  Récupération automatique depuis les blogs officiels Microsoft Windows et Windows Server.
-                </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            <div className="bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 p-6 text-center border border-slate-100">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 5c7.18 0 13 5.82 13 13M6 11a7 7 0 017 7m-6 0a1 1 0 11-2 0 1 1 0 012 0z" />
+                </svg>
               </div>
+              <h3 className="font-bold text-slate-900 mb-2">Flux RSS Automatisés</h3>
+              <p className="text-sm text-slate-600">
+                Récupération depuis 7+ sources officielles Microsoft
+              </p>
             </div>
 
-            <div className="rounded-lg bg-card text-card-foreground shadow-sm text-center hover:shadow-lg transition-shadow border border-slate-200 cursor-pointer transform hover:-translate-y-1">
-              <div className="flex flex-col space-y-1.5 p-6">
-                <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-globe w-6 h-6 text-indigo-600" aria-hidden="true">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <path d="m12 2 0 20"></path>
-                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                  </svg>
-                </div>
-                <h3 className="font-semibold tracking-tight text-lg text-slate-900">Traduction Française</h3>
-                <p className="text-sm text-slate-600">
-                  Contenus traduits automatiquement pour faciliter la compréhension et l'analyse.
-                </p>
+            <div className="bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 p-6 text-center border border-slate-100">
+              <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+                </svg>
               </div>
+              <h3 className="font-bold text-slate-900 mb-2">Traduction Intelligente</h3>
+              <p className="text-sm text-slate-600">
+                Traduction contextuelle des contenus techniques
+              </p>
             </div>
 
-            <div className="rounded-lg bg-card text-card-foreground shadow-sm text-center hover:shadow-lg transition-shadow border border-slate-200 cursor-pointer transform hover:-translate-y-1">
-              <div className="flex flex-col space-y-1.5 p-6">
-                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-clock w-6 h-6 text-green-600" aria-hidden="true">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <polyline points="12,6 12,12 16,14"></polyline>
-                  </svg>
-                </div>
-                <h3 className="font-semibold tracking-tight text-lg text-slate-900">Mise à Jour Continue</h3>
-                <p className="text-sm text-slate-600">
-                  Surveillance continue des nouveautés Windows pour rester à jour des dernières évolutions.
-                </p>
+            <div className="bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 p-6 text-center border border-slate-100">
+              <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
               </div>
+              <h3 className="font-bold text-slate-900 mb-2">Temps Réel</h3>
+              <p className="text-sm text-slate-600">
+                Mise à jour continue des dernières innovations
+              </p>
+            </div>
+
+            <div className="bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 p-6 text-center border border-slate-100">
+              <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                </svg>
+              </div>
+              <h3 className="font-bold text-slate-900 mb-2">Focus Professionnel</h3>
+              <p className="text-sm text-slate-600">
+                Contenu ciblé entreprise et infrastructure
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Footer Section */}
+      {/* CTA Section */}
       <section className="py-16 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6 text-white">Questions sur ces technologies ?</h2>
+          <h2 className="text-3xl font-bold mb-6 text-white">Besoin d'expertise Microsoft ?</h2>
           <p className="text-lg text-blue-100 mb-8 max-w-2xl mx-auto">
-            N'hésitez pas à me contacter pour discuter de stratégies de migration, 
-            de planification des mises à jour ou de conseil en infrastructure Windows.
+            Conseil, migration, implémentation et support sur les technologies Microsoft. 
+            Restons connectés pour discuter de vos projets d'infrastructure.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="inline-flex items-center justify-center text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 bg-white text-blue-600 hover:bg-blue-50 px-8 py-3 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg">
-              Me contacter
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-external-link ml-2 w-5 h-5" aria-hidden="true">
-                <path d="M15 3h6v6"></path>
-                <path d="M10 14 21 3"></path>
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <button className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-4 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg flex items-center justify-center space-x-2">
+              <span>Me contacter</span>
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>
             </button>
             <a href="/veilles">
-              <button className="inline-flex items-center justify-center text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border bg-background h-11 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-3 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-left mr-2 w-5 h-5" aria-hidden="true">
-                  <path d="m12 19-7-7 7-7"></path>
-                  <path d="M19 12H5"></path>
+              <button className="border border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg flex items-center justify-center space-x-2">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
-                Retour aux veilles
+                <span>Retour aux veilles</span>
               </button>
             </a>
           </div>
         </div>
       </section>
     </div>
-  )
+  );
 }
