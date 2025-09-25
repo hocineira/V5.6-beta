@@ -13,7 +13,7 @@ class WindowsRSSFetcher {
         language: "en"
       },
       microsoft_security: {
-        url: "https://msrc.microsoft.com/blog/rss",
+        url: "https://www.microsoft.com/en-us/security/blog/feed/",
         name: "Microsoft Security Response Center",
         category: "security", 
         language: "en"
