@@ -212,20 +212,20 @@ export default function VeillesPage() {
           
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 text-center max-w-4xl mx-auto">
             <div className="space-y-2">
-              <div className="text-2xl sm:text-3xl font-bold text-blue-600">2</div>
+              <div className="text-2xl sm:text-3xl font-bold text-blue-600">3</div>
               <div className="text-slate-600 text-xs sm:text-sm">Types de veilles</div>
             </div>
             <div className="space-y-2">
               <div className="text-2xl sm:text-3xl font-bold text-blue-600">4</div>
-              <div className="text-slate-600 text-xs sm:text-sm">Versions Windows</div>
+              <div className="text-slate-600 text-xs sm:text-sm">Sources Windows</div>
+            </div>
+            <div className="space-y-2">
+              <div className="text-2xl sm:text-3xl font-bold text-blue-600">4</div>
+              <div className="text-slate-600 text-xs sm:text-sm">Sources Starlink</div>
             </div>
             <div className="space-y-2">
               <div className="text-2xl sm:text-3xl font-bold text-blue-600">3</div>
               <div className="text-slate-600 text-xs sm:text-sm">Sujets RGPD</div>
-            </div>
-            <div className="space-y-2">
-              <div className="text-2xl sm:text-3xl font-bold text-blue-600">7</div>
-              <div className="text-slate-600 text-xs sm:text-sm">Total contenus</div>
             </div>
           </div>
         </div>
