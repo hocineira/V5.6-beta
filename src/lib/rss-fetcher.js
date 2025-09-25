@@ -279,12 +279,34 @@ class WindowsRSSFetcher {
     if (!text) return text;
 
     const translations = {
-      // Technical terms
+      // Technical terms - fixed translations
+      'hotpatching': 'correctifs à chaud',
+      'patching': 'correctifs',
+      'server': 'serveur',
+      'restarts': 'redémarrages',
+      'tired of': 'fatigué de',
+      'get ': 'obtenir ',
+      'join us at': 'rejoignez-nous à',
+      'learn more about': 'en savoir plus sur',
+      'latest innovations': 'dernières innovations',
+      'now generally available': 'maintenant généralement disponible',
+      'enhanced security': 'sécurité renforcée',
+      'improved performance': 'performance améliorée',
+      'cloud agility': 'agilité cloud',
+      'advanced security': 'sécurité avancée',
+      'generally available': 'généralement disponible',
+      'subscription service': 'service par abonnement',
+      'infrastructure management': 'gestion d\'infrastructure',
+      'cloud capabilities': 'capacités cloud',
+      'efficient IT operations': 'opérations IT efficaces',
+      
+      // Common Windows terms
       'Windows Server': 'Windows Server',
       'Windows 11': 'Windows 11', 
       'Windows 10': 'Windows 10',
       'Windows': 'Windows',
       'Microsoft': 'Microsoft',
+      'System Center': 'System Center',
       'update': 'mise à jour',
       'security update': 'mise à jour de sécurité',
       'security': 'sécurité',
@@ -304,7 +326,6 @@ class WindowsRSSFetcher {
       'bug fixes': 'corrections de bugs',
       'hotfix': 'correctif urgent',
       'enterprise': 'entreprise',
-      'server': 'serveur',
       'datacenter': 'centre de données',
       'cloud': 'cloud',
       'Azure': 'Azure',
@@ -320,25 +341,34 @@ class WindowsRSSFetcher {
       'stable': 'stable',
       'available': 'disponible',
       'now available': 'maintenant disponible',
-      'generally available': 'généralement disponible',
       'public preview': 'aperçu public',
       
       // Common phrases
       'This post': 'Cet article',
       'The post': 'L\'article',
       'appeared first on': 'est paru en premier sur',
-      'Learn more about': 'En savoir plus sur',
       'Get started with': 'Commencer avec',
       'How to': 'Comment',
       'What\'s new': 'Nouveautés',
       'Announcing': 'Annonce',
       'We are excited to announce': 'Nous sommes ravis d\'annoncer',
-      'We are pleased to announce': 'Nous avons le plaisir d\'annoncer'
+      'We are pleased to announce': 'Nous avons le plaisir d\'annoncer',
+      'Check out': 'Découvrez',
+      'Register now for': 'Inscrivez-vous maintenant pour',
+      'Gain ': 'Obtenez ',
+      'How ': 'Comment ',
+      'New options for': 'Nouvelles options pour',
+      'Secure ': 'Sécurisez ',
+      'workloads with options from': 'charges de travail avec les options de'
     };
     
     let translatedText = text;
-    for (const [english, french] of Object.entries(translations)) {
-      translatedText = translatedText.replace(new RegExp(english, 'gi'), french);
+    
+    // Apply translations in order of length (longest first to avoid partial replacements)
+    const sortedTranslations = Object.entries(translations).sort((a, b) => b[0].length - a[0].length);
+    
+    for (const [english, french] of sortedTranslations) {
+      translatedText = translatedText.replace(new RegExp(english.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi'), french);
     }
     
     return translatedText;
