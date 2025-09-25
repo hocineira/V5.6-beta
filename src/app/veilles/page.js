@@ -160,7 +160,11 @@ export default function VeillesPage() {
                         <ul className="space-y-2">
                           {veille.items.map((item, index) => (
                             <li key={index} className="flex items-start">
-                              <div className={`w-2 h-2 ${veille.color === 'blue' ? 'bg-blue-600' : 'bg-indigo-600'} rounded-full mt-1.5 sm:mt-2 mr-3 flex-shrink-0`}></div>
+                              <div className={`w-2 h-2 ${
+                                veille.color === 'blue' ? 'bg-blue-600' : 
+                                veille.color === 'slate' ? 'bg-slate-600' : 
+                                'bg-indigo-600'
+                              } rounded-full mt-1.5 sm:mt-2 mr-3 flex-shrink-0`}></div>
                               <span className="text-slate-700 text-xs sm:text-sm">{item}</span>
                             </li>
                           ))}
