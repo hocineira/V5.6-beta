@@ -207,12 +207,10 @@ export default async function VeilleTechnologique() {
                       )}
                     </div>
                   </div>
-                </motion.div>
               ))}
             </div>
-          )}
-        </div>
-      </section>
+          </div>
+        </section>
 
       {/* Footer Section */}
       <section className="py-16 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">
