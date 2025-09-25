@@ -18,7 +18,7 @@ backend:
     implemented: true
     working: true
     file: "/app/src/lib/rss-fetcher.js"
-    stuck_count: 1
+    stuck_count: 0
     priority: "high"
     needs_retesting: false
     status_history:
