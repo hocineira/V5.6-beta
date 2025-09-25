@@ -174,15 +174,25 @@ class WindowsRSSFetcher {
     // Remove HTML tags
     let text = htmlText.replace(/<[^>]*>/g, '');
     
+    // Remove XML artifacts and CDATA
+    text = text.replace(/\]\]>/g, '');
+    text = text.replace(/\[CDATA\[/g, '');
+    text = text.replace(/^<!\[CDATA\[/g, '');
+    text = text.replace(/\]\]>$/g, '');
+    
     // Decode HTML entities
     text = text
       .replace(/&amp;/g, '&')
       .replace(/&lt;/g, '<')
       .replace(/&gt;/g, '>')
       .replace(/&quot;/g, '"')
-      .replace(/&#39;/g, "'");
+      .replace(/&#39;/g, "'")
+      .replace(/&nbsp;/g, ' ');
     
-    return text.trim();
+    // Clean up extra whitespace and newlines
+    text = text.replace(/\s+/g, ' ').trim();
+    
+    return text;
   }
 
   extractWindowsVersion(text) {
