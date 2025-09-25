@@ -214,39 +214,251 @@ class WindowsRSSBackendTester:
         except Exception as e:
             self.log_test("Update Data Structure", False, f"Error: {str(e)}")
 
-    def test_rss_sources(self):
-        """Test if RSS sources are accessible and returning data"""
-        print("🔍 Testing RSS Sources Accessibility...")
+    def test_corrected_rss_system(self):
+        """Test the corrected RSS system with 6 sources and ~60 articles"""
+        print("🔍 Testing Corrected RSS System (6 sources, ~60 articles)...")
         
-        # Test Microsoft Security Response Center
+        # Test current data count
         try:
-            msrc_response = requests.get("https://msrc.microsoft.com/blog/rss", timeout=15)
-            if msrc_response.status_code == 200 and "xml" in msrc_response.headers.get("content-type", "").lower():
-                self.log_test("MSRC RSS Feed", True, "Feed accessible and valid XML")
+            response = self.session.get(f"{self.api_base}/windows/updates/stats", timeout=10)
+            if response.status_code == 200:
+                stats_data = response.json()
+                total_articles = stats_data.get("total", 0)
+                categories = stats_data.get("by_category", {})
+                
+                # Check if we have ~60 articles (should be between 50-70)
+                if 50 <= total_articles <= 70:
+                    self.log_test("Article Count After Corrections", True, f"Total articles: {total_articles} (target: ~60)")
+                else:
+                    self.log_test("Article Count After Corrections", False, f"Expected ~60 articles, got {total_articles}")
+                
+                # Check category diversity
+                category_count = len(categories)
+                if category_count >= 4:  # Should have server, security, cloud, enterprise
+                    self.log_test("Category Diversity", True, f"Found {category_count} categories: {list(categories.keys())}")
+                else:
+                    self.log_test("Category Diversity", False, f"Expected ≥4 categories, got {category_count}: {list(categories.keys())}")
+                    
             else:
-                self.log_test("MSRC RSS Feed", False, f"HTTP {msrc_response.status_code} or invalid content type")
+                self.log_test("RSS Stats Check", False, f"HTTP {response.status_code}")
         except Exception as e:
-            self.log_test("MSRC RSS Feed", False, f"Connection error: {str(e)}")
+            self.log_test("RSS Stats Check", False, f"Error: {str(e)}")
 
-        # Test Windows Blog
+    def test_source_diversity(self):
+        """Test that articles come from all 6 expected sources"""
+        print("🔍 Testing Source Diversity (6 RSS sources)...")
+        
+        expected_sources = [
+            "Windows Server Blog",
+            "Microsoft Security Response Center", 
+            "SQL Server Blog",
+            "Azure Blog",
+            "PowerShell Blog",
+            ".NET Blog"
+        ]
+        
         try:
-            windows_response = requests.get("https://blogs.windows.com/feed/", timeout=15)
-            if windows_response.status_code == 200 and "xml" in windows_response.headers.get("content-type", "").lower():
-                self.log_test("Windows Blog RSS Feed", True, "Feed accessible and valid XML")
+            response = self.session.get(f"{self.api_base}/windows/updates?limit=100", timeout=15)
+            if response.status_code == 200:
+                data = response.json()
+                updates = data.get("updates", [])
+                
+                # Count articles by source
+                source_counts = {}
+                for update in updates:
+                    source = update.get("source", "Unknown")
+                    source_counts[source] = source_counts.get(source, 0) + 1
+                
+                found_sources = list(source_counts.keys())
+                missing_sources = [src for src in expected_sources if src not in found_sources]
+                
+                if len(missing_sources) == 0:
+                    self.log_test("All 6 RSS Sources Working", True, f"Sources: {found_sources}")
+                    
+                    # Check distribution
+                    for source, count in source_counts.items():
+                        if count > 0:
+                            self.log_test(f"Source: {source}", True, f"{count} articles")
+                        else:
+                            self.log_test(f"Source: {source}", False, "No articles found")
+                else:
+                    self.log_test("All 6 RSS Sources Working", False, f"Missing sources: {missing_sources}")
+                    self.log_test("Found Sources", True, f"Working sources: {found_sources}")
+                    
             else:
-                self.log_test("Windows Blog RSS Feed", False, f"HTTP {windows_response.status_code} or invalid content type")
+                self.log_test("Source Diversity Check", False, f"HTTP {response.status_code}")
         except Exception as e:
-            self.log_test("Windows Blog RSS Feed", False, f"Connection error: {str(e)}")
+            self.log_test("Source Diversity Check", False, f"Error: {str(e)}")
 
-        # Test Windows Server Blog
+    def test_translation_quality(self):
+        """Test translation quality - should have less French/English mixing"""
+        print("🔍 Testing Translation Quality...")
+        
         try:
-            server_response = requests.get("https://cloudblogs.microsoft.com/windowsserver/feed/", timeout=15)
-            if server_response.status_code == 200 and "xml" in server_response.headers.get("content-type", "").lower():
-                self.log_test("Windows Server RSS Feed", True, "Feed accessible and valid XML")
+            response = self.session.get(f"{self.api_base}/windows/updates?limit=20", timeout=10)
+            if response.status_code == 200:
+                data = response.json()
+                updates = data.get("updates", [])
+                
+                mixed_language_count = 0
+                total_translated = 0
+                
+                for update in updates:
+                    title = update.get("title", "")
+                    description = update.get("description", "")
+                    
+                    # Check for mixed language patterns
+                    text = (title + " " + description).lower()
+                    
+                    # Look for problematic patterns like "vers", "avec", "dans" mixed with English
+                    mixed_patterns = [
+                        "vers " and " to ",
+                        "avec " and " with ",
+                        "dans " and " in ",
+                        "pour " and " for ",
+                        "de " and " from "
+                    ]
+                    
+                    has_french = any(word in text for word in ["vers", "avec", "dans", "pour", "de", "et", "sur"])
+                    has_english = any(word in text for word in ["the", "and", "with", "from", "to", "in", "for"])
+                    
+                    if has_french:
+                        total_translated += 1
+                        if has_french and has_english and len(text) > 50:
+                            # Check if it's problematic mixing (not just proper nouns)
+                            if "vers " in text or "avec " in text or "dans " in text:
+                                mixed_language_count += 1
+                
+                if total_translated > 0:
+                    mixing_percentage = (mixed_language_count / total_translated) * 100
+                    if mixing_percentage < 30:  # Less than 30% should have mixing issues
+                        self.log_test("Translation Quality", True, f"Mixed language in {mixing_percentage:.1f}% of translated content")
+                    else:
+                        self.log_test("Translation Quality", False, f"High mixing rate: {mixing_percentage:.1f}% of translated content has mixed languages")
+                        
+                    # Show examples of mixed content for debugging
+                    if mixed_language_count > 0:
+                        for update in updates[:3]:
+                            title = update.get("title", "")
+                            if "vers " in title.lower() or "avec " in title.lower():
+                                self.log_test("Translation Example", False, f"Mixed: '{title[:100]}...'")
+                else:
+                    self.log_test("Translation Quality", True, "No translated content found to analyze")
+                    
             else:
-                self.log_test("Windows Server RSS Feed", False, f"HTTP {server_response.status_code} or invalid content type")
+                self.log_test("Translation Quality Check", False, f"HTTP {response.status_code}")
         except Exception as e:
-            self.log_test("Windows Server RSS Feed", False, f"Connection error: {str(e)}")
+            self.log_test("Translation Quality Check", False, f"Error: {str(e)}")
+
+    def test_category_filtering(self):
+        """Test category filtering functionality"""
+        print("🔍 Testing Category Filtering...")
+        
+        categories_to_test = ["security", "server", "cloud", "enterprise"]
+        
+        for category in categories_to_test:
+            try:
+                response = self.session.get(f"{self.api_base}/windows/updates?category={category}", timeout=10)
+                if response.status_code == 200:
+                    data = response.json()
+                    updates = data.get("updates", [])
+                    
+                    if updates:
+                        # Check that all returned updates have the correct category
+                        correct_category = all(update.get("category") == category for update in updates)
+                        if correct_category:
+                            self.log_test(f"Category Filter: {category}", True, f"Found {len(updates)} {category} updates")
+                        else:
+                            wrong_categories = [update.get("category") for update in updates if update.get("category") != category]
+                            self.log_test(f"Category Filter: {category}", False, f"Found wrong categories: {set(wrong_categories)}")
+                    else:
+                        self.log_test(f"Category Filter: {category}", True, f"No {category} updates found (acceptable)")
+                else:
+                    self.log_test(f"Category Filter: {category}", False, f"HTTP {response.status_code}")
+            except Exception as e:
+                self.log_test(f"Category Filter: {category}", False, f"Error: {str(e)}")
+
+    def test_data_cleanliness(self):
+        """Test that data is clean (no XML residual tags)"""
+        print("🔍 Testing Data Cleanliness (no XML residual tags)...")
+        
+        try:
+            response = self.session.get(f"{self.api_base}/windows/updates?limit=20", timeout=10)
+            if response.status_code == 200:
+                data = response.json()
+                updates = data.get("updates", [])
+                
+                xml_artifacts_found = 0
+                total_checked = 0
+                
+                for update in updates:
+                    title = update.get("title", "")
+                    description = update.get("description", "")
+                    
+                    # Check for XML artifacts
+                    xml_patterns = [
+                        "]]>", "[CDATA[", "<?xml", "<![CDATA[",
+                        "&lt;", "&gt;", "&amp;", "&#", "<item>", "</item>"
+                    ]
+                    
+                    text_to_check = title + " " + description
+                    total_checked += 1
+                    
+                    for pattern in xml_patterns:
+                        if pattern in text_to_check:
+                            xml_artifacts_found += 1
+                            self.log_test("XML Artifact Found", False, f"Found '{pattern}' in: {title[:50]}...")
+                            break
+                
+                if xml_artifacts_found == 0:
+                    self.log_test("Data Cleanliness", True, f"No XML artifacts found in {total_checked} articles")
+                else:
+                    self.log_test("Data Cleanliness", False, f"Found XML artifacts in {xml_artifacts_found}/{total_checked} articles")
+                    
+            else:
+                self.log_test("Data Cleanliness Check", False, f"HTTP {response.status_code}")
+        except Exception as e:
+            self.log_test("Data Cleanliness Check", False, f"Error: {str(e)}")
+
+    def test_refresh_functionality(self):
+        """Test RSS refresh increases article count"""
+        print("🔍 Testing RSS Refresh Functionality...")
+        
+        try:
+            # Get initial count
+            initial_response = self.session.get(f"{self.api_base}/windows/updates/stats", timeout=10)
+            if initial_response.status_code == 200:
+                initial_stats = initial_response.json()
+                initial_count = initial_stats.get("total", 0)
+                
+                # Trigger refresh
+                refresh_response = self.session.post(f"{self.api_base}/windows/updates/refresh", timeout=45)
+                if refresh_response.status_code == 200:
+                    refresh_data = refresh_response.json()
+                    stored = refresh_data.get("stored", 0)
+                    total_fetched = refresh_data.get("total", 0)
+                    
+                    self.log_test("RSS Refresh Execution", True, f"Stored {stored}/{total_fetched} articles")
+                    
+                    # Wait and check final count
+                    time.sleep(2)
+                    final_response = self.session.get(f"{self.api_base}/windows/updates/stats", timeout=10)
+                    if final_response.status_code == 200:
+                        final_stats = final_response.json()
+                        final_count = final_stats.get("total", 0)
+                        
+                        if final_count >= initial_count:
+                            self.log_test("RSS Refresh Data Update", True, f"Count: {initial_count} → {final_count}")
+                        else:
+                            self.log_test("RSS Refresh Data Update", False, f"Count decreased: {initial_count} → {final_count}")
+                    else:
+                        self.log_test("RSS Refresh Data Update", False, "Could not verify final count")
+                else:
+                    self.log_test("RSS Refresh Execution", False, f"HTTP {refresh_response.status_code}")
+            else:
+                self.log_test("RSS Refresh Initial Count", False, f"HTTP {initial_response.status_code}")
+        except Exception as e:
+            self.log_test("RSS Refresh Functionality", False, f"Error: {str(e)}")
 
     def test_error_handling(self):
         """Test error handling for invalid requests"""
