@@ -169,10 +169,10 @@ export default function VeilleTechnologique() {
             </div>
 
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Veille Technologique Microsoft
+              Veille Windows & Windows Server
             </h1>
             <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Surveillance en temps réel des innovations Microsoft : Windows Server, sécurité, cloud et technologies d'entreprise
+              Surveillance spécialisée des technologies Microsoft Windows et Windows Server pour votre expertise BTS SIO SISR : infrastructure, sécurité et systèmes d'entreprise
             </p>
 
             <div className="flex flex-wrap justify-center items-center gap-4 mb-6">
