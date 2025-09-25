@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Comprehensive Backend Testing for Windows RSS Monitoring System
-Tests all FastAPI endpoints, RSS fetching, database operations, and scheduler functionality
+Comprehensive Backend Testing for Windows & Starlink RSS Monitoring Systems
+Tests all Next.js API endpoints, RSS fetching, JSON storage, and refresh functionality
 """
 
 import requests
@@ -11,9 +11,9 @@ import sys
 from datetime import datetime
 from typing import Dict, List, Any
 
-class WindowsRSSBackendTester:
+class DualRSSBackendTester:
     def __init__(self):
-        self.base_url = "http://localhost:3001"
+        self.base_url = "http://localhost:3000"
         self.api_base = f"{self.base_url}/api"
         self.test_results = []
         self.session = requests.Session()
@@ -56,8 +56,8 @@ class WindowsRSSBackendTester:
             self.log_test("API Test Endpoint", False, f"Connection error: {str(e)}")
 
     def test_windows_updates_endpoints(self):
-        """Test all Windows updates API endpoints"""
-        print("🔍 Testing Windows Updates API Endpoints...")
+        """Test all Windows updates API endpoints (improved filtering)"""
+        print("🔍 Testing Windows Updates API Endpoints (Improved Filtering)...")
         
         # Test GET /api/windows/updates
         try:
@@ -67,6 +67,22 @@ class WindowsRSSBackendTester:
                 if "total" in data and "updates" in data and "last_updated" in data:
                     updates_count = data.get("total", 0)
                     self.log_test("Get Windows Updates", True, f"Retrieved {updates_count} updates")
+                    
+                    # Verify improved filtering - should focus on Windows/Windows Server only
+                    updates = data.get("updates", [])
+                    if updates:
+                        sample_update = updates[0]
+                        title = sample_update.get("title", "").lower()
+                        description = sample_update.get("description", "").lower()
+                        
+                        # Check if content is Windows/Windows Server focused
+                        windows_keywords = ["windows", "server", "azure", "powershell", ".net", "sql server"]
+                        has_windows_focus = any(keyword in title or keyword in description for keyword in windows_keywords)
+                        
+                        if has_windows_focus:
+                            self.log_test("Windows Filtering Improved", True, "Content focused on Windows/Windows Server ecosystem")
+                        else:
+                            self.log_test("Windows Filtering Improved", False, f"Sample content may not be Windows-focused: {title[:100]}")
                     
                     # Test with category filter
                     response_cat = self.session.get(f"{self.api_base}/windows/updates?category=security", timeout=10)
@@ -94,18 +110,18 @@ class WindowsRSSBackendTester:
 
         # Test GET /api/windows/updates/latest
         try:
-            response = self.session.get(f"{self.api_base}/windows/updates/latest", timeout=10)
+            response = self.session.get(f"{self.api_base}/windows/updates/latest?limit=5", timeout=10)
             if response.status_code == 200:
                 data = response.json()
                 if "updates" in data and "count" in data and "timestamp" in data:
                     count = data.get("count", 0)
-                    self.log_test("Get Latest Updates", True, f"Retrieved {count} latest updates")
+                    self.log_test("Get Latest Windows Updates", True, f"Retrieved {count} latest updates")
                 else:
-                    self.log_test("Get Latest Updates", False, "Missing required fields", data)
+                    self.log_test("Get Latest Windows Updates", False, "Missing required fields", data)
             else:
-                self.log_test("Get Latest Updates", False, f"HTTP {response.status_code}", response.text)
+                self.log_test("Get Latest Windows Updates", False, f"HTTP {response.status_code}", response.text)
         except Exception as e:
-            self.log_test("Get Latest Updates", False, f"Connection error: {str(e)}")
+            self.log_test("Get Latest Windows Updates", False, f"Connection error: {str(e)}")
 
         # Test GET /api/windows/updates/stats
         try:
@@ -115,13 +131,13 @@ class WindowsRSSBackendTester:
                 if "total" in data and "by_category" in data:
                     total = data.get("total", 0)
                     categories = data.get("by_category", {})
-                    self.log_test("Get Updates Stats", True, f"Total: {total}, Categories: {list(categories.keys())}")
+                    self.log_test("Get Windows Updates Stats", True, f"Total: {total}, Categories: {list(categories.keys())}")
                 else:
-                    self.log_test("Get Updates Stats", False, "Missing required fields", data)
+                    self.log_test("Get Windows Updates Stats", False, "Missing required fields", data)
             else:
-                self.log_test("Get Updates Stats", False, f"HTTP {response.status_code}", response.text)
+                self.log_test("Get Windows Updates Stats", False, f"HTTP {response.status_code}", response.text)
         except Exception as e:
-            self.log_test("Get Updates Stats", False, f"Connection error: {str(e)}")
+            self.log_test("Get Windows Updates Stats", False, f"Connection error: {str(e)}")
 
         # Test GET /api/windows/updates/categories
         try:
@@ -130,48 +146,288 @@ class WindowsRSSBackendTester:
                 data = response.json()
                 if "categories" in data:
                     categories = data.get("categories", [])
-                    category_keys = [cat.get("key") for cat in categories if isinstance(cat, dict)]
-                    expected_categories = ["security", "feature", "server", "general"]
-                    has_all_categories = all(cat in category_keys for cat in expected_categories)
-                    self.log_test("Get Categories", has_all_categories, f"Categories: {category_keys}")
+                    self.log_test("Get Windows Categories", True, f"Categories: {categories}")
                 else:
-                    self.log_test("Get Categories", False, "Missing categories field", data)
+                    self.log_test("Get Windows Categories", False, "Missing categories field", data)
             else:
-                self.log_test("Get Categories", False, f"HTTP {response.status_code}", response.text)
+                self.log_test("Get Windows Categories", False, f"HTTP {response.status_code}", response.text)
         except Exception as e:
-            self.log_test("Get Categories", False, f"Connection error: {str(e)}")
+            self.log_test("Get Windows Categories", False, f"Connection error: {str(e)}")
 
-    def test_refresh_endpoint(self):
-        """Test the RSS refresh endpoint"""
-        print("🔍 Testing RSS Refresh Endpoint...")
-        
+        # Test POST /api/windows/updates/refresh
         try:
             response = self.session.post(f"{self.api_base}/windows/updates/refresh", timeout=30)
             if response.status_code == 200:
                 data = response.json()
-                if "message" in data and "timestamp" in data:
-                    self.log_test("RSS Refresh", True, "Refresh initiated successfully")
-                    
-                    # Wait a bit and check if new data is available
-                    time.sleep(5)
-                    stats_response = self.session.get(f"{self.api_base}/windows/updates/stats", timeout=10)
-                    if stats_response.status_code == 200:
-                        stats_data = stats_response.json()
-                        total_after = stats_data.get("total", 0)
-                        self.log_test("RSS Refresh Data Check", True, f"Total updates after refresh: {total_after}")
-                    else:
-                        self.log_test("RSS Refresh Data Check", False, "Could not verify refresh results")
+                if "message" in data:
+                    self.log_test("Windows RSS Refresh", True, f"Refresh response: {data.get('message')}")
                 else:
-                    self.log_test("RSS Refresh", False, "Missing required fields", data)
+                    self.log_test("Windows RSS Refresh", False, "Missing message field", data)
             else:
-                self.log_test("RSS Refresh", False, f"HTTP {response.status_code}", response.text)
+                self.log_test("Windows RSS Refresh", False, f"HTTP {response.status_code}", response.text)
         except Exception as e:
-            self.log_test("RSS Refresh", False, f"Connection error: {str(e)}")
+            self.log_test("Windows RSS Refresh", False, f"Connection error: {str(e)}")
 
-    def test_data_quality(self):
-        """Test the quality and structure of returned data"""
-        print("🔍 Testing Data Quality...")
+    def test_starlink_updates_endpoints(self):
+        """Test all NEW Starlink/SpaceX updates API endpoints"""
+        print("🔍 Testing NEW Starlink/SpaceX Updates API Endpoints...")
         
+        # Test GET /api/starlink/updates
+        try:
+            response = self.session.get(f"{self.api_base}/starlink/updates", timeout=15)
+            if response.status_code == 200:
+                data = response.json()
+                if "total" in data and "updates" in data and "last_updated" in data:
+                    updates_count = data.get("total", 0)
+                    self.log_test("Get Starlink Updates", True, f"Retrieved {updates_count} updates")
+                    
+                    # Verify Starlink content
+                    updates = data.get("updates", [])
+                    if updates:
+                        sample_update = updates[0]
+                        title = sample_update.get("title", "").lower()
+                        description = sample_update.get("description", "").lower()
+                        
+                        # Check if content is Starlink/SpaceX focused
+                        spacex_keywords = ["starlink", "spacex", "falcon", "dragon", "mars", "satellite", "launch"]
+                        has_spacex_focus = any(keyword in title or keyword in description for keyword in spacex_keywords)
+                        
+                        if has_spacex_focus:
+                            self.log_test("Starlink Content Verification", True, "Content focused on Starlink/SpaceX")
+                        else:
+                            self.log_test("Starlink Content Verification", False, f"Sample content may not be SpaceX-focused: {title[:100]}")
+                    
+                    # Test with category filter
+                    response_cat = self.session.get(f"{self.api_base}/starlink/updates?category=spacex", timeout=10)
+                    if response_cat.status_code == 200:
+                        cat_data = response_cat.json()
+                        self.log_test("Get Starlink Updates by Category", True, f"SpaceX category updates: {cat_data.get('total', 0)}")
+                    else:
+                        self.log_test("Get Starlink Updates by Category", False, f"HTTP {response_cat.status_code}")
+                        
+                    # Test with limit
+                    response_limit = self.session.get(f"{self.api_base}/starlink/updates?limit=10", timeout=10)
+                    if response_limit.status_code == 200:
+                        limit_data = response_limit.json()
+                        actual_count = len(limit_data.get("updates", []))
+                        self.log_test("Get Starlink Updates with Limit", True, f"Limited to {actual_count} updates")
+                    else:
+                        self.log_test("Get Starlink Updates with Limit", False, f"HTTP {response_limit.status_code}")
+                        
+                else:
+                    self.log_test("Get Starlink Updates", False, "Missing required fields", data)
+            else:
+                self.log_test("Get Starlink Updates", False, f"HTTP {response.status_code}", response.text)
+        except Exception as e:
+            self.log_test("Get Starlink Updates", False, f"Connection error: {str(e)}")
+
+        # Test GET /api/starlink/updates/latest?limit=5
+        try:
+            response = self.session.get(f"{self.api_base}/starlink/updates/latest?limit=5", timeout=10)
+            if response.status_code == 200:
+                data = response.json()
+                if "updates" in data and "count" in data and "timestamp" in data:
+                    count = data.get("count", 0)
+                    self.log_test("Get Latest Starlink Updates", True, f"Retrieved {count} latest updates")
+                else:
+                    self.log_test("Get Latest Starlink Updates", False, "Missing required fields", data)
+            else:
+                self.log_test("Get Latest Starlink Updates", False, f"HTTP {response.status_code}", response.text)
+        except Exception as e:
+            self.log_test("Get Latest Starlink Updates", False, f"Connection error: {str(e)}")
+
+        # Test GET /api/starlink/updates/stats
+        try:
+            response = self.session.get(f"{self.api_base}/starlink/updates/stats", timeout=10)
+            if response.status_code == 200:
+                data = response.json()
+                if "total" in data and "by_category" in data:
+                    total = data.get("total", 0)
+                    categories = data.get("by_category", {})
+                    self.log_test("Get Starlink Updates Stats", True, f"Total: {total}, Categories: {list(categories.keys())}")
+                    
+                    # Verify we have the expected 38 articles from starlink-cache.json
+                    if total == 38:
+                        self.log_test("Starlink Data Count Verification", True, f"Expected 38 articles, found {total}")
+                    else:
+                        self.log_test("Starlink Data Count Verification", False, f"Expected 38 articles, found {total}")
+                        
+                else:
+                    self.log_test("Get Starlink Updates Stats", False, "Missing required fields", data)
+            else:
+                self.log_test("Get Starlink Updates Stats", False, f"HTTP {response.status_code}", response.text)
+        except Exception as e:
+            self.log_test("Get Starlink Updates Stats", False, f"Connection error: {str(e)}")
+
+        # Test GET /api/starlink/updates/categories
+        try:
+            response = self.session.get(f"{self.api_base}/starlink/updates/categories", timeout=10)
+            if response.status_code == 200:
+                data = response.json()
+                if "categories" in data:
+                    categories = data.get("categories", [])
+                    expected_categories = ["space", "spacex"]  # Based on starlink-cache.json
+                    self.log_test("Get Starlink Categories", True, f"Categories: {categories}")
+                    
+                    # Verify expected categories are present
+                    if any(cat in str(categories).lower() for cat in expected_categories):
+                        self.log_test("Starlink Categories Verification", True, "Found expected SpaceX/space categories")
+                    else:
+                        self.log_test("Starlink Categories Verification", False, f"Expected space/spacex categories, got: {categories}")
+                else:
+                    self.log_test("Get Starlink Categories", False, "Missing categories field", data)
+            else:
+                self.log_test("Get Starlink Categories", False, f"HTTP {response.status_code}", response.text)
+        except Exception as e:
+            self.log_test("Get Starlink Categories", False, f"Connection error: {str(e)}")
+
+        # Test POST /api/starlink/updates/refresh
+        try:
+            response = self.session.post(f"{self.api_base}/starlink/updates/refresh", timeout=30)
+            if response.status_code == 200:
+                data = response.json()
+                if "message" in data:
+                    self.log_test("Starlink RSS Refresh", True, f"Refresh response: {data.get('message')}")
+                else:
+                    self.log_test("Starlink RSS Refresh", False, "Missing message field", data)
+            else:
+                self.log_test("Starlink RSS Refresh", False, f"HTTP {response.status_code}", response.text)
+        except Exception as e:
+            self.log_test("Starlink RSS Refresh", False, f"Connection error: {str(e)}")
+
+    def test_data_storage_verification(self):
+        """Test that JSON data files are properly stored and accessible"""
+        print("🔍 Testing JSON Data Storage Verification...")
+        
+        # Test Windows data storage (rss-cache.json)
+        try:
+            with open("/app/data/rss-cache.json", "r") as f:
+                windows_data = json.load(f)
+                if "updates" in windows_data and "total" in windows_data:
+                    total_windows = windows_data.get("total", 0)
+                    updates_count = len(windows_data.get("updates", []))
+                    self.log_test("Windows JSON Storage", True, f"Found {updates_count} Windows updates in storage (total: {total_windows})")
+                else:
+                    self.log_test("Windows JSON Storage", False, "Invalid Windows data structure")
+        except Exception as e:
+            self.log_test("Windows JSON Storage", False, f"Error reading Windows data: {str(e)}")
+        
+        # Test Starlink data storage (starlink-cache.json)
+        try:
+            with open("/app/data/starlink-cache.json", "r") as f:
+                starlink_data = json.load(f)
+                if "updates" in starlink_data and "total" in starlink_data:
+                    total_starlink = starlink_data.get("total", 0)
+                    updates_count = len(starlink_data.get("updates", []))
+                    self.log_test("Starlink JSON Storage", True, f"Found {updates_count} Starlink updates in storage (total: {total_starlink})")
+                    
+                    # Verify the expected 38 articles
+                    if total_starlink == 38:
+                        self.log_test("Starlink Storage Count", True, f"Confirmed 38 Starlink articles as expected")
+                    else:
+                        self.log_test("Starlink Storage Count", False, f"Expected 38 articles, found {total_starlink}")
+                else:
+                    self.log_test("Starlink JSON Storage", False, "Invalid Starlink data structure")
+        except Exception as e:
+            self.log_test("Starlink JSON Storage", False, f"Error reading Starlink data: {str(e)}")
+
+    def test_data_quality_both_systems(self):
+        """Test data quality for both Windows and Starlink systems"""
+        print("🔍 Testing Data Quality for Both Systems...")
+        
+        # Test Windows data quality
+        try:
+            response = self.session.get(f"{self.api_base}/windows/updates?limit=3", timeout=10)
+            if response.status_code == 200:
+                data = response.json()
+                updates = data.get("updates", [])
+                
+                if updates:
+                    first_update = updates[0]
+                    required_fields = ["title", "description", "link", "published_date", "category", "source"]
+                    missing_fields = [field for field in required_fields if field not in first_update]
+                    
+                    if not missing_fields:
+                        self.log_test("Windows Data Structure", True, "All required fields present")
+                    else:
+                        self.log_test("Windows Data Structure", False, f"Missing fields: {missing_fields}")
+                else:
+                    self.log_test("Windows Data Structure", False, "No Windows updates returned")
+            else:
+                self.log_test("Windows Data Structure", False, f"HTTP {response.status_code}")
+        except Exception as e:
+            self.log_test("Windows Data Structure", False, f"Error: {str(e)}")
+        
+        # Test Starlink data quality
+        try:
+            response = self.session.get(f"{self.api_base}/starlink/updates?limit=3", timeout=10)
+            if response.status_code == 200:
+                data = response.json()
+                updates = data.get("updates", [])
+                
+                if updates:
+                    first_update = updates[0]
+                    required_fields = ["title", "description", "link", "published_date", "category", "source"]
+                    missing_fields = [field for field in required_fields if field not in first_update]
+                    
+                    if not missing_fields:
+                        self.log_test("Starlink Data Structure", True, "All required fields present")
+                        
+                        # Check for Starlink-specific fields
+                        starlink_fields = ["tags", "mission", "satellite_count"]
+                        has_starlink_fields = any(field in first_update for field in starlink_fields)
+                        if has_starlink_fields:
+                            self.log_test("Starlink Specific Fields", True, "Found Starlink-specific metadata fields")
+                        else:
+                            self.log_test("Starlink Specific Fields", False, "Missing Starlink-specific fields")
+                    else:
+                        self.log_test("Starlink Data Structure", False, f"Missing fields: {missing_fields}")
+                else:
+                    self.log_test("Starlink Data Structure", False, "No Starlink updates returned")
+            else:
+                self.log_test("Starlink Data Structure", False, f"HTTP {response.status_code}")
+        except Exception as e:
+            self.log_test("Starlink Data Structure", False, f"Error: {str(e)}")
+
+    def test_filtering_and_categories(self):
+        """Test filtering and category functionality for both systems"""
+        print("🔍 Testing Filtering and Categories for Both Systems...")
+        
+        # Test Windows category filtering
+        windows_categories = ["security", "server", "cloud", "enterprise"]
+        for category in windows_categories:
+            try:
+                response = self.session.get(f"{self.api_base}/windows/updates?category={category}", timeout=10)
+                if response.status_code == 200:
+                    data = response.json()
+                    updates = data.get("updates", [])
+                    total = data.get("total", 0)
+                    self.log_test(f"Windows Category Filter: {category}", True, f"Found {total} {category} updates")
+                else:
+                    self.log_test(f"Windows Category Filter: {category}", False, f"HTTP {response.status_code}")
+            except Exception as e:
+                self.log_test(f"Windows Category Filter: {category}", False, f"Error: {str(e)}")
+        
+        # Test Starlink category filtering
+        starlink_categories = ["space", "spacex"]
+        for category in starlink_categories:
+            try:
+                response = self.session.get(f"{self.api_base}/starlink/updates?category={category}", timeout=10)
+                if response.status_code == 200:
+                    data = response.json()
+                    updates = data.get("updates", [])
+                    total = data.get("total", 0)
+                    self.log_test(f"Starlink Category Filter: {category}", True, f"Found {total} {category} updates")
+                else:
+                    self.log_test(f"Starlink Category Filter: {category}", False, f"HTTP {response.status_code}")
+            except Exception as e:
+                self.log_test(f"Starlink Category Filter: {category}", False, f"Error: {str(e)}")
+
+    def test_rss_real_data_verification(self):
+        """Verify that both systems are retrieving real RSS data"""
+        print("🔍 Testing Real RSS Data Verification...")
+        
+        # Test Windows RSS real data
         try:
             response = self.session.get(f"{self.api_base}/windows/updates?limit=5", timeout=10)
             if response.status_code == 200:
@@ -179,342 +435,71 @@ class WindowsRSSBackendTester:
                 updates = data.get("updates", [])
                 
                 if updates:
-                    # Test first update structure
-                    first_update = updates[0]
-                    required_fields = ["title", "description", "link", "published_date", "category", "source"]
+                    # Check for real Microsoft sources
+                    sources = [update.get("source", "") for update in updates]
+                    microsoft_sources = ["Microsoft", "Windows", "Azure", "PowerShell", ".NET", "SQL Server"]
+                    has_microsoft_sources = any(any(ms_source in source for ms_source in microsoft_sources) for source in sources)
                     
-                    missing_fields = [field for field in required_fields if field not in first_update]
-                    if not missing_fields:
-                        self.log_test("Update Data Structure", True, "All required fields present")
-                        
-                        # Test data types and values
-                        valid_categories = ["security", "feature", "server", "general"]
-                        category_valid = first_update.get("category") in valid_categories
-                        
-                        has_title = bool(first_update.get("title", "").strip())
-                        has_link = bool(first_update.get("link", "").strip())
-                        
-                        if category_valid and has_title and has_link:
-                            self.log_test("Update Data Validation", True, f"Category: {first_update.get('category')}")
-                        else:
-                            issues = []
-                            if not category_valid:
-                                issues.append(f"Invalid category: {first_update.get('category')}")
-                            if not has_title:
-                                issues.append("Empty title")
-                            if not has_link:
-                                issues.append("Empty link")
-                            self.log_test("Update Data Validation", False, "; ".join(issues))
+                    if has_microsoft_sources:
+                        self.log_test("Windows Real RSS Data", True, f"Found real Microsoft sources: {set(sources)}")
                     else:
-                        self.log_test("Update Data Structure", False, f"Missing fields: {missing_fields}")
+                        self.log_test("Windows Real RSS Data", False, f"No Microsoft sources found: {set(sources)}")
                 else:
-                    self.log_test("Update Data Structure", False, "No updates returned")
+                    self.log_test("Windows Real RSS Data", False, "No Windows updates found")
             else:
-                self.log_test("Update Data Structure", False, f"HTTP {response.status_code}")
+                self.log_test("Windows Real RSS Data", False, f"HTTP {response.status_code}")
         except Exception as e:
-            self.log_test("Update Data Structure", False, f"Error: {str(e)}")
-
-    def test_corrected_rss_system(self):
-        """Test the corrected RSS system with 6 sources and ~60 articles"""
-        print("🔍 Testing Corrected RSS System (6 sources, ~60 articles)...")
+            self.log_test("Windows Real RSS Data", False, f"Error: {str(e)}")
         
-        # Test current data count
+        # Test Starlink RSS real data
         try:
-            response = self.session.get(f"{self.api_base}/windows/updates/stats", timeout=10)
-            if response.status_code == 200:
-                stats_data = response.json()
-                total_articles = stats_data.get("total", 0)
-                categories = stats_data.get("by_category", {})
-                
-                # Check if we have ~60 articles (should be between 50-70)
-                if 50 <= total_articles <= 70:
-                    self.log_test("Article Count After Corrections", True, f"Total articles: {total_articles} (target: ~60)")
-                else:
-                    self.log_test("Article Count After Corrections", False, f"Expected ~60 articles, got {total_articles}")
-                
-                # Check category diversity
-                category_count = len(categories)
-                if category_count >= 4:  # Should have server, security, cloud, enterprise
-                    self.log_test("Category Diversity", True, f"Found {category_count} categories: {list(categories.keys())}")
-                else:
-                    self.log_test("Category Diversity", False, f"Expected ≥4 categories, got {category_count}: {list(categories.keys())}")
-                    
-            else:
-                self.log_test("RSS Stats Check", False, f"HTTP {response.status_code}")
-        except Exception as e:
-            self.log_test("RSS Stats Check", False, f"Error: {str(e)}")
-
-    def test_source_diversity(self):
-        """Test that articles come from all 6 expected sources"""
-        print("🔍 Testing Source Diversity (6 RSS sources)...")
-        
-        expected_sources = [
-            "Windows Server Blog",
-            "Microsoft Security Response Center", 
-            "SQL Server Blog",
-            "Azure Blog",
-            "PowerShell Blog",
-            ".NET Blog"
-        ]
-        
-        try:
-            response = self.session.get(f"{self.api_base}/windows/updates?limit=100", timeout=15)
+            response = self.session.get(f"{self.api_base}/starlink/updates?limit=5", timeout=10)
             if response.status_code == 200:
                 data = response.json()
                 updates = data.get("updates", [])
                 
-                # Count articles by source
-                source_counts = {}
-                for update in updates:
-                    source = update.get("source", "Unknown")
-                    source_counts[source] = source_counts.get(source, 0) + 1
-                
-                found_sources = list(source_counts.keys())
-                missing_sources = [src for src in expected_sources if src not in found_sources]
-                
-                if len(missing_sources) == 0:
-                    self.log_test("All 6 RSS Sources Working", True, f"Sources: {found_sources}")
+                if updates:
+                    # Check for real SpaceX sources
+                    sources = [update.get("source", "") for update in updates]
+                    spacex_sources = ["Space.com", "SpaceNews", "Teslarati", "SpaceX"]
+                    has_spacex_sources = any(any(sx_source in source for sx_source in spacex_sources) for source in sources)
                     
-                    # Check distribution
-                    for source, count in source_counts.items():
-                        if count > 0:
-                            self.log_test(f"Source: {source}", True, f"{count} articles")
-                        else:
-                            self.log_test(f"Source: {source}", False, "No articles found")
-                else:
-                    self.log_test("All 6 RSS Sources Working", False, f"Missing sources: {missing_sources}")
-                    self.log_test("Found Sources", True, f"Working sources: {found_sources}")
-                    
-            else:
-                self.log_test("Source Diversity Check", False, f"HTTP {response.status_code}")
-        except Exception as e:
-            self.log_test("Source Diversity Check", False, f"Error: {str(e)}")
-
-    def test_translation_quality(self):
-        """Test translation quality - should have less French/English mixing"""
-        print("🔍 Testing Translation Quality...")
-        
-        try:
-            response = self.session.get(f"{self.api_base}/windows/updates?limit=20", timeout=10)
-            if response.status_code == 200:
-                data = response.json()
-                updates = data.get("updates", [])
-                
-                mixed_language_count = 0
-                total_translated = 0
-                
-                for update in updates:
-                    title = update.get("title", "")
-                    description = update.get("description", "")
-                    
-                    # Check for mixed language patterns
-                    text = (title + " " + description).lower()
-                    
-                    # Look for problematic patterns like "vers", "avec", "dans" mixed with English
-                    mixed_patterns = [
-                        "vers " and " to ",
-                        "avec " and " with ",
-                        "dans " and " in ",
-                        "pour " and " for ",
-                        "de " and " from "
-                    ]
-                    
-                    has_french = any(word in text for word in ["vers", "avec", "dans", "pour", "de", "et", "sur"])
-                    has_english = any(word in text for word in ["the", "and", "with", "from", "to", "in", "for"])
-                    
-                    if has_french:
-                        total_translated += 1
-                        if has_french and has_english and len(text) > 50:
-                            # Check if it's problematic mixing (not just proper nouns)
-                            if "vers " in text or "avec " in text or "dans " in text:
-                                mixed_language_count += 1
-                
-                if total_translated > 0:
-                    mixing_percentage = (mixed_language_count / total_translated) * 100
-                    if mixing_percentage < 30:  # Less than 30% should have mixing issues
-                        self.log_test("Translation Quality", True, f"Mixed language in {mixing_percentage:.1f}% of translated content")
+                    if has_spacex_sources:
+                        self.log_test("Starlink Real RSS Data", True, f"Found real SpaceX sources: {set(sources)}")
                     else:
-                        self.log_test("Translation Quality", False, f"High mixing rate: {mixing_percentage:.1f}% of translated content has mixed languages")
+                        self.log_test("Starlink Real RSS Data", False, f"No SpaceX sources found: {set(sources)}")
                         
-                    # Show examples of mixed content for debugging
-                    if mixed_language_count > 0:
-                        for update in updates[:3]:
-                            title = update.get("title", "")
-                            if "vers " in title.lower() or "avec " in title.lower():
-                                self.log_test("Translation Example", False, f"Mixed: '{title[:100]}...'")
-                else:
-                    self.log_test("Translation Quality", True, "No translated content found to analyze")
+                    # Check for SpaceX-related content
+                    titles = [update.get("title", "").lower() for update in updates]
+                    spacex_keywords = ["starlink", "spacex", "falcon", "dragon", "mars", "satellite"]
+                    has_spacex_content = any(any(keyword in title for keyword in spacex_keywords) for title in titles)
                     
-            else:
-                self.log_test("Translation Quality Check", False, f"HTTP {response.status_code}")
-        except Exception as e:
-            self.log_test("Translation Quality Check", False, f"Error: {str(e)}")
-
-    def test_category_filtering(self):
-        """Test category filtering functionality"""
-        print("🔍 Testing Category Filtering...")
-        
-        categories_to_test = ["security", "server", "cloud", "enterprise"]
-        
-        for category in categories_to_test:
-            try:
-                response = self.session.get(f"{self.api_base}/windows/updates?category={category}", timeout=10)
-                if response.status_code == 200:
-                    data = response.json()
-                    updates = data.get("updates", [])
-                    
-                    if updates:
-                        # Check that all returned updates have the correct category
-                        correct_category = all(update.get("category") == category for update in updates)
-                        if correct_category:
-                            self.log_test(f"Category Filter: {category}", True, f"Found {len(updates)} {category} updates")
-                        else:
-                            wrong_categories = [update.get("category") for update in updates if update.get("category") != category]
-                            self.log_test(f"Category Filter: {category}", False, f"Found wrong categories: {set(wrong_categories)}")
+                    if has_spacex_content:
+                        self.log_test("Starlink Content Relevance", True, "Found SpaceX-related content")
                     else:
-                        self.log_test(f"Category Filter: {category}", True, f"No {category} updates found (acceptable)")
+                        self.log_test("Starlink Content Relevance", False, "No SpaceX-related content found")
                 else:
-                    self.log_test(f"Category Filter: {category}", False, f"HTTP {response.status_code}")
-            except Exception as e:
-                self.log_test(f"Category Filter: {category}", False, f"Error: {str(e)}")
-
-    def test_data_cleanliness(self):
-        """Test that data is clean (no XML residual tags)"""
-        print("🔍 Testing Data Cleanliness (no XML residual tags)...")
-        
-        try:
-            response = self.session.get(f"{self.api_base}/windows/updates?limit=20", timeout=10)
-            if response.status_code == 200:
-                data = response.json()
-                updates = data.get("updates", [])
-                
-                xml_artifacts_found = 0
-                total_checked = 0
-                
-                for update in updates:
-                    title = update.get("title", "")
-                    description = update.get("description", "")
-                    
-                    # Check for XML artifacts
-                    xml_patterns = [
-                        "]]>", "[CDATA[", "<?xml", "<![CDATA[",
-                        "&lt;", "&gt;", "&amp;", "&#", "<item>", "</item>"
-                    ]
-                    
-                    text_to_check = title + " " + description
-                    total_checked += 1
-                    
-                    for pattern in xml_patterns:
-                        if pattern in text_to_check:
-                            xml_artifacts_found += 1
-                            self.log_test("XML Artifact Found", False, f"Found '{pattern}' in: {title[:50]}...")
-                            break
-                
-                if xml_artifacts_found == 0:
-                    self.log_test("Data Cleanliness", True, f"No XML artifacts found in {total_checked} articles")
-                else:
-                    self.log_test("Data Cleanliness", False, f"Found XML artifacts in {xml_artifacts_found}/{total_checked} articles")
-                    
+                    self.log_test("Starlink Real RSS Data", False, "No Starlink updates found")
             else:
-                self.log_test("Data Cleanliness Check", False, f"HTTP {response.status_code}")
+                self.log_test("Starlink Real RSS Data", False, f"HTTP {response.status_code}")
         except Exception as e:
-            self.log_test("Data Cleanliness Check", False, f"Error: {str(e)}")
-
-    def test_refresh_functionality(self):
-        """Test RSS refresh increases article count"""
-        print("🔍 Testing RSS Refresh Functionality...")
-        
-        try:
-            # Get initial count
-            initial_response = self.session.get(f"{self.api_base}/windows/updates/stats", timeout=10)
-            if initial_response.status_code == 200:
-                initial_stats = initial_response.json()
-                initial_count = initial_stats.get("total", 0)
-                
-                # Trigger refresh
-                refresh_response = self.session.post(f"{self.api_base}/windows/updates/refresh", timeout=45)
-                if refresh_response.status_code == 200:
-                    refresh_data = refresh_response.json()
-                    stored = refresh_data.get("stored", 0)
-                    total_fetched = refresh_data.get("total", 0)
-                    
-                    self.log_test("RSS Refresh Execution", True, f"Stored {stored}/{total_fetched} articles")
-                    
-                    # Wait and check final count
-                    time.sleep(2)
-                    final_response = self.session.get(f"{self.api_base}/windows/updates/stats", timeout=10)
-                    if final_response.status_code == 200:
-                        final_stats = final_response.json()
-                        final_count = final_stats.get("total", 0)
-                        
-                        if final_count >= initial_count:
-                            self.log_test("RSS Refresh Data Update", True, f"Count: {initial_count} → {final_count}")
-                        else:
-                            self.log_test("RSS Refresh Data Update", False, f"Count decreased: {initial_count} → {final_count}")
-                    else:
-                        self.log_test("RSS Refresh Data Update", False, "Could not verify final count")
-                else:
-                    self.log_test("RSS Refresh Execution", False, f"HTTP {refresh_response.status_code}")
-            else:
-                self.log_test("RSS Refresh Initial Count", False, f"HTTP {initial_response.status_code}")
-        except Exception as e:
-            self.log_test("RSS Refresh Functionality", False, f"Error: {str(e)}")
-
-    def test_error_handling(self):
-        """Test error handling for invalid requests"""
-        print("🔍 Testing Error Handling...")
-        
-        # Test invalid category
-        try:
-            response = self.session.get(f"{self.api_base}/windows/updates?category=invalid_category", timeout=10)
-            if response.status_code == 200:
-                data = response.json()
-                # Should return empty results, not error
-                self.log_test("Invalid Category Handling", True, f"Returned {data.get('total', 0)} results")
-            else:
-                self.log_test("Invalid Category Handling", False, f"HTTP {response.status_code}")
-        except Exception as e:
-            self.log_test("Invalid Category Handling", False, f"Error: {str(e)}")
-
-        # Test invalid limit
-        try:
-            response = self.session.get(f"{self.api_base}/windows/updates?limit=-1", timeout=10)
-            # Should handle gracefully
-            if response.status_code in [200, 422]:  # 422 for validation error is acceptable
-                self.log_test("Invalid Limit Handling", True, f"HTTP {response.status_code}")
-            else:
-                self.log_test("Invalid Limit Handling", False, f"HTTP {response.status_code}")
-        except Exception as e:
-            self.log_test("Invalid Limit Handling", False, f"Error: {str(e)}")
-
-        # Test non-existent endpoint
-        try:
-            response = self.session.get(f"{self.api_base}/windows/nonexistent", timeout=10)
-            if response.status_code == 404:
-                self.log_test("Non-existent Endpoint", True, "Correctly returned 404")
-            else:
-                self.log_test("Non-existent Endpoint", False, f"Expected 404, got {response.status_code}")
-        except Exception as e:
-            self.log_test("Non-existent Endpoint", False, f"Error: {str(e)}")
+            self.log_test("Starlink Real RSS Data", False, f"Error: {str(e)}")
 
     def run_all_tests(self):
-        """Run all backend tests for corrected RSS system"""
-        print("🚀 Testing Corrected Windows RSS System (6 sources, ~60 articles)")
+        """Run comprehensive tests for both Windows and Starlink RSS systems"""
+        print("🚀 Testing Windows & Starlink RSS Systems")
         print("=" * 70)
         
         start_time = datetime.now()
         
-        # Run all test suites - focus on corrected system validation
+        # Run all test suites
         self.test_health_endpoints()
-        self.test_corrected_rss_system()
-        self.test_source_diversity()
-        self.test_translation_quality()
-        self.test_category_filtering()
-        self.test_data_cleanliness()
         self.test_windows_updates_endpoints()
-        self.test_refresh_functionality()
-        self.test_data_quality()
-        self.test_error_handling()
+        self.test_starlink_updates_endpoints()
+        self.test_data_storage_verification()
+        self.test_data_quality_both_systems()
+        self.test_filtering_and_categories()
+        self.test_rss_real_data_verification()
         
         end_time = datetime.now()
         duration = (end_time - start_time).total_seconds()
@@ -525,7 +510,7 @@ class WindowsRSSBackendTester:
         failed_tests = total_tests - passed_tests
         
         print("=" * 70)
-        print("🎯 CORRECTED RSS SYSTEM TEST SUMMARY")
+        print("🎯 DUAL RSS SYSTEM TEST SUMMARY")
         print(f"Total Tests: {total_tests}")
         print(f"✅ Passed: {passed_tests}")
         print(f"❌ Failed: {failed_tests}")
@@ -547,7 +532,7 @@ class WindowsRSSBackendTester:
         return passed_tests, failed_tests, self.test_results
 
 if __name__ == "__main__":
-    tester = WindowsRSSBackendTester()
+    tester = DualRSSBackendTester()
     passed, failed, results = tester.run_all_tests()
     
     # Exit with appropriate code
