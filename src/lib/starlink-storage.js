@@ -1,5 +1,6 @@
-import { promises as fs } from &apos;fs&apos;;
-import path from &apos;path&apos;;
+import { promises as fs } from 'fs';
+import path from 'path';
+import { logger } from './logger.js';
 
 class StarlinkStorage {
   constructor() {
