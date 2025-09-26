@@ -440,7 +440,7 @@ class WindowsRSSFetcher {
         const delay = parseInt(process.env.NEXT_PUBLIC_RSS_REQUEST_DELAY) || 1000;
         await new Promise(resolve => setTimeout(resolve, delay));
       } catch (error) {
-        console.error(`❌ Erreur source ${sourceKey}:`, error);
+        logger.error(`❌ Erreur source ${sourceKey}:`, error);
         continue;
       }
     }
