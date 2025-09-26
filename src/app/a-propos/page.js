@@ -98,7 +98,7 @@ export default function AboutPage() {
                 <p>
                   Actuellement en <strong>deuxième année de BTS SIO option SISR</strong> à l'IFC Marseille, 
                   je développe mes compétences en administration système, sécurité réseau et virtualisation. 
-                  Je suis à la recherche d'une <strong>alternance</strong> pour mettre en application mes connaissances 
+                  Je suis à la recherche d&apos;une <strong>alternance</strong> pour mettre en application mes connaissances 
                   et enrichir mon expérience professionnelle dans un environnement technique stimulant.
                 </p>
               </div>
