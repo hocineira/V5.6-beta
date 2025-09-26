@@ -24,28 +24,12 @@ html {
   animation-duration: 12s !important; /* Simplement ralentir au lieu de changer l'animation */
 }
 
-/* Variables CSS critiques uniquement */
-:root {
-  --primary-600: 37 99 235;
-  --background: 255 255 255;
-  --background-secondary: 248 250 252;
-  --background-card: 255 255 255;
-  --text-primary: 15 23 42;
-  --text-secondary: 71 85 105;
-  --text-muted: 148 163 184;
-  --border: 226 232 240;
-  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
-}
-
-.dark {
-  --background: 15 23 42;
-  --background-secondary: 30 41 59;
-  --background-card: 30 41 59;
-  --text-primary: 248 250 252;
-  --text-secondary: 203 213 225;
-  --text-muted: 148 163 184;
-  --border: 51 65 85;
-  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3);
+/* Body configuration optimisé */
+body {
+  background-color: rgb(255, 255, 255);
+  color: rgb(15, 23, 42);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Transitions optimisées pour mobile - Réduit massivement */
@@ -56,35 +40,6 @@ html {
 /* Transitions uniquement pour les éléments interactifs critiques */
 button, a, .interactive {
   transition: background-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
-}
-
-/* Transitions spéciales pour le thème (nécessaire pour dark mode) */
-.theme-transition {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-}
-
-/* Body configuration optimisé */
-body {
-  background-color: rgb(var(--background));
-  color: rgb(var(--text-primary));
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Classes utilitaires performance-critiques */
-@layer utilities {
-  .bg-theme { background-color: rgb(var(--background)); }
-  .bg-theme-secondary { background-color: rgb(var(--background-secondary)); }
-  .bg-theme-card { 
-    background-color: rgb(var(--background-card));
-    border-color: rgb(var(--border));
-    box-shadow: var(--shadow);
-  }
-  .text-theme { color: rgb(var(--text-primary)); }
-  .text-theme-secondary { color: rgb(var(--text-secondary)); }
-  .text-theme-muted { color: rgb(var(--text-muted)); }
-  .border-theme { border-color: rgb(var(--border)); }
-  .shadow-theme { box-shadow: var(--shadow); }
 }
 
 /* ========================================
@@ -159,17 +114,18 @@ body {
     backdrop-filter: blur(12px) !important; /* Réduit de 16px à 12px */
   }
 }
-  .blur-3xl {
-    filter: blur(20px) !important;
-  }
-  
-  .blur-2xl {
-    filter: blur(15px) !important;
-  }
-  
-  .backdrop-blur-sm {
-    backdrop-filter: blur(2px) !important;
-  }
+
+.blur-3xl {
+  filter: blur(20px) !important;
+}
+
+.blur-2xl {
+  filter: blur(15px) !important;
+}
+
+.backdrop-blur-sm {
+  backdrop-filter: blur(2px) !important;
+}
 
 /* Pulse optimisé */
 .animate-pulse-glow, .animate-pulse, .animate-pulse-fast {
@@ -395,38 +351,6 @@ body {
 }
 
 /* ========================================
-   MODE SOMBRE OPTIMISÉ - PERFORMANCE
-   ======================================== */
-
-.dark {
-  color-scheme: dark;
-}
-
-/* Adaptation ciblée des éléments principaux en mode sombre */
-.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
-  color: rgb(var(--text-primary)) !important;
-}
-
-.dark p:not([class*="blue"]):not([class*="purple"]):not([class*="gradient"]) {
-  color: rgb(var(--text-secondary)) !important;
-}
-
-.dark .text-gray-300, .dark .text-gray-400, .dark .text-gray-500 {
-  color: rgb(var(--text-muted)) !important;
-}
-
-.dark .rounded-lg:not([class*="gradient"]):not([class*="bg-blue"]):not([class*="bg-purple"]):not([class*="bg-red"]) {
-  background-color: rgb(var(--background-card)) !important;
-  border-color: rgb(var(--border)) !important;
-}
-
-.dark button:not([class*="gradient"]):not([class*="bg-blue"]):not([class*="bg-purple"]):not([class*="bg-red"]) {
-  background-color: rgb(var(--background-card)) !important;
-  color: rgb(var(--text-primary)) !important;
-  border-color: rgb(var(--border)) !important;
-}
-
-/* ========================================
    SCROLLBAR OPTIMISÉE
    ======================================== */
 
@@ -435,7 +359,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgb(var(--background-secondary));
+  background: rgb(248, 250, 252);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -473,20 +397,16 @@ body {
 }
 
 .skeleton {
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  background: linear-gradient(90deg, transparent, rgba(0,0,0,0.1), transparent);
   background-size: 200px 100%;
   animation: skeleton-shimmer 1.2s ease-in-out infinite;
-}
-
-.dark .skeleton {
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
 }
 
 /* Loading spinner optimisé */
 .loading-spinner {
   width: 16px;
   height: 16px;
-  border: 2px solid rgb(var(--primary-600));
+  border: 2px solid rgb(59 130 246);
   border-top-color: transparent;
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
@@ -497,444 +417,16 @@ body {
 }
 
 /* ========================================
-   COULEURS TECHNOLOGIQUES BLEU/VIOLET
+   EFFETS DE VERRE (GLASSMORPHISM) SIMPLIFIÉS
    ======================================== */
 
-/* Animations technologiques avec couleurs bleu/violet */
-@keyframes tech-glow-blue-violet {
-  0%, 100% { 
-    box-shadow: 0 0 5px rgba(59, 130, 246, 0.3), 0 0 10px rgba(139, 92, 246, 0.2); 
-  }
-  50% { 
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.6), 0 0 30px rgba(139, 92, 246, 0.4), 0 0 40px rgba(167, 139, 250, 0.3); 
-  }
-}
-
-@keyframes pulse-tech-violet {
-  0% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.8; transform: scale(1.05); }
-  100% { opacity: 1; transform: scale(1); }
-}
-
-@keyframes float-tech-blue {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  33% { transform: translateY(-12px) rotate(1deg); }
-  66% { transform: translateY(6px) rotate(-1deg); }
-}
-
-/* Classes utilitaires technologiques bleu/violet */
-.tech-card-blue-violet {
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
-  border: 1px solid rgba(59, 130, 246, 0.3);
-  backdrop-filter: blur(16px);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.tech-card-blue-violet:hover {
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
-  border-color: rgba(147, 51, 234, 0.5);
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2), 0 10px 20px rgba(139, 92, 246, 0.1);
-}
-
-.tech-gradient-blue-violet {
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6, #a855f7);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.tech-border-glow {
-  border: 2px solid transparent;
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(139, 92, 246, 0.3)) border-box;
-  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-  mask-composite: exclude;
-}
-
-/* Effets de particules technologiques */
-.tech-particles {
-  position: relative;
-  overflow: hidden;
-}
-
-.tech-particles::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: 
-    radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.15) 1px, transparent 1px),
-    radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.15) 1px, transparent 1px),
-    radial-gradient(circle at 40% 80%, rgba(167, 139, 250, 0.15) 1px, transparent 1px);
-  background-size: 60px 60px, 80px 80px, 100px 100px;
-  animation: float-tech-blue 20s ease-in-out infinite;
-}
-
-/* Boutons technologiques avec effet néon */
-.tech-button-neon {
-  position: relative;
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-  border: none;
-  transition: all 0.3s ease;
-  overflow: hidden;
-}
-
-.tech-button-neon::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  transition: left 0.6s;
-}
-
-.tech-button-neon:hover::before {
-  left: 100%;
-}
-
-.tech-button-neon:hover {
-  transform: translateY(-3px);
-  box-shadow: 
-    0 15px 35px rgba(59, 130, 246, 0.4),
-    0 5px 15px rgba(139, 92, 246, 0.3),
-    0 0 0 1px rgba(167, 139, 250, 0.2);
-}
-
-/* Progress bars avec dégradé technologique */
-.tech-progress-violet {
-  height: 6px;
-  background: rgba(71, 85, 105, 0.3);
-  border-radius: 3px;
-  overflow: hidden;
-  position: relative;
-}
-
-.tech-progress-violet::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #a855f7);
-  border-radius: 3px;
-  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
-}
-
-/* Glassmorphism avec teinte bleu/violet */
-.glass-tech-violet {
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
-  backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(167, 139, 250, 0.2);
-  box-shadow: 
-    0 8px 32px rgba(59, 130, 246, 0.1),
-    0 4px 16px rgba(139, 92, 246, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-.glass-tech-violet:hover {
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.15));
-  border-color: rgba(147, 51, 234, 0.4);
-  box-shadow: 
-    0 12px 40px rgba(59, 130, 246, 0.2),
-    0 6px 20px rgba(139, 92, 246, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
-}
-
-/* Circuit technologique avec couleurs bleu/violet */
-.circuit-tech-pattern {
-  background-image: 
-    linear-gradient(90deg, rgba(59, 130, 246, 0.3) 1px, transparent 1px),
-    linear-gradient(180deg, rgba(139, 92, 246, 0.3) 1px, transparent 1px);
-  background-size: 40px 40px;
-}
-
-/* Hover effects avec couleurs technologiques */
-.hover-tech-blue:hover {
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.1));
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
-}
-
-.hover-tech-violet:hover {
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(167, 139, 250, 0.1));
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(139, 92, 246, 0.15);
-}
-
-/* Responsive pour couleurs technologiques */
-@media (max-width: 768px) {
-  .tech-card-blue-violet {
-    padding: 1rem;
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(139, 92, 246, 0.08));
-  }
-  
-  .tech-button-neon {
-    padding: 0.75rem 1.5rem;
-    font-size: 0.875rem;
-  }
-  
-  .tech-progress-violet {
-    height: 4px;
-  }
-}
-
-/* Animations modernes pour éléments tech */
-@keyframes tech-glow {
-  0%, 100% { box-shadow: 0 0 5px rgba(6, 182, 212, 0.3); }
-  50% { box-shadow: 0 0 20px rgba(6, 182, 212, 0.6), 0 0 30px rgba(6, 182, 212, 0.4); }
-}
-
-@keyframes pulse-modern {
-  0% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.8; transform: scale(1.05); }
-  100% { opacity: 1; transform: scale(1); }
-}
-
-@keyframes float-tech {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  33% { transform: translateY(-10px) rotate(1deg); }
-  66% { transform: translateY(5px) rotate(-1deg); }
-}
-
-/* Classes utilitaires modernes */
-.tech-card {
-  background: rgba(30, 41, 59, 0.5);
-  border: 1px solid rgba(6, 182, 212, 0.2);
-  backdrop-filter: blur(16px);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.tech-card:hover {
-  background: rgba(30, 41, 59, 0.8);
-  border-color: rgba(6, 182, 212, 0.5);
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-}
-
-.tech-gradient-text {
-  background: linear-gradient(135deg, #06b6d4, #3b82f6);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.tech-grid-bg {
-  background-image: 
-    linear-gradient(90deg, rgba(30, 41, 59, 0.5) 1px, transparent 1px),
-    linear-gradient(180deg, rgba(30, 41, 59, 0.5) 1px, transparent 1px);
-  background-size: 40px 40px;
-}
-
-.circuit-pattern {
-  background-image: 
-    radial-gradient(circle at 25px 25px, rgba(6, 182, 212, 0.3) 1px, transparent 1px);
-  background-size: 50px 50px;
-}
-
-/* Responsive headings modernes */
-.responsive-heading-modern {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  line-height: 1.1;
-  font-weight: 700;
-}
-
-.responsive-text-modern {
-  font-size: clamp(1.125rem, 2.5vw, 1.25rem);
-  line-height: 1.6;
-}
-
-/* Boutons modernes avec effet technologique */
-.tech-button {
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(135deg, #06b6d4, #3b82f6);
-  border: none;
-  transition: all 0.3s ease;
-}
-
-.tech-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.6s;
-}
-
-.tech-button:hover::before {
-  left: 100%;
-}
-
-.tech-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(6, 182, 212, 0.4);
-}
-
-/* Effets de glassmorphism moderne */
-.glass-modern {
-  background: rgba(30, 41, 59, 0.3);
-  backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-.glass-modern:hover {
-  background: rgba(30, 41, 59, 0.5);
-  border-color: rgba(6, 182, 212, 0.3);
-}
-
-/* Status indicators modernes */
-.status-dot {
-  position: relative;
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #06b6d4;
-  animation: pulse-modern 2s infinite;
-}
-
-.status-dot::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: inherit;
-  opacity: 0.3;
-  transform: translate(-50%, -50%) scale(0);
-  animation: ping 2s infinite;
-}
-
-@keyframes ping {
-  75%, 100% {
-    transform: scale(2);
-    opacity: 0;
-  }
-}
-
-/* Progressions bars modernes */
-.progress-modern {
-  height: 4px;
-  background: rgba(71, 85, 105, 0.5);
-  border-radius: 2px;
-  overflow: hidden;
-  position: relative;
-}
-
-.progress-modern::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  background: linear-gradient(90deg, #06b6d4, #3b82f6);
-  border-radius: 2px;
-  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Hover effects modernisés */
-.modern-hover {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.modern-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-}
-
-/* Typography moderne */
-.tech-title {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-}
-
-.tech-subtitle {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  color: #06b6d4;
-}
-
-.tech-body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  font-weight: 400;
-  line-height: 1.6;
-  color: #94a3b8;
-}
-
-/* Media queries pour responsive moderne */
-@media (max-width: 768px) {
-  .tech-card {
-    padding: 1rem;
-  }
-  
-  .responsive-heading-modern {
-    font-size: clamp(2rem, 8vw, 3rem);
-  }
-  
-  .tech-button {
-    padding: 0.75rem 1.5rem;
-    font-size: 0.875rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .tech-grid-bg {
-    background-size: 20px 20px;
-  }
-  
-  .circuit-pattern {
-    background-size: 30px 30px;
-  }
-}
-
-/* ========================================
-   RESPONSIVE UTILITIES OPTIMISÉES
-   ======================================== */
-
-.responsive-text {
-  font-size: clamp(0.875rem, 2.5vw, 1.125rem);
-}
-
-.responsive-heading {
-  font-size: clamp(1.5rem, 5vw, 3rem);
-}
-
-/* Classes no-scroll pour modals */
-.no-scroll {
-  overflow: hidden;
-  touch-action: none;
-}
-
-/* ========================================
-   EFFETS VISUELS RESTAURÉS - OPTIMISÉS
-   ======================================== */
-
-/* ========================================
-   EFFETS DE VERRE (GLASSMORPHISM) PREMIUM - TEXTE LISIBLE
-   ======================================== */
-
-/* Effet de verre moderne - Version avec contraste amélioré */
+/* Effet de verre moderne - Version simplifiée */
 .glass-effect {
   background: rgba(255, 255, 255, 0.15) !important;
   backdrop-filter: blur(16px) saturate(180%) !important;
   -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
   border: 1px solid rgba(255, 255, 255, 0.25) !important;
   box-shadow: 0 8px 32px rgba(31, 38, 135, 0.4) !important;
-  border-radius: 0 !important;
 }
 
 .glass-effect-strong {
@@ -943,38 +435,17 @@ body {
   -webkit-backdrop-filter: blur(20px) saturate(200%) !important;
   border: 1px solid rgba(255, 255, 255, 0.3) !important;
   box-shadow: 0 12px 40px rgba(31, 38, 135, 0.5) !important;
-  border-radius: 0 !important;
 }
 
-/* Mode sombre - Effet de verre adapté */
-.dark .glass-effect {
-  background: rgba(15, 23, 42, 0.3) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
-}
-
-.dark .glass-effect-strong {
-  background: rgba(15, 23, 42, 0.4) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7) !important;
-}
-
-/* ========================================
-   TEXTE DYNAMIQUE - TOUJOURS LISIBLE
-   ======================================== */
-
-/* Texte des éléments de navigation - CONTRASTE DYNAMIQUE */
+/* Navigation avec effet de verre */
 .glass-nav-item {
   background: rgba(255, 255, 255, 0.12) !important;
   backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
   border: 1px solid rgba(255, 255, 255, 0.2) !important;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  
-  /* TEXTE TOUJOURS LISIBLE */
-  color: #1e293b !important; /* Gris foncé par défaut */
-  text-shadow: none !important; /* Suppression de l'ombre qui épaissit le texte */
-  font-weight: 500 !important; /* Réduit l'épaisseur du texte */
+  color: #1e293b !important;
+  font-weight: 500 !important;
 }
 
 .glass-nav-item:hover {
@@ -982,16 +453,15 @@ body {
   border: 1px solid rgba(59, 130, 246, 0.4) !important;
   box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3) !important;
   transform: translateY(-1px) !important;
-  color: #1e293b !important; /* Reste sombre au hover */
+  color: #1e293b !important;
 }
 
-/* Élément actif - GRADIENT mais avec texte contrasté */
+/* Élément actif */
 .glass-nav-item.nav-active {
   background: linear-gradient(to right, rgb(37, 99, 235), rgb(147, 51, 234)) !important;
   border: 1px solid rgba(59, 130, 246, 0.6) !important;
-  color: white !important; /* Blanc sur gradient foncé */
-  text-shadow: none !important; /* Suppression de l'ombre qui épaissit le texte */
-  font-weight: 600 !important; /* Épaisseur réduite même pour l'état actif */
+  color: white !important;
+  font-weight: 600 !important;
   box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4) !important;
 }
 
@@ -1001,41 +471,13 @@ body {
   color: white !important;
 }
 
-/* Mode sombre - Texte adapté */
-.dark .glass-nav-item {
-  background: rgba(30, 41, 59, 0.6) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  color: #e2e8f0 !important; /* Gris clair pour mode sombre */
-  text-shadow: none !important; /* Suppression de l'ombre qui épaissit le texte */
-}
-
-.dark .glass-nav-item:hover {
-  background: rgba(59, 130, 246, 0.3) !important;
-  border: 1px solid rgba(59, 130, 246, 0.5) !important;
-  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4) !important;
-  color: white !important;
-}
-
-.dark .glass-nav-item.nav-active {
-  background: linear-gradient(to right, rgb(37, 99, 235), rgb(147, 51, 234)) !important;
-  border: 1px solid rgba(59, 130, 246, 0.7) !important;
-  color: white !important;
-  text-shadow: none !important; /* Suppression de l'ombre qui épaissit le texte */
-}
-
-/* ========================================
-   MOBILE - TEXTE LISIBLE
-   ======================================== */
-
-/* Navigation mobile - Bouton hamburger avec texte contrasté */
+/* Navigation mobile - Bouton hamburger */
 .mobile-glass-button {
   background: rgba(255, 255, 255, 0.2) !important;
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
   border: 1px solid rgba(255, 255, 255, 0.25) !important;
   box-shadow: 0 4px 16px rgba(31, 38, 135, 0.3) !important;
-  
-  /* TEXTE MOBILE LISIBLE */
   color: #1e293b !important;
 }
 
@@ -1046,43 +488,13 @@ body {
   color: #1e293b !important;
 }
 
-.dark .mobile-glass-button {
-  background: rgba(30, 41, 59, 0.7) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5) !important;
-  color: #e2e8f0 !important;
-}
-
-.dark .mobile-glass-button:hover {
-  background: rgba(59, 130, 246, 0.4) !important;
-  border: 1px solid rgba(59, 130, 246, 0.6) !important;
-  color: white !important;
-}
-
-/* Effet de verre pour mobile menu - Plus opaque pour lisibilité */
+/* Effet de verre pour mobile menu */
 .mobile-glass-menu {
   background: rgba(255, 255, 255, 0.25) !important;
   backdrop-filter: blur(20px) saturate(180%) !important;
   -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
   border-left: 1px solid rgba(255, 255, 255, 0.3) !important;
   box-shadow: -10px 0 50px rgba(31, 38, 135, 0.4) !important;
-}
-
-.dark .mobile-glass-menu {
-  background: rgba(15, 23, 42, 0.4) !important;
-  border-left: 1px solid rgba(255, 255, 255, 0.2) !important;
-  box-shadow: -10px 0 50px rgba(0, 0, 0, 0.7) !important;
-}
-
-/* Logo - Texte toujours lisible */
-.glass-effect .text-gray-700 {
-  color: #1e293b !important;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8) !important;
-}
-
-.dark .glass-effect .text-gray-300 {
-  color: #e2e8f0 !important;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
 }
 
 /* Effet de brillance sur le verre */
@@ -1112,22 +524,7 @@ body {
   left: 100%;
 }
 
-/* Effet de verre pour mobile menu */
-.mobile-glass-menu {
-  background: rgba(255, 255, 255, 0.12) !important;
-  backdrop-filter: blur(20px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
-  border-left: 1px solid rgba(255, 255, 255, 0.25) !important;
-  box-shadow: -10px 0 50px rgba(31, 38, 135, 0.4) !important;
-}
-
-.dark .mobile-glass-menu {
-  background: rgba(15, 23, 42, 0.25) !important;
-  border-left: 1px solid rgba(255, 255, 255, 0.15) !important;
-  box-shadow: -10px 0 50px rgba(0, 0, 0, 0.6) !important;
-}
-
-/* Boutons modernes - RESTAURÉS */
+/* Boutons modernes */
 .btn-modern {
   position: relative;
   overflow: hidden;
@@ -1149,28 +546,17 @@ body {
   left: 100%;
 }
 
-/* Bordures animées - OPTIMISÉES mais PRÉSENTES */
-.border-animated {
-  position: relative;
+/* Responsive utilities optimisées */
+.responsive-text {
+  font-size: clamp(0.875rem, 2.5vw, 1.125rem);
+}
+
+.responsive-heading {
+  font-size: clamp(1.5rem, 5vw, 3rem);
+}
+
+/* Classes no-scroll pour modals */
+.no-scroll {
   overflow: hidden;
-}
-
-.border-animated::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4, #ec4899);
-  background-size: 400% 400%;
-  animation: gradient-shift 3s ease infinite;
-  z-index: -1;
-  margin: -2px;
-  border-radius: inherit;
-}
-
-.border-animated > * {
-  position: relative;
-  z-index: 1;
+  touch-action: none;
 }
