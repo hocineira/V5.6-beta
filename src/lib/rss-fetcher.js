@@ -448,7 +448,7 @@ class WindowsRSSFetcher {
     // Sort by publication date (newest first)
     allUpdates.sort((a, b) => new Date(b.published_date) - new Date(a.published_date));
     
-    console.log(`🎯 Total mises à jour récupérées : ${allUpdates.length}`);
+    logger.rss(`🎯 Total mises à jour récupérées : ${allUpdates.length}`);
     return allUpdates;
   }
 }
