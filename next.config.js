@@ -90,15 +90,7 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   
-  // API proxy to backend server
-  async rewrites() {
-    return [
-      {
-        source: '/api/:path*',
-        destination: 'http://localhost:8001/api/:path*',
-      },
-    ]
-  }
+  // Note: Removed API proxy - using Next.js API routes instead of FastAPI backend
 }
 
 module.exports = nextConfig
