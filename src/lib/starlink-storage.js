@@ -129,6 +129,40 @@ class StarlinkStorage {
     
     return sortedUpdates;
   }
+
+  async getAllStarlinkUpdates() {
+    const data = await this.loadStarlinkUpdates();
+    return data.updates || [];
+  }
+
+  async saveStarlinkUpdate(updateData) {
+    try {
+      // Load existing updates
+      const existingData = await this.loadStarlinkUpdates();
+      let updates = existingData.updates || [];
+
+      // Check if update already exists (by ID or title+link)
+      const exists = updates.some(update => 
+        update.id === updateData.id || 
+        (update.title === updateData.title && update.link === updateData.link)
+      );
+
+      if (!exists) {
+        updates.push(updateData);
+        console.log(`➕ Nouvelle actualité Starlink ajoutée: ${updateData.title}`);
+      } else {
+        console.log(`⚠️ Actualité Starlink existe déjà: ${updateData.title}`);
+      }
+
+      // Save back
+      await this.saveStarlinkUpdates(updates);
+      
+      return updateData;
+    } catch (error) {
+      console.error('❌ Erreur sauvegarde update Starlink:', error);
+      throw error;
+    }
+  }
 }
 
 export const starlinkStorage = new StarlinkStorage();
