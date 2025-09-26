@@ -1,8 +1,8 @@
-&apos;use client&apos;
+'use client'
 
-import { useState, useEffect, useRef } from &apos;react&apos;
-import { X, Download, ExternalLink, Maximize2, AlertCircle, RefreshCw, CheckCircle } from &apos;lucide-react&apos;
-import { Button } from &apos;./ui/button&apos;
+import { useState, useEffect, useRef } from 'react'
+import { X, Download, ExternalLink, Maximize2, AlertCircle, RefreshCw, CheckCircle } from 'lucide-react'
+import { Button } from './ui/button'
 
 export default function PDFModalBlob({ isOpen, onClose, pdfUrl, title }) {
   const [isLoading, setIsLoading] = useState(true)
@@ -14,7 +14,7 @@ export default function PDFModalBlob({ isOpen, onClose, pdfUrl, title }) {
 
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = &apos;hidden&apos;
+      document.body.style.overflow = 'hidden'
       setIsLoading(true)
       setError(false)
       setBlobUrl(null)
@@ -22,7 +22,7 @@ export default function PDFModalBlob({ isOpen, onClose, pdfUrl, title }) {
       // Fetch PDF et créer blob URL
       fetchPDFAsBlob()
     } else {
-      document.body.style.overflow = &apos;unset&apos;
+      document.body.style.overflow = 'unset'
       if (loadTimeout) {
         clearTimeout(loadTimeout)
         setLoadTimeout(null)
@@ -35,7 +35,7 @@ export default function PDFModalBlob({ isOpen, onClose, pdfUrl, title }) {
     }
 
     return () => {
-      document.body.style.overflow = &apos;unset&apos;
+      document.body.style.overflow = 'unset'
       if (loadTimeout) {
         clearTimeout(loadTimeout)
       }
@@ -47,16 +47,16 @@ export default function PDFModalBlob({ isOpen, onClose, pdfUrl, title }) {
 
   const fetchPDFAsBlob = async () => {
     try {
-      console.log(&apos;Fetching PDF:&apos;, pdfUrl)
+      console.log('Fetching PDF:', pdfUrl)
       
-      // Essayer d&apos;abord l&apos;API
-      const filename = pdfUrl.split(&apos;/&apos;).pop()
+      // Essayer d'abord l'API
+      const filename = pdfUrl.split('/').pop()
       const apiUrl = `/api/pdf/${filename}`
       
       let response = await fetch(apiUrl)
       
       if (!response.ok) {
-        console.log(&apos;API failed, trying direct URL&apos;)
+        console.log('API failed, trying direct URL')
         response = await fetch(pdfUrl)
       }
       
@@ -65,12 +65,12 @@ export default function PDFModalBlob({ isOpen, onClose, pdfUrl, title }) {
       }
       
       const blob = await response.blob()
-      console.log(&apos;PDF blob created:&apos;, blob.type, blob.size)
+      console.log('PDF blob created:', blob.type, blob.size)
       
-      // Vérifier que c&apos;est bien un PDF
-      if (blob.type !== &apos;application/pdf&apos; && !blob.type.includes(&apos;pdf&apos;)) {
+      // Vérifier que c'est bien un PDF
+      if (blob.type !== 'application/pdf' && !blob.type.includes('pdf')) {
         // Forcer le type PDF
-        const pdfBlob = new Blob([blob], { type: &apos;application/pdf&apos; })
+        const pdfBlob = new Blob([blob], { type: 'application/pdf' })
         const url = URL.createObjectURL(pdfBlob)
         setBlobUrl(url)
       } else {
@@ -79,41 +79,41 @@ export default function PDFModalBlob({ isOpen, onClose, pdfUrl, title }) {
       }
       
       setIsLoading(false)
-      console.log(&apos;Blob URL created successfully&apos;)
+      console.log('Blob URL created successfully')
     } catch (err) {
-      console.error(&apos;Error fetching PDF:&apos;, err)
+      console.error('Error fetching PDF:', err)
       setError(true)
       setIsLoading(false)
     }
   }
 
   const handleDownload = () => {
-    const link = document.createElement(&apos;a&apos;)
+    const link = document.createElement('a')
     if (blobUrl) {
       link.href = blobUrl
     } else {
       link.href = pdfUrl
     }
-    link.download = title ? `${title.replace(/[^a-z0-9]/gi, &apos;_&apos;)}.pdf` : &apos;procedure.pdf&apos;
+    link.download = title ? `${title.replace(/[^a-z0-9]/gi, '_')}.pdf` : 'procedure.pdf'
     link.click()
   }
 
   const handleOpenInNewTab = () => {
     if (blobUrl) {
-      window.open(blobUrl, &apos;_blank&apos;)
+      window.open(blobUrl, '_blank')
     } else {
-      window.open(pdfUrl, &apos;_blank&apos;)
+      window.open(pdfUrl, '_blank')
     }
   }
 
   const handleIframeLoad = () => {
-    console.log(&apos;PDF iframe loaded successfully&apos;)
+    console.log('PDF iframe loaded successfully')
     setIsLoading(false)
     setError(false)
   }
 
   const handleIframeError = () => {
-    console.log(&apos;PDF iframe failed to load&apos;)
+    console.log('PDF iframe failed to load')
     setError(true)
     setIsLoading(false)
   }
@@ -123,15 +123,15 @@ export default function PDFModalBlob({ isOpen, onClose, pdfUrl, title }) {
   }
 
   const handleKeyDown = (e) => {
-    if (e.key === &apos;Escape&apos;) {
+    if (e.key === 'Escape') {
       onClose()
     }
   }
 
   useEffect(() => {
     if (isOpen) {
-      document.addEventListener(&apos;keydown&apos;, handleKeyDown)
-      return () => document.removeEventListener(&apos;keydown&apos;, handleKeyDown)
+      document.addEventListener('keydown', handleKeyDown)
+      return () => document.removeEventListener('keydown', handleKeyDown)
     }
   }, [isOpen])
 
@@ -158,8 +158,8 @@ export default function PDFModalBlob({ isOpen, onClose, pdfUrl, title }) {
       {/* Modal Content */}
       <div className={`relative bg-white rounded-xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300 ${
         isFullscreen 
-          ? &apos;w-full h-full max-w-none max-h-none m-0 rounded-none&apos; 
-          : &apos;w-full h-full max-w-6xl max-h-[90vh] m-4&apos;
+          ? 'w-full h-full max-w-none max-h-none m-0 rounded-none' 
+          : 'w-full h-full max-w-6xl max-h-[90vh] m-4'
       }`}>
         
         {/* Header */}
@@ -249,8 +249,8 @@ export default function PDFModalBlob({ isOpen, onClose, pdfUrl, title }) {
               <div className="text-6xl mb-4">📄</div>
               <h3 className="text-xl font-semibold mb-2 text-gray-800">Impossible de charger le PDF</h3>
               <p className="text-gray-600 mb-6 max-w-md">
-                Une erreur s&apos;est produite lors du chargement du PDF. 
-                Vous pouvez réessayer, le télécharger, ou l&apos;ouvrir dans un nouvel onglet.
+                Une erreur s'est produite lors du chargement du PDF. 
+                Vous pouvez réessayer, le télécharger, ou l'ouvrir dans un nouvel onglet.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Button

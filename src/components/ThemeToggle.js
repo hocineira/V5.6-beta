@@ -1,14 +1,14 @@
-&apos;use client&apos;
+'use client'
 
-import React from &apos;react&apos;
-import { Sun, Moon } from &apos;lucide-react&apos;
-import { useTheme } from &apos;../contexts/ThemeContext&apos;
+import React from 'react'
+import { Sun, Moon } from 'lucide-react'
+import { useTheme } from '../contexts/ThemeContext'
 
 export default function ThemeToggle() {
   const { isDark, toggleTheme, mounted } = useTheme()
   
   // Flag pour activer/désactiver le mode sombre
-  const isDarkModeEnabled = process.env.NEXT_PUBLIC_ENABLE_DARK_MODE === &apos;true&apos;
+  const isDarkModeEnabled = process.env.NEXT_PUBLIC_ENABLE_DARK_MODE === 'true'
   
   // Si le mode sombre est désactivé, ne pas afficher le bouton
   if (!isDarkModeEnabled) {
@@ -26,7 +26,7 @@ export default function ThemeToggle() {
     <button
       onClick={toggleTheme}
       className="fixed top-4 right-4 z-50 touch-target mobile-ripple mobile-press-effect w-14 h-14 sm:w-12 sm:h-12 bg-white/90 dark:bg-gray-800/90 backdrop-blur-md rounded-xl shadow-lg hover:shadow-xl border border-gray-200/50 dark:border-gray-700/50 flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 group"
-      aria-label={isDark ? &apos;Activer le mode clair&apos; : &apos;Activer le mode sombre&apos;}
+      aria-label={isDark ? 'Activer le mode clair' : 'Activer le mode sombre'}
       onTouchStart={() => {
         // Vibration haptique supprimée pour optimisation mobile
       }}
@@ -35,21 +35,21 @@ export default function ThemeToggle() {
         {/* Icône Soleil */}
         <Sun 
           className={`absolute inset-0 w-6 h-6 text-yellow-500 transition-all duration-500 transform ${
-            isDark ? &apos;rotate-90 scale-0 opacity-0&apos; : &apos;rotate-0 scale-100 opacity-100&apos;
+            isDark ? 'rotate-90 scale-0 opacity-0' : 'rotate-0 scale-100 opacity-100'
           }`}
         />
         
         {/* Icône Lune */}
         <Moon 
           className={`absolute inset-0 w-6 h-6 text-blue-400 transition-all duration-500 transform ${
-            isDark ? &apos;rotate-0 scale-100 opacity-100&apos; : &apos;-rotate-90 scale-0 opacity-0&apos;
+            isDark ? 'rotate-0 scale-100 opacity-100' : '-rotate-90 scale-0 opacity-0'
           }`}
         />
       </div>
 
       {/* Effet de glow au hover - Plus visible sur mobile */}
       <div className={`absolute inset-0 rounded-xl opacity-0 group-hover:opacity-30 group-active:opacity-40 transition-opacity duration-300 ${
-        isDark ? &apos;bg-blue-400&apos; : &apos;bg-yellow-500&apos;
+        isDark ? 'bg-blue-400' : 'bg-yellow-500'
       }`} />
     </button>
   )

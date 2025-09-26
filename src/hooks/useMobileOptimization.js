@@ -1,6 +1,6 @@
-&apos;use client&apos;
+'use client'
 
-import { useState, useEffect } from &apos;react&apos;
+import { useState, useEffect } from 'react'
 
 export function useMobileDetection() {
   const [isMobile, setIsMobile] = useState(false)
@@ -12,12 +12,12 @@ export function useMobileDetection() {
       const width = window.innerWidth
       setIsMobile(width < 768)
       setIsTablet(width >= 768 && width < 1024)
-      setIsTouch(&apos;ontouchstart&apos; in window)
+      setIsTouch('ontouchstart' in window)
     }
 
     checkDevice()
-    window.addEventListener(&apos;resize&apos;, checkDevice)
-    return () => window.removeEventListener(&apos;resize&apos;, checkDevice)
+    window.addEventListener('resize', checkDevice)
+    return () => window.removeEventListener('resize', checkDevice)
   }, [])
 
   return { isMobile, isTablet, isTouch, isDesktop: !isMobile && !isTablet }
@@ -26,25 +26,25 @@ export function useMobileDetection() {
 export function useTouchFeedback() {
   const addRippleEffect = (event) => {
     const button = event.currentTarget
-    const ripple = document.createElement(&apos;span&apos;)
+    const ripple = document.createElement('span')
     const rect = button.getBoundingClientRect()
     const size = Math.max(rect.width, rect.height)
     const x = event.clientX - rect.left - size / 2
     const y = event.clientY - rect.top - size / 2
     
-    ripple.style.width = ripple.style.height = size + &apos;px&apos;
-    ripple.style.left = x + &apos;px&apos;
-    ripple.style.top = y + &apos;px&apos;
-    ripple.style.position = &apos;absolute&apos;
-    ripple.style.borderRadius = &apos;50%&apos;
-    ripple.style.backgroundColor = &apos;rgba(255, 255, 255, 0.5)&apos;
-    ripple.style.pointerEvents = &apos;none&apos;
-    ripple.style.transform = &apos;scale(0)&apos;
-    ripple.style.animation = &apos;ripple 0.6s ease-out&apos;
-    ripple.style.zIndex = &apos;1&apos;
+    ripple.style.width = ripple.style.height = size + 'px'
+    ripple.style.left = x + 'px'
+    ripple.style.top = y + 'px'
+    ripple.style.position = 'absolute'
+    ripple.style.borderRadius = '50%'
+    ripple.style.backgroundColor = 'rgba(255, 255, 255, 0.5)'
+    ripple.style.pointerEvents = 'none'
+    ripple.style.transform = 'scale(0)'
+    ripple.style.animation = 'ripple 0.6s ease-out'
+    ripple.style.zIndex = '1'
 
-    button.style.position = &apos;relative&apos;
-    button.style.overflow = &apos;hidden&apos;
+    button.style.position = 'relative'
+    button.style.overflow = 'hidden'
     button.appendChild(ripple)
 
     setTimeout(() => {

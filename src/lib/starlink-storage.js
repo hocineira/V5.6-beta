@@ -4,8 +4,8 @@ import { logger } from './logger.js';
 
 class StarlinkStorage {
   constructor() {
-    this.dataDir = path.join(process.cwd(), &apos;data&apos;);
-    this.starlinkCacheFile = path.join(this.dataDir, &apos;starlink-cache.json&apos;);
+    this.dataDir = path.join(process.cwd(), 'data');
+    this.starlinkCacheFile = path.join(this.dataDir, 'starlink-cache.json');
   }
 
   async ensureDataDir() {
@@ -31,7 +31,7 @@ class StarlinkStorage {
       
       return data;
     } catch (error) {
-      console.error(&apos;❌ Erreur sauvegarde Starlink:&apos;, error);
+      console.error('❌ Erreur sauvegarde Starlink:', error);
       throw error;
     }
   }
@@ -40,7 +40,7 @@ class StarlinkStorage {
     try {
       await this.ensureDataDir();
       
-      const fileContent = await fs.readFile(this.starlinkCacheFile, &apos;utf-8&apos;);
+      const fileContent = await fs.readFile(this.starlinkCacheFile, 'utf-8');
       const data = JSON.parse(fileContent);
       
       console.log(`📖 ${data.total || 0} actualités Starlink chargées du cache`);
@@ -51,12 +51,12 @@ class StarlinkStorage {
         lastUpdated: data.lastUpdated
       };
     } catch (error) {
-      if (error.code === &apos;ENOENT&apos;) {
-        console.log(&apos;📝 Aucun cache Starlink trouvé, retour données vides&apos;);
+      if (error.code === 'ENOENT') {
+        console.log('📝 Aucun cache Starlink trouvé, retour données vides');
         return { updates: [], total: 0, lastUpdated: null };
       }
       
-      console.error(&apos;❌ Erreur chargement cache Starlink:&apos;, error);
+      console.error('❌ Erreur chargement cache Starlink:', error);
       throw error;
     }
   }
@@ -73,7 +73,7 @@ class StarlinkStorage {
     // Count by categories
     if (data.updates) {
       data.updates.forEach(update => {
-        const category = update.category || &apos;unknown&apos;;
+        const category = update.category || 'unknown';
         stats.categories[category] = (stats.categories[category] || 0) + 1;
       });
     }
@@ -119,7 +119,7 @@ class StarlinkStorage {
     }
     
     const filtered = data.updates.filter(update => 
-      category === &apos;all&apos; || update.category === category
+      category === 'all' || update.category === category
     );
     
     // Sort by publication date (newest first) and limit

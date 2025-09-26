@@ -1,14 +1,14 @@
-&apos;use client&apos;
+'use client'
 
-import { useState, useEffect, useRef } from &apos;react&apos;
-import { X, Download, ExternalLink, Maximize2, AlertCircle, RefreshCw, CheckCircle } from &apos;lucide-react&apos;
-import { Button } from &apos;./ui/button&apos;
+import { useState, useEffect, useRef } from 'react'
+import { X, Download, ExternalLink, Maximize2, AlertCircle, RefreshCw, CheckCircle } from 'lucide-react'
+import { Button } from './ui/button'
 
 export default function PDFModalFinal({ isOpen, onClose, pdfUrl, title }) {
   const [isLoading, setIsLoading] = useState(true)
   const [isFullscreen, setIsFullscreen] = useState(false)
   const [error, setError] = useState(false)
-  const [viewMode, setViewMode] = useState(&apos;standard&apos;) // &apos;standard&apos;, &apos;api&apos;, &apos;pdfjs&apos;, &apos;download&apos;
+  const [viewMode, setViewMode] = useState('standard') // 'standard', 'api', 'pdfjs', 'download'
 
   // IMPORTANT: useRef for timers to avoid re-render loops that reset timeouts
   const loadTimeoutRef = useRef(null)
@@ -17,10 +17,10 @@ export default function PDFModalFinal({ isOpen, onClose, pdfUrl, title }) {
   // Setup/cleanup when modal opens/closes
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = &apos;hidden&apos;
+      document.body.style.overflow = 'hidden'
       setIsLoading(true)
       setError(false)
-      setViewMode(&apos;standard&apos;)
+      setViewMode('standard')
 
       // Clear any previous timer then start a new one
       if (loadTimeoutRef.current) {
@@ -30,10 +30,10 @@ export default function PDFModalFinal({ isOpen, onClose, pdfUrl, title }) {
       loadTimeoutRef.current = setTimeout(() => {
         // Switch to API mode if standard iframe did not load in time
         setIsLoading(false)
-        setViewMode(&apos;api&apos;)
+        setViewMode('api')
       }, 6000)
     } else {
-      document.body.style.overflow = &apos;unset&apos;
+      document.body.style.overflow = 'unset'
       if (loadTimeoutRef.current) {
         clearTimeout(loadTimeoutRef.current)
         loadTimeoutRef.current = null
@@ -41,7 +41,7 @@ export default function PDFModalFinal({ isOpen, onClose, pdfUrl, title }) {
     }
 
     return () => {
-      document.body.style.overflow = &apos;unset&apos;
+      document.body.style.overflow = 'unset'
       if (loadTimeoutRef.current) {
         clearTimeout(loadTimeoutRef.current)
         loadTimeoutRef.current = null
@@ -50,18 +50,18 @@ export default function PDFModalFinal({ isOpen, onClose, pdfUrl, title }) {
   }, [isOpen])
 
   const handleDownload = () => {
-    const link = document.createElement(&apos;a&apos;)
+    const link = document.createElement('a')
     link.href = pdfUrl
-    link.download = title ? `${title.replace(/[^a-z0-9]/gi, &apos;_&apos;)}.pdf` : &apos;procedure.pdf&apos;
+    link.download = title ? `${title.replace(/[^a-z0-9]/gi, '_')}.pdf` : 'procedure.pdf'
     link.click()
   }
 
   const handleOpenInNewTab = () => {
-    if (viewMode === &apos;api&apos;) {
-      const filename = pdfUrl.split(&apos;/&apos;).pop()
-      window.open(`/api/pdf/${filename}`, &apos;_blank&apos;)
+    if (viewMode === 'api') {
+      const filename = pdfUrl.split('/').pop()
+      window.open(`/api/pdf/${filename}`, '_blank')
     } else {
-      window.open(pdfUrl, &apos;_blank&apos;)
+      window.open(pdfUrl, '_blank')
     }
   }
 
@@ -82,29 +82,29 @@ export default function PDFModalFinal({ isOpen, onClose, pdfUrl, title }) {
       loadTimeoutRef.current = null
     }
     setIsLoading(false)
-    setViewMode(&apos;api&apos;)
+    setViewMode('api')
   }
 
   const toggleFullscreen = () => setIsFullscreen(!isFullscreen)
 
   const handleKeyDown = (e) => {
-    if (e.key === &apos;Escape&apos;) onClose()
+    if (e.key === 'Escape') onClose()
   }
 
   useEffect(() => {
     if (!isOpen) return
-    document.addEventListener(&apos;keydown&apos;, handleKeyDown)
-    return () => document.removeEventListener(&apos;keydown&apos;, handleKeyDown)
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
   }, [isOpen])
 
   // Helper URL builders
   const getAPIUrl = () => {
-    const filename = pdfUrl.split(&apos;/&apos;).pop()
+    const filename = pdfUrl.split('/').pop()
     return `/api/pdf/${filename}#toolbar=1&navpanes=1&scrollbar=1&zoom=fit`
   }
 
   const getPDFJSUrl = () => {
-    const filename = pdfUrl.split(&apos;/&apos;).pop()
+    const filename = pdfUrl.split('/').pop()
     const apiUrl = `${window.location.origin}/api/pdf/${filename}`
     return `https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(apiUrl)}`
   }
@@ -116,10 +116,10 @@ export default function PDFModalFinal({ isOpen, onClose, pdfUrl, title }) {
     }
     setIsLoading(true)
     setError(false)
-    setViewMode(&apos;standard&apos;)
+    setViewMode('standard')
     loadTimeoutRef.current = setTimeout(() => {
       setIsLoading(false)
-      setViewMode(&apos;api&apos;)
+      setViewMode('api')
     }, 4000)
   }
 
@@ -129,11 +129,11 @@ export default function PDFModalFinal({ isOpen, onClose, pdfUrl, title }) {
       loadTimeoutRef.current = null
     }
     setIsLoading(true)
-    setViewMode(&apos;api&apos;)
+    setViewMode('api')
     loadTimeoutRef.current = setTimeout(() => {
       // If API mode also stalls, try PDF.js
       setIsLoading(false)
-      setViewMode(&apos;pdfjs&apos;)
+      setViewMode('pdfjs')
     }, 5000)
   }
 
@@ -143,7 +143,7 @@ export default function PDFModalFinal({ isOpen, onClose, pdfUrl, title }) {
       loadTimeoutRef.current = null
     }
     setIsLoading(true)
-    setViewMode(&apos;pdfjs&apos;)
+    setViewMode('pdfjs')
     loadTimeoutRef.current = setTimeout(() => {
       setIsLoading(false)
       setError(true)
@@ -154,21 +154,21 @@ export default function PDFModalFinal({ isOpen, onClose, pdfUrl, title }) {
 
   const getStatusText = () => {
     switch (viewMode) {
-      case &apos;standard&apos;: return &apos;Standard&apos;
-      case &apos;api&apos;: return &apos;Mode serveur&apos;
-      case &apos;pdfjs&apos;: return &apos;Mode compatibilité&apos;
-      case &apos;download&apos;: return &apos;Téléchargement&apos;
-      default: return &apos;Standard&apos;
+      case 'standard': return 'Standard'
+      case 'api': return 'Mode serveur'
+      case 'pdfjs': return 'Mode compatibilité'
+      case 'download': return 'Téléchargement'
+      default: return 'Standard'
     }
   }
 
   const getStatusColor = () => {
     switch (viewMode) {
-      case &apos;standard&apos;: return &apos;text-blue-600&apos;
-      case &apos;api&apos;: return &apos;text-green-600&apos;
-      case &apos;pdfjs&apos;: return &apos;text-orange-600&apos;
-      case &apos;download&apos;: return &apos;text-purple-600&apos;
-      default: return &apos;text-gray-600&apos;
+      case 'standard': return 'text-blue-600'
+      case 'api': return 'text-green-600'
+      case 'pdfjs': return 'text-orange-600'
+      case 'download': return 'text-purple-600'
+      default: return 'text-gray-600'
     }
   }
 
@@ -183,8 +183,8 @@ export default function PDFModalFinal({ isOpen, onClose, pdfUrl, title }) {
       {/* Modal Content */}
       <div className={`relative bg-white rounded-xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300 ${
         isFullscreen 
-          ? &apos;w-full h-full max-w-none max-h-none m-0 rounded-none&apos; 
-          : &apos;w-full h-full max-w-6xl max-h-[90vh] m-4&apos;
+          ? 'w-full h-full max-w-none max-h-none m-0 rounded-none' 
+          : 'w-full h-full max-w-6xl max-h-[90vh] m-4'
       }`}>
         
         {/* Header */}
@@ -234,7 +234,7 @@ export default function PDFModalFinal({ isOpen, onClose, pdfUrl, title }) {
             )}
             
             {/* Retry Button */}
-            {(error || viewMode !== &apos;standard&apos;) && (
+            {(error || viewMode !== 'standard') && (
               <Button
                 variant="ghost"
                 size="sm"
@@ -296,7 +296,7 @@ export default function PDFModalFinal({ isOpen, onClose, pdfUrl, title }) {
             // Error fallback
             <div className="flex flex-col items-center justify-center h-full p-4 text-center">
               <div className="text-6xl mb-4">📄</div>
-              <h3 className="text-xl font-semibold mb-2 text-gray-800">Impossible d&apos;afficher le PDF</h3>
+              <h3 className="text-xl font-semibold mb-2 text-gray-800">Impossible d'afficher le PDF</h3>
               <p className="text-gray-600 mb-6 max-w-md">
                 Votre navigateur ne peut pas afficher ce PDF directement. 
                 Essayez les options ci-dessous ou téléchargez le fichier.
@@ -336,7 +336,7 @@ export default function PDFModalFinal({ isOpen, onClose, pdfUrl, title }) {
           ) : (
             // PDF Display
             <div className="w-full h-full">
-              {viewMode === &apos;api&apos; && !isLoading && (
+              {viewMode === 'api' && !isLoading && (
                 <div className="absolute top-16 left-4 right-4 p-2 bg-green-50 border border-green-200 rounded-lg text-sm text-green-800 mb-2 z-20">
                   <div className="flex items-center gap-2">
                     <CheckCircle className="w-4 h-4" />
@@ -345,7 +345,7 @@ export default function PDFModalFinal({ isOpen, onClose, pdfUrl, title }) {
                 </div>
               )}
               
-              {viewMode === &apos;pdfjs&apos; && !isLoading && (
+              {viewMode === 'pdfjs' && !isLoading && (
                 <div className="absolute top-16 left-4 right-4 p-2 bg-orange-50 border border-orange-200 rounded-lg text-sm text-orange-800 mb-2 z-20">
                   <div className="flex items-center gap-2">
                     <AlertCircle className="w-4 h-4" />
@@ -357,11 +357,11 @@ export default function PDFModalFinal({ isOpen, onClose, pdfUrl, title }) {
               <iframe
                 ref={iframeRef}
                 src={
-                  viewMode === &apos;api&apos; ? getAPIUrl() :
-                  viewMode === &apos;pdfjs&apos; ? getPDFJSUrl() :
+                  viewMode === 'api' ? getAPIUrl() :
+                  viewMode === 'pdfjs' ? getPDFJSUrl() :
                   `${pdfUrl}#toolbar=1&navpanes=1&scrollbar=1&zoom=fit`
                 }
-                className={`w-full h-full border-0 ${viewMode !== &apos;standard&apos; ? &apos;mt-12&apos; : &apos;&apos;}`}
+                className={`w-full h-full border-0 ${viewMode !== 'standard' ? 'mt-12' : ''}`}
                 title={title}
                 onLoad={handleIframeLoad}
                 onError={handleIframeError}

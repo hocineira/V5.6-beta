@@ -1,12 +1,12 @@
-&apos;use client&apos;
+'use client'
 
-import { Badge } from &apos;../../../components/ui/badge&apos;
-import { Button } from &apos;../../../components/ui/button&apos;
+import { Badge } from '../../../components/ui/badge'
+import { Button } from '../../../components/ui/button'
 import { 
   Clock, ArrowLeft, BookOpen, Calendar, 
   Construction, GraduationCap, Code, Server
-} from &apos;lucide-react&apos;
-import Link from &apos;next/link&apos;
+} from 'lucide-react'
+import Link from 'next/link'
 
 export default function ProjetsE6() {
   return (
@@ -31,13 +31,13 @@ export default function ProjetsE6() {
               <BookOpen className="w-8 h-8 text-white" />
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
-              Projets Scolaires{&apos; &apos;}
+              Projets Scolaires{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600">
                 E6
               </span>
             </h1>
             <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto px-4">
-              Cette section sera bientôt disponible avec tous mes projets scolaires réalisés dans le cadre de l&apos;épreuve E6 du BTS SIO SISR.
+              Cette section sera bientôt disponible avec tous mes projets scolaires réalisés dans le cadre de l'épreuve E6 du BTS SIO SISR.
             </p>
           </div>
         </div>

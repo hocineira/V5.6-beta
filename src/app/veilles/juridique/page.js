@@ -1,80 +1,80 @@
-&apos;use client&apos;
+'use client'
 
-import { Shield, Calendar, ArrowLeft, ExternalLink, FileText, AlertTriangle, Check, Scale } from &apos;lucide-react&apos;
-import { Button } from &apos;../../../components/ui/button&apos;
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from &apos;../../../components/ui/card&apos;
-import { Badge } from &apos;../../../components/ui/badge&apos;
-import Link from &apos;next/link&apos;
+import { Shield, Calendar, ArrowLeft, ExternalLink, FileText, AlertTriangle, Check, Scale } from 'lucide-react'
+import { Button } from '../../../components/ui/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../../components/ui/card'
+import { Badge } from '../../../components/ui/badge'
+import Link from 'next/link'
 
 export default function VeilleJuridiquePage() {
   const rgpdTopics = [
     {
       id: 1,
-      title: &apos;RGPD et Cybersécurité : Obligations en 2025&apos;,
-      description: &apos;Les nouvelles exigences du RGPD concernant la cybersécurité et la protection des données personnelles.&apos;,
+      title: 'RGPD et Cybersécurité : Obligations en 2025',
+      description: 'Les nouvelles exigences du RGPD concernant la cybersécurité et la protection des données personnelles.',
       content: [
-        &apos;Notification des violations dans les 72h maximum&apos;,
-        &apos;Analyses d\&apos;impact sur la protection des données (AIPD) obligatoires&apos;,
-        &apos;Mesures de sécurité techniques par défaut (Privacy by Design)&apos;,
-        &apos;Formation obligatoire du personnel aux risques cyber&apos;,
-        &apos;Documentation des mesures de sécurité mises en place&apos;
+        'Notification des violations dans les 72h maximum',
+        'Analyses d\'impact sur la protection des données (AIPD) obligatoires',
+        'Mesures de sécurité techniques par défaut (Privacy by Design)',
+        'Formation obligatoire du personnel aux risques cyber',
+        'Documentation des mesures de sécurité mises en place'
       ],
-      lastUpdate: &apos;2025-01-15&apos;,
-      importance: &apos;Critique&apos;,
-      sector: &apos;Toutes entreprises&apos;,
+      lastUpdate: '2025-01-15',
+      importance: 'Critique',
+      sector: 'Toutes entreprises',
       icon: Shield,
-      color: &apos;red&apos;
+      color: 'red'
     },
     {
       id: 2,
-      title: &apos;Droits des utilisateurs et conformité&apos;,
-      description: &apos;Guide complet sur les droits des utilisateurs et les nouvelles obligations des entreprises en matière de transparence.&apos;,
+      title: 'Droits des utilisateurs et conformité',
+      description: 'Guide complet sur les droits des utilisateurs et les nouvelles obligations des entreprises en matière de transparence.',
       content: [
-        &apos;Droit à l\&apos;oubli numérique et effacement des données&apos;,
-        &apos;Portabilité des données entre services&apos;,
-        &apos;Consentement explicite et granulaire requis&apos;,
-        &apos;Délégué à la protection des données (DPO) obligatoire&apos;,
-        &apos;Information claire sur l\&apos;utilisation des données&apos;
+        'Droit à l\'oubli numérique et effacement des données',
+        'Portabilité des données entre services',
+        'Consentement explicite et granulaire requis',
+        'Délégué à la protection des données (DPO) obligatoire',
+        'Information claire sur l\'utilisation des données'
       ],
-      lastUpdate: &apos;2024-12-20&apos;,
-      importance: &apos;Élevée&apos;,
-      sector: &apos;Services numériques&apos;,
+      lastUpdate: '2024-12-20',
+      importance: 'Élevée',
+      sector: 'Services numériques',
       icon: Check,
-      color: &apos;blue&apos;
+      color: 'blue'
     },
     {
       id: 3,
-      title: &apos;Sanctions et amendes RGPD : Évolution 2025&apos;,
-      description: &apos;Évolution des sanctions appliquées par la CNIL et les autorités européennes, avec les derniers cas d\&apos;école.&apos;,
+      title: 'Sanctions et amendes RGPD : Évolution 2025',
+      description: 'Évolution des sanctions appliquées par la CNIL et les autorités européennes, avec les derniers cas d\'école.',
       content: [
-        &apos;Amendes pouvant atteindre 4% du chiffre d\&apos;affaires mondial&apos;,
-        &apos;Sanctions administratives renforcées et ciblées&apos;,
-        &apos;Contrôles inopinés plus fréquents dans tous les secteurs&apos;,
-        &apos;Coopération renforcée entre autorités nationales européennes&apos;,
-        &apos;Nouvelles procédures accélérées pour les violations graves&apos;
+        'Amendes pouvant atteindre 4% du chiffre d\'affaires mondial',
+        'Sanctions administratives renforcées et ciblées',
+        'Contrôles inopinés plus fréquents dans tous les secteurs',
+        'Coopération renforcée entre autorités nationales européennes',
+        'Nouvelles procédures accélérées pour les violations graves'
       ],
-      lastUpdate: &apos;2024-11-30&apos;,
-      importance: &apos;Critique&apos;,
-      sector: &apos;Toutes entreprises&apos;,
+      lastUpdate: '2024-11-30',
+      importance: 'Critique',
+      sector: 'Toutes entreprises',
       icon: AlertTriangle,
-      color: &apos;red&apos;
+      color: 'red'
     }
   ]
 
   const getImportanceColor = (importance) => {
     switch (importance) {
-      case &apos;Critique&apos;: return &apos;bg-red-100 text-red-800 border-red-200&apos;
-      case &apos;Élevée&apos;: return &apos;bg-orange-100 text-orange-800 border-orange-200&apos;
-      default: return &apos;bg-blue-100 text-blue-800 border-blue-200&apos;
+      case 'Critique': return 'bg-red-100 text-red-800 border-red-200'
+      case 'Élevée': return 'bg-orange-100 text-orange-800 border-orange-200'
+      default: return 'bg-blue-100 text-blue-800 border-blue-200'
     }
   }
 
   const formatDate = (dateString) => {
     const date = new Date(dateString)
-    return date.toLocaleDateString(&apos;fr-FR&apos;, {
-      year: &apos;numeric&apos;,
-      month: &apos;long&apos;,
-      day: &apos;numeric&apos;
+    return date.toLocaleDateString('fr-FR', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
     })
   }
 
@@ -214,7 +214,7 @@ export default function VeilleJuridiquePage() {
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <Card 
               className="text-center hover:shadow-lg transition-shadow border border-slate-200 cursor-pointer transform hover:-translate-y-1"
-              onClick={() => window.open(&apos;https://www.cnil.fr/fr&apos;, &apos;_blank&apos;)}
+              onClick={() => window.open('https://www.cnil.fr/fr', '_blank')}
             >
               <CardHeader>
                 <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -229,7 +229,7 @@ export default function VeilleJuridiquePage() {
 
             <Card 
               className="text-center hover:shadow-lg transition-shadow border border-slate-200 cursor-pointer transform hover:-translate-y-1"
-              onClick={() => window.open(&apos;https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX%3A32016R0679&apos;, &apos;_blank&apos;)}
+              onClick={() => window.open('https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX%3A32016R0679', '_blank')}
             >
               <CardHeader>
                 <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -237,14 +237,14 @@ export default function VeilleJuridiquePage() {
                 </div>
                 <CardTitle className="text-lg text-slate-900">Jurisprudence</CardTitle>
                 <CardDescription className="text-slate-600">
-                  Décisions récentes et cas d&apos;usage pratiques.
+                  Décisions récentes et cas d'usage pratiques.
                 </CardDescription>
               </CardHeader>
             </Card>
 
             <Card 
               className="text-center hover:shadow-lg transition-shadow border border-slate-200 cursor-pointer transform hover:-translate-y-1"
-              onClick={() => window.open(&apos;https://www.cnil.fr/fr/les-sanctions-prononcees-par-la-cnil&apos;, &apos;_blank&apos;)}
+              onClick={() => window.open('https://www.cnil.fr/fr/les-sanctions-prononcees-par-la-cnil', '_blank')}
             >
               <CardHeader>
                 <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -264,17 +264,17 @@ export default function VeilleJuridiquePage() {
       <section className="py-16 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6 text-white">
-            Besoin d&apos;accompagnement RGPD ?
+            Besoin d'accompagnement RGPD ?
           </h2>
           <p className="text-lg text-indigo-100 mb-8 max-w-2xl mx-auto">
             Questions sur la conformité RGPD, audit de vos pratiques ou mise en place 
-            de processus de protection des données ? N&apos;hésitez pas à me contacter.
+            de processus de protection des données ? N'hésitez pas à me contacter.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               size="lg"
               className="bg-white text-indigo-600 hover:bg-indigo-50 px-8 py-3 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg"
-              onClick={() => window.location.href = &apos;mailto:hocineira@gmail.com&apos;}
+              onClick={() => window.location.href = 'mailto:hocineira@gmail.com'}
             >
               Me contacter
               <ExternalLink className="ml-2 w-5 h-5" />

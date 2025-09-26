@@ -1,12 +1,12 @@
-&apos;use client&apos;
+'use client'
 
-import { useState, useMemo } from &apos;react&apos;
-import { FolderOpen, Github, ExternalLink, Calendar, Star, Server, Network, Shield, HardDrive, Monitor, FileText, Download, Eye } from &apos;lucide-react&apos;
-import { Button } from &apos;../../components/ui/button&apos;
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from &apos;../../components/ui/card&apos;
-import { Badge } from &apos;../../components/ui/badge&apos;
-import ImageModal from &apos;../../components/ImageModal&apos;
-import PDFModalFinal from &apos;../../components/PDFModalFinal&apos;
+import { useState, useMemo } from 'react'
+import { FolderOpen, Github, ExternalLink, Calendar, Star, Server, Network, Shield, HardDrive, Monitor, FileText, Download, Eye } from 'lucide-react'
+import { Button } from '../../components/ui/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card'
+import { Badge } from '../../components/ui/badge'
+import ImageModal from '../../components/ImageModal'
+import PDFModalFinal from '../../components/PDFModalFinal'
 
 export default function ProjetsPage() {
   const [selectedImage, setSelectedImage] = useState(null)
@@ -34,7 +34,7 @@ export default function ProjetsPage() {
     setSelectedPDF(null)
   }
   const handleCardOpen = (project) => {
-    if (project.type === &apos;procedure&apos; && project.pdfUrl) {
+    if (project.type === 'procedure' && project.pdfUrl) {
       openPDFModal(project.pdfUrl, project.title)
     } else if (project.schemaUrl) {
       openImageModal(project.schemaUrl, project.title)
@@ -46,156 +46,156 @@ export default function ProjetsPage() {
   const projects = useMemo(() => [
     {
       id: 1,
-      title: &apos;Architecture Réseau d\&apos;Entreprise - INFRA S4P2&apos;,
-      description: &apos;Infrastructure complète mise en place avec pfSense, VLANs, Active Directory, et outils de monitoring. Schéma détaillé de mon environnement de test incluant la segmentation réseau, la sécurité périmétrique et la supervision avec configurations IP détaillées.&apos;,
-      category: &apos;architecture&apos;,
-      technologies: [&apos;pfSense&apos;, &apos;VLANs&apos;, &apos;Active Directory&apos;, &apos;GLPI&apos;, &apos;Zabbix&apos;, &apos;Windows Server&apos;, &apos;Proxmox&apos;],
-      date: &apos;2025&apos;,
-      status: &apos;completed&apos;,
-      type: &apos;project&apos;,
-      schemaUrl: &apos;/images/procedures/schema_reseau_infra.svg&apos;,
-      image: &apos;/images/procedures/schema_reseau_infra.svg&apos;,
+      title: 'Architecture Réseau d\'Entreprise - INFRA S4P2',
+      description: 'Infrastructure complète mise en place avec pfSense, VLANs, Active Directory, et outils de monitoring. Schéma détaillé de mon environnement de test incluant la segmentation réseau, la sécurité périmétrique et la supervision avec configurations IP détaillées.',
+      category: 'architecture',
+      technologies: ['pfSense', 'VLANs', 'Active Directory', 'GLPI', 'Zabbix', 'Windows Server', 'Proxmox'],
+      date: '2025',
+      status: 'completed',
+      type: 'project',
+      schemaUrl: '/images/procedures/schema_reseau_infra.svg',
+      image: '/images/procedures/schema_reseau_infra.svg',
       icon: Server
     },
     {
       id: 7,
-      title: &apos;Procédure VLAN Interco&apos;,
-      description: &apos;Procédure détaillée pour la création de VLAN sur Switch et Routeur. Configuration de l\&apos;interconnexion entre différents réseaux virtuels avec gestion des politiques de routage.&apos;,
-      category: &apos;procedure&apos;,
-      technologies: [&apos;VLAN&apos;, &apos;Switch&apos;, &apos;Routeur&apos;, &apos;Cisco&apos;, &apos;Networking&apos;],
-      date: &apos;2025&apos;,
-      status: &apos;completed&apos;,
-      type: &apos;procedure&apos;,
-      pdfUrl: &apos;/procedures/VLAN_Interco.pdf&apos;,
-      image: &apos;/images/procedures/optimized_vlan_network_switch.webp&apos;,
+      title: 'Procédure VLAN Interco',
+      description: 'Procédure détaillée pour la création de VLAN sur Switch et Routeur. Configuration de l\'interconnexion entre différents réseaux virtuels avec gestion des politiques de routage.',
+      category: 'procedure',
+      technologies: ['VLAN', 'Switch', 'Routeur', 'Cisco', 'Networking'],
+      date: '2025',
+      status: 'completed',
+      type: 'procedure',
+      pdfUrl: '/procedures/VLAN_Interco.pdf',
+      image: '/images/procedures/optimized_vlan_network_switch.webp',
       icon: Network
     },
     {
       id: 8,
-      title: &apos;Procédure ZABBIX&apos;,
-      description: &apos;Procédure complète d\&apos;installation et de configuration de ZABBIX sur Debian pour la supervision et monitoring des infrastructures réseau et serveurs.&apos;,
-      category: &apos;procedure&apos;,
-      technologies: [&apos;ZABBIX&apos;, &apos;Debian&apos;, &apos;Monitoring&apos;, &apos;SNMP&apos;, &apos;MySQL&apos;],
-      date: &apos;2025&apos;,
-      status: &apos;completed&apos;,
-      type: &apos;procedure&apos;,
-      pdfUrl: &apos;/procedures/Zabbix.pdf&apos;,
-      image: &apos;/images/procedures/optimized_zabbix_image.webp&apos;,
+      title: 'Procédure ZABBIX',
+      description: 'Procédure complète d\'installation et de configuration de ZABBIX sur Debian pour la supervision et monitoring des infrastructures réseau et serveurs.',
+      category: 'procedure',
+      technologies: ['ZABBIX', 'Debian', 'Monitoring', 'SNMP', 'MySQL'],
+      date: '2025',
+      status: 'completed',
+      type: 'procedure',
+      pdfUrl: '/procedures/Zabbix.pdf',
+      image: '/images/procedures/optimized_zabbix_image.webp',
       icon: Monitor
     },
     {
       id: 9,
-      title: &apos;Procédure Active Directory&apos;,
-      description: &apos;Procédure détaillée d\&apos;installation et de configuration de l\&apos;Active Directory avec gestion des utilisateurs, groupes et GPO (Group Policy Objects).&apos;,
-      category: &apos;procedure&apos;,
-      technologies: [&apos;Active Directory&apos;, &apos;Windows Server&apos;, &apos;GPO&apos;, &apos;Users&apos;, &apos;Groups&apos;],
-      date: &apos;2025&apos;,
-      status: &apos;completed&apos;,
-      type: &apos;procedure&apos;,
-      pdfUrl: &apos;/procedures/Active_Directory.pdf&apos;,
-      image: &apos;/images/procedures/optimized_ad_image.webp&apos;,
+      title: 'Procédure Active Directory',
+      description: 'Procédure détaillée d\'installation et de configuration de l\'Active Directory avec gestion des utilisateurs, groupes et GPO (Group Policy Objects).',
+      category: 'procedure',
+      technologies: ['Active Directory', 'Windows Server', 'GPO', 'Users', 'Groups'],
+      date: '2025',
+      status: 'completed',
+      type: 'procedure',
+      pdfUrl: '/procedures/Active_Directory.pdf',
+      image: '/images/procedures/optimized_ad_image.webp',
       icon: Server
     },
     {
       id: 10,
-      title: &apos;Procédure GLPI&apos;,
-      description: &apos;Procédure complète d\&apos;installation et de configuration de GLPI sur Ubuntu pour la gestion des services informatiques et helpdesk.&apos;,
-      category: &apos;procedure&apos;,
-      technologies: [&apos;GLPI&apos;, &apos;Ubuntu&apos;, &apos;ITSM&apos;, &apos;Helpdesk&apos;, &apos;Apache&apos;, &apos;MySQL&apos;],
-      date: &apos;2025&apos;,
-      status: &apos;completed&apos;,
-      type: &apos;procedure&apos;,
-      pdfUrl: &apos;/procedures/GLPI.pdf&apos;,
-      image: &apos;/images/procedures/glpi_image.webp&apos;,
+      title: 'Procédure GLPI',
+      description: 'Procédure complète d\'installation et de configuration de GLPI sur Ubuntu pour la gestion des services informatiques et helpdesk.',
+      category: 'procedure',
+      technologies: ['GLPI', 'Ubuntu', 'ITSM', 'Helpdesk', 'Apache', 'MySQL'],
+      date: '2025',
+      status: 'completed',
+      type: 'procedure',
+      pdfUrl: '/procedures/GLPI.pdf',
+      image: '/images/procedures/glpi_image.webp',
       icon: FileText
     },
     {
       id: 11,
-      title: &apos;Procédure Proxmox&apos;,
-      description: &apos;Procédure d\&apos;installation et de configuration de Proxmox pour la virtualisation et gestion des machines virtuelles dans un environnement d\&apos;entreprise.&apos;,
-      category: &apos;procedure&apos;,
-      technologies: [&apos;Proxmox&apos;, &apos;Virtualisation&apos;, &apos;KVM&apos;, &apos;LXC&apos;, &apos;Cluster&apos;],
-      date: &apos;2025&apos;,
-      status: &apos;completed&apos;,
-      type: &apos;procedure&apos;,
-      pdfUrl: &apos;/procedures/Proxmox.pdf&apos;,
-      image: &apos;/images/procedures/optimized_proxmox_image.webp&apos;,
+      title: 'Procédure Proxmox',
+      description: 'Procédure d\'installation et de configuration de Proxmox pour la virtualisation et gestion des machines virtuelles dans un environnement d\'entreprise.',
+      category: 'procedure',
+      technologies: ['Proxmox', 'Virtualisation', 'KVM', 'LXC', 'Cluster'],
+      date: '2025',
+      status: 'completed',
+      type: 'procedure',
+      pdfUrl: '/procedures/Proxmox.pdf',
+      image: '/images/procedures/optimized_proxmox_image.webp',
       icon: HardDrive
     },
     {
       id: 12,
-      title: &apos;Procédure GPO&apos;,
-      description: &apos;Procédure de création et gestion des GPO (Group Policy Objects) pour la configuration centralisée des environnements Windows.&apos;,
-      category: &apos;procedure&apos;,
-      technologies: [&apos;GPO&apos;, &apos;Active Directory&apos;, &apos;Windows Server&apos;, &apos;Policy&apos;, &apos;Configuration&apos;],
-      date: &apos;2025&apos;,
-      status: &apos;completed&apos;,
-      type: &apos;procedure&apos;,
-      pdfUrl: &apos;/procedures/GPO.pdf&apos;,
-      image: &apos;/images/procedures/optimized_gpo_image.webp&apos;,
+      title: 'Procédure GPO',
+      description: 'Procédure de création et gestion des GPO (Group Policy Objects) pour la configuration centralisée des environnements Windows.',
+      category: 'procedure',
+      technologies: ['GPO', 'Active Directory', 'Windows Server', 'Policy', 'Configuration'],
+      date: '2025',
+      status: 'completed',
+      type: 'procedure',
+      pdfUrl: '/procedures/GPO.pdf',
+      image: '/images/procedures/optimized_gpo_image.webp',
       icon: Shield
     },
     {
       id: 13,
-      title: &apos;Attaque MITM - ARP Poisoning&apos;,
-      description: &apos;Réalisation d\&apos;attaques Man-in-the-Middle avec ARP Poisoning et test de la sécurité des réseaux avec Ettercap sur Kali Linux.&apos;,
-      category: &apos;procedure&apos;,
-      technologies: [&apos;Kali Linux&apos;, &apos;Ettercap&apos;, &apos;ARP Poisoning&apos;, &apos;MITM&apos;, &apos;Sécurité&apos;],
-      date: &apos;2025&apos;,
-      status: &apos;completed&apos;,
-      type: &apos;procedure&apos;,
-      pdfUrl: &apos;/procedures/MITM_Ettercap.pdf&apos;,
-      image: &apos;/images/procedures/optimized_kali_image.webp&apos;,
+      title: 'Attaque MITM - ARP Poisoning',
+      description: 'Réalisation d\'attaques Man-in-the-Middle avec ARP Poisoning et test de la sécurité des réseaux avec Ettercap sur Kali Linux.',
+      category: 'procedure',
+      technologies: ['Kali Linux', 'Ettercap', 'ARP Poisoning', 'MITM', 'Sécurité'],
+      date: '2025',
+      status: 'completed',
+      type: 'procedure',
+      pdfUrl: '/procedures/MITM_Ettercap.pdf',
+      image: '/images/procedures/optimized_kali_image.webp',
       icon: Shield
     },
     {
       id: 14,
-      title: &apos;Attaque MITM - DNS Spoofing&apos;,
-      description: &apos;Réalisation d\&apos;une attaque Man-in-the-Middle avec DNS Spoofing et ARP Poisoning, évaluation de la sécurité des réseaux via l\&apos;ingénierie sociale.&apos;,
-      category: &apos;procedure&apos;,
-      technologies: [&apos;Kali Linux&apos;, &apos;DNS Spoofing&apos;, &apos;ARP Poisoning&apos;, &apos;Social Engineering&apos;, &apos;MITM&apos;],
-      date: &apos;2025&apos;,
-      status: &apos;completed&apos;,
-      type: &apos;procedure&apos;,
-      pdfUrl: &apos;/procedures/MITM_DNS_Spoofing.pdf&apos;,
-      image: &apos;/images/procedures/optimized_kali_image.webp&apos;,
+      title: 'Attaque MITM - DNS Spoofing',
+      description: 'Réalisation d\'une attaque Man-in-the-Middle avec DNS Spoofing et ARP Poisoning, évaluation de la sécurité des réseaux via l\'ingénierie sociale.',
+      category: 'procedure',
+      technologies: ['Kali Linux', 'DNS Spoofing', 'ARP Poisoning', 'Social Engineering', 'MITM'],
+      date: '2025',
+      status: 'completed',
+      type: 'procedure',
+      pdfUrl: '/procedures/MITM_DNS_Spoofing.pdf',
+      image: '/images/procedures/optimized_kali_image.webp',
       icon: Shield
     },
     {
       id: 15,
-      title: &apos;Procédure OpenVPN pfSense avec Active Directory LDAP&apos;,
-      description: &apos;Procédure complète d\&apos;installation et de configuration d\&apos;OpenVPN sur pfSense avec authentification Active Directory LDAP. Configuration du serveur VPN, gestion des certificats, synchronisation AD-LDAP et accès distant sécurisé avec authentification centralisée.&apos;,
-      category: &apos;procedure&apos;,
-      technologies: [&apos;OpenVPN&apos;, &apos;pfSense&apos;, &apos;VPN&apos;, &apos;Active Directory&apos;, &apos;LDAP&apos;, &apos;Certificats SSL&apos;, &apos;Firewall&apos;, &apos;Sécurité&apos;],
-      date: &apos;2025&apos;,
-      status: &apos;completed&apos;,
-      type: &apos;procedure&apos;,
-      pdfUrl: &apos;/procedures/OpenVPN_pfSense.pdf&apos;,
-      image: &apos;/images/openvpn_reference.jpg&apos;,
+      title: 'Procédure OpenVPN pfSense avec Active Directory LDAP',
+      description: 'Procédure complète d\'installation et de configuration d\'OpenVPN sur pfSense avec authentification Active Directory LDAP. Configuration du serveur VPN, gestion des certificats, synchronisation AD-LDAP et accès distant sécurisé avec authentification centralisée.',
+      category: 'procedure',
+      technologies: ['OpenVPN', 'pfSense', 'VPN', 'Active Directory', 'LDAP', 'Certificats SSL', 'Firewall', 'Sécurité'],
+      date: '2025',
+      status: 'completed',
+      type: 'procedure',
+      pdfUrl: '/procedures/OpenVPN_pfSense.pdf',
+      image: '/images/openvpn_reference.jpg',
       icon: Shield
     },
     {
       id: 16,
-      title: &apos;Procédure SNORT&apos;,
-      description: &apos;Procédure en cours de rédaction.&apos;,
-      category: &apos;procedure&apos;,
-      technologies: [&apos;Snort&apos;, &apos;IDS&apos;, &apos;IPS&apos;, &apos;Sécurité&apos;, &apos;Réseau&apos;],
-      date: &apos;2025&apos;,
-      status: &apos;in-progress&apos;,
-      type: &apos;procedure&apos;,
-      image: &apos;/images/procedures/snort.webp&apos;,
+      title: 'Procédure SNORT',
+      description: 'Procédure en cours de rédaction.',
+      category: 'procedure',
+      technologies: ['Snort', 'IDS', 'IPS', 'Sécurité', 'Réseau'],
+      date: '2025',
+      status: 'in-progress',
+      type: 'procedure',
+      image: '/images/procedures/snort.webp',
       icon: Shield
     },
     {
       id: 17,
-      title: &apos;Procédure Artica Proxy&apos;,
-      description: &apos;Procédure en cours de rédaction.&apos;,
-      category: &apos;procedure&apos;,
-      technologies: [&apos;Artica Proxy&apos;, &apos;Proxy&apos;, &apos;Web Filter&apos;, &apos;Sécurité&apos;, &apos;Réseau&apos;],
-      date: &apos;2025&apos;,
-      status: &apos;in-progress&apos;,
-      type: &apos;procedure&apos;,
-      image: &apos;/images/procedures/artica_proxy.jpeg&apos;,
+      title: 'Procédure Artica Proxy',
+      description: 'Procédure en cours de rédaction.',
+      category: 'procedure',
+      technologies: ['Artica Proxy', 'Proxy', 'Web Filter', 'Sécurité', 'Réseau'],
+      date: '2025',
+      status: 'in-progress',
+      type: 'procedure',
+      image: '/images/procedures/artica_proxy.jpeg',
       icon: Shield
     }
   ], []) // Fermeture du useMemo
@@ -204,17 +204,17 @@ export default function ProjetsPage() {
 
   const getStatusColor = (status) => {
     switch (status) {
-      case &apos;completed&apos;: return &apos;bg-green-100 text-green-800&apos;
-      case &apos;in-progress&apos;: return &apos;bg-blue-100 text-blue-800&apos;
-      default: return &apos;bg-gray-100 text-gray-800&apos;
+      case 'completed': return 'bg-green-100 text-green-800'
+      case 'in-progress': return 'bg-blue-100 text-blue-800'
+      default: return 'bg-gray-100 text-gray-800'
     }
   }
 
   const getStatusText = (status) => {
     switch (status) {
-      case &apos;completed&apos;: return &apos;Terminé&apos;
-      case &apos;in-progress&apos;: return &apos;En cours&apos;
-      default: return &apos;En attente&apos;
+      case 'completed': return 'Terminé'
+      case 'in-progress': return 'En cours'
+      default: return 'En attente'
     }
   }
 
@@ -242,7 +242,7 @@ export default function ProjetsPage() {
             </h1>
             <p className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-8 max-w-3xl mx-auto px-4">
               Découvrez mes procédures techniques détaillées dans les domaines des systèmes et réseaux informatiques. 
-              Chaque procédure reflète ma passion pour l&apos;infrastructure IT et ma volonté d&apos;apprendre les dernières technologies.
+              Chaque procédure reflète ma passion pour l'infrastructure IT et ma volonté d'apprendre les dernières technologies.
             </p>
             <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-4 mb-6 sm:mb-8 px-4">
               <Badge className="bg-purple-100 text-purple-800 px-3 py-2 sm:px-4 text-xs sm:text-sm">
@@ -279,7 +279,7 @@ export default function ProjetsPage() {
                   <div className="lg:w-1/2 h-64 sm:h-80 lg:h-96 relative overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
                     <img 
                       src="/images/procedures/nouveau_schema_reseau_personnel.png" 
-                      alt="Architecture Réseau d&apos;Entreprise - INFRA S4P2"
+                      alt="Architecture Réseau d'Entreprise - INFRA S4P2"
                       className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
                     />
                     <div className="absolute top-3 left-3 sm:top-4 sm:left-4">
@@ -305,7 +305,7 @@ export default function ProjetsPage() {
                           </div>
                           <div>
                             <h3 className="text-lg sm:text-2xl font-bold text-gray-900 bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent leading-tight">
-                              Architecture Réseau d&apos;Entreprise
+                              Architecture Réseau d'Entreprise
                             </h3>
                             <p className="text-amber-600 font-semibold text-sm sm:text-base">INFRA S4P2 - Hocine IRATNI</p>
                           </div>
@@ -318,7 +318,7 @@ export default function ProjetsPage() {
                         </p>
                         
                         <div className="flex flex-wrap gap-2 mb-6">
-                          {[&apos;pfSense&apos;, &apos;VLANs&apos;, &apos;Active Directory&apos;, &apos;GLPI&apos;, &apos;Zabbix&apos;, &apos;Windows Server&apos;, &apos;Proxmox&apos;].map((tech, index) => (
+                          {['pfSense', 'VLANs', 'Active Directory', 'GLPI', 'Zabbix', 'Windows Server', 'Proxmox'].map((tech, index) => (
                             <Badge key={index} className="bg-gradient-to-r from-amber-100 to-orange-100 text-amber-800 text-xs hover:from-amber-200 hover:to-orange-200 transition-all duration-200 border border-amber-300">
                               {tech}
                             </Badge>
@@ -329,7 +329,7 @@ export default function ProjetsPage() {
                       <div className="flex gap-3">
                         <Button 
                           className="flex-1 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold py-3 px-6 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-200"
-                          onClick={() => openImageModal(&apos;/images/procedures/nouveau_schema_reseau_personnel.png&apos;, &apos;Architecture Réseau d\&apos;Entreprise - INFRA S4P2&apos;)}
+                          onClick={() => openImageModal('/images/procedures/nouveau_schema_reseau_personnel.png', 'Architecture Réseau d\'Entreprise - INFRA S4P2')}
                         >
                           <Eye className="w-5 h-5 mr-2" />
                           Voir Schéma Complet
@@ -338,9 +338,9 @@ export default function ProjetsPage() {
                           variant="outline"
                           className="flex-1 border-2 border-amber-500 text-amber-600 hover:bg-amber-50 font-bold py-3 px-6 rounded-xl transform hover:scale-105 transition-all duration-200"
                           onClick={() => {
-                            const link = document.createElement(&apos;a&apos;);
-                            link.href = &apos;/images/procedures/nouveau_schema_reseau_personnel.png&apos;;
-                            link.download = &apos;Nouveau_Schema_Reseau_Personnel_INFRA_S4P2.png&apos;;
+                            const link = document.createElement('a');
+                            link.href = '/images/procedures/nouveau_schema_reseau_personnel.png';
+                            link.download = 'Nouveau_Schema_Reseau_Personnel_INFRA_S4P2.png';
                             link.click();
                           }}
                         >
@@ -372,7 +372,7 @@ export default function ProjetsPage() {
             {filteredProjects.slice(1).map((project) => {
               const ProjectIcon = project.icon
               return (
-                <Card key={project.id} className="group mobile-card touch-feedback hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-3 active:translate-y-0 overflow-hidden border-0 shadow-lg cursor-pointer" onClick={() => handleCardOpen(project)} role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === &apos;Enter&apos; || e.key === &apos; &apos;) { e.preventDefault(); handleCardOpen(project); } }}>
+                <Card key={project.id} className="group mobile-card touch-feedback hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-3 active:translate-y-0 overflow-hidden border-0 shadow-lg cursor-pointer" onClick={() => handleCardOpen(project)} role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleCardOpen(project); } }}>
                   <div className="relative h-40 sm:h-48 bg-gradient-to-br from-purple-100 to-blue-100 flex items-center justify-center overflow-hidden">
                     {project.image ? (
                       <img 
@@ -426,7 +426,7 @@ export default function ProjetsPage() {
                     </div>
                     
                     <div className="flex gap-1 sm:gap-2">
-                      {project.type === &apos;procedure&apos; ? (
+                      {project.type === 'procedure' ? (
                         project.pdfUrl ? (
                           <>
                             <Button 
@@ -445,9 +445,9 @@ export default function ProjetsPage() {
                               className="touch-target flex-1 border-gray-300 text-gray-700 hover:bg-purple-50 hover:text-purple-600 hover:border-purple-300 transition-all duration-200 opacity-100 py-2 text-xs sm:text-sm"
                               onClick={(e) => {
                                 e.stopPropagation();
-                                const link = document.createElement(&apos;a&apos;);
+                                const link = document.createElement('a');
                                 link.href = project.pdfUrl;
-                                link.download = project.pdfUrl.split(&apos;/&apos;).pop();
+                                link.download = project.pdfUrl.split('/').pop();
                                 link.click();
                               }}
                             >
@@ -496,7 +496,7 @@ export default function ProjetsPage() {
                             variant="outline" 
                             size="sm" 
                             className="flex-1 border-gray-300 text-gray-700 hover:bg-purple-50 hover:text-purple-600 hover:border-purple-300 transition-all duration-200 opacity-100"
-                            onClick={() => window.open(project.github, &apos;_blank&apos;)}
+                            onClick={() => window.open(project.github, '_blank')}
                           >
                             <Github className="w-4 h-4 mr-2" />
                             Code
@@ -505,7 +505,7 @@ export default function ProjetsPage() {
                             variant="outline" 
                             size="sm" 
                             className="flex-1 border-gray-300 text-gray-700 hover:bg-purple-50 hover:text-purple-600 hover:border-purple-300 transition-all duration-200 opacity-100"
-                            onClick={() => window.open(project.demo, &apos;_blank&apos;)}
+                            onClick={() => window.open(project.demo, '_blank')}
                           >
                             <ExternalLink className="w-4 h-4 mr-2" />
                             Démo
@@ -533,7 +533,7 @@ export default function ProjetsPage() {
             </div>
             <div className="space-y-2">
               <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">
-                {projects.filter(p => p.status === &apos;completed&apos;).length}
+                {projects.filter(p => p.status === 'completed').length}
               </div>
               <div className="text-gray-600">Procédures terminées</div>
             </div>
@@ -554,13 +554,13 @@ export default function ProjetsPage() {
             Intéressé par mes procédures techniques ?
           </h2>
           <p className="text-xl text-purple-100 mb-8 max-w-2xl mx-auto">
-            N&apos;hésitez pas à me contacter pour discuter de vos projets d&apos;infrastructure IT ou pour en savoir plus sur mes compétences techniques.
+            N'hésitez pas à me contacter pour discuter de vos projets d'infrastructure IT ou pour en savoir plus sur mes compétences techniques.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               size="lg"
               className="bg-white text-purple-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg"
-              onClick={() => window.location.href = &apos;mailto:hocineira@gmail.com&apos;}
+              onClick={() => window.location.href = 'mailto:hocineira@gmail.com'}
             >
               Me contacter
               <ExternalLink className="ml-2 w-5 h-5" />
@@ -569,7 +569,7 @@ export default function ProjetsPage() {
               variant="outline"
               size="lg"
               className="border-white text-white hover:bg-white hover:text-purple-600 px-8 py-3 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg"
-              onClick={() => window.open(&apos;/veilles&apos;, &apos;_self&apos;)}
+              onClick={() => window.open('/veilles', '_self')}
             >
               Voir mes veilles
               <Star className="ml-2 w-5 h-5" />

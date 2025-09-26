@@ -1,4 +1,4 @@
-import { NextResponse } from &apos;next/server&apos;;
+import { NextResponse } from 'next/server';
 
 export async function GET() {
   try {
@@ -30,9 +30,9 @@ export async function GET() {
     });
 
   } catch (error) {
-    console.error(&apos;Erreur récupération catégories:&apos;, error);
+    console.error('Erreur récupération catégories:', error);
     return NextResponse.json(
-      { error: &apos;Erreur récupération des catégories&apos; },
+      { error: 'Erreur récupération des catégories' },
       { status: 500 }
     );
   }

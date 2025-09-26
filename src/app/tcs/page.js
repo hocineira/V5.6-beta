@@ -1,64 +1,64 @@
-&apos;use client&apos;
+'use client'
 
-import { Shield, Download, Clock, Users, Award, CheckCircle, Target, Briefcase, TrendingUp, Star, Code, Server, Network, Lock } from &apos;lucide-react&apos;
-import { Button } from &apos;../../components/ui/button&apos;
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from &apos;../../components/ui/card&apos;
-import { Badge } from &apos;../../components/ui/badge&apos;
+import { Shield, Download, Clock, Users, Award, CheckCircle, Target, Briefcase, TrendingUp, Star, Code, Server, Network, Lock } from 'lucide-react'
+import { Button } from '../../components/ui/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card'
+import { Badge } from '../../components/ui/badge'
 
 export default function TCSPage() {
   const tcsInfo = {
-    title: &apos;Tableau De Compétences&apos;,
-    description: &apos;Évaluation et présentation des compétences acquises dans le cadre du BTS SIO option SISR (Solutions d\&apos;Infrastructure, Systèmes et Réseaux).&apos;,
-    duration: &apos;2 ans&apos;,
-    level: &apos;Niveau 5 (Bac+2)&apos;,
+    title: 'Tableau De Compétences',
+    description: 'Évaluation et présentation des compétences acquises dans le cadre du BTS SIO option SISR (Solutions d\'Infrastructure, Systèmes et Réseaux).',
+    duration: '2 ans',
+    level: 'Niveau 5 (Bac+2)',
     objectives: [
-      &apos;Gérer le patrimoine informatique&apos;,
-      &apos;Répondre aux incidents et aux demandes d\&apos;assistance et d\&apos;évolution&apos;,
-      &apos;Développer la présence en ligne de l\&apos;organisation&apos;,
-      &apos;Travailler en mode projet&apos;,
-      &apos;Mettre à disposition des utilisateurs un service informatique&apos;,
-      &apos;Organiser son développement professionnel&apos;
+      'Gérer le patrimoine informatique',
+      'Répondre aux incidents et aux demandes d\'assistance et d\'évolution',
+      'Développer la présence en ligne de l\'organisation',
+      'Travailler en mode projet',
+      'Mettre à disposition des utilisateurs un service informatique',
+      'Organiser son développement professionnel'
     ],
     skills: [
-      { name: &apos;Administration Active Directory&apos;, level: 90, icon: Server },
-      { name: &apos;Configuration VLAN et Switch&apos;, level: 85, icon: Network },
-      { name: &apos;Hyperviseur PROXMOX&apos;, level: 88, icon: Code },
-      { name: &apos;Déploiement GPO Windows&apos;, level: 82, icon: Lock },
-      { name: &apos;Installation GLPI et ZABBIX&apos;, level: 80, icon: TrendingUp },
-      { name: &apos;Configuration VPN Fortinet&apos;, level: 75, icon: Lock },
-      { name: &apos;Cisco Packet Tracer&apos;, level: 78, icon: Network },
-      { name: &apos;Maintenance et réparation PC&apos;, level: 85, icon: Users },
-      { name: &apos;Exchange Server&apos;, level: 76, icon: Server },
-      { name: &apos;Configuration WiFi D-Link&apos;, level: 70, icon: Network }
+      { name: 'Administration Active Directory', level: 90, icon: Server },
+      { name: 'Configuration VLAN et Switch', level: 85, icon: Network },
+      { name: 'Hyperviseur PROXMOX', level: 88, icon: Code },
+      { name: 'Déploiement GPO Windows', level: 82, icon: Lock },
+      { name: 'Installation GLPI et ZABBIX', level: 80, icon: TrendingUp },
+      { name: 'Configuration VPN Fortinet', level: 75, icon: Lock },
+      { name: 'Cisco Packet Tracer', level: 78, icon: Network },
+      { name: 'Maintenance et réparation PC', level: 85, icon: Users },
+      { name: 'Exchange Server', level: 76, icon: Server },
+      { name: 'Configuration WiFi D-Link', level: 70, icon: Network }
     ],
     timeline: [
-      { year: &apos;Année 1&apos;, period: &apos;2024-2025&apos;, focus: &apos;Fondamentaux IT&apos;, achievements: [&apos;Bases systèmes&apos;, &apos;Réseaux TCP/IP&apos;, &apos;Virtualisation&apos;] },
-      { year: &apos;Année 2&apos;, period: &apos;2025-2026&apos;, focus: &apos;Spécialisation SISR&apos;, achievements: [&apos;Sécurité avancée&apos;, &apos;Projets infrastructure&apos;, &apos;Certifications&apos;] }
+      { year: 'Année 1', period: '2024-2025', focus: 'Fondamentaux IT', achievements: ['Bases systèmes', 'Réseaux TCP/IP', 'Virtualisation'] },
+      { year: 'Année 2', period: '2025-2026', focus: 'Spécialisation SISR', achievements: ['Sécurité avancée', 'Projets infrastructure', 'Certifications'] }
     ],
     certifications: [
-      { name: &apos;Cisco CCNA&apos;, status: &apos;En cours&apos;, icon: Network },
-      { name: &apos;Stormshield Network Security&apos;, status: &apos;Prévu&apos;, icon: Lock },
-      { name: &apos;VMware vSphere&apos;, status: &apos;Prévu&apos;, icon: Code }
+      { name: 'Cisco CCNA', status: 'En cours', icon: Network },
+      { name: 'Stormshield Network Security', status: 'Prévu', icon: Lock },
+      { name: 'VMware vSphere', status: 'Prévu', icon: Code }
     ],
     opportunities: [
-      { title: &apos;Administrateur systèmes et réseaux&apos;, icon: Server, description: &apos;Gestion complète de l\&apos;infrastructure IT&apos; },
-      { title: &apos;Technicien infrastructure&apos;, icon: Network, description: &apos;Maintenance et évolution des équipements&apos; },
-      { title: &apos;Responsable informatique&apos;, icon: Briefcase, description: &apos;Management d\&apos;équipe et stratégie IT&apos; },
-      { title: &apos;Technicien de maintenance&apos;, icon: Users, description: &apos;Support et dépannage utilisateurs&apos; },
-      { title: &apos;Consultant en systèmes&apos;, icon: TrendingUp, description: &apos;Expertise et conseils techniques&apos; },
-      { title: &apos;Spécialiste sécurité&apos;, icon: Lock, description: &apos;Protection et sécurisation des systèmes&apos; }
+      { title: 'Administrateur systèmes et réseaux', icon: Server, description: 'Gestion complète de l\'infrastructure IT' },
+      { title: 'Technicien infrastructure', icon: Network, description: 'Maintenance et évolution des équipements' },
+      { title: 'Responsable informatique', icon: Briefcase, description: 'Management d\'équipe et stratégie IT' },
+      { title: 'Technicien de maintenance', icon: Users, description: 'Support et dépannage utilisateurs' },
+      { title: 'Consultant en systèmes', icon: TrendingUp, description: 'Expertise et conseils techniques' },
+      { title: 'Spécialiste sécurité', icon: Lock, description: 'Protection et sécurisation des systèmes' }
     ]
   }
 
   const handleDownloadPDF = () => {
     // Télécharger le PDF TCS
-    const link = document.createElement(&apos;a&apos;);
-    link.href = &apos;/procedures/TCS.pdf&apos;;
-    link.download = &apos;TCS_IRATNI_Hocine.pdf&apos;;
+    const link = document.createElement('a');
+    link.href = '/procedures/TCS.pdf';
+    link.download = 'TCS_IRATNI_Hocine.pdf';
     link.click();
   }
 
-  const ProgressBar = ({ level, color = &apos;blue&apos; }) => (
+  const ProgressBar = ({ level, color = 'blue' }) => (
     <div className="w-full bg-gray-200 rounded-full h-2">
       <div 
         className={`h-2 rounded-full bg-gradient-to-r from-${color}-400 to-${color}-600 transition-all duration-1000`}
@@ -132,8 +132,8 @@ export default function TCSPage() {
               {tcsInfo.timeline.map((item, index) => (
                 <div key={index} className="relative mb-8">
                   {/* Mobile: Full width, Desktop: Alternating sides */}
-                  <div className={`sm:flex sm:items-center ${index % 2 === 0 ? &apos;sm:justify-start&apos; : &apos;sm:justify-end&apos;}`}>
-                    <div className={`w-full sm:w-1/2 pl-16 sm:pl-0 ${index % 2 === 0 ? &apos;sm:pr-8&apos; : &apos;sm:pl-8&apos;}`}>
+                  <div className={`sm:flex sm:items-center ${index % 2 === 0 ? 'sm:justify-start' : 'sm:justify-end'}`}>
+                    <div className={`w-full sm:w-1/2 pl-16 sm:pl-0 ${index % 2 === 0 ? 'sm:pr-8' : 'sm:pl-8'}`}>
                       <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
                     <CardHeader>
                       <CardTitle className="text-lg text-blue-600">{item.year}</CardTitle>
@@ -234,10 +234,10 @@ export default function TCSPage() {
               const IconComponent = cert.icon;
               const getStatusColor = (status) => {
                 switch(status) {
-                  case &apos;Acquis&apos;: return &apos;bg-green-100 text-green-800&apos;;
-                  case &apos;En cours&apos;: return &apos;bg-blue-100 text-blue-800&apos;;
-                  case &apos;Prévu&apos;: return &apos;bg-purple-100 text-purple-800&apos;;
-                  default: return &apos;bg-gray-100 text-gray-800&apos;;
+                  case 'Acquis': return 'bg-green-100 text-green-800';
+                  case 'En cours': return 'bg-blue-100 text-blue-800';
+                  case 'Prévu': return 'bg-purple-100 text-purple-800';
+                  default: return 'bg-gray-100 text-gray-800';
                 }
               };
               

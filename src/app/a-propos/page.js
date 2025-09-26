@@ -1,4 +1,4 @@
-&apos;use client&apos;
+'use client'
 
 import { 
   User, 
@@ -6,31 +6,31 @@ import {
   MapPin, 
   Calendar,
   Heart
-} from &apos;lucide-react&apos;
-import { Card, CardContent, CardHeader, CardTitle } from &apos;../../components/ui/card&apos;
+} from 'lucide-react'
+import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card'
 
 export default function AboutPage() {
   const education = [
     {
-      degree: &apos;BTS SIO Option SISR&apos;,
-      period: &apos;De septembre 2024 a juin 2026&apos;,
-      institution: &apos;IFC Marseille&apos;,
-      status: &apos;En cours&apos;,
-      description: &apos;Services Informatiques aux Organisations - Specialite Solutions d Infrastructure, Systemes et Reseaux&apos;
+      degree: 'BTS SIO Option SISR',
+      period: 'De septembre 2024 a juin 2026',
+      institution: 'IFC Marseille',
+      status: 'En cours',
+      description: 'Services Informatiques aux Organisations - Specialite Solutions d Infrastructure, Systemes et Reseaux'
     },
     {
-      degree: &apos;Licence 1 : INFORMATIQUE - MATHEMATIQUES - MECANIQUE - PHYSIQUE&apos;,
-      period: &apos;Septembre 2023 - Janvier 2024&apos;,
-      institution: &apos;Aix-Marseille Universite Marseille&apos;,
-      status: &apos;Reorientation&apos;,
-      description: &apos;Une annee de formation pluridisciplinaire - Reorientation vers le BTS SIO pour se specialiser en informatique&apos;
+      degree: 'Licence 1 : INFORMATIQUE - MATHEMATIQUES - MECANIQUE - PHYSIQUE',
+      period: 'Septembre 2023 - Janvier 2024',
+      institution: 'Aix-Marseille Universite Marseille',
+      status: 'Reorientation',
+      description: 'Une annee de formation pluridisciplinaire - Reorientation vers le BTS SIO pour se specialiser en informatique'
     },
     {
-      degree: &apos;Baccalaureat general&apos;,
-      period: &apos;De septembre 2021 a juin 2022&apos;,
-      institution: &apos;Lycee Prive International Alexandre Dumas, Algiers, Algerie&apos;,
-      status: &apos;Obtenu&apos;,
-      description: &apos;Formation generale avec bases scientifiques solides&apos;
+      degree: 'Baccalaureat general',
+      period: 'De septembre 2021 a juin 2022',
+      institution: 'Lycee Prive International Alexandre Dumas, Algiers, Algerie',
+      status: 'Obtenu',
+      description: 'Formation generale avec bases scientifiques solides'
     }
   ]
 
@@ -51,7 +51,7 @@ export default function AboutPage() {
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
-            Decouvrez mon parcours, mes competences et ma passion pour l&apos;informatique
+            Decouvrez mon parcours, mes competences et ma passion pour l'informatique
           </p>
 
           {/* Contact Info Cards */}
@@ -85,20 +85,20 @@ export default function AboutPage() {
             <CardContent className="space-y-6">
               <div className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
                 <p className="mb-4">
-                  Passionné par <strong>l&apos;univers de l&apos;informatique et les technologies émergentes</strong>, j&apos;ai trouvé ma voie 
-                  après une année en licence pluridisciplinaire qui m&apos;a permis de confirmer mon attrait pour le domaine technique. 
+                  Passionné par <strong>l'univers de l'informatique et les technologies émergentes</strong>, j'ai trouvé ma voie 
+                  après une année en licence pluridisciplinaire qui m'a permis de confirmer mon attrait pour le domaine technique. 
                   Cette réorientation vers le BTS SIO SISR a été une décision réfléchie pour me spécialiser dans ce qui me motive vraiment : 
-                  <strong>l&apos;infrastructure, les systèmes et les réseaux informatiques</strong>.
+                  <strong>l'infrastructure, les systèmes et les réseaux informatiques</strong>.
                 </p>
                 <p className="mb-4">
-                  Curieux de nature et doté d&apos;un esprit analytique, j&apos;aime <strong>résoudre des problèmes complexes</strong> et 
-                  comprendre le fonctionnement des systèmes. Mon approche collaborative et ma capacité d&apos;adaptation me permettent 
-                  de m&apos;intégrer facilement dans une équipe et de contribuer efficacement aux projets qui me sont confiés.
+                  Curieux de nature et doté d'un esprit analytique, j'aime <strong>résoudre des problèmes complexes</strong> et 
+                  comprendre le fonctionnement des systèmes. Mon approche collaborative et ma capacité d'adaptation me permettent 
+                  de m'intégrer facilement dans une équipe et de contribuer efficacement aux projets qui me sont confiés.
                 </p>
                 <p>
-                  Actuellement en <strong>deuxième année de BTS SIO option SISR</strong> à l&apos;IFC Marseille, 
+                  Actuellement en <strong>deuxième année de BTS SIO option SISR</strong> à l'IFC Marseille, 
                   je développe mes compétences en administration système, sécurité réseau et virtualisation. 
-                  Je suis à la recherche d&apos;une <strong>alternance</strong> pour mettre en application mes connaissances 
+                  Je suis à la recherche d'une <strong>alternance</strong> pour mettre en application mes connaissances 
                   et enrichir mon expérience professionnelle dans un environnement technique stimulant.
                 </p>
               </div>
@@ -131,13 +131,13 @@ export default function AboutPage() {
                           {edu.degree}
                         </h3>
                         <span className={`px-2 py-1 text-xs font-medium rounded-full ${
-                          edu.status === &apos;En cours&apos; 
-                            ? &apos;bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200&apos; 
-                            : edu.status === &apos;Obtenu&apos;
-                            ? &apos;bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200&apos;
-                            : edu.status === &apos;Reorientation&apos;
-                            ? &apos;bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200&apos;
-                            : &apos;bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200&apos;
+                          edu.status === 'En cours' 
+                            ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200' 
+                            : edu.status === 'Obtenu'
+                            ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
+                            : edu.status === 'Reorientation'
+                            ? 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200'
+                            : 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200'
                         }`}>
                           {edu.status}
                         </span>

@@ -1,11 +1,11 @@
 // Service de stockage JSON local pour remplacer MongoDB
-import fs from &apos;fs&apos;;
-import path from &apos;path&apos;;
+import fs from 'fs';
+import path from 'path';
 
 class JSONStorage {
   constructor() {
-    this.dataDir = path.join(process.cwd(), &apos;data&apos;);
-    this.dataFile = path.join(this.dataDir, &apos;rss-cache.json&apos;);
+    this.dataDir = path.join(process.cwd(), 'data');
+    this.dataFile = path.join(this.dataDir, 'rss-cache.json');
     this.ensureDataDir();
   }
 
@@ -15,14 +15,14 @@ class JSONStorage {
         fs.mkdirSync(this.dataDir, { recursive: true });
       }
     } catch (error) {
-      console.error(&apos;Erreur création répertoire data:&apos;, error);
+      console.error('Erreur création répertoire data:', error);
     }
   }
 
   async loadData() {
     try {
       if (fs.existsSync(this.dataFile)) {
-        const data = fs.readFileSync(this.dataFile, &apos;utf-8&apos;);
+        const data = fs.readFileSync(this.dataFile, 'utf-8');
         const parsed = JSON.parse(data);
         
         // Convert date strings back to Date objects for consistency
@@ -38,13 +38,13 @@ class JSONStorage {
         return parsed;
       }
     } catch (error) {
-      console.error(&apos;Erreur chargement données:&apos;, error);
+      console.error('Erreur chargement données:', error);
     }
     
     return {
       updates: [],
       lastUpdated: new Date(),
-      version: &apos;1.0&apos;
+      version: '1.0'
     };
   }
 
@@ -62,10 +62,10 @@ class JSONStorage {
         lastUpdated: new Date().toISOString()
       };
 
-      fs.writeFileSync(this.dataFile, JSON.stringify(dataToSave, null, 2), &apos;utf-8&apos;);
+      fs.writeFileSync(this.dataFile, JSON.stringify(dataToSave, null, 2), 'utf-8');
       return true;
     } catch (error) {
-      console.error(&apos;Erreur sauvegarde données:&apos;, error);
+      console.error('Erreur sauvegarde données:', error);
       return false;
     }
   }
@@ -74,8 +74,8 @@ class JSONStorage {
     try {
       const data = await this.loadData();
       
-      // Convert dates to Date objects if they&apos;re strings
-      if (typeof updateData.published_date === &apos;string&apos;) {
+      // Convert dates to Date objects if they're strings
+      if (typeof updateData.published_date === 'string') {
         updateData.published_date = new Date(updateData.published_date);
       }
       
@@ -99,12 +99,12 @@ class JSONStorage {
       await this.saveData(data);
       return updateData.id || existingIndex;
     } catch (error) {
-      console.error(&apos;Erreur sauvegarde update:&apos;, error);
+      console.error('Erreur sauvegarde update:', error);
       return null;
     }
   }
 
-  async getWindowsUpdates(category = null, limit = 50, sortBy = &apos;published_date&apos;) {
+  async getWindowsUpdates(category = null, limit = 50, sortBy = 'published_date') {
     try {
       const data = await this.loadData();
       let updates = [...data.updates];
@@ -115,20 +115,20 @@ class JSONStorage {
       }
 
       // Sort by specified field
-      if (sortBy === &apos;published_date&apos;) {
+      if (sortBy === 'published_date') {
         updates.sort((a, b) => new Date(b.published_date) - new Date(a.published_date));
       }
 
       // Limit results
       return updates.slice(0, limit);
     } catch (error) {
-      console.error(&apos;Erreur récupération updates:&apos;, error);
+      console.error('Erreur récupération updates:', error);
       return [];
     }
   }
 
   async getLatestUpdates(limit = 10) {
-    return this.getWindowsUpdates(null, limit, &apos;published_date&apos;);
+    return this.getWindowsUpdates(null, limit, 'published_date');
   }
 
   async getUpdateStats() {
@@ -138,7 +138,7 @@ class JSONStorage {
 
       // Count by category
       data.updates.forEach(update => {
-        const category = update.category || &apos;unknown&apos;;
+        const category = update.category || 'unknown';
         stats[category] = (stats[category] || 0) + 1;
       });
 
@@ -148,7 +148,7 @@ class JSONStorage {
         last_updated: new Date()
       };
     } catch (error) {
-      console.error(&apos;Erreur calcul stats:&apos;, error);
+      console.error('Erreur calcul stats:', error);
       return {
         total: 0,
         by_category: {},
@@ -166,13 +166,13 @@ class JSONStorage {
       const emptyData = {
         updates: [],
         lastUpdated: new Date(),
-        version: &apos;1.0&apos;
+        version: '1.0'
       };
       
       await this.saveData(emptyData);
       return true;
     } catch (error) {
-      console.error(&apos;Erreur suppression données:&apos;, error);
+      console.error('Erreur suppression données:', error);
       return false;
     }
   }

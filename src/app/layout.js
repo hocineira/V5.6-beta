@@ -15,17 +15,17 @@ export const metadata = {
   manifest: '/manifest.json',
   other: {
     // Préchargement des ressources critiques pour performance
-    &apos;dns-prefetch&apos;: &apos;https://fonts.googleapis.com&apos;,
-    &apos;preconnect&apos;: &apos;https://fonts.gstatic.com&apos;,
+    'dns-prefetch': 'https://fonts.googleapis.com',
+    'preconnect': 'https://fonts.gstatic.com',
   }
 };
 
 export const viewport = {
-  width: &apos;device-width&apos;,
+  width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
-  viewportFit: &apos;cover&apos;,
+  viewportFit: 'cover',
 };
 
 export default function RootLayout({ children }) {

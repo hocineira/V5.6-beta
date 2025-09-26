@@ -1,12 +1,12 @@
-import { NextResponse } from &apos;next/server&apos;;
-import { storage } from &apos;../../../../lib/storage.js&apos;;
+import { NextResponse } from 'next/server';
+import { storage } from '../../../../lib/storage.js';
 
 export async function GET(request) {
   try {
     const { searchParams } = new URL(request.url);
-    const category = searchParams.get(&apos;category&apos;);
-    const limit = parseInt(searchParams.get(&apos;limit&apos;) || &apos;50&apos;);
-    const version = searchParams.get(&apos;version&apos;);
+    const category = searchParams.get('category');
+    const limit = parseInt(searchParams.get('limit') || '50');
+    const version = searchParams.get('version');
 
     // Get updates from storage
     let updates = await storage.getWindowsUpdates(category, limit);
@@ -33,9 +33,9 @@ export async function GET(request) {
     });
 
   } catch (error) {
-    console.error(&apos;Erreur récupération updates:&apos;, error);
+    console.error('Erreur récupération updates:', error);
     return NextResponse.json(
-      { error: &apos;Erreur récupération des mises à jour&apos; },
+      { error: 'Erreur récupération des mises à jour' },
       { status: 500 }
     );
   }

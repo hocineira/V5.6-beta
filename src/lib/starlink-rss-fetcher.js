@@ -1,6 +1,6 @@
 // Service RSS pour récupérer et traiter les flux Starlink/SpaceX
-import { formatDistanceToNow } from &apos;date-fns&apos;;
-import { fr } from &apos;date-fns/locale&apos;;
+import { formatDistanceToNow } from 'date-fns';
+import { fr } from 'date-fns/locale';
 
 class StarlinkRSSFetcher {
   constructor() {
@@ -41,7 +41,7 @@ class StarlinkRSSFetcher {
 
       const response = await fetch(source.url, {
         headers: {
-          &apos;User-Agent&apos;: &apos;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36&apos;
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
         },
         next: { revalidate: 3600 } // Cache for 1 hour
       });
@@ -81,7 +81,7 @@ class StarlinkRSSFetcher {
 
       return items.slice(0, 15); // Limit to 15 recent entries
     } catch (error) {
-      console.error(&apos;Erreur parsing RSS Starlink:&apos;, error);
+      console.error('Erreur parsing RSS Starlink:', error);
       return [];
     }
   }
@@ -89,10 +89,10 @@ class StarlinkRSSFetcher {
   parseRSSItem(itemXml, source) {
     try {
       // Extract basic fields
-      const title = this.extractXmlTag(itemXml, &apos;title&apos;) || "Sans titre";
-      const link = this.extractXmlTag(itemXml, &apos;link&apos;) || "";
-      const description = this.cleanHtml(this.extractXmlTag(itemXml, &apos;description&apos;) || "");
-      const pubDate = this.extractXmlTag(itemXml, &apos;pubDate&apos;) || new Date().toISOString();
+      const title = this.extractXmlTag(itemXml, 'title') || "Sans titre";
+      const link = this.extractXmlTag(itemXml, 'link') || "";
+      const description = this.cleanHtml(this.extractXmlTag(itemXml, 'description') || "");
+      const pubDate = this.extractXmlTag(itemXml, 'pubDate') || new Date().toISOString();
 
       // Parse publication date
       let publishedDate = new Date();
@@ -140,13 +140,13 @@ class StarlinkRSSFetcher {
       };
 
     } catch (error) {
-      console.error(&apos;Erreur parsing item RSS Starlink:&apos;, error);
+      console.error('Erreur parsing item RSS Starlink:', error);
       return null;
     }
   }
 
   extractXmlTag(xml, tagName) {
-    const regex = new RegExp(`<${tagName}[^>]*>(.*?)<\/${tagName}>`, &apos;is&apos;);
+    const regex = new RegExp(`<${tagName}[^>]*>(.*?)<\/${tagName}>`, 'is');
     const match = xml.match(regex);
     return match ? match[1].trim() : null;
   }
@@ -155,25 +155,25 @@ class StarlinkRSSFetcher {
     if (!htmlText) return "";
     
     // Remove HTML tags
-    let text = htmlText.replace(/<[^>]*>/g, &apos;&apos;);
+    let text = htmlText.replace(/<[^>]*>/g, '');
     
     // Remove XML artifacts and CDATA
-    text = text.replace(/\]\]>/g, &apos;&apos;);
-    text = text.replace(/\[CDATA\[/g, &apos;&apos;);
-    text = text.replace(/^<!\[CDATA\[/g, &apos;&apos;);
-    text = text.replace(/\]\]>$/g, &apos;&apos;);
+    text = text.replace(/\]\]>/g, '');
+    text = text.replace(/\[CDATA\[/g, '');
+    text = text.replace(/^<!\[CDATA\[/g, '');
+    text = text.replace(/\]\]>$/g, '');
     
     // Decode HTML entities
     text = text
-      .replace(/&amp;/g, &apos;&&apos;)
-      .replace(/&lt;/g, &apos;<&apos;)
-      .replace(/&gt;/g, &apos;>&apos;)
-      .replace(/&quot;/g, &apos;"&apos;)
-      .replace(/&#39;/g, "&apos;")
-      .replace(/&nbsp;/g, &apos; &apos;);
+      .replace(/&amp;/g, '&')
+      .replace(/&lt;/g, '<')
+      .replace(/&gt;/g, '>')
+      .replace(/&quot;/g, '"')
+      .replace(/&#39;/g, "'")
+      .replace(/&nbsp;/g, ' ');
     
     // Clean up extra whitespace and newlines
-    text = text.replace(/\s+/g, &apos; &apos;).trim();
+    text = text.replace(/\s+/g, ' ').trim();
     
     return text;
   }
@@ -223,13 +223,13 @@ class StarlinkRSSFetcher {
     
     // Starlink/SpaceX keywords
     const spaceKeywords = {
-      &apos;starlink&apos;: [&apos;starlink&apos;, &apos;constellation&apos;],
-      &apos;falcon&apos;: [&apos;falcon 9&apos;, &apos;falcon heavy&apos;, &apos;booster&apos;, &apos;landing&apos;],
-      &apos;launch&apos;: [&apos;launch&apos;, &apos;lancement&apos;, &apos;décollage&apos;, &apos;mission&apos;],
-      &apos;satellite&apos;: [&apos;satellite&apos;, &apos;satellites&apos;, &apos;v2&apos;, &apos;gen2&apos;],
-      &apos;spacex&apos;: [&apos;spacex&apos;, &apos;elon musk&apos;],
-      &apos;dragon&apos;: [&apos;dragon&apos;, &apos;crew dragon&apos;, &apos;cargo&apos;],
-      &apos;mars&apos;: [&apos;mars&apos;, &apos;starship&apos;, &apos;raptor&apos;]
+      'starlink': ['starlink', 'constellation'],
+      'falcon': ['falcon 9', 'falcon heavy', 'booster', 'landing'],
+      'launch': ['launch', 'lancement', 'décollage', 'mission'],
+      'satellite': ['satellite', 'satellites', 'v2', 'gen2'],
+      'spacex': ['spacex', 'elon musk'],
+      'dragon': ['dragon', 'crew dragon', 'cargo'],
+      'mars': ['mars', 'starship', 'raptor']
     };
     
     for (const [tag, keywords] of Object.entries(spaceKeywords)) {
@@ -251,20 +251,20 @@ class StarlinkRSSFetcher {
     
     // Keywords Starlink prioritaires
     const starlinkKeywords = [
-      &apos;starlink&apos;, &apos;spacex&apos;, &apos;elon musk&apos;, &apos;falcon 9&apos;, &apos;falcon heavy&apos;, 
-      &apos;satellite internet&apos;, &apos;constellation&apos;, &apos;starship&apos;
+      'starlink', 'spacex', 'elon musk', 'falcon 9', 'falcon heavy', 
+      'satellite internet', 'constellation', 'starship'
     ];
     
     // Keywords espace et lanceurs
     const spaceKeywords = [
-      &apos;satellite&apos;, &apos;satellites&apos;, &apos;launch&apos;, &apos;lancement&apos;, &apos;mission&apos;, &apos;orbit&apos;,
-      &apos;iss&apos;, &apos;dragon&apos;, &apos;crew&apos;, &apos;cargo&apos;, &apos;booster&apos;, &apos;landing&apos;, &apos;recovery&apos;
+      'satellite', 'satellites', 'launch', 'lancement', 'mission', 'orbit',
+      'iss', 'dragon', 'crew', 'cargo', 'booster', 'landing', 'recovery'
     ];
     
     // Keywords innovations spatiales
     const innovationKeywords = [
-      &apos;internet from space&apos;, &apos;global broadband&apos;, &apos;low earth orbit&apos;, &apos;leo&apos;,
-      &apos;mars&apos;, &apos;moon&apos;, &apos;space exploration&apos;, &apos;raptor&apos;, &apos;merlin&apos;
+      'internet from space', 'global broadband', 'low earth orbit', 'leo',
+      'mars', 'moon', 'space exploration', 'raptor', 'merlin'
     ];
     
     // Vérifier présence keywords Starlink/SpaceX (priorité haute)
@@ -276,8 +276,8 @@ class StarlinkRSSFetcher {
     
     // Exclure articles non pertinents
     const excludeKeywords = [
-      &apos;tesla model&apos;, &apos;cybertruck&apos;, &apos;twitter&apos;, &apos;x.com&apos;, &apos;neuralink&apos;,
-      &apos;boring company&apos;, &apos;hyperloop&apos;, &apos;bitcoin&apos;
+      'tesla model', 'cybertruck', 'twitter', 'x.com', 'neuralink',
+      'boring company', 'hyperloop', 'bitcoin'
     ];
     const hasExcludeKeyword = excludeKeywords.some(keyword => text.includes(keyword));
     
@@ -295,66 +295,66 @@ class StarlinkRSSFetcher {
     // Improved French translation for space/Starlink content
     const translations = {
       // Phrases complètes Starlink
-      &apos;starlink satellites launched successfully&apos;: &apos;satellites Starlink lancés avec succès&apos;,
-      &apos;spacex launches starlink mission&apos;: &apos;SpaceX lance une mission Starlink&apos;,
-      &apos;falcon 9 rocket launches&apos;: &apos;la fusée Falcon 9 décolle&apos;,
-      &apos;successful satellite deployment&apos;: &apos;déploiement de satellites réussi&apos;,
-      &apos;internet constellation expansion&apos;: &apos;expansion de la constellation internet&apos;,
-      &apos;global internet coverage&apos;: &apos;couverture internet mondiale&apos;,
-      &apos;low earth orbit satellites&apos;: &apos;satellites en orbite basse terrestre&apos;,
-      &apos;space exploration milestone&apos;: &apos;étape de l\&apos;exploration spatiale&apos;,
-      &apos;rocket landing successful&apos;: &apos;atterrissage de fusée réussi&apos;,
-      &apos;crew dragon mission&apos;: &apos;mission Crew Dragon&apos;,
-      &apos;international space station&apos;: &apos;station spatiale internationale&apos;,
+      'starlink satellites launched successfully': 'satellites Starlink lancés avec succès',
+      'spacex launches starlink mission': 'SpaceX lance une mission Starlink',
+      'falcon 9 rocket launches': 'la fusée Falcon 9 décolle',
+      'successful satellite deployment': 'déploiement de satellites réussi',
+      'internet constellation expansion': 'expansion de la constellation internet',
+      'global internet coverage': 'couverture internet mondiale',
+      'low earth orbit satellites': 'satellites en orbite basse terrestre',
+      'space exploration milestone': 'étape de l\'exploration spatiale',
+      'rocket landing successful': 'atterrissage de fusée réussi',
+      'crew dragon mission': 'mission Crew Dragon',
+      'international space station': 'station spatiale internationale',
       
       // Technical Starlink terms
-      &apos;starlink&apos;: &apos;Starlink&apos;,
-      &apos;spacex&apos;: &apos;SpaceX&apos;,
-      &apos;falcon 9&apos;: &apos;Falcon 9&apos;,
-      &apos;falcon heavy&apos;: &apos;Falcon Heavy&apos;,
-      &apos;starship&apos;: &apos;Starship&apos;,
-      &apos;dragon&apos;: &apos;Dragon&apos;,
-      &apos;crew dragon&apos;: &apos;Crew Dragon&apos;,
-      &apos;cargo dragon&apos;: &apos;Cargo Dragon&apos;,
-      &apos;satellites&apos;: &apos;satellites&apos;,
-      &apos;satellite&apos;: &apos;satellite&apos;,
-      &apos;constellation&apos;: &apos;constellation&apos;,
-      &apos;internet service&apos;: &apos;service internet&apos;,
-      &apos;broadband&apos;: &apos;haut débit&apos;,
-      &apos;launch&apos;: &apos;lancement&apos;,
-      &apos;launched&apos;: &apos;lancé&apos;,
-      &apos;launches&apos;: &apos;lance&apos;,
-      &apos;launching&apos;: &apos;lancement&apos;,
-      &apos;mission&apos;: &apos;mission&apos;,
-      &apos;orbit&apos;: &apos;orbite&apos;,
-      &apos;orbital&apos;: &apos;orbital&apos;,
-      &apos;deployment&apos;: &apos;déploiement&apos;,
-      &apos;booster&apos;: &apos;propulseur&apos;,
-      &apos;landing&apos;: &apos;atterrissage&apos;,
-      &apos;recovery&apos;: &apos;récupération&apos;,
-      &apos;successful&apos;: &apos;réussi&apos;,
-      &apos;milestone&apos;: &apos;étape importante&apos;,
-      &apos;expansion&apos;: &apos;expansion&apos;,
-      &apos;coverage&apos;: &apos;couverture&apos;,
-      &apos;global&apos;: &apos;mondiale&apos;,
-      &apos;space&apos;: &apos;espace&apos;,
-      &apos;rocket&apos;: &apos;fusée&apos;,
-      &apos;spacecraft&apos;: &apos;vaisseau spatial&apos;,
+      'starlink': 'Starlink',
+      'spacex': 'SpaceX',
+      'falcon 9': 'Falcon 9',
+      'falcon heavy': 'Falcon Heavy',
+      'starship': 'Starship',
+      'dragon': 'Dragon',
+      'crew dragon': 'Crew Dragon',
+      'cargo dragon': 'Cargo Dragon',
+      'satellites': 'satellites',
+      'satellite': 'satellite',
+      'constellation': 'constellation',
+      'internet service': 'service internet',
+      'broadband': 'haut débit',
+      'launch': 'lancement',
+      'launched': 'lancé',
+      'launches': 'lance',
+      'launching': 'lancement',
+      'mission': 'mission',
+      'orbit': 'orbite',
+      'orbital': 'orbital',
+      'deployment': 'déploiement',
+      'booster': 'propulseur',
+      'landing': 'atterrissage',
+      'recovery': 'récupération',
+      'successful': 'réussi',
+      'milestone': 'étape importante',
+      'expansion': 'expansion',
+      'coverage': 'couverture',
+      'global': 'mondiale',
+      'space': 'espace',
+      'rocket': 'fusée',
+      'spacecraft': 'vaisseau spatial',
       
       // Common space terms
-      &apos;and&apos;: &apos;et&apos;,
-      &apos;with&apos;: &apos;avec&apos;,
-      &apos;for&apos;: &apos;pour&apos;,
-      &apos;from&apos;: &apos;de&apos;,
-      &apos;to&apos;: &apos;vers&apos;,
-      &apos;in&apos;: &apos;dans&apos;,
-      &apos;on&apos;: &apos;sur&apos;,
-      &apos;at&apos;: &apos;à&apos;,
-      &apos;the&apos;: &apos;le/la&apos;,
-      &apos;new&apos;: &apos;nouveau&apos;,
-      &apos;latest&apos;: &apos;dernier&apos;,
-      &apos;first&apos;: &apos;premier&apos;,
-      &apos;next&apos;: &apos;prochain&apos;
+      'and': 'et',
+      'with': 'avec',
+      'for': 'pour',
+      'from': 'de',
+      'to': 'vers',
+      'in': 'dans',
+      'on': 'sur',
+      'at': 'à',
+      'the': 'le/la',
+      'new': 'nouveau',
+      'latest': 'dernier',
+      'first': 'premier',
+      'next': 'prochain'
     };
     
     let translatedText = text;
@@ -364,7 +364,7 @@ class StarlinkRSSFetcher {
     
     for (const [english, french] of sortedTranslations) {
       // Use case-insensitive replacement with word boundaries when appropriate
-      const regex = new RegExp(`\\b${english.replace(/[.*+?^${}()|[\]\\]/g, &apos;\\$&&apos;)}\\b`, &apos;gi&apos;);
+      const regex = new RegExp(`\\b${english.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'gi');
       translatedText = translatedText.replace(regex, french);
     }
     
@@ -373,9 +373,9 @@ class StarlinkRSSFetcher {
 
   isFrenchContent(text) {
     const frenchIndicators = [
-      &apos;de la&apos;, &apos;de le&apos;, &apos;du &apos;, &apos;des &apos;, &apos;le &apos;, &apos;la &apos;, &apos;les &apos;,
-      &apos;lancement&apos;, &apos;satellite&apos;, &apos;espace&apos;, &apos;mission&apos;, &apos;fusée&apos;,
-      &apos;constellation&apos;, &apos;orbite&apos;, &apos;déploiement&apos;, &apos;SpaceX France&apos;
+      'de la', 'de le', 'du ', 'des ', 'le ', 'la ', 'les ',
+      'lancement', 'satellite', 'espace', 'mission', 'fusée',
+      'constellation', 'orbite', 'déploiement', 'SpaceX France'
     ];
     
     const textLower = text.toLowerCase();

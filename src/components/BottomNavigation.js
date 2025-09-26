@@ -1,8 +1,8 @@
-&apos;use client&apos;
+'use client'
 
-import React, { useState, useEffect } from &apos;react&apos;
-import { useRouter, usePathname } from &apos;next/navigation&apos;
-import { Home, User, ShieldCheck, GraduationCap, FolderOpen, Eye } from &apos;lucide-react&apos;
+import React, { useState, useEffect } from 'react'
+import { useRouter, usePathname } from 'next/navigation'
+import { Home, User, ShieldCheck, GraduationCap, FolderOpen, Eye } from 'lucide-react'
 
 export default function BottomNavigation() {
   const router = useRouter()
@@ -16,33 +16,33 @@ export default function BottomNavigation() {
 
   const navigation = [
     {
-      name: &apos;Accueil&apos;,
-      href: &apos;/accueil&apos;,
+      name: 'Accueil',
+      href: '/accueil',
       icon: Home,
     },
     {
-      name: &apos;À propos&apos;,
-      href: &apos;/a-propos&apos;,
+      name: 'À propos',
+      href: '/a-propos',
       icon: User,
     },
     {
-      name: &apos;TCS&apos;,
-      href: &apos;/tcs&apos;,
+      name: 'TCS',
+      href: '/tcs',
       icon: ShieldCheck,
     },
     {
-      name: &apos;BTS SIO&apos;,
-      href: &apos;/bts-sio&apos;,
+      name: 'BTS SIO',
+      href: '/bts-sio',
       icon: GraduationCap,
     },
     {
-      name: &apos;Projets&apos;,
-      href: &apos;/projets&apos;,
+      name: 'Projets',
+      href: '/projets',
       icon: FolderOpen,
     },
     {
-      name: &apos;Veilles&apos;,
-      href: &apos;/veilles&apos;,
+      name: 'Veilles',
+      href: '/veilles',
       icon: Eye,
     }
   ]
@@ -84,30 +84,30 @@ export default function BottomNavigation() {
                   disabled={isNavigatingToThis}
                   className={`bottom-nav-item touch-target-large flex flex-col items-center justify-center px-2 py-2 rounded-xl relative transition-all duration-200 transform ${
                     active
-                      ? &apos;text-blue-600 dark:text-blue-400 bg-blue-50/60 dark:bg-blue-900/40 backdrop-blur-sm scale-105 shadow-lg&apos;
+                      ? 'text-blue-600 dark:text-blue-400 bg-blue-50/60 dark:bg-blue-900/40 backdrop-blur-sm scale-105 shadow-lg'
                       : isNavigatingToThis
-                      ? &apos;text-blue-500 dark:text-blue-300 bg-blue-50/40 dark:bg-blue-900/20 backdrop-blur-sm scale-95&apos;
-                      : &apos;text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 hover:bg-white/20 dark:hover:bg-white/10 backdrop-blur-sm active:scale-95&apos;
+                      ? 'text-blue-500 dark:text-blue-300 bg-blue-50/40 dark:bg-blue-900/20 backdrop-blur-sm scale-95'
+                      : 'text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 hover:bg-white/20 dark:hover:bg-white/10 backdrop-blur-sm active:scale-95'
                   }`}
                   style={{ 
-                    minWidth: &apos;60px&apos;, 
-                    minHeight: &apos;56px&apos;,
-                    willChange: &apos;transform&apos;
+                    minWidth: '60px', 
+                    minHeight: '56px',
+                    willChange: 'transform'
                   }}
                 >
                   <Icon className={`w-6 h-6 mb-1 transition-all duration-200 ${
                     active 
-                      ? &apos;scale-110&apos; 
+                      ? 'scale-110' 
                       : isNavigatingToThis 
-                      ? &apos;scale-105 opacity-50&apos; 
-                      : &apos;&apos;
+                      ? 'scale-105 opacity-50' 
+                      : ''
                   }`} />
                   <span className={`text-xs font-medium transition-all duration-200 ${
                     active 
-                      ? &apos;text-blue-600 dark:text-blue-400&apos; 
+                      ? 'text-blue-600 dark:text-blue-400' 
                       : isNavigatingToThis
-                      ? &apos;text-blue-500 dark:text-blue-300 opacity-50&apos;
-                      : &apos;&apos;
+                      ? 'text-blue-500 dark:text-blue-300 opacity-50'
+                      : ''
                   }`}>
                     {item.name}
                   </span>
