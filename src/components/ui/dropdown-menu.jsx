@@ -1,42 +1,42 @@
-'use client'
+&apos;use client&apos;
 
-import * as React from 'react'
-import { cn } from '@/lib/utils'
+import * as React from &apos;react&apos;
+import { cn } from &apos;@/lib/utils&apos;
 
 const DropdownMenu = React.forwardRef(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn('relative inline-block text-left', className)}
+    className={cn(&apos;relative inline-block text-left&apos;, className)}
     {...props}
   />
 ))
-DropdownMenu.displayName = 'DropdownMenu'
+DropdownMenu.displayName = &apos;DropdownMenu&apos;
 
 const DropdownMenuTrigger = React.forwardRef(({ className, children, ...props }, ref) => (
   <button
     ref={ref}
-    className={cn('inline-flex items-center justify-center', className)}
+    className={cn(&apos;inline-flex items-center justify-center&apos;, className)}
     {...props}
   >
     {children}
   </button>
 ))
-DropdownMenuTrigger.displayName = 'DropdownMenuTrigger'
+DropdownMenuTrigger.displayName = &apos;DropdownMenuTrigger&apos;
 
 const DropdownMenuContent = React.forwardRef(({ 
   className, 
   sideOffset = 4, 
-  align = 'center',
+  align = &apos;center&apos;,
   children,
   ...props 
 }, ref) => (
   <div
     ref={ref}
     className={cn(
-      'absolute z-50 min-w-[12rem] overflow-hidden rounded-lg border bg-white/95 backdrop-blur-lg shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 dark:bg-gray-800/95 dark:border-gray-700',
-      align === 'start' && 'left-0',
-      align === 'center' && 'left-1/2 transform -translate-x-1/2',
-      align === 'end' && 'right-0',
+      &apos;absolute z-50 min-w-[12rem] overflow-hidden rounded-lg border bg-white/95 backdrop-blur-lg shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 dark:bg-gray-800/95 dark:border-gray-700&apos;,
+      align === &apos;start&apos; && &apos;left-0&apos;,
+      align === &apos;center&apos; && &apos;left-1/2 transform -translate-x-1/2&apos;,
+      align === &apos;end&apos; && &apos;right-0&apos;,
       className
     )}
     style={{ marginTop: sideOffset }}
@@ -45,7 +45,7 @@ const DropdownMenuContent = React.forwardRef(({
     {children}
   </div>
 ))
-DropdownMenuContent.displayName = 'DropdownMenuContent'
+DropdownMenuContent.displayName = &apos;DropdownMenuContent&apos;
 
 const DropdownMenuItem = React.forwardRef(({ 
   className, 
@@ -56,8 +56,8 @@ const DropdownMenuItem = React.forwardRef(({
   <div
     ref={ref}
     className={cn(
-      'relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-gray-100 focus:text-gray-900 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-gray-700 dark:focus:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700',
-      inset && 'pl-8',
+      &apos;relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-gray-100 focus:text-gray-900 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-gray-700 dark:focus:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700&apos;,
+      inset && &apos;pl-8&apos;,
       className
     )}
     {...props}
@@ -65,16 +65,16 @@ const DropdownMenuItem = React.forwardRef(({
     {children}
   </div>
 ))
-DropdownMenuItem.displayName = 'DropdownMenuItem'
+DropdownMenuItem.displayName = &apos;DropdownMenuItem&apos;
 
 const DropdownMenuSeparator = React.forwardRef(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn('-mx-1 my-1 h-px bg-gray-200 dark:bg-gray-700', className)}
+    className={cn(&apos;-mx-1 my-1 h-px bg-gray-200 dark:bg-gray-700&apos;, className)}
     {...props}
   />
 ))
-DropdownMenuSeparator.displayName = 'DropdownMenuSeparator'
+DropdownMenuSeparator.displayName = &apos;DropdownMenuSeparator&apos;
 
 export {
   DropdownMenu,
