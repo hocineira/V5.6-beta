@@ -2,6 +2,7 @@
 import { parseStringPromise } from 'xml2js';
 import { formatDistanceToNow } from 'date-fns';
 import { fr } from 'date-fns/locale';
+import { logger } from './logger';
 
 class WindowsRSSFetcher {
   constructor() {
