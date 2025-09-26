@@ -8,7 +8,7 @@ export async function POST(request) {
     logger.info('🚀 Démarrage refresh RSS Starlink...');
     
     // Fetch all Starlink RSS feeds
-    const allUpdates = await starlinkRSSFetcher.fetchAllFeeds();
+    const allUpdates = await starlinkRssFetcher.fetchAllFeeds();
     
     // Store updates
     let storedCount = 0;
