@@ -5,7 +5,7 @@ import { logger } from '../../../../../lib/logger.js';
 
 export async function POST() {
   try {
-    console.log('🚀 Démarrage mise à jour RSS manuelle...');
+    logger.info('🚀 Démarrage mise à jour RSS manuelle...');
     
     // Fetch all RSS feeds
     const allUpdates = await rssFetcher.fetchAllFeeds();
