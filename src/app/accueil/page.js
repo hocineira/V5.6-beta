@@ -130,7 +130,7 @@ const TechSkill = memo(function TechSkill({ skill, index }) {
 })
 
 // Component moderne pour les features
-const ModernFeatureCard = memo(({ feature, index, onAction }) => {
+const ModernFeatureCard = memo(function ModernFeatureCard({ feature, index, onAction }) {
   const Icon = feature.icon
   return (
     <Card 
