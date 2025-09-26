@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { rssFetcher } from '../../../../../lib/rss-fetcher.js';
 import { storage } from '../../../../../lib/storage.js';
+import { logger } from '../../../../../lib/logger.js';
 
 export async function POST() {
   try {
