@@ -89,10 +89,14 @@ class StarlinkRSSFetcher {
   parseRSSItem(itemXml, source) {
     try {
       // Extract basic fields
-      const title = this.extractXmlTag(itemXml, 'title') || "Sans titre";
+      let title = this.extractXmlTag(itemXml, 'title') || "Sans titre";
       const link = this.extractXmlTag(itemXml, 'link') || "";
-      const description = this.cleanHtml(this.extractXmlTag(itemXml, 'description') || "");
+      let description = this.extractXmlTag(itemXml, 'description') || this.extractXmlTag(itemXml, 'content:encoded') || "";
       const pubDate = this.extractXmlTag(itemXml, 'pubDate') || new Date().toISOString();
+
+      // Clean title and description from HTML and CDATA
+      title = this.cleanHtml(title);
+      description = this.cleanHtml(description);
 
       // Parse publication date
       let publishedDate = new Date();
