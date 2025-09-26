@@ -51,7 +51,7 @@ class WindowsRSSFetcher {
       const source = this.sources[sourceKey];
       if (!source) return [];
 
-      console.log(`📡 Récupération du feed : ${source.name}`);
+      logger.rss(`📡 Récupération du feed : ${source.name}`);
 
       const response = await fetch(source.url, {
         headers: {
