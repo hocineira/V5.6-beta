@@ -69,7 +69,7 @@ class WindowsRSSFetcher {
       // Parse XML manually for better control
       const updates = this.parseRSSFeed(xmlText, source);
       
-      console.log(`✅ ${updates.length} mises à jour récupérées de ${source.name}`);
+      logger.rss(`✅ ${updates.length} mises à jour récupérées de ${source.name}`);
       return updates;
 
     } catch (error) {
