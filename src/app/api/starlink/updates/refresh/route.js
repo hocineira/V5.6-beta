@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { starlinkRSSFetcher } from '../../../../../lib/starlink-rss-fetcher.js';
+import { starlinkRssFetcher } from '../../../../../lib/starlink-rss-fetcher.js';
 import { starlinkStorage } from '../../../../../lib/starlink-storage.js';
 import { logger } from '../../../../../lib/logger.js';
 
