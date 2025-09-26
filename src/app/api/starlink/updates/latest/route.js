@@ -1,10 +1,10 @@
-import { NextResponse } from 'next/server';
-import { starlinkStorage } from '../../../../../lib/starlink-storage.js';
+import { NextResponse } from &apos;next/server&apos;;
+import { starlinkStorage } from &apos;../../../../../lib/starlink-storage.js&apos;;
 
 export async function GET(request) {
   try {
     const { searchParams } = new URL(request.url);
-    const limit = parseInt(searchParams.get('limit')) || 5;
+    const limit = parseInt(searchParams.get(&apos;limit&apos;)) || 5;
 
     console.log(`🛰️ API Starlink: récupération dernières updates - limit: ${limit}`);
 
@@ -14,18 +14,18 @@ export async function GET(request) {
       updates,
       count: updates.length,
       limit: limit,
-      status: 'success'
+      status: &apos;success&apos;
     };
 
     return NextResponse.json(response);
   } catch (error) {
-    console.error('❌ Erreur API Starlink latest:', error);
+    console.error(&apos;❌ Erreur API Starlink latest:&apos;, error);
     
     return NextResponse.json(
       { 
-        error: 'Erreur lors de la récupération des dernières actualités Starlink',
+        error: &apos;Erreur lors de la récupération des dernières actualités Starlink&apos;,
         details: error.message,
-        status: 'error'
+        status: &apos;error&apos;
       },
       { status: 500 }
     );

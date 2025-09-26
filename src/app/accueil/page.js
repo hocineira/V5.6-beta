@@ -1,98 +1,98 @@
-'use client'
+&apos;use client&apos;
 
-import { useState, useEffect, memo } from 'react'
-import { ArrowRight, Linkedin, Mail, MapPin, GraduationCap, Server, Network, Monitor, Database, Shield, Globe, Settings, Code, Terminal, Wifi } from 'lucide-react'
-import { Button } from '../../components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card'
-import { useRouter } from 'next/navigation'
-import Image from 'next/image'
+import { useState, useEffect, memo } from &apos;react&apos;
+import { ArrowRight, Linkedin, Mail, MapPin, GraduationCap, Server, Network, Monitor, Database, Shield, Globe, Settings, Code, Terminal, Wifi } from &apos;lucide-react&apos;
+import { Button } from &apos;../../components/ui/button&apos;
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from &apos;../../components/ui/card&apos;
+import { useRouter } from &apos;next/navigation&apos;
+import Image from &apos;next/image&apos;
 
 // Données statiques modernes pour un design technologique unifié
 const StaticData = {
   personalInfo: {
-    name: 'Hocine IRATNI',
-    title: 'Étudiant en BTS SIO SISR',
-    subtitle: 'Spécialiste Systèmes et Réseaux Informatiques',
-    description: 'Passionné par l\'infrastructure IT et les nouvelles technologies, je développe des compétences en administration système, sécurité réseau et virtualisation.',
-    email: 'hocineira@gmail.com',
-    phone: '06 XX XX XX XX',
-    location: 'Marseille, France',
+    name: &apos;Hocine IRATNI&apos;,
+    title: &apos;Étudiant en BTS SIO SISR&apos;,
+    subtitle: &apos;Spécialiste Systèmes et Réseaux Informatiques&apos;,
+    description: &apos;Passionné par l\&apos;infrastructure IT et les nouvelles technologies, je développe des compétences en administration système, sécurité réseau et virtualisation.&apos;,
+    email: &apos;hocineira@gmail.com&apos;,
+    phone: &apos;06 XX XX XX XX&apos;,
+    location: &apos;Marseille, France&apos;,
     social: {
-      github: 'https://github.com/hocineira',
-      linkedin: 'https://linkedin.com/in/hocine-iratni',
-      email: 'mailto:hocineira@gmail.com'
+      github: &apos;https://github.com/hocineira&apos;,
+      linkedin: &apos;https://linkedin.com/in/hocine-iratni&apos;,
+      email: &apos;mailto:hocineira@gmail.com&apos;
     }
   },
   features: [
     {
       icon: GraduationCap,
-      title: 'Formation BTS SIO',
-      description: 'Découvrez le parcours BTS Services Informatiques aux Organisations',
-      href: '/bts-sio'
+      title: &apos;Formation BTS SIO&apos;,
+      description: &apos;Découvrez le parcours BTS Services Informatiques aux Organisations&apos;,
+      href: &apos;/bts-sio&apos;
     },
     {
       icon: Server,
-      title: 'Projets Techniques',
-      description: 'Explorez mes réalisations en infrastructure et réseaux',
-      href: '/projets'
+      title: &apos;Projets Techniques&apos;,
+      description: &apos;Explorez mes réalisations en infrastructure et réseaux&apos;,
+      href: &apos;/projets&apos;
     },
     {
       icon: Monitor,
-      title: 'Veilles Technologiques',
-      description: 'Suivez mes analyses des dernières innovations IT',
-      href: '/veilles'
+      title: &apos;Veilles Technologiques&apos;,
+      description: &apos;Suivez mes analyses des dernières innovations IT&apos;,
+      href: &apos;/veilles&apos;
     }
   ],
   // Stack technologique unifié avec design moderne
   techStack: [
     { 
       icon: Network, 
-      name: 'Cisco CCNA', 
-      category: 'Réseaux',
-      description: 'Configuration et maintenance',
-      status: 'expert'
+      name: &apos;Cisco CCNA&apos;, 
+      category: &apos;Réseaux&apos;,
+      description: &apos;Configuration et maintenance&apos;,
+      status: &apos;expert&apos;
     },
     { 
       icon: Shield, 
-      name: 'pfSense', 
-      category: 'Sécurité',
-      description: 'Firewall et VPN',
-      status: 'avancé'
+      name: &apos;pfSense&apos;, 
+      category: &apos;Sécurité&apos;,
+      description: &apos;Firewall et VPN&apos;,
+      status: &apos;avancé&apos;
     },
     { 
       icon: Database, 
-      name: 'Active Directory', 
-      category: 'Systèmes',
-      description: 'Gestion d\'identités',
-      status: 'avancé'
+      name: &apos;Active Directory&apos;, 
+      category: &apos;Systèmes&apos;,
+      description: &apos;Gestion d\&apos;identités&apos;,
+      status: &apos;avancé&apos;
     },
     { 
       icon: Settings, 
-      name: 'Proxmox', 
-      category: 'Virtualisation',
-      description: 'Hyperviseur open-source',
-      status: 'intermédiaire'
+      name: &apos;Proxmox&apos;, 
+      category: &apos;Virtualisation&apos;,
+      description: &apos;Hyperviseur open-source&apos;,
+      status: &apos;intermédiaire&apos;
     },
     { 
       icon: Terminal, 
-      name: 'Linux/Windows', 
-      category: 'OS',
-      description: 'Administration système',
-      status: 'expert'
+      name: &apos;Linux/Windows&apos;, 
+      category: &apos;OS&apos;,
+      description: &apos;Administration système&apos;,
+      status: &apos;expert&apos;
     },
     { 
       icon: Wifi, 
-      name: 'VLANs', 
-      category: 'Réseaux',
-      description: 'Segmentation réseau',
-      status: 'avancé'
+      name: &apos;VLANs&apos;, 
+      category: &apos;Réseaux&apos;,
+      description: &apos;Segmentation réseau&apos;,
+      status: &apos;avancé&apos;
     }
   ],
   infrastructure: [
-    { name: 'pfSense Firewall', status: 'active', type: 'security' },
-    { name: 'Switch Cisco Managé', status: 'active', type: 'network' },
-    { name: 'Serveur AD', status: 'active', type: 'system' },
-    { name: 'Virtualisation Proxmox/Hyper-V', status: 'active', type: 'virtualization' }
+    { name: &apos;pfSense Firewall&apos;, status: &apos;active&apos;, type: &apos;security&apos; },
+    { name: &apos;Switch Cisco Managé&apos;, status: &apos;active&apos;, type: &apos;network&apos; },
+    { name: &apos;Serveur AD&apos;, status: &apos;active&apos;, type: &apos;system&apos; },
+    { name: &apos;Virtualisation Proxmox/Hyper-V&apos;, status: &apos;active&apos;, type: &apos;virtualization&apos; }
   ]
 }
 
@@ -101,10 +101,10 @@ const TechSkill = memo(({ skill, index }) => {
   const Icon = skill.icon
   const getStatusColor = (status) => {
     switch (status) {
-      case 'expert': return 'bg-gradient-to-r from-blue-400 to-purple-400'
-      case 'avancé': return 'bg-gradient-to-r from-purple-400 to-violet-400' 
-      case 'intermédiaire': return 'bg-gradient-to-r from-violet-400 to-blue-400'
-      default: return 'bg-gradient-to-r from-slate-400 to-slate-500'
+      case &apos;expert&apos;: return &apos;bg-gradient-to-r from-blue-400 to-purple-400&apos;
+      case &apos;avancé&apos;: return &apos;bg-gradient-to-r from-purple-400 to-violet-400&apos; 
+      case &apos;intermédiaire&apos;: return &apos;bg-gradient-to-r from-violet-400 to-blue-400&apos;
+      default: return &apos;bg-gradient-to-r from-slate-400 to-slate-500&apos;
     }
   }
   
@@ -123,7 +123,7 @@ const TechSkill = memo(({ skill, index }) => {
       {/* Ligne de progression avec dégradé bleu/violet */}
       <div className="mt-4 h-2 bg-slate-700/50 rounded-full overflow-hidden">
         <div className={`h-full bg-gradient-to-r from-blue-400 via-purple-400 to-violet-400 rounded-full transition-all duration-1000 
-          ${skill.status === 'expert' ? 'w-full' : skill.status === 'avancé' ? 'w-4/5' : 'w-3/5'}`}></div>
+          ${skill.status === &apos;expert&apos; ? &apos;w-full&apos; : skill.status === &apos;avancé&apos; ? &apos;w-4/5&apos; : &apos;w-3/5&apos;}`}></div>
       </div>
     </div>
   )
@@ -168,9 +168,9 @@ export default function AccueilPage() {
     setIsVisible(true)
   }, [])
 
-  const handleProjectsClick = () => router.push('/projets')
-  const handleContactClick = () => window.open('mailto:hocineira@gmail.com', '_blank')
-  const handleSocialClick = (url) => () => window.open(url, '_blank')
+  const handleProjectsClick = () => router.push(&apos;/projets&apos;)
+  const handleContactClick = () => window.open(&apos;mailto:hocineira@gmail.com&apos;, &apos;_blank&apos;)
+  const handleSocialClick = (url) => () => window.open(url, &apos;_blank&apos;)
   const handleFeatureAction = (href) => router.push(href)
 
   return (
@@ -184,7 +184,7 @@ export default function AccueilPage() {
               linear-gradient(90deg, rgb(59 130 246 / 0.3) 1px, transparent 1px),
               linear-gradient(180deg, rgb(139 92 246 / 0.3) 1px, transparent 1px)
             `,
-            backgroundSize: '40px 40px'
+            backgroundSize: &apos;40px 40px&apos;
           }}></div>
         </div>
         
@@ -229,7 +229,7 @@ export default function AccueilPage() {
                 {StaticData.personalInfo.description}
               </p>
 
-              {/* Boutons d'action avec style technologique bleu/violet */}
+              {/* Boutons d&apos;action avec style technologique bleu/violet */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button 
                   size="lg" 
@@ -332,7 +332,7 @@ export default function AccueilPage() {
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
             backgroundImage: `radial-gradient(circle at 25px 25px, rgb(6 182 212 / 0.3) 1px, transparent 1px)`,
-            backgroundSize: '50px 50px'
+            backgroundSize: &apos;50px 50px&apos;
           }}></div>
         </div>
         
@@ -405,7 +405,7 @@ export default function AccueilPage() {
               linear-gradient(45deg, transparent 24%, rgb(6 182 212 / 0.1) 25%, rgb(6 182 212 / 0.1) 26%, transparent 27%, transparent 74%, rgb(6 182 212 / 0.1) 75%, rgb(6 182 212 / 0.1) 76%, transparent 77%),
               linear-gradient(-45deg, transparent 24%, rgb(59 130 246 / 0.1) 25%, rgb(59 130 246 / 0.1) 26%, transparent 27%, transparent 74%, rgb(59 130 246 / 0.1) 75%, rgb(59 130 246 / 0.1) 76%, transparent 77%)
             `,
-            backgroundSize: '40px 40px'
+            backgroundSize: &apos;40px 40px&apos;
           }}></div>
         </div>
         

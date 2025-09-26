@@ -8,24 +8,24 @@ export const metadata = {
   title: "Portfolio - Hocine IRATNI",
   description: "Portfolio professionnel - BTS SIO SISR",
   icons: {
-    icon: '/favicon.ico',
-    apple: '/favicon.png',
-    shortcut: '/favicon.ico',
+    icon: &apos;/favicon.ico&apos;,
+    apple: &apos;/favicon.png&apos;,
+    shortcut: &apos;/favicon.ico&apos;,
   },
-  manifest: '/manifest.json',
+  manifest: &apos;/manifest.json&apos;,
   other: {
     // Préchargement des ressources critiques pour performance
-    'dns-prefetch': 'https://fonts.googleapis.com',
-    'preconnect': 'https://fonts.gstatic.com',
+    &apos;dns-prefetch&apos;: &apos;https://fonts.googleapis.com&apos;,
+    &apos;preconnect&apos;: &apos;https://fonts.gstatic.com&apos;,
   }
 };
 
 export const viewport = {
-  width: 'device-width',
+  width: &apos;device-width&apos;,
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
-  viewportFit: 'cover',
+  viewportFit: &apos;cover&apos;,
 };
 
 export default function RootLayout({ children }) {

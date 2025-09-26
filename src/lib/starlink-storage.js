@@ -1,10 +1,10 @@
-import { promises as fs } from 'fs';
-import path from 'path';
+import { promises as fs } from &apos;fs&apos;;
+import path from &apos;path&apos;;
 
 class StarlinkStorage {
   constructor() {
-    this.dataDir = path.join(process.cwd(), 'data');
-    this.starlinkCacheFile = path.join(this.dataDir, 'starlink-cache.json');
+    this.dataDir = path.join(process.cwd(), &apos;data&apos;);
+    this.starlinkCacheFile = path.join(this.dataDir, &apos;starlink-cache.json&apos;);
   }
 
   async ensureDataDir() {
@@ -30,7 +30,7 @@ class StarlinkStorage {
       
       return data;
     } catch (error) {
-      console.error('❌ Erreur sauvegarde Starlink:', error);
+      console.error(&apos;❌ Erreur sauvegarde Starlink:&apos;, error);
       throw error;
     }
   }
@@ -39,7 +39,7 @@ class StarlinkStorage {
     try {
       await this.ensureDataDir();
       
-      const fileContent = await fs.readFile(this.starlinkCacheFile, 'utf-8');
+      const fileContent = await fs.readFile(this.starlinkCacheFile, &apos;utf-8&apos;);
       const data = JSON.parse(fileContent);
       
       console.log(`📖 ${data.total || 0} actualités Starlink chargées du cache`);
@@ -50,12 +50,12 @@ class StarlinkStorage {
         lastUpdated: data.lastUpdated
       };
     } catch (error) {
-      if (error.code === 'ENOENT') {
-        console.log('📝 Aucun cache Starlink trouvé, retour données vides');
+      if (error.code === &apos;ENOENT&apos;) {
+        console.log(&apos;📝 Aucun cache Starlink trouvé, retour données vides&apos;);
         return { updates: [], total: 0, lastUpdated: null };
       }
       
-      console.error('❌ Erreur chargement cache Starlink:', error);
+      console.error(&apos;❌ Erreur chargement cache Starlink:&apos;, error);
       throw error;
     }
   }
@@ -72,7 +72,7 @@ class StarlinkStorage {
     // Count by categories
     if (data.updates) {
       data.updates.forEach(update => {
-        const category = update.category || 'unknown';
+        const category = update.category || &apos;unknown&apos;;
         stats.categories[category] = (stats.categories[category] || 0) + 1;
       });
     }
@@ -118,7 +118,7 @@ class StarlinkStorage {
     }
     
     const filtered = data.updates.filter(update => 
-      category === 'all' || update.category === category
+      category === &apos;all&apos; || update.category === category
     );
     
     // Sort by publication date (newest first) and limit

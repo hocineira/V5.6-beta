@@ -1,12 +1,12 @@
-'use client'
+&apos;use client&apos;
 
-import { Badge } from '../../../components/ui/badge'
-import { Button } from '../../../components/ui/button'
+import { Badge } from &apos;../../../components/ui/badge&apos;
+import { Button } from &apos;../../../components/ui/button&apos;
 import { 
   Clock, ArrowLeft, Building, Calendar, 
   Construction, Wrench, Users
-} from 'lucide-react'
-import Link from 'next/link'
+} from &apos;lucide-react&apos;
+import Link from &apos;next/link&apos;
 
 export default function ProjetsE5() {
   return (
@@ -31,13 +31,13 @@ export default function ProjetsE5() {
               <Building className="w-8 h-8 text-white" />
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
-              Projets Professionnels{' '}
+              Projets Professionnels{&apos; &apos;}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
                 E5
               </span>
             </h1>
             <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto px-4">
-              Cette section sera bientôt disponible avec tous mes projets professionnels réalisés dans le cadre de l'épreuve E5 du BTS SIO SISR.
+              Cette section sera bientôt disponible avec tous mes projets professionnels réalisés dans le cadre de l&apos;épreuve E5 du BTS SIO SISR.
             </p>
           </div>
         </div>
@@ -90,8 +90,8 @@ export default function ProjetsE5() {
                   <Users className="w-5 h-5 text-purple-600" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 dark:text-white">Cas d'Usage</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Retours d'expérience</p>
+                  <h3 className="font-semibold text-gray-900 dark:text-white">Cas d&apos;Usage</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">Retours d&apos;expérience</p>
                 </div>
               </div>
             </div>

@@ -1,10 +1,10 @@
-import { NextResponse } from 'next/server';
-import { storage } from '../../../../../lib/storage.js';
+import { NextResponse } from &apos;next/server&apos;;
+import { storage } from &apos;../../../../../lib/storage.js&apos;;
 
 export async function GET(request) {
   try {
     const { searchParams } = new URL(request.url);
-    const limit = parseInt(searchParams.get('limit') || '10');
+    const limit = parseInt(searchParams.get(&apos;limit&apos;) || &apos;10&apos;);
 
     const updates = await storage.getLatestUpdates(limit);
 
@@ -23,9 +23,9 @@ export async function GET(request) {
     });
 
   } catch (error) {
-    console.error('Erreur récupération latest updates:', error);
+    console.error(&apos;Erreur récupération latest updates:&apos;, error);
     return NextResponse.json(
-      { error: 'Erreur récupération des dernières mises à jour' },
+      { error: &apos;Erreur récupération des dernières mises à jour&apos; },
       { status: 500 }
     );
   }

@@ -1,60 +1,60 @@
-'use client'
+&apos;use client&apos;
 
-import { Monitor, Shield, ExternalLink, TrendingUp, ArrowRight, Calendar, FileText } from 'lucide-react'
-import { Button } from '../../components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card'
-import { Badge } from '../../components/ui/badge'
-import Link from 'next/link'
+import { Monitor, Shield, ExternalLink, TrendingUp, ArrowRight, Calendar, FileText } from &apos;lucide-react&apos;
+import { Button } from &apos;../../components/ui/button&apos;
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from &apos;../../components/ui/card&apos;
+import { Badge } from &apos;../../components/ui/badge&apos;
+import Link from &apos;next/link&apos;
 
 export default function VeillesPage() {
   const veillesCategories = [
     {
-      id: 'technologique',
-      title: 'Veille Technologique',
-      description: 'Suivez les dernières évolutions Windows/Windows Server et technologies Microsoft pour votre spécialisation BTS SIO SISR.',
+      id: &apos;technologique&apos;,
+      title: &apos;Veille Technologique&apos;,
+      description: &apos;Suivez les dernières évolutions Windows/Windows Server et technologies Microsoft pour votre spécialisation BTS SIO SISR.&apos;,
       icon: Monitor,
-      color: 'blue',
-      bgGradient: 'from-blue-500 to-indigo-600',
+      color: &apos;blue&apos;,
+      bgGradient: &apos;from-blue-500 to-indigo-600&apos;,
       items: [
-        'Windows Server 2025',
-        'Windows 11 24H2',
-        'Sécurité Microsoft',
-        'Infrastructure IT'
+        &apos;Windows Server 2025&apos;,
+        &apos;Windows 11 24H2&apos;,
+        &apos;Sécurité Microsoft&apos;,
+        &apos;Infrastructure IT&apos;
       ],
-      link: '/veilles/technologique',
-      stats: 'Focus Windows Server'
+      link: &apos;/veilles/technologique&apos;,
+      stats: &apos;Focus Windows Server&apos;
     },
     {
-      id: 'starlink',
-      title: 'Veille Starlink & SpaceX',
-      description: 'Découvrez l\'écosystème Starlink : constellation satellitaire, lancements SpaceX, innovations spatiales et internet global.',
+      id: &apos;starlink&apos;,
+      title: &apos;Veille Starlink & SpaceX&apos;,
+      description: &apos;Découvrez l\&apos;écosystème Starlink : constellation satellitaire, lancements SpaceX, innovations spatiales et internet global.&apos;,
       icon: () => <div className="text-2xl">🛰️</div>,
-      color: 'slate',
-      bgGradient: 'from-slate-700 via-blue-800 to-black',
+      color: &apos;slate&apos;,
+      bgGradient: &apos;from-slate-700 via-blue-800 to-black&apos;,
       items: [
-        'Lancements Starlink',
-        'Constellation satellites',
-        'Missions SpaceX',
-        'Innovations spatiales'
+        &apos;Lancements Starlink&apos;,
+        &apos;Constellation satellites&apos;,
+        &apos;Missions SpaceX&apos;,
+        &apos;Innovations spatiales&apos;
       ],
-      link: '/veilles/starlink',
-      stats: 'Suivi en temps réel'
+      link: &apos;/veilles/starlink&apos;,
+      stats: &apos;Suivi en temps réel&apos;
     },
     {
-      id: 'juridique',
-      title: 'Veille Juridique',  
-      description: 'Restez informé sur les évolutions du RGPD et les obligations de conformité.',
+      id: &apos;juridique&apos;,
+      title: &apos;Veille Juridique&apos;,  
+      description: &apos;Restez informé sur les évolutions du RGPD et les obligations de conformité.&apos;,
       icon: Shield,
-      color: 'indigo',
-      bgGradient: 'from-indigo-500 to-purple-600',
+      color: &apos;indigo&apos;,
+      bgGradient: &apos;from-indigo-500 to-purple-600&apos;,
       items: [
-        'Obligations cybersécurité 2025',
-        'Droits des utilisateurs',
-        'Sanctions et amendes',
-        'Conformité entreprise'
+        &apos;Obligations cybersécurité 2025&apos;,
+        &apos;Droits des utilisateurs&apos;,
+        &apos;Sanctions et amendes&apos;,
+        &apos;Conformité entreprise&apos;
       ],
-      link: '/veilles/juridique',
-      stats: '3 sujets traités'
+      link: &apos;/veilles/juridique&apos;,
+      stats: &apos;3 sujets traités&apos;
     }
   ]
 
@@ -111,11 +111,11 @@ export default function VeillesPage() {
                   <Card className="group cursor-pointer hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-3 overflow-hidden border-0 shadow-lg h-full">
                     {/* Header with Gradient - Mobile Optimized */}
                     <div className={`relative h-24 sm:h-32 bg-gradient-to-r ${veille.bgGradient} flex items-center justify-center overflow-hidden ${
-                      veille.id === 'starlink' ? 'text-white' : ''
+                      veille.id === &apos;starlink&apos; ? &apos;text-white&apos; : &apos;&apos;
                     }`}>
                       <div className="absolute inset-0 bg-black/10"></div>
                       {/* Étoiles pour le thème Starlink */}
-                      {veille.id === 'starlink' && (
+                      {veille.id === &apos;starlink&apos; && (
                         <>
                           <div className="absolute top-2 left-4 w-1 h-1 bg-white rounded-full animate-pulse"></div>
                           <div className="absolute top-4 right-6 w-1 h-1 bg-blue-300 rounded-full animate-pulse delay-500"></div>
@@ -133,9 +133,9 @@ export default function VeillesPage() {
                     <CardHeader className="pb-3 sm:pb-4 p-4 sm:p-6">
                       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-2 sm:gap-0">
                         <Badge className={`${
-                          veille.color === 'blue' ? 'bg-blue-100 text-blue-800' : 
-                          veille.color === 'slate' ? 'bg-slate-100 text-slate-800' : 
-                          'bg-indigo-100 text-indigo-800'
+                          veille.color === &apos;blue&apos; ? &apos;bg-blue-100 text-blue-800&apos; : 
+                          veille.color === &apos;slate&apos; ? &apos;bg-slate-100 text-slate-800&apos; : 
+                          &apos;bg-indigo-100 text-indigo-800&apos;
                         } text-xs sm:text-sm w-fit`}>
                           {veille.stats}
                         </Badge>
@@ -161,9 +161,9 @@ export default function VeillesPage() {
                           {veille.items.map((item, index) => (
                             <li key={index} className="flex items-start">
                               <div className={`w-2 h-2 ${
-                                veille.color === 'blue' ? 'bg-blue-600' : 
-                                veille.color === 'slate' ? 'bg-slate-600' : 
-                                'bg-indigo-600'
+                                veille.color === &apos;blue&apos; ? &apos;bg-blue-600&apos; : 
+                                veille.color === &apos;slate&apos; ? &apos;bg-slate-600&apos; : 
+                                &apos;bg-indigo-600&apos;
                               } rounded-full mt-1.5 sm:mt-2 mr-3 flex-shrink-0`}></div>
                               <span className="text-slate-700 text-xs sm:text-sm">{item}</span>
                             </li>
@@ -172,22 +172,22 @@ export default function VeillesPage() {
                       </div>
                       
                       <div className={`${
-                        veille.color === 'blue' ? 'bg-blue-50 group-hover:bg-blue-100' : 
-                        veille.color === 'slate' ? 'bg-slate-50 group-hover:bg-slate-100' :
-                        'bg-indigo-50 group-hover:bg-indigo-100'
+                        veille.color === &apos;blue&apos; ? &apos;bg-blue-50 group-hover:bg-blue-100&apos; : 
+                        veille.color === &apos;slate&apos; ? &apos;bg-slate-50 group-hover:bg-slate-100&apos; :
+                        &apos;bg-indigo-50 group-hover:bg-indigo-100&apos;
                       } p-3 sm:p-4 rounded-lg transition-colors duration-300`}>
                         <div className="flex items-center justify-between">
                           <span className={`${
-                            veille.color === 'blue' ? 'text-blue-800' : 
-                            veille.color === 'slate' ? 'text-slate-800' : 
-                            'text-indigo-800'
+                            veille.color === &apos;blue&apos; ? &apos;text-blue-800&apos; : 
+                            veille.color === &apos;slate&apos; ? &apos;text-slate-800&apos; : 
+                            &apos;text-indigo-800&apos;
                           } font-medium text-xs sm:text-sm`}>
                             Accéder à la veille
                           </span>
                           <ArrowRight className={`w-3 h-3 sm:w-4 sm:h-4 ${
-                            veille.color === 'blue' ? 'text-blue-700' : 
-                            veille.color === 'slate' ? 'text-slate-700' : 
-                            'text-indigo-700'
+                            veille.color === &apos;blue&apos; ? &apos;text-blue-700&apos; : 
+                            veille.color === &apos;slate&apos; ? &apos;text-slate-700&apos; : 
+                            &apos;text-indigo-700&apos;
                           } group-hover:transform group-hover:translate-x-1 transition-all duration-300`} />
                         </div>
                       </div>
@@ -235,7 +235,7 @@ export default function VeillesPage() {
       <section className="py-20 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-6 text-white">
-            Besoin d'informations complémentaires ?
+            Besoin d&apos;informations complémentaires ?
           </h2>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
             Pour toute question sur ces veilles ou pour discuter de vos besoins spécifiques en matière technologique, spatiale et juridique.
@@ -244,7 +244,7 @@ export default function VeillesPage() {
             <Button 
               size="lg"
               className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-3 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg"
-              onClick={() => window.location.href = 'mailto:hocineira@gmail.com'}
+              onClick={() => window.location.href = &apos;mailto:hocineira@gmail.com&apos;}
             >
               Me contacter
               <ExternalLink className="ml-2 w-5 h-5" />
@@ -253,7 +253,7 @@ export default function VeillesPage() {
               variant="outline"
               size="lg"
               className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-3 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg"
-              onClick={() => window.open('/projets', '_self')}
+              onClick={() => window.open(&apos;/projets&apos;, &apos;_self&apos;)}
             >
               Voir mes procédures
               <FileText className="ml-2 w-5 h-5" />

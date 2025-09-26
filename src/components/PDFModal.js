@@ -1,8 +1,8 @@
-'use client'
+&apos;use client&apos;
 
-import { useState, useEffect, useRef } from 'react'
-import { X, Download, ExternalLink, RotateCw, ZoomIn, ZoomOut, Maximize2, AlertCircle } from 'lucide-react'
-import { Button } from './ui/button'
+import { useState, useEffect, useRef } from &apos;react&apos;
+import { X, Download, ExternalLink, RotateCw, ZoomIn, ZoomOut, Maximize2, AlertCircle } from &apos;lucide-react&apos;
+import { Button } from &apos;./ui/button&apos;
 
 export default function PDFModal({ isOpen, onClose, pdfUrl, title }) {
   const [isLoading, setIsLoading] = useState(true)
@@ -14,21 +14,21 @@ export default function PDFModal({ isOpen, onClose, pdfUrl, title }) {
 
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden'
+      document.body.style.overflow = &apos;hidden&apos;
       setIsLoading(true)
       setError(false)
       setUsePDFJS(false)
       
       // Set up a timeout to detect if iframe fails to load
       const timeout = setTimeout(() => {
-        console.log('PDF loading timeout, switching to PDF.js')
+        console.log(&apos;PDF loading timeout, switching to PDF.js&apos;)
         setIsLoading(false)
         setUsePDFJS(true)
       }, 8000) // 8 seconds timeout
       
       setLoadTimeout(timeout)
     } else {
-      document.body.style.overflow = 'unset'
+      document.body.style.overflow = &apos;unset&apos;
       if (loadTimeout) {
         clearTimeout(loadTimeout)
         setLoadTimeout(null)
@@ -36,7 +36,7 @@ export default function PDFModal({ isOpen, onClose, pdfUrl, title }) {
     }
 
     return () => {
-      document.body.style.overflow = 'unset'
+      document.body.style.overflow = &apos;unset&apos;
       if (loadTimeout) {
         clearTimeout(loadTimeout)
       }
@@ -44,18 +44,18 @@ export default function PDFModal({ isOpen, onClose, pdfUrl, title }) {
   }, [isOpen])
 
   const handleDownload = () => {
-    const link = document.createElement('a')
+    const link = document.createElement(&apos;a&apos;)
     link.href = pdfUrl
-    link.download = title ? `${title.replace(/[^a-z0-9]/gi, '_')}.pdf` : 'procedure.pdf'
+    link.download = title ? `${title.replace(/[^a-z0-9]/gi, &apos;_&apos;)}.pdf` : &apos;procedure.pdf&apos;
     link.click()
   }
 
   const handleOpenInNewTab = () => {
-    window.open(pdfUrl, '_blank')
+    window.open(pdfUrl, &apos;_blank&apos;)
   }
 
   const handleIframeLoad = () => {
-    console.log('PDF iframe loaded successfully')
+    console.log(&apos;PDF iframe loaded successfully&apos;)
     if (loadTimeout) {
       clearTimeout(loadTimeout)
       setLoadTimeout(null)
@@ -65,7 +65,7 @@ export default function PDFModal({ isOpen, onClose, pdfUrl, title }) {
   }
 
   const handleIframeError = () => {
-    console.log('PDF iframe failed to load, switching to PDF.js')
+    console.log(&apos;PDF iframe failed to load, switching to PDF.js&apos;)
     if (loadTimeout) {
       clearTimeout(loadTimeout)
       setLoadTimeout(null)
@@ -79,21 +79,21 @@ export default function PDFModal({ isOpen, onClose, pdfUrl, title }) {
   }
 
   const handleKeyDown = (e) => {
-    if (e.key === 'Escape') {
+    if (e.key === &apos;Escape&apos;) {
       onClose()
     }
   }
 
   useEffect(() => {
     if (isOpen) {
-      document.addEventListener('keydown', handleKeyDown)
-      return () => document.removeEventListener('keydown', handleKeyDown)
+      document.addEventListener(&apos;keydown&apos;, handleKeyDown)
+      return () => document.removeEventListener(&apos;keydown&apos;, handleKeyDown)
     }
   }, [isOpen])
 
   // PDF.js URL generator
   const getPDFJSUrl = () => {
-    // Use Mozilla's hosted PDF.js viewer
+    // Use Mozilla&apos;s hosted PDF.js viewer
     return `https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(window.location.origin + pdfUrl)}`
   }
 
@@ -110,8 +110,8 @@ export default function PDFModal({ isOpen, onClose, pdfUrl, title }) {
       {/* Modal Content */}
       <div className={`relative bg-white rounded-xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300 ${
         isFullscreen 
-          ? 'w-full h-full max-w-none max-h-none m-0 rounded-none' 
-          : 'w-full h-full max-w-6xl max-h-[90vh] m-4'
+          ? &apos;w-full h-full max-w-none max-h-none m-0 rounded-none&apos; 
+          : &apos;w-full h-full max-w-6xl max-h-[90vh] m-4&apos;
       }`}>
         
         {/* Header */}
@@ -185,10 +185,10 @@ export default function PDFModal({ isOpen, onClose, pdfUrl, title }) {
             // Error fallback
             <div className="flex flex-col items-center justify-center h-full p-4 text-center">
               <div className="text-6xl mb-4">📄</div>
-              <h3 className="text-xl font-semibold mb-2 text-gray-800">Impossible d'afficher le PDF</h3>
+              <h3 className="text-xl font-semibold mb-2 text-gray-800">Impossible d&apos;afficher le PDF</h3>
               <p className="text-gray-600 mb-6 max-w-md">
                 Votre navigateur ne peut pas afficher ce PDF directement. 
-                Vous pouvez le télécharger ou l'ouvrir dans un nouvel onglet.
+                Vous pouvez le télécharger ou l&apos;ouvrir dans un nouvel onglet.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Button
@@ -221,7 +221,7 @@ export default function PDFModal({ isOpen, onClose, pdfUrl, title }) {
                 src={getPDFJSUrl()}
                 className="w-full h-full border-0 mt-12"
                 title={title}
-                onLoad={() => console.log('PDF.js loaded')}
+                onLoad={() => console.log(&apos;PDF.js loaded&apos;)}
                 onError={() => setError(true)}
               />
             </div>

@@ -1,6 +1,6 @@
-import { redirect } from 'next/navigation'
+import { redirect } from &apos;next/navigation&apos;
 
 export default function HomePage() {
   // Redirection immédiate côté serveur vers /accueil
-  redirect('/accueil')
+  redirect(&apos;/accueil&apos;)
 }

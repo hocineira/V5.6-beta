@@ -1,4 +1,4 @@
-'use client'
+&apos;use client&apos;
 
 import { 
   User, 
@@ -6,8 +6,8 @@ import {
   MapPin, 
   Calendar,
   Heart
-} from 'lucide-react'
-import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card'
+} from &apos;lucide-react&apos;
+import { Card, CardContent, CardHeader, CardTitle } from &apos;../../components/ui/card&apos;
 
 export default function AboutPage() {
   return (
@@ -27,7 +27,7 @@ export default function AboutPage() {
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
-            Decouvrez mon parcours, mes competences et ma passion pour l'informatique
+            Decouvrez mon parcours, mes competences et ma passion pour l&apos;informatique
           </p>
 
           {/* Contact Info Cards */}
@@ -61,13 +61,13 @@ export default function AboutPage() {
             <CardContent className="space-y-6">
               <div className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
                 <p className="mb-4">
-                  Je suis <strong>passionne par tout ce qui touche a l'informatique et aux nouvelles technologies</strong>. 
+                  Je suis <strong>passionne par tout ce qui touche a l&apos;informatique et aux nouvelles technologies</strong>. 
                   Apprenant et travaillant en equipe et cherchant a trouver des solutions aux problemes, 
                   je suis desireux de contribuer positivement a tout projet qui me sera confie.
                 </p>
                 <p>
                   Actuellement etudiant en <strong>deuxieme annee de BTS Services Informatiques aux Organisations (option SISR)</strong>, 
-                  je suis a la recherche d'une alternance dans le domaine de l'administration des systemes et reseaux.
+                  je suis a la recherche d&apos;une alternance dans le domaine de l&apos;administration des systemes et reseaux.
                 </p>
               </div>
             </CardContent>

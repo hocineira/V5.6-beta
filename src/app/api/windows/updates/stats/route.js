@@ -1,5 +1,5 @@
-import { NextResponse } from 'next/server';
-import { storage } from '../../../../../lib/storage.js';
+import { NextResponse } from &apos;next/server&apos;;
+import { storage } from &apos;../../../../../lib/storage.js&apos;;
 
 export async function GET() {
   try {
@@ -12,9 +12,9 @@ export async function GET() {
     });
 
   } catch (error) {
-    console.error('Erreur récupération stats:', error);
+    console.error(&apos;Erreur récupération stats:&apos;, error);
     return NextResponse.json(
-      { error: 'Erreur récupération des statistiques' },
+      { error: &apos;Erreur récupération des statistiques&apos; },
       { status: 500 }
     );
   }

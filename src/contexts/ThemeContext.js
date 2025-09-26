@@ -1,6 +1,6 @@
-'use client'
+&apos;use client&apos;
 
-import React, { createContext, useContext, useEffect, useState } from 'react'
+import React, { createContext, useContext, useEffect, useState } from &apos;react&apos;
 
 const ThemeContext = createContext()
 
@@ -9,28 +9,28 @@ export function ThemeProvider({ children }) {
   const [mounted, setMounted] = useState(false)
 
   // Flag pour activer/désactiver le mode sombre
-  const isDarkModeEnabled = process.env.NEXT_PUBLIC_ENABLE_DARK_MODE === 'true'
+  const isDarkModeEnabled = process.env.NEXT_PUBLIC_ENABLE_DARK_MODE === &apos;true&apos;
 
   // Initialiser le thème au montage du composant
   useEffect(() => {
     // Si le mode sombre est désactivé, forcer le mode clair
     if (!isDarkModeEnabled) {
       setIsDark(false)
-      document.documentElement.classList.remove('dark')
+      document.documentElement.classList.remove(&apos;dark&apos;)
       setMounted(true)
       return
     }
 
     // Récupérer la préférence sauvegardée - MODE CLAIR PAR DÉFAUT
-    const savedTheme = localStorage.getItem('theme')
+    const savedTheme = localStorage.getItem(&apos;theme&apos;)
 
-    if (savedTheme === 'dark') {
+    if (savedTheme === &apos;dark&apos;) {
       setIsDark(true)
-      document.documentElement.classList.add('dark')
+      document.documentElement.classList.add(&apos;dark&apos;)
     } else {
       // Mode clair par défaut - même si pas de préférence sauvegardée
       setIsDark(false)
-      document.documentElement.classList.remove('dark')
+      document.documentElement.classList.remove(&apos;dark&apos;)
     }
     
     setMounted(true)
@@ -40,16 +40,16 @@ export function ThemeProvider({ children }) {
   useEffect(() => {
     if (!mounted || !isDarkModeEnabled) return
 
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+    const mediaQuery = window.matchMedia(&apos;(prefers-color-scheme: dark)&apos;)
     const handleChange = (e) => {
-      const savedTheme = localStorage.getItem('theme')
-      // Seulement changer si aucune préférence n'est sauvegardée
+      const savedTheme = localStorage.getItem(&apos;theme&apos;)
+      // Seulement changer si aucune préférence n&apos;est sauvegardée
       if (!savedTheme) {
         setIsDark(e.matches)
         if (e.matches) {
-          document.documentElement.classList.add('dark')
+          document.documentElement.classList.add(&apos;dark&apos;)
         } else {
-          document.documentElement.classList.remove('dark')
+          document.documentElement.classList.remove(&apos;dark&apos;)
         }
       }
     }
@@ -66,11 +66,11 @@ export function ThemeProvider({ children }) {
     setIsDark(newTheme)
     
     if (newTheme) {
-      document.documentElement.classList.add('dark')
-      localStorage.setItem('theme', 'dark')
+      document.documentElement.classList.add(&apos;dark&apos;)
+      localStorage.setItem(&apos;theme&apos;, &apos;dark&apos;)
     } else {
-      document.documentElement.classList.remove('dark')
-      localStorage.setItem('theme', 'light')
+      document.documentElement.classList.remove(&apos;dark&apos;)
+      localStorage.setItem(&apos;theme&apos;, &apos;light&apos;)
     }
   }
 
@@ -91,7 +91,7 @@ export function ThemeProvider({ children }) {
 export function useTheme() {
   const context = useContext(ThemeContext)
   if (context === undefined) {
-    throw new Error('useTheme must be used within a ThemeProvider')
+    throw new Error(&apos;useTheme must be used within a ThemeProvider&apos;)
   }
   return context
 }

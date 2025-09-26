@@ -1,7 +1,7 @@
-'use client'
+&apos;use client&apos;
 
-export default function MobileLoader({ type = 'page', className = '' }) {
-  if (type === 'page') {
+export default function MobileLoader({ type = &apos;page&apos;, className = &apos;&apos; }) {
+  if (type === &apos;page&apos;) {
     return (
       <div className={`animate-pulse mobile-skeleton ${className}`}>
         {/* Hero skeleton */}
@@ -24,13 +24,13 @@ export default function MobileLoader({ type = 'page', className = '' }) {
     )
   }
 
-  if (type === 'button') {
+  if (type === &apos;button&apos;) {
     return (
       <div className={`h-12 w-32 bg-gradient-to-r from-blue-200 via-blue-100 to-blue-200 dark:from-blue-800 dark:via-blue-700 dark:to-blue-800 rounded-lg animate-skeleton-shimmer ${className}`}></div>
     )
   }
 
-  if (type === 'navigation') {
+  if (type === &apos;navigation&apos;) {
     return (
       <div className="fixed bottom-0 left-0 right-0 bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg border-t border-gray-200/50 dark:border-gray-700/50">
         <div className="flex justify-around py-2">

@@ -1,26 +1,26 @@
-import { NextResponse } from 'next/server';
-import { starlinkStorage } from '../../../../../lib/starlink-storage.js';
+import { NextResponse } from &apos;next/server&apos;;
+import { starlinkStorage } from &apos;../../../../../lib/starlink-storage.js&apos;;
 
 export async function GET(request) {
   try {
-    console.log('🛰️ API Starlink: récupération stats');
+    console.log(&apos;🛰️ API Starlink: récupération stats&apos;);
 
     const stats = await starlinkStorage.getStarlinkStats();
 
     const response = {
       ...stats,
-      status: 'success'
+      status: &apos;success&apos;
     };
 
     return NextResponse.json(response);
   } catch (error) {
-    console.error('❌ Erreur API Starlink stats:', error);
+    console.error(&apos;❌ Erreur API Starlink stats:&apos;, error);
     
     return NextResponse.json(
       { 
-        error: 'Erreur lors de la récupération des statistiques Starlink',
+        error: &apos;Erreur lors de la récupération des statistiques Starlink&apos;,
         details: error.message,
-        status: 'error'
+        status: &apos;error&apos;
       },
       { status: 500 }
     );

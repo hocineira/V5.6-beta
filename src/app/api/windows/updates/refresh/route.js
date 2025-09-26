@@ -1,11 +1,11 @@
-import { NextResponse } from 'next/server';
-import { rssFetcher } from '../../../../../lib/rss-fetcher.js';
-import { storage } from '../../../../../lib/storage.js';
-import { logger } from '../../../../../lib/logger.js';
+import { NextResponse } from &apos;next/server&apos;;
+import { rssFetcher } from &apos;../../../../../lib/rss-fetcher.js&apos;;
+import { storage } from &apos;../../../../../lib/storage.js&apos;;
+import { logger } from &apos;../../../../../lib/logger.js&apos;;
 
 export async function POST() {
   try {
-    logger.info('🚀 Démarrage mise à jour RSS manuelle...');
+    logger.info(&apos;🚀 Démarrage mise à jour RSS manuelle...&apos;);
     
     // Fetch all RSS feeds
     const allUpdates = await rssFetcher.fetchAllFeeds();
@@ -17,7 +17,7 @@ export async function POST() {
         await storage.saveWindowsUpdate(updateData);
         storedCount++;
       } catch (error) {
-        console.error('Erreur stockage update:', error);
+        console.error(&apos;Erreur stockage update:&apos;, error);
         continue;
       }
     }
@@ -25,17 +25,17 @@ export async function POST() {
     console.log(`✅ ${storedCount} mises à jour stockées sur ${allUpdates.length} récupérées`);
     
     return NextResponse.json({
-      message: 'Mise à jour des flux RSS terminée',
+      message: &apos;Mise à jour des flux RSS terminée&apos;,
       stored: storedCount,
       total: allUpdates.length,
       timestamp: new Date().toISOString()
     });
 
   } catch (error) {
-    console.error('❌ Erreur refresh RSS:', error);
+    console.error(&apos;❌ Erreur refresh RSS:&apos;, error);
     return NextResponse.json(
       { 
-        error: 'Erreur lors de la mise à jour des flux RSS',
+        error: &apos;Erreur lors de la mise à jour des flux RSS&apos;,
         details: error.message
       },
       { status: 500 }

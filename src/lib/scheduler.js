@@ -1,6 +1,6 @@
 // Planificateur RSS intégré pour Next.js
-import { rssFetcher } from './rss-fetcher.js';
-import { storage } from './storage.js';
+import { rssFetcher } from &apos;./rss-fetcher.js&apos;;
+import { storage } from &apos;./storage.js&apos;;
 
 class RSSScheduler {
   constructor() {
@@ -14,8 +14,8 @@ class RSSScheduler {
     // Clear any existing intervals
     this.clearSchedule();
     
-    if (typeof window !== 'undefined') {
-      // Client-side - don't run scheduler
+    if (typeof window !== &apos;undefined&apos;) {
+      // Client-side - don&apos;t run scheduler
       return;
     }
     
@@ -24,7 +24,7 @@ class RSSScheduler {
     const eightAM = new Date();
     eightAM.setHours(8, 0, 0, 0);
     
-    // If it's already past 8 AM today, schedule for tomorrow
+    // If it&apos;s already past 8 AM today, schedule for tomorrow
     if (now > eightAM) {
       eightAM.setDate(eightAM.getDate() + 1);
     }
@@ -71,7 +71,7 @@ class RSSScheduler {
           await storage.saveWindowsUpdate(updateData);
           storedCount++;
         } catch (error) {
-          console.error('Erreur stockage update:', error);
+          console.error(&apos;Erreur stockage update:&apos;, error);
           continue;
         }
       }
@@ -79,7 +79,7 @@ class RSSScheduler {
       console.log(`✅ Mise à jour quotidienne terminée: ${storedCount} éléments traités`);
       
     } catch (error) {
-      console.error('❌ Erreur mise à jour quotidienne:', error);
+      console.error(&apos;❌ Erreur mise à jour quotidienne:&apos;, error);
     }
   }
 
@@ -110,7 +110,7 @@ class RSSScheduler {
       }
       
     } catch (error) {
-      console.error('❌ Erreur vérification sécurité:', error);
+      console.error(&apos;❌ Erreur vérification sécurité:&apos;, error);
     }
   }
 
@@ -140,6 +140,6 @@ class RSSScheduler {
 export const scheduler = new RSSScheduler();
 
 // Auto-start scheduler in server environment
-if (typeof window === 'undefined') {
+if (typeof window === &apos;undefined&apos;) {
   scheduler.start();
 }

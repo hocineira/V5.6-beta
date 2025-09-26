@@ -1,8 +1,8 @@
-'use client'
+&apos;use client&apos;
 
-import { useState, useEffect } from 'react'
-import { X, ZoomIn, ZoomOut, RotateCw, Download } from 'lucide-react'
-import { Button } from './ui/button'
+import { useState, useEffect } from &apos;react&apos;
+import { X, ZoomIn, ZoomOut, RotateCw, Download } from &apos;lucide-react&apos;
+import { Button } from &apos;./ui/button&apos;
 
 export default function ImageModal({ isOpen, onClose, imageSrc, title }) {
   const [zoom, setZoom] = useState(1)
@@ -11,16 +11,16 @@ export default function ImageModal({ isOpen, onClose, imageSrc, title }) {
 
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden'
+      document.body.style.overflow = &apos;hidden&apos;
       setZoom(1)
       setRotation(0)
       setIsLoading(true)
     } else {
-      document.body.style.overflow = 'unset'
+      document.body.style.overflow = &apos;unset&apos;
     }
 
     return () => {
-      document.body.style.overflow = 'unset'
+      document.body.style.overflow = &apos;unset&apos;
     }
   }, [isOpen])
 
@@ -37,9 +37,9 @@ export default function ImageModal({ isOpen, onClose, imageSrc, title }) {
   }
 
   const handleDownload = () => {
-    const link = document.createElement('a')
+    const link = document.createElement(&apos;a&apos;)
     link.href = imageSrc
-    link.download = title ? `${title.replace(/[^a-z0-9]/gi, '_')}.png` : 'schema_reseau.png'
+    link.download = title ? `${title.replace(/[^a-z0-9]/gi, &apos;_&apos;)}.png` : &apos;schema_reseau.png&apos;
     link.click()
   }
 
@@ -138,7 +138,7 @@ export default function ImageModal({ isOpen, onClose, imageSrc, title }) {
               className="transition-all duration-300 ease-out"
               style={{ 
                 transform: `scale(${zoom}) rotate(${rotation}deg)`,
-                transformOrigin: 'center center'
+                transformOrigin: &apos;center center&apos;
               }}
             >
               <img
@@ -147,8 +147,8 @@ export default function ImageModal({ isOpen, onClose, imageSrc, title }) {
                 onLoad={handleImageLoad}
                 className="max-w-none h-auto shadow-lg rounded-lg"
                 style={{ 
-                  maxWidth: zoom <= 1 ? '100%' : 'none',
-                  maxHeight: zoom <= 1 ? '100%' : 'none'
+                  maxWidth: zoom <= 1 ? &apos;100%&apos; : &apos;none&apos;,
+                  maxHeight: zoom <= 1 ? &apos;100%&apos; : &apos;none&apos;
                 }}
                 draggable={false}
               />
@@ -161,7 +161,7 @@ export default function ImageModal({ isOpen, onClose, imageSrc, title }) {
           <div className="absolute inset-0 bg-white flex items-center justify-center">
             <div className="text-center">
               <div className="w-12 h-12 border-4 border-purple-200 border-t-purple-600 rounded-full animate-spin mb-4" />
-              <p className="text-gray-600">Chargement de l'image...</p>
+              <p className="text-gray-600">Chargement de l&apos;image...</p>
             </div>
           </div>
         )}

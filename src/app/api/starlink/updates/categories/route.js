@@ -1,27 +1,27 @@
-import { NextResponse } from 'next/server';
-import { starlinkStorage } from '../../../../../lib/starlink-storage.js';
+import { NextResponse } from &apos;next/server&apos;;
+import { starlinkStorage } from &apos;../../../../../lib/starlink-storage.js&apos;;
 
 export async function GET(request) {
   try {
-    console.log('🛰️ API Starlink: récupération categories');
+    console.log(&apos;🛰️ API Starlink: récupération categories&apos;);
 
     const categories = await starlinkStorage.getStarlinkCategories();
 
     const response = {
       categories,
       count: categories.length,
-      status: 'success'
+      status: &apos;success&apos;
     };
 
     return NextResponse.json(response);
   } catch (error) {
-    console.error('❌ Erreur API Starlink categories:', error);
+    console.error(&apos;❌ Erreur API Starlink categories:&apos;, error);
     
     return NextResponse.json(
       { 
-        error: 'Erreur lors de la récupération des catégories Starlink',
+        error: &apos;Erreur lors de la récupération des catégories Starlink&apos;,
         details: error.message,
-        status: 'error'
+        status: &apos;error&apos;
       },
       { status: 500 }
     );

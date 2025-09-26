@@ -1,4 +1,4 @@
-'use client'
+&apos;use client&apos;
 
 import { 
   Building, 
@@ -19,70 +19,70 @@ import {
   X,
   Camera,
   Cpu
-} from 'lucide-react'
-import Link from 'next/link'
-import Image from 'next/image'
-import { useState } from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from '../../../components/ui/card'
+} from &apos;lucide-react&apos;
+import Link from &apos;next/link&apos;
+import Image from &apos;next/image&apos;
+import { useState } from &apos;react&apos;
+import { Card, CardContent, CardHeader, CardTitle } from &apos;../../../components/ui/card&apos;
 
 export default function StagesPage() {
   const [selectedImage, setSelectedImage] = useState(null)
   
   const stageInfo = {
-    entreprise: 'Sauvegarde13',
-    periode: 'Mars 2025 - Mai 2025',
-    duree: '1 mois',
-    lieu: 'Marseille, France',
-    type: 'Stage d\'observation et pratique',
-    secteur: 'Association d\'aide sociale',
-    description: 'Association implantée dans les Bouches-du-Rhône depuis 1935, spécialisée dans l\'accompagnement de personnes en situation de handicap, la protection de l\'enfant et l\'accueil de la petite enfance.'
+    entreprise: &apos;Sauvegarde13&apos;,
+    periode: &apos;Mars 2025 - Mai 2025&apos;,
+    duree: &apos;1 mois&apos;,
+    lieu: &apos;Marseille, France&apos;,
+    type: &apos;Stage d\&apos;observation et pratique&apos;,
+    secteur: &apos;Association d\&apos;aide sociale&apos;,
+    description: &apos;Association implantée dans les Bouches-du-Rhône depuis 1935, spécialisée dans l\&apos;accompagnement de personnes en situation de handicap, la protection de l\&apos;enfant et l\&apos;accueil de la petite enfance.&apos;
   }
 
   const missions = [
     {
-      title: 'Infrastructure réseau et télécommunications',
-      description: 'Installation de prises RJ45 murales et intervention sur équipements PON Nokia avec solution de secours 5G Zyxel',
+      title: &apos;Infrastructure réseau et télécommunications&apos;,
+      description: &apos;Installation de prises RJ45 murales et intervention sur équipements PON Nokia avec solution de secours 5G Zyxel&apos;,
       icon: Network,
-      category: 'Infrastructure'
+      category: &apos;Infrastructure&apos;
     },
     {
-      title: 'Support mobile et téléphonie d\'entreprise',
-      description: 'Réparation/diagnostic téléphones et flash ROM avec sécurité KNOX Samsung pour enrollment professionnel',
+      title: &apos;Support mobile et téléphonie d\&apos;entreprise&apos;,
+      description: &apos;Réparation/diagnostic téléphones et flash ROM avec sécurité KNOX Samsung pour enrollment professionnel&apos;,
       icon: Smartphone,
-      category: 'Mobile'
+      category: &apos;Mobile&apos;
     },
     {
-      title: 'Maintenance informatique avancée',
-      description: 'Diagnostic et réparation ordinateurs, optimisation avec ajout SSD NVMe pour performances optimales',
+      title: &apos;Maintenance informatique avancée&apos;,
+      description: &apos;Diagnostic et réparation ordinateurs, optimisation avec ajout SSD NVMe pour performances optimales&apos;,
       icon: Wrench,
-      category: 'Maintenance'
+      category: &apos;Maintenance&apos;
     },
     {
-      title: 'Environnement technique et atelier',
-      description: 'Organisation et gestion de l\'espace de travail technique pour interventions et diagnostics',
+      title: &apos;Environnement technique et atelier&apos;,
+      description: &apos;Organisation et gestion de l\&apos;espace de travail technique pour interventions et diagnostics&apos;,
       icon: Settings,
-      category: 'Atelier'
+      category: &apos;Atelier&apos;
     }
   ]
 
   // Organisation des images par catégories pour une meilleure présentation
   const imagesOrganisees = {
     infrastructure: [
-      { id: 1, src: '/images/stages/raccordement_rj45_murale.jpg', alt: 'Raccordement RJ45 murale', title: 'Installation prise RJ45 murale', category: 'Infrastructure' },
-      { id: 9, src: '/images/stages/intervention_pon_nokia_zyxel.jpg', alt: 'Intervention PON Nokia défectueux', title: 'Remplacement PON Nokia + antenne 5G Zyxel secours', category: 'Infrastructure' },
+      { id: 1, src: &apos;/images/stages/raccordement_rj45_murale.jpg&apos;, alt: &apos;Raccordement RJ45 murale&apos;, title: &apos;Installation prise RJ45 murale&apos;, category: &apos;Infrastructure&apos; },
+      { id: 9, src: &apos;/images/stages/intervention_pon_nokia_zyxel.jpg&apos;, alt: &apos;Intervention PON Nokia défectueux&apos;, title: &apos;Remplacement PON Nokia + antenne 5G Zyxel secours&apos;, category: &apos;Infrastructure&apos; },
     ],
     mobile: [
-      { id: 2, src: '/images/stages/reparation_diagnostic_telephone.jpg', alt: 'Réparation téléphone entreprise', title: 'Diagnostic et réparation téléphone professionnel', category: 'Mobile' },
-      { id: 3, src: '/images/stages/flash_rom_knox_samsung_1.jpg', alt: 'Flash ROM KNOX Samsung', title: 'Flash ROM sécurité KNOX Samsung (enrollment)', category: 'Mobile' },
-      { id: 4, src: '/images/stages/flash_rom_knox_samsung_2.jpg', alt: 'Flash ROM KNOX avec logiciel adapté', title: 'Flash ROM KNOX Samsung avec logiciel professionnel', category: 'Mobile' },
+      { id: 2, src: &apos;/images/stages/reparation_diagnostic_telephone.jpg&apos;, alt: &apos;Réparation téléphone entreprise&apos;, title: &apos;Diagnostic et réparation téléphone professionnel&apos;, category: &apos;Mobile&apos; },
+      { id: 3, src: &apos;/images/stages/flash_rom_knox_samsung_1.jpg&apos;, alt: &apos;Flash ROM KNOX Samsung&apos;, title: &apos;Flash ROM sécurité KNOX Samsung (enrollment)&apos;, category: &apos;Mobile&apos; },
+      { id: 4, src: &apos;/images/stages/flash_rom_knox_samsung_2.jpg&apos;, alt: &apos;Flash ROM KNOX avec logiciel adapté&apos;, title: &apos;Flash ROM KNOX Samsung avec logiciel professionnel&apos;, category: &apos;Mobile&apos; },
     ],
     maintenance: [
-      { id: 7, src: '/images/stages/reparation_diagnostic_ordinateur.jpg', alt: 'Réparation ordinateur', title: 'Diagnostic et réparation ordinateur', category: 'Maintenance' },
-      { id: 8, src: '/images/stages/ajout_ssd_nvme.jpg', alt: 'Installation SSD NVMe', title: 'Ajout SSD NVMe pour rapidité et fiabilité optimale', category: 'Maintenance' },
+      { id: 7, src: &apos;/images/stages/reparation_diagnostic_ordinateur.jpg&apos;, alt: &apos;Réparation ordinateur&apos;, title: &apos;Diagnostic et réparation ordinateur&apos;, category: &apos;Maintenance&apos; },
+      { id: 8, src: &apos;/images/stages/ajout_ssd_nvme.jpg&apos;, alt: &apos;Installation SSD NVMe&apos;, title: &apos;Ajout SSD NVMe pour rapidité et fiabilité optimale&apos;, category: &apos;Maintenance&apos; },
     ],
     atelier: [
-      { id: 5, src: '/images/stages/atelier_travail_1.jpg', alt: 'Atelier technique principal', title: 'Environnement de travail - Atelier principal', category: 'Atelier' },
-      { id: 6, src: '/images/stages/atelier_travail_2.jpg', alt: 'Atelier technique secondaire', title: 'Environnement de travail - Atelier secondaire', category: 'Atelier' },
+      { id: 5, src: &apos;/images/stages/atelier_travail_1.jpg&apos;, alt: &apos;Atelier technique principal&apos;, title: &apos;Environnement de travail - Atelier principal&apos;, category: &apos;Atelier&apos; },
+      { id: 6, src: &apos;/images/stages/atelier_travail_2.jpg&apos;, alt: &apos;Atelier technique secondaire&apos;, title: &apos;Environnement de travail - Atelier secondaire&apos;, category: &apos;Atelier&apos; },
     ]
   }
 
@@ -95,14 +95,14 @@ export default function StagesPage() {
   ]
 
   // État pour le filtre des catégories
-  const [filtreActif, setFiltreActif] = useState('tous')
+  const [filtreActif, setFiltreActif] = useState(&apos;tous&apos;)
 
   const competences = [
-    { nom: 'Installation réseau et télécoms', niveau: '90%' },
-    { nom: 'Flash ROM et sécurité mobile', niveau: '85%' },
-    { nom: 'Diagnostic et réparation PC', niveau: '90%' },
-    { nom: 'Optimisation hardware (SSD)', niveau: '85%' },
-    { nom: 'Intervention technique terrain', niveau: '95%' }
+    { nom: &apos;Installation réseau et télécoms&apos;, niveau: &apos;90%&apos; },
+    { nom: &apos;Flash ROM et sécurité mobile&apos;, niveau: &apos;85%&apos; },
+    { nom: &apos;Diagnostic et réparation PC&apos;, niveau: &apos;90%&apos; },
+    { nom: &apos;Optimisation hardware (SSD)&apos;, niveau: &apos;85%&apos; },
+    { nom: &apos;Intervention technique terrain&apos;, niveau: &apos;95%&apos; }
   ]
 
   return (
@@ -174,9 +174,9 @@ export default function StagesPage() {
 
               <div className="text-center">
                 <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-4xl mx-auto mb-6">
-                  Durant ce stage de 1 mois chez <strong>Sauvegarde13</strong>, j'ai eu l'opportunité de mettre en pratique 
-                  mes connaissances théoriques acquises en BTS SIO SISR. Cette expérience m'a permis de découvrir 
-                  le monde professionnel de l'informatique et de développer mes compétences techniques dans un environnement réel.
+                  Durant ce stage de 1 mois chez <strong>Sauvegarde13</strong>, j&apos;ai eu l&apos;opportunité de mettre en pratique 
+                  mes connaissances théoriques acquises en BTS SIO SISR. Cette expérience m&apos;a permis de découvrir 
+                  le monde professionnel de l&apos;informatique et de développer mes compétences techniques dans un environnement réel.
                 </p>
                 <p className="text-base text-gray-600 dark:text-gray-400 leading-relaxed max-w-3xl mx-auto">
                   {stageInfo.description}
@@ -214,7 +214,7 @@ export default function StagesPage() {
                   </h3>
                   <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                     <strong>Sauvegarde13</strong> est une association implantée dans les Bouches-du-Rhône depuis <strong>1935</strong>. 
-                    Elle s'est développée au fil du temps dans l'objectif de renforcer le lien social et les solidarités.
+                    Elle s&apos;est développée au fil du temps dans l&apos;objectif de renforcer le lien social et les solidarités.
                   </p>
                   <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                     Au quotidien, elle mène des missions diversifiées et participe à la mise en œuvre des politiques publiques 
@@ -224,7 +224,7 @@ export default function StagesPage() {
                 </div>
                 <div className="space-y-4">
                   <div className="bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 p-4 rounded-lg border-l-4 border-blue-600">
-                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Protection de l'enfant</h4>
+                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Protection de l&apos;enfant</h4>
                     <p className="text-sm text-gray-700 dark:text-gray-300">Accompagnement, prévention, médiation et soutien à la parentalité</p>
                   </div>
                   <div className="bg-gradient-to-r from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 p-4 rounded-lg border-l-4 border-green-600">
@@ -233,7 +233,7 @@ export default function StagesPage() {
                   </div>
                   <div className="bg-gradient-to-r from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 p-4 rounded-lg border-l-4 border-purple-600">
                     <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Petite enfance</h4>
-                    <p className="text-sm text-gray-700 dark:text-gray-300">Accueil collectif et contribution à l'insertion sociale d'enfants en difficulté</p>
+                    <p className="text-sm text-gray-700 dark:text-gray-300">Accueil collectif et contribution à l&apos;insertion sociale d&apos;enfants en difficulté</p>
                   </div>
                 </div>
               </div>
@@ -261,7 +261,7 @@ export default function StagesPage() {
               Environnement de Travail
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
-              Découvrez l'atelier technique professionnel de Sauvegarde13, conçu pour l'excellence en maintenance IT
+              Découvrez l&apos;atelier technique professionnel de Sauvegarde13, conçu pour l&apos;excellence en maintenance IT
             </p>
           </div>
 
@@ -274,7 +274,7 @@ export default function StagesPage() {
                 <div className="p-6 border-b border-gray-100 dark:border-gray-700/50">
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center">
                     <Camera className="w-6 h-6 mr-3 text-blue-600" />
-                    Galerie de l'Atelier
+                    Galerie de l&apos;Atelier
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 mt-2">Espaces de travail optimisés pour la maintenance IT</p>
                 </div>
@@ -309,7 +309,7 @@ export default function StagesPage() {
                       </div>
                     </div>
                     
-                    {/* Icône d'agrandissement */}
+                    {/* Icône d&apos;agrandissement */}
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="bg-white/30 backdrop-blur-md rounded-full p-4 transform scale-75 group-hover:scale-100 transition-transform duration-300">
                         <Eye className="w-8 h-8 text-white" />
@@ -346,7 +346,7 @@ export default function StagesPage() {
                       </div>
                     </div>
                     
-                    {/* Icône d'agrandissement */}
+                    {/* Icône d&apos;agrandissement */}
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="bg-white/30 backdrop-blur-md rounded-full p-4 transform scale-75 group-hover:scale-100 transition-transform duration-300">
                         <Eye className="w-8 h-8 text-white" />
@@ -357,7 +357,7 @@ export default function StagesPage() {
               </div>
             </div>
 
-            {/* Panneau d'informations - Plus compact */}
+            {/* Panneau d&apos;informations - Plus compact */}
             <div className="space-y-6">
 
               {/* Équipements */}
@@ -396,7 +396,7 @@ export default function StagesPage() {
                   <CheckCircle className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Activités Réalisées dans l'Atelier</h3>
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Activités Réalisées dans l&apos;Atelier</h3>
                   <p className="text-gray-600 dark:text-gray-300">Interventions techniques spécialisées</p>
                 </div>
               </div>
@@ -406,7 +406,7 @@ export default function StagesPage() {
                   {
                     icon: Monitor,
                     title: "Diagnostic & Réparation",
-                    desc: "Diagnostic et réparation d'ordinateurs professionnels",
+                    desc: "Diagnostic et réparation d&apos;ordinateurs professionnels",
                     color: "blue"
                   },
                   {
@@ -491,7 +491,7 @@ export default function StagesPage() {
               Mes Missions
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              Les différentes tâches et responsabilités qui m'ont été confiées
+              Les différentes tâches et responsabilités qui m&apos;ont été confiées
             </p>
           </div>
 
@@ -543,51 +543,51 @@ export default function StagesPage() {
             {/* Filtres de catégories */}
             <div className="flex flex-wrap justify-center gap-3 mb-8">
               <button
-                onClick={() => setFiltreActif('tous')}
+                onClick={() => setFiltreActif(&apos;tous&apos;)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                  filtreActif === 'tous' 
-                    ? 'bg-blue-600 text-white shadow-lg' 
-                    : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                  filtreActif === &apos;tous&apos; 
+                    ? &apos;bg-blue-600 text-white shadow-lg&apos; 
+                    : &apos;bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600&apos;
                 }`}
               >
                 Toutes les missions (9)
               </button>
               <button
-                onClick={() => setFiltreActif('infrastructure')}
+                onClick={() => setFiltreActif(&apos;infrastructure&apos;)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                  filtreActif === 'infrastructure' 
-                    ? 'bg-purple-600 text-white shadow-lg' 
-                    : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                  filtreActif === &apos;infrastructure&apos; 
+                    ? &apos;bg-purple-600 text-white shadow-lg&apos; 
+                    : &apos;bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600&apos;
                 }`}
               >
                 Infrastructure (2)
               </button>
               <button
-                onClick={() => setFiltreActif('mobile')}
+                onClick={() => setFiltreActif(&apos;mobile&apos;)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                  filtreActif === 'mobile' 
-                    ? 'bg-green-600 text-white shadow-lg' 
-                    : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                  filtreActif === &apos;mobile&apos; 
+                    ? &apos;bg-green-600 text-white shadow-lg&apos; 
+                    : &apos;bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600&apos;
                 }`}
               >
                 Mobile & Téléphonie (3)
               </button>
               <button
-                onClick={() => setFiltreActif('maintenance')}
+                onClick={() => setFiltreActif(&apos;maintenance&apos;)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                  filtreActif === 'maintenance' 
-                    ? 'bg-orange-600 text-white shadow-lg' 
-                    : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                  filtreActif === &apos;maintenance&apos; 
+                    ? &apos;bg-orange-600 text-white shadow-lg&apos; 
+                    : &apos;bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600&apos;
                 }`}
               >
                 Maintenance (2)
               </button>
               <button
-                onClick={() => setFiltreActif('atelier')}
+                onClick={() => setFiltreActif(&apos;atelier&apos;)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                  filtreActif === 'atelier' 
-                    ? 'bg-indigo-600 text-white shadow-lg' 
-                    : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                  filtreActif === &apos;atelier&apos; 
+                    ? &apos;bg-indigo-600 text-white shadow-lg&apos; 
+                    : &apos;bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600&apos;
                 }`}
               >
                 Atelier (2)
@@ -596,7 +596,7 @@ export default function StagesPage() {
           </div>
 
           {/* Galerie par catégories */}
-          {filtreActif === 'tous' && (
+          {filtreActif === &apos;tous&apos; && (
             <div className="space-y-12">
               {/* Section Infrastructure */}
               <div>
@@ -789,7 +789,7 @@ export default function StagesPage() {
           )}
 
           {/* Galerie filtrée par catégorie */}
-          {filtreActif !== 'tous' && (
+          {filtreActif !== &apos;tous&apos; && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {imagesOrganisees[filtreActif].map((image) => (
                 <div
@@ -814,10 +814,10 @@ export default function StagesPage() {
                     </div>
                     <div className="absolute top-3 left-3">
                       <span className={`px-3 py-1 text-xs font-medium text-white rounded-full backdrop-blur-sm ${
-                        filtreActif === 'infrastructure' ? 'bg-purple-600/90' :
-                        filtreActif === 'mobile' ? 'bg-green-600/90' :
-                        filtreActif === 'maintenance' ? 'bg-orange-600/90' :
-                        'bg-indigo-600/90'
+                        filtreActif === &apos;infrastructure&apos; ? &apos;bg-purple-600/90&apos; :
+                        filtreActif === &apos;mobile&apos; ? &apos;bg-green-600/90&apos; :
+                        filtreActif === &apos;maintenance&apos; ? &apos;bg-orange-600/90&apos; :
+                        &apos;bg-indigo-600/90&apos;
                       }`}>
                         {image.category}
                       </span>
@@ -825,10 +825,10 @@ export default function StagesPage() {
                   </div>
                   <div className="p-4">
                     <h4 className={`font-semibold text-lg text-gray-900 dark:text-white mb-2 transition-colors duration-300 ${
-                      filtreActif === 'infrastructure' ? 'group-hover:text-purple-600 dark:group-hover:text-purple-400' :
-                      filtreActif === 'mobile' ? 'group-hover:text-green-600 dark:group-hover:text-green-400' :
-                      filtreActif === 'maintenance' ? 'group-hover:text-orange-600 dark:group-hover:text-orange-400' :
-                      'group-hover:text-indigo-600 dark:group-hover:text-indigo-400'
+                      filtreActif === &apos;infrastructure&apos; ? &apos;group-hover:text-purple-600 dark:group-hover:text-purple-400&apos; :
+                      filtreActif === &apos;mobile&apos; ? &apos;group-hover:text-green-600 dark:group-hover:text-green-400&apos; :
+                      filtreActif === &apos;maintenance&apos; ? &apos;group-hover:text-orange-600 dark:group-hover:text-orange-400&apos; :
+                      &apos;group-hover:text-indigo-600 dark:group-hover:text-indigo-400&apos;
                     }`}>
                       {image.title}
                     </h4>
@@ -853,7 +853,7 @@ export default function StagesPage() {
             </div>
             <div className="text-center p-4 bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-lg">
               <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">1</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Mois d'expérience</div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">Mois d&apos;expérience</div>
             </div>
             <div className="text-center p-4 bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20 rounded-lg">
               <div className="text-2xl font-bold text-orange-600 dark:text-orange-400">100%</div>

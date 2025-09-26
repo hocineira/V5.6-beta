@@ -1,6 +1,6 @@
-'use client';
+&apos;use client&apos;;
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from &apos;react&apos;;
 
 export default function VeilleTechnologique() {
   const [updates, setUpdates] = useState([]);
@@ -8,40 +8,40 @@ export default function VeilleTechnologique() {
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [error, setError] = useState(null);
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedCategory, setSelectedCategory] = useState(&apos;all&apos;);
 
-  // Données de fallback en cas d'erreur
+  // Données de fallback en cas d&apos;erreur
   const fallbackUpdates = [
     {
-      id: '1',
-      title: 'Windows Server 2025 - Disponibilité Générale',
-      description: 'Microsoft annonce la disponibilité générale de Windows Server 2025 avec des fonctionnalités avancées de sécurité, des performances améliorées et une agilité cloud renforcée.',
-      link: 'https://www.microsoft.com/en-us/windows-server/blog/2024/11/04/windows-server-2025-now-generally-available-with-advanced-security-improved-performance-and-cloud-agility/',
-      published_date: '2024-11-04T15:30:00.000Z',
-      category: 'server',
-      version: 'Windows Server 2025',
-      source: 'Microsoft Windows Server Blog',
-      tags: ['server', 'feature']
+      id: &apos;1&apos;,
+      title: &apos;Windows Server 2025 - Disponibilité Générale&apos;,
+      description: &apos;Microsoft annonce la disponibilité générale de Windows Server 2025 avec des fonctionnalités avancées de sécurité, des performances améliorées et une agilité cloud renforcée.&apos;,
+      link: &apos;https://www.microsoft.com/en-us/windows-server/blog/2024/11/04/windows-server-2025-now-generally-available-with-advanced-security-improved-performance-and-cloud-agility/&apos;,
+      published_date: &apos;2024-11-04T15:30:00.000Z&apos;,
+      category: &apos;server&apos;,
+      version: &apos;Windows Server 2025&apos;,
+      source: &apos;Microsoft Windows Server Blog&apos;,
+      tags: [&apos;server&apos;, &apos;feature&apos;]
     },
     {
-      id: '2',
-      title: 'Hotpatching pour Windows Server - Fini les redémarrages !',
-      description: 'Le hotpatching pour Windows Server 2025 devient disponible en tant que service par abonnement, éliminant le besoin de redémarrages fréquents pour les mises à jour de sécurité.',
-      link: 'https://www.microsoft.com/en-us/windows-server/blog/2025/04/24/tired-of-all-the-restarts-get-hotpatching-for-windows-server/',
-      published_date: '2025-04-24T15:00:00.000Z',
-      category: 'server',
-      version: 'Windows Server 2025',
-      source: 'Microsoft Windows Server Blog',
-      tags: ['server', 'security']
+      id: &apos;2&apos;,
+      title: &apos;Hotpatching pour Windows Server - Fini les redémarrages !&apos;,
+      description: &apos;Le hotpatching pour Windows Server 2025 devient disponible en tant que service par abonnement, éliminant le besoin de redémarrages fréquents pour les mises à jour de sécurité.&apos;,
+      link: &apos;https://www.microsoft.com/en-us/windows-server/blog/2025/04/24/tired-of-all-the-restarts-get-hotpatching-for-windows-server/&apos;,
+      published_date: &apos;2025-04-24T15:00:00.000Z&apos;,
+      category: &apos;server&apos;,
+      version: &apos;Windows Server 2025&apos;,
+      source: &apos;Microsoft Windows Server Blog&apos;,
+      tags: [&apos;server&apos;, &apos;security&apos;]
     }
   ];
 
   const categories = [
-    { key: 'all', label: 'Tous', icon: '📊' },
-    { key: 'server', label: 'Windows Server', icon: '🖥️' },
-    { key: 'security', label: 'Sécurité', icon: '🔒' },
-    { key: 'cloud', label: 'Cloud & Azure', icon: '☁️' },
-    { key: 'enterprise', label: 'Entreprise', icon: '🏢' }
+    { key: &apos;all&apos;, label: &apos;Tous&apos;, icon: &apos;📊&apos; },
+    { key: &apos;server&apos;, label: &apos;Windows Server&apos;, icon: &apos;🖥️&apos; },
+    { key: &apos;security&apos;, label: &apos;Sécurité&apos;, icon: &apos;🔒&apos; },
+    { key: &apos;cloud&apos;, label: &apos;Cloud & Azure&apos;, icon: &apos;☁️&apos; },
+    { key: &apos;enterprise&apos;, label: &apos;Entreprise&apos;, icon: &apos;🏢&apos; }
   ];
 
   useEffect(() => {
@@ -51,7 +51,7 @@ export default function VeilleTechnologique() {
   const fetchUpdates = async () => {
     try {
       setError(null);
-      const response = await fetch('/api/windows/updates?limit=20');
+      const response = await fetch(&apos;/api/windows/updates?limit=20&apos;);
       
       if (!response.ok) {
         throw new Error(`Erreur HTTP: ${response.status}`);
@@ -63,14 +63,14 @@ export default function VeilleTechnologique() {
         setUpdates(data.updates);
         setStats({ total: data.total });
       } else {
-        // Utiliser les données de fallback si aucune donnée n'est disponible
+        // Utiliser les données de fallback si aucune donnée n&apos;est disponible
         setUpdates(fallbackUpdates);
         setStats({ total: fallbackUpdates.length });
       }
     } catch (error) {
-      console.error('Erreur lors du chargement des données:', error);
+      console.error(&apos;Erreur lors du chargement des données:&apos;, error);
       setError(error.message);
-      // Utiliser les données de fallback en cas d'erreur
+      // Utiliser les données de fallback en cas d&apos;erreur
       setUpdates(fallbackUpdates);
       setStats({ total: fallbackUpdates.length });
     } finally {
@@ -81,54 +81,54 @@ export default function VeilleTechnologique() {
   const refreshRSS = async () => {
     try {
       setRefreshing(true);
-      const response = await fetch('/api/windows/updates/refresh', {
-        method: 'POST'
+      const response = await fetch(&apos;/api/windows/updates/refresh&apos;, {
+        method: &apos;POST&apos;
       });
       
       if (response.ok) {
         await fetchUpdates();
       } else {
-        throw new Error('Erreur lors du refresh RSS');
+        throw new Error(&apos;Erreur lors du refresh RSS&apos;);
       }
     } catch (error) {
-      console.error('Erreur refresh RSS:', error);
-      setError('Erreur lors du rafraîchissement des données RSS');
+      console.error(&apos;Erreur refresh RSS:&apos;, error);
+      setError(&apos;Erreur lors du rafraîchissement des données RSS&apos;);
     } finally {
       setRefreshing(false);
     }
   };
 
-  const filteredUpdates = selectedCategory === 'all' 
+  const filteredUpdates = selectedCategory === &apos;all&apos; 
     ? updates 
     : updates.filter(update => update.category === selectedCategory);
 
   const getCategoryIcon = (category) => {
     const categoryMap = {
-      'server': '🖥️',
-      'security': '🔒',
-      'cloud': '☁️',
-      'enterprise': '🏢',
-      'feature': '⭐'
+      &apos;server&apos;: &apos;🖥️&apos;,
+      &apos;security&apos;: &apos;🔒&apos;,
+      &apos;cloud&apos;: &apos;☁️&apos;,
+      &apos;enterprise&apos;: &apos;🏢&apos;,
+      &apos;feature&apos;: &apos;⭐&apos;
     };
-    return categoryMap[category] || '📄';
+    return categoryMap[category] || &apos;📄&apos;;
   };
 
   const formatDate = (dateString) => {
-    return new Date(dateString).toLocaleDateString('fr-FR', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
+    return new Date(dateString).toLocaleDateString(&apos;fr-FR&apos;, {
+      year: &apos;numeric&apos;,
+      month: &apos;long&apos;,
+      day: &apos;numeric&apos;
     });
   };
 
   const getSeverityColor = (severity) => {
     const colors = {
-      'Critical': 'bg-red-100 text-red-800 border-red-200',
-      'Important': 'bg-orange-100 text-orange-800 border-orange-200',
-      'Moderate': 'bg-yellow-100 text-yellow-800 border-yellow-200',
-      'Low': 'bg-blue-100 text-blue-800 border-blue-200'
+      &apos;Critical&apos;: &apos;bg-red-100 text-red-800 border-red-200&apos;,
+      &apos;Important&apos;: &apos;bg-orange-100 text-orange-800 border-orange-200&apos;,
+      &apos;Moderate&apos;: &apos;bg-yellow-100 text-yellow-800 border-yellow-200&apos;,
+      &apos;Low&apos;: &apos;bg-blue-100 text-blue-800 border-blue-200&apos;
     };
-    return colors[severity] || 'bg-gray-100 text-gray-800 border-gray-200';
+    return colors[severity] || &apos;bg-gray-100 text-gray-800 border-gray-200&apos;;
   };
 
   if (loading) {
@@ -172,7 +172,7 @@ export default function VeilleTechnologique() {
               Veille Windows & Windows Server
             </h1>
             <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Surveillance spécialisée des technologies Microsoft Windows et Windows Server pour votre expertise BTS SIO SISR : infrastructure, sécurité et systèmes d'entreprise
+              Surveillance spécialisée des technologies Microsoft Windows et Windows Server pour votre expertise BTS SIO SISR : infrastructure, sécurité et systèmes d&apos;entreprise
             </p>
 
             <div className="flex flex-wrap justify-center items-center gap-4 mb-6">
@@ -186,10 +186,10 @@ export default function VeilleTechnologique() {
                 disabled={refreshing}
                 className="bg-green-500 hover:bg-green-600 disabled:bg-green-400 text-white rounded-full px-6 py-3 flex items-center space-x-2 transition-colors"
               >
-                <svg className={`w-5 h-5 ${refreshing ? 'animate-spin' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className={`w-5 h-5 ${refreshing ? &apos;animate-spin&apos; : &apos;&apos;}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                 </svg>
-                <span>{refreshing ? 'Actualisation...' : 'Actualiser RSS'}</span>
+                <span>{refreshing ? &apos;Actualisation...&apos; : &apos;Actualiser RSS&apos;}</span>
               </button>
             </div>
 
@@ -212,18 +212,18 @@ export default function VeilleTechnologique() {
                 onClick={() => setSelectedCategory(category.key)}
                 className={`flex items-center space-x-2 px-6 py-3 rounded-full transition-all duration-200 ${
                   selectedCategory === category.key
-                    ? 'bg-blue-600 text-white shadow-lg transform scale-105'
-                    : 'bg-white text-slate-700 hover:bg-blue-50 shadow-sm hover:shadow-md'
+                    ? &apos;bg-blue-600 text-white shadow-lg transform scale-105&apos;
+                    : &apos;bg-white text-slate-700 hover:bg-blue-50 shadow-sm hover:shadow-md&apos;
                 }`}
               >
                 <span className="text-lg">{category.icon}</span>
                 <span className="font-medium">{category.label}</span>
                 <span className={`text-xs px-2 py-1 rounded-full ${
                   selectedCategory === category.key 
-                    ? 'bg-white/20 text-white' 
-                    : 'bg-slate-100 text-slate-600'
+                    ? &apos;bg-white/20 text-white&apos; 
+                    : &apos;bg-slate-100 text-slate-600&apos;
                 }`}>
-                  {category.key === 'all' ? stats.total : updates.filter(u => u.category === category.key).length}
+                  {category.key === &apos;all&apos; ? stats.total : updates.filter(u => u.category === category.key).length}
                 </span>
               </button>
             ))}
@@ -312,7 +312,7 @@ export default function VeilleTechnologique() {
                       rel="noopener noreferrer"
                       className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-xl py-3 px-4 flex items-center justify-center space-x-2 transition-all duration-200 transform hover:scale-105 shadow-sm hover:shadow-lg"
                     >
-                      <span className="font-medium">Lire l'article complet</span>
+                      <span className="font-medium">Lire l&apos;article complet</span>
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                       </svg>
@@ -331,7 +331,7 @@ export default function VeilleTechnologique() {
                 </svg>
               </div>
               <h3 className="text-lg font-semibold text-slate-900 mb-2">Aucun article trouvé</h3>
-              <p className="text-slate-600">Aucun article n'est disponible pour cette catégorie actuellement.</p>
+              <p className="text-slate-600">Aucun article n&apos;est disponible pour cette catégorie actuellement.</p>
             </div>
           )}
         </div>
@@ -345,7 +345,7 @@ export default function VeilleTechnologique() {
             <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mb-4"></div>
             <p className="text-slate-600 max-w-2xl mx-auto leading-relaxed">
               Surveillance continue des écosystèmes Microsoft professionnels avec récupération automatique depuis 
-              les flux RSS officiels, traduction intelligente et classification par domaine d'expertise.
+              les flux RSS officiels, traduction intelligente et classification par domaine d&apos;expertise.
             </p>
           </div>
           
@@ -404,10 +404,10 @@ export default function VeilleTechnologique() {
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6 text-white">Besoin d'expertise Microsoft ?</h2>
+          <h2 className="text-3xl font-bold mb-6 text-white">Besoin d&apos;expertise Microsoft ?</h2>
           <p className="text-lg text-blue-100 mb-8 max-w-2xl mx-auto">
             Conseil, migration, implémentation et support sur les technologies Microsoft. 
-            Restons connectés pour discuter de vos projets d'infrastructure.
+            Restons connectés pour discuter de vos projets d&apos;infrastructure.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-4 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg flex items-center justify-center space-x-2">

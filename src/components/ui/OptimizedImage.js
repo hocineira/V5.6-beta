@@ -1,15 +1,15 @@
-'use client'
+&apos;use client&apos;
 
-import { useState } from 'react'
-import Image from 'next/image'
+import { useState } from &apos;react&apos;
+import Image from &apos;next/image&apos;
 
 export default function OptimizedImage({ 
   src, 
   alt, 
-  className = '', 
+  className = &apos;&apos;, 
   priority = false,
-  sizes = '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw',
-  placeholder = 'blur',
+  sizes = &apos;(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw&apos;,
+  placeholder = &apos;blur&apos;,
   blurDataURL,
   ...props 
 }) {
@@ -18,7 +18,7 @@ export default function OptimizedImage({
 
   // Génère un blur placeholder simple pour de meilleures performances
   const generateBlurDataURL = () => {
-    return 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=='
+    return &apos;data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q==&apos;
   }
 
   const handleLoad = () => {
@@ -62,7 +62,7 @@ export default function OptimizedImage({
         blurDataURL={blurDataURL || generateBlurDataURL()}
         onLoad={handleLoad}
         onError={handleError}
-        className={`object-cover transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
+        className={`object-cover transition-opacity duration-300 ${isLoading ? &apos;opacity-0&apos; : &apos;opacity-100&apos;}`}
         quality={75} // Réduit la qualité pour de meilleures performances mobile
         {...props}
       />

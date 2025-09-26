@@ -1,6 +1,6 @@
-'use client';
+&apos;use client&apos;;
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from &apos;react&apos;;
 
 export default function VeilleStarlink() {
   const [updates, setUpdates] = useState([]);
@@ -8,42 +8,42 @@ export default function VeilleStarlink() {
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [error, setError] = useState(null);
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedCategory, setSelectedCategory] = useState(&apos;all&apos;);
 
-  // Données de fallback en cas d'erreur
+  // Données de fallback en cas d&apos;erreur
   const fallbackUpdates = [
     {
-      id: '1',
-      title: 'SpaceX Lance 23 Satellites Starlink avec Succès',
-      description: 'SpaceX a lancé avec succès 23 satellites Starlink supplémentaires en orbite basse terrestre, étendant la constellation internet globale pour améliorer la couverture mondiale.',
-      link: 'https://spacenews.com/spacex-starlink-launch',
-      published_date: '2024-12-15T10:30:00.000Z',
-      category: 'spacex',
-      mission: 'Starlink 6-77',
+      id: &apos;1&apos;,
+      title: &apos;SpaceX Lance 23 Satellites Starlink avec Succès&apos;,
+      description: &apos;SpaceX a lancé avec succès 23 satellites Starlink supplémentaires en orbite basse terrestre, étendant la constellation internet globale pour améliorer la couverture mondiale.&apos;,
+      link: &apos;https://spacenews.com/spacex-starlink-launch&apos;,
+      published_date: &apos;2024-12-15T10:30:00.000Z&apos;,
+      category: &apos;spacex&apos;,
+      mission: &apos;Starlink 6-77&apos;,
       satellite_count: 23,
-      source: 'SpaceNews - SpaceX',
-      tags: ['starlink', 'launch', 'satellite']
+      source: &apos;SpaceNews - SpaceX&apos;,
+      tags: [&apos;starlink&apos;, &apos;launch&apos;, &apos;satellite&apos;]
     },
     {
-      id: '2',
-      title: 'Starlink Atteint 5000 Satellites en Orbite',
-      description: 'La constellation Starlink franchit une nouvelle étape importante avec plus de 5000 satellites opérationnels, offrant un service internet haut débit à des millions d\'utilisateurs dans le monde.',
-      link: 'https://teslarati.com/starlink-5000-satellites',
-      published_date: '2024-12-10T14:15:00.000Z',
-      category: 'spacex',
+      id: &apos;2&apos;,
+      title: &apos;Starlink Atteint 5000 Satellites en Orbite&apos;,
+      description: &apos;La constellation Starlink franchit une nouvelle étape importante avec plus de 5000 satellites opérationnels, offrant un service internet haut débit à des millions d\&apos;utilisateurs dans le monde.&apos;,
+      link: &apos;https://teslarati.com/starlink-5000-satellites&apos;,
+      published_date: &apos;2024-12-10T14:15:00.000Z&apos;,
+      category: &apos;spacex&apos;,
       mission: null,
       satellite_count: 5000,
-      source: 'Teslarati - SpaceX',
-      tags: ['starlink', 'milestone', 'constellation']
+      source: &apos;Teslarati - SpaceX&apos;,
+      tags: [&apos;starlink&apos;, &apos;milestone&apos;, &apos;constellation&apos;]
     }
   ];
 
   const categories = [
-    { key: 'all', label: 'Toutes', icon: '🛰️' },
-    { key: 'spacex', label: 'SpaceX', icon: '🚀' },
-    { key: 'space', label: 'Espace', icon: '🌌' },
-    { key: 'launch', label: 'Lancements', icon: '🔥' },
-    { key: 'satellite', label: 'Satellites', icon: '📡' }
+    { key: &apos;all&apos;, label: &apos;Toutes&apos;, icon: &apos;🛰️&apos; },
+    { key: &apos;spacex&apos;, label: &apos;SpaceX&apos;, icon: &apos;🚀&apos; },
+    { key: &apos;space&apos;, label: &apos;Espace&apos;, icon: &apos;🌌&apos; },
+    { key: &apos;launch&apos;, label: &apos;Lancements&apos;, icon: &apos;🔥&apos; },
+    { key: &apos;satellite&apos;, label: &apos;Satellites&apos;, icon: &apos;📡&apos; }
   ];
 
   useEffect(() => {
@@ -53,7 +53,7 @@ export default function VeilleStarlink() {
   const fetchUpdates = async () => {
     try {
       setError(null);
-      const response = await fetch('/api/starlink/updates?limit=20');
+      const response = await fetch(&apos;/api/starlink/updates?limit=20&apos;);
       
       if (!response.ok) {
         throw new Error(`Erreur HTTP: ${response.status}`);
@@ -65,14 +65,14 @@ export default function VeilleStarlink() {
         setUpdates(data.updates);
         setStats({ total: data.total });
       } else {
-        // Utiliser les données de fallback si aucune donnée n'est disponible
+        // Utiliser les données de fallback si aucune donnée n&apos;est disponible
         setUpdates(fallbackUpdates);
         setStats({ total: fallbackUpdates.length });
       }
     } catch (error) {
-      console.error('Erreur lors du chargement des données Starlink:', error);
+      console.error(&apos;Erreur lors du chargement des données Starlink:&apos;, error);
       setError(error.message);
-      // Utiliser les données de fallback en cas d'erreur
+      // Utiliser les données de fallback en cas d&apos;erreur
       setUpdates(fallbackUpdates);
       setStats({ total: fallbackUpdates.length });
     } finally {
@@ -83,43 +83,43 @@ export default function VeilleStarlink() {
   const refreshRSS = async () => {
     try {
       setRefreshing(true);
-      const response = await fetch('/api/starlink/updates/refresh', {
-        method: 'POST'
+      const response = await fetch(&apos;/api/starlink/updates/refresh&apos;, {
+        method: &apos;POST&apos;
       });
       
       if (response.ok) {
         await fetchUpdates();
       } else {
-        throw new Error('Erreur lors du refresh RSS Starlink');
+        throw new Error(&apos;Erreur lors du refresh RSS Starlink&apos;);
       }
     } catch (error) {
-      console.error('Erreur refresh RSS Starlink:', error);
-      setError('Erreur lors du rafraîchissement des données RSS Starlink');
+      console.error(&apos;Erreur refresh RSS Starlink:&apos;, error);
+      setError(&apos;Erreur lors du rafraîchissement des données RSS Starlink&apos;);
     } finally {
       setRefreshing(false);
     }
   };
 
-  const filteredUpdates = selectedCategory === 'all' 
+  const filteredUpdates = selectedCategory === &apos;all&apos; 
     ? updates 
     : updates.filter(update => update.category === selectedCategory);
 
   const getCategoryIcon = (category) => {
     const categoryMap = {
-      'spacex': '🚀',
-      'space': '🌌',
-      'launch': '🔥',
-      'satellite': '📡',
-      'starlink': '🛰️'
+      &apos;spacex&apos;: &apos;🚀&apos;,
+      &apos;space&apos;: &apos;🌌&apos;,
+      &apos;launch&apos;: &apos;🔥&apos;,
+      &apos;satellite&apos;: &apos;📡&apos;,
+      &apos;starlink&apos;: &apos;🛰️&apos;
     };
-    return categoryMap[category] || '📄';
+    return categoryMap[category] || &apos;📄&apos;;
   };
 
   const formatDate = (dateString) => {
-    return new Date(dateString).toLocaleDateString('fr-FR', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
+    return new Date(dateString).toLocaleDateString(&apos;fr-FR&apos;, {
+      year: &apos;numeric&apos;,
+      month: &apos;long&apos;,
+      day: &apos;numeric&apos;
     });
   };
 
@@ -168,7 +168,7 @@ export default function VeilleStarlink() {
               Veille Starlink & SpaceX
             </h1>
             <p className="text-xl text-blue-200 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Surveillance en temps réel de l'écosystème Starlink : lancements, constellation satellitaire, innovations spatiales et exploration
+              Surveillance en temps réel de l&apos;écosystème Starlink : lancements, constellation satellitaire, innovations spatiales et exploration
             </p>
 
             <div className="flex flex-wrap justify-center items-center gap-4 mb-6">
@@ -182,10 +182,10 @@ export default function VeilleStarlink() {
                 disabled={refreshing}
                 className="bg-blue-600 hover:bg-blue-700 disabled:bg-blue-500/50 text-white rounded-full px-6 py-3 flex items-center space-x-2 transition-colors border border-blue-500"
               >
-                <svg className={`w-5 h-5 ${refreshing ? 'animate-spin' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className={`w-5 h-5 ${refreshing ? &apos;animate-spin&apos; : &apos;&apos;}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                 </svg>
-                <span>{refreshing ? 'Actualisation...' : 'Actualiser RSS'}</span>
+                <span>{refreshing ? &apos;Actualisation...&apos; : &apos;Actualiser RSS&apos;}</span>
               </button>
             </div>
 
@@ -208,18 +208,18 @@ export default function VeilleStarlink() {
                 onClick={() => setSelectedCategory(category.key)}
                 className={`flex items-center space-x-2 px-6 py-3 rounded-full transition-all duration-200 border ${
                   selectedCategory === category.key
-                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30 transform scale-105 border-blue-500'
-                    : 'bg-slate-800/60 text-slate-300 hover:bg-slate-700/80 shadow-sm hover:shadow-md border-slate-600 hover:border-slate-500'
+                    ? &apos;bg-blue-600 text-white shadow-lg shadow-blue-600/30 transform scale-105 border-blue-500&apos;
+                    : &apos;bg-slate-800/60 text-slate-300 hover:bg-slate-700/80 shadow-sm hover:shadow-md border-slate-600 hover:border-slate-500&apos;
                 }`}
               >
                 <span className="text-lg">{category.icon}</span>
                 <span className="font-medium">{category.label}</span>
                 <span className={`text-xs px-2 py-1 rounded-full ${
                   selectedCategory === category.key 
-                    ? 'bg-white/20 text-white' 
-                    : 'bg-slate-700 text-slate-400'
+                    ? &apos;bg-white/20 text-white&apos; 
+                    : &apos;bg-slate-700 text-slate-400&apos;
                 }`}>
-                  {category.key === 'all' ? stats.total : updates.filter(u => u.category === category.key).length}
+                  {category.key === &apos;all&apos; ? stats.total : updates.filter(u => u.category === category.key).length}
                 </span>
               </button>
             ))}
@@ -303,7 +303,7 @@ export default function VeilleStarlink() {
                       rel="noopener noreferrer"
                       className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-xl py-3 px-4 flex items-center justify-center space-x-2 transition-all duration-200 transform hover:scale-105 shadow-sm hover:shadow-lg hover:shadow-blue-500/30 border border-blue-500"
                     >
-                      <span className="font-medium">Lire l'article complet</span>
+                      <span className="font-medium">Lire l&apos;article complet</span>
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                       </svg>
@@ -322,7 +322,7 @@ export default function VeilleStarlink() {
                 </svg>
               </div>
               <h3 className="text-lg font-semibold text-white mb-2">Aucune actualité trouvée</h3>
-              <p className="text-slate-400">Aucune actualité n'est disponible pour cette catégorie actuellement.</p>
+              <p className="text-slate-400">Aucune actualité n&apos;est disponible pour cette catégorie actuellement.</p>
             </div>
           )}
         </div>
@@ -335,7 +335,7 @@ export default function VeilleStarlink() {
             <h2 className="text-3xl font-bold text-white mb-4">Système de Veille Starlink Automatisée</h2>
             <div className="w-20 h-1 bg-gradient-to-r from-blue-400 to-blue-600 mx-auto mb-4"></div>
             <p className="text-slate-300 max-w-2xl mx-auto leading-relaxed">
-              Surveillance continue de l'écosystème SpaceX/Starlink avec récupération automatique depuis 
+              Surveillance continue de l&apos;écosystème SpaceX/Starlink avec récupération automatique depuis 
               les flux RSS officiels, traduction intelligente et suivi des missions spatiales.
             </p>
           </div>
@@ -393,10 +393,10 @@ export default function VeilleStarlink() {
       {/* CTA Section avec thème spatial */}
       <section className="py-16 bg-gradient-to-r from-slate-900 via-blue-800 to-black">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6 text-white">Passionné d'exploration spatiale ?</h2>
+          <h2 className="text-3xl font-bold mb-6 text-white">Passionné d&apos;exploration spatiale ?</h2>
           <p className="text-lg text-blue-200 mb-8 max-w-2xl mx-auto">
-            Discutons des innovations Starlink, des technologies spatiales et des projets d'infrastructure. 
-            L'espace n'attend que nous !
+            Discutons des innovations Starlink, des technologies spatiales et des projets d&apos;infrastructure. 
+            L&apos;espace n&apos;attend que nous !
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button className="bg-blue-600 text-white hover:bg-blue-700 px-8 py-4 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-blue-500/30 flex items-center justify-center space-x-2 border border-blue-500">

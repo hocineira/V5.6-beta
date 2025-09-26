@@ -1,7 +1,7 @@
-'use client'
+&apos;use client&apos;
 
-import Image from 'next/image'
-import { useState } from 'react'
+import Image from &apos;next/image&apos;
+import { useState } from &apos;react&apos;
 
 const OptimizedImage = ({ 
   src, 
@@ -16,18 +16,18 @@ const OptimizedImage = ({
   
   // Créer la version WebP optimisée du src
   const getOptimizedSrc = (originalSrc) => {
-    // Si c'est déjà une image optimisée, on la retourne
-    if (originalSrc.includes('optimized_')) {
+    // Si c&apos;est déjà une image optimisée, on la retourne
+    if (originalSrc.includes(&apos;optimized_&apos;)) {
       return originalSrc
     }
     
     // Sinon on crée le chemin vers la version optimisée
-    const pathParts = originalSrc.split('/')
+    const pathParts = originalSrc.split(&apos;/&apos;)
     const fileName = pathParts[pathParts.length - 1]
-    const baseName = fileName.replace(/\.(jpg|jpeg|png)$/i, '')
+    const baseName = fileName.replace(/\.(jpg|jpeg|png)$/i, &apos;&apos;)
     pathParts[pathParts.length - 1] = `optimized_${baseName}.webp`
     
-    return pathParts.join('/')
+    return pathParts.join(&apos;/&apos;)
   }
 
   const optimizedSrc = getOptimizedSrc(src)
@@ -39,7 +39,7 @@ const OptimizedImage = ({
         alt={alt}
         fill
         className={`object-cover transition-opacity duration-300 ${
-          isLoading ? 'opacity-0' : 'opacity-100'
+          isLoading ? &apos;opacity-0&apos; : &apos;opacity-100&apos;
         }`}
         priority={priority}
         quality={quality}

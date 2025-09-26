@@ -1,14 +1,14 @@
-'use client'
+&apos;use client&apos;
 
-import { useState, useEffect } from 'react'
-import { GraduationCap, BookOpen, Target, Users, Award, CheckCircle, ArrowRight, Building, Briefcase, TrendingUp, Calendar, Star, Code, Server, Database, Network, Shield, Monitor, Terminal, Cpu, Globe, Cloud, Zap, Play, ExternalLink, ChevronRight, Clock, MapPin, Lightbulb, Brain, Trophy, Rocket, Settings, FileCode } from 'lucide-react'
-import { Button } from '../../components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card'
-import { Badge } from '../../components/ui/badge'
+import { useState, useEffect } from &apos;react&apos;
+import { GraduationCap, BookOpen, Target, Users, Award, CheckCircle, ArrowRight, Building, Briefcase, TrendingUp, Calendar, Star, Code, Server, Database, Network, Shield, Monitor, Terminal, Cpu, Globe, Cloud, Zap, Play, ExternalLink, ChevronRight, Clock, MapPin, Lightbulb, Brain, Trophy, Rocket, Settings, FileCode } from &apos;lucide-react&apos;
+import { Button } from &apos;../../components/ui/button&apos;
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from &apos;../../components/ui/card&apos;
+import { Badge } from &apos;../../components/ui/badge&apos;
 
 export default function BTSSIOPage() {
-  const [activeTab, setActiveTab] = useState('overview')
-  const [typedText, setTypedText] = useState('')
+  const [activeTab, setActiveTab] = useState(&apos;overview&apos;)
+  const [typedText, setTypedText] = useState(&apos;&apos;)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [selectedSpecialization, setSelectedSpecialization] = useState(null)
 
@@ -26,42 +26,42 @@ export default function BTSSIOPage() {
   }, [currentIndex])
 
   const tabs = [
-    { id: 'overview', label: 'Vue d\'ensemble', icon: Globe },
-    { id: 'specializations', label: 'Spécialisations', icon: Target },
-    { id: 'program', label: 'Programme', icon: BookOpen },
-    { id: 'career', label: 'Débouchés', icon: Rocket }
+    { id: &apos;overview&apos;, label: &apos;Vue d\&apos;ensemble&apos;, icon: Globe },
+    { id: &apos;specializations&apos;, label: &apos;Spécialisations&apos;, icon: Target },
+    { id: &apos;program&apos;, label: &apos;Programme&apos;, icon: BookOpen },
+    { id: &apos;career&apos;, label: &apos;Débouchés&apos;, icon: Rocket }
   ]
 
   const specializations = [
     {
-      id: 'sisr',
-      name: 'SISR',
-      fullName: 'Solutions d\'Infrastructure, Systèmes et Réseaux',
-      color: 'from-cyan-500 to-blue-600',
+      id: &apos;sisr&apos;,
+      name: &apos;SISR&apos;,
+      fullName: &apos;Solutions d\&apos;Infrastructure, Systèmes et Réseaux&apos;,
+      color: &apos;from-cyan-500 to-blue-600&apos;,
       icon: Server,
-      description: 'Administration systèmes, gestion des réseaux et infrastructure IT',
-      focus: 'Infrastructure & Sécurité',
-      skills: ['Administration Systèmes', 'Réseaux & Télécoms', 'Virtualisation', 'Cybersécurité', 'Cloud Computing', 'Supervision'],
-      careers: ['Administrateur systèmes/réseaux', 'Technicien infrastructure', 'Consultant IT', 'Responsable sécurité'],
-      tools: ['VMware', 'Cisco', 'Windows Server', 'Linux', 'pfSense', 'Zabbix']
+      description: &apos;Administration systèmes, gestion des réseaux et infrastructure IT&apos;,
+      focus: &apos;Infrastructure & Sécurité&apos;,
+      skills: [&apos;Administration Systèmes&apos;, &apos;Réseaux & Télécoms&apos;, &apos;Virtualisation&apos;, &apos;Cybersécurité&apos;, &apos;Cloud Computing&apos;, &apos;Supervision&apos;],
+      careers: [&apos;Administrateur systèmes/réseaux&apos;, &apos;Technicien infrastructure&apos;, &apos;Consultant IT&apos;, &apos;Responsable sécurité&apos;],
+      tools: [&apos;VMware&apos;, &apos;Cisco&apos;, &apos;Windows Server&apos;, &apos;Linux&apos;, &apos;pfSense&apos;, &apos;Zabbix&apos;]
     },
     {
-      id: 'slam',
-      name: 'SLAM',
-      fullName: 'Solutions Logicielles et Applications Métiers',
-      color: 'from-purple-500 to-pink-600',
+      id: &apos;slam&apos;,
+      name: &apos;SLAM&apos;,
+      fullName: &apos;Solutions Logicielles et Applications Métiers&apos;,
+      color: &apos;from-purple-500 to-pink-600&apos;,
       icon: Code,
-      description: 'Développement d\'applications et solutions logicielles métier',
-      focus: 'Développement & Innovation',
-      skills: ['Programmation Objet', 'Développement Web/Mobile', 'Bases de Données', 'DevOps', 'Architecture Logicielle', 'Tests & Qualité'],
-      careers: ['Développeur full-stack', 'Développeur mobile', 'Analyste-programmeur', 'Chef de projet technique'],
-      tools: ['JavaScript', 'Python', 'Java', 'React', 'Node.js', 'MySQL', 'Git']
+      description: &apos;Développement d\&apos;applications et solutions logicielles métier&apos;,
+      focus: &apos;Développement & Innovation&apos;,
+      skills: [&apos;Programmation Objet&apos;, &apos;Développement Web/Mobile&apos;, &apos;Bases de Données&apos;, &apos;DevOps&apos;, &apos;Architecture Logicielle&apos;, &apos;Tests & Qualité&apos;],
+      careers: [&apos;Développeur full-stack&apos;, &apos;Développeur mobile&apos;, &apos;Analyste-programmeur&apos;, &apos;Chef de projet technique&apos;],
+      tools: [&apos;JavaScript&apos;, &apos;Python&apos;, &apos;Java&apos;, &apos;React&apos;, &apos;Node.js&apos;, &apos;MySQL&apos;, &apos;Git&apos;]
     }
   ]
 
   const timelineData = [
-    { year: 'Année 1', title: 'Fondamentaux', items: ['Base de l\'informatique', 'Première spécialisation', 'Stage 5 semaines'] },
-    { year: 'Année 2', title: 'Expertise', items: ['Approfondissement technique', 'Projet professionnel', 'Stage 5 semaines'] }
+    { year: &apos;Année 1&apos;, title: &apos;Fondamentaux&apos;, items: [&apos;Base de l\&apos;informatique&apos;, &apos;Première spécialisation&apos;, &apos;Stage 5 semaines&apos;] },
+    { year: &apos;Année 2&apos;, title: &apos;Expertise&apos;, items: [&apos;Approfondissement technique&apos;, &apos;Projet professionnel&apos;, &apos;Stage 5 semaines&apos;] }
   ]
 
   const renderOverview = () => (
@@ -69,10 +69,10 @@ export default function BTSSIOPage() {
       {/* Stats Cards - Mobile Optimized */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6">
         {[
-          { label: 'Durée', value: '2 ans', icon: Clock, color: 'bg-gradient-to-r from-cyan-500 to-blue-600' },
-          { label: 'Niveau', value: 'Bac+2', icon: GraduationCap, color: 'bg-gradient-to-r from-purple-500 to-pink-600' },
-          { label: 'Spécialisations', value: '2', icon: Target, color: 'bg-gradient-to-r from-green-500 to-teal-600' },
-          { label: 'Débouchés', value: '15+', icon: Rocket, color: 'bg-gradient-to-r from-orange-500 to-red-600' }
+          { label: &apos;Durée&apos;, value: &apos;2 ans&apos;, icon: Clock, color: &apos;bg-gradient-to-r from-cyan-500 to-blue-600&apos; },
+          { label: &apos;Niveau&apos;, value: &apos;Bac+2&apos;, icon: GraduationCap, color: &apos;bg-gradient-to-r from-purple-500 to-pink-600&apos; },
+          { label: &apos;Spécialisations&apos;, value: &apos;2&apos;, icon: Target, color: &apos;bg-gradient-to-r from-green-500 to-teal-600&apos; },
+          { label: &apos;Débouchés&apos;, value: &apos;15+&apos;, icon: Rocket, color: &apos;bg-gradient-to-r from-orange-500 to-red-600&apos; }
         ].map((stat, index) => (
           <Card key={index} className="relative overflow-hidden group hover:scale-105 transition-all duration-300 border-0 shadow-lg">
             <div className={`absolute inset-0 ${stat.color} opacity-10`}></div>
@@ -96,13 +96,13 @@ export default function BTSSIOPage() {
         <CardContent className="p-8">
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-900">Une formation d'excellence</h3>
+              <h3 className="text-2xl font-bold mb-4 text-gray-900">Une formation d&apos;excellence</h3>
               <p className="text-gray-700 mb-4 leading-relaxed">
                 Le BTS SIO forme des professionnels polyvalents capables de répondre aux enjeux numériques 
                 des organisations modernes. Entre infrastructure et développement, trouvez votre voie.
               </p>
               <div className="flex flex-wrap gap-2">
-                {['Innovation', 'Polyvalence', 'Excellence', 'Avenir'].map((tag) => (
+                {[&apos;Innovation&apos;, &apos;Polyvalence&apos;, &apos;Excellence&apos;, &apos;Avenir&apos;].map((tag) => (
                   <Badge key={tag} className="bg-blue-100 text-blue-800 hover:bg-blue-200 transition-colors">
                     {tag}
                   </Badge>
@@ -111,10 +111,10 @@ export default function BTSSIOPage() {
             </div>
             <div className="grid grid-cols-2 gap-3 sm:gap-4">
               {[
-                { icon: Brain, label: 'Apprentissage', desc: 'Pédagogie active' },
-                { icon: Lightbulb, label: 'Innovation', desc: 'Technologies récentes' },
-                { icon: Users, label: 'Accompagnement', desc: 'Suivi personnalisé' },
-                { icon: Trophy, label: 'Réussite', desc: 'Taux d\'insertion élevé' }
+                { icon: Brain, label: &apos;Apprentissage&apos;, desc: &apos;Pédagogie active&apos; },
+                { icon: Lightbulb, label: &apos;Innovation&apos;, desc: &apos;Technologies récentes&apos; },
+                { icon: Users, label: &apos;Accompagnement&apos;, desc: &apos;Suivi personnalisé&apos; },
+                { icon: Trophy, label: &apos;Réussite&apos;, desc: &apos;Taux d\&apos;insertion élevé&apos; }
               ].map((item, index) => (
                 <div key={index} className="text-center p-3 sm:p-4 rounded-lg bg-white/50 hover:bg-white transition-colors">
                   <item.icon className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600 mx-auto mb-2" />
@@ -143,7 +143,7 @@ export default function BTSSIOPage() {
           <Card 
             key={spec.id} 
             className={`group cursor-pointer border-0 shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-500 ${
-              selectedSpecialization === spec.id ? 'ring-4 ring-blue-300' : ''
+              selectedSpecialization === spec.id ? &apos;ring-4 ring-blue-300&apos; : &apos;&apos;
             }`}
             onClick={() => setSelectedSpecialization(selectedSpecialization === spec.id ? null : spec.id)}
           >
@@ -158,7 +158,7 @@ export default function BTSSIOPage() {
                   <CardDescription className="text-gray-600 mt-1 text-sm sm:text-base">{spec.focus}</CardDescription>
                 </div>
                 <ChevronRight className={`w-5 h-5 sm:w-6 sm:h-6 text-gray-400 transition-transform duration-300 flex-shrink-0 ${
-                  selectedSpecialization === spec.id ? 'rotate-90' : ''
+                  selectedSpecialization === spec.id ? &apos;rotate-90&apos; : &apos;&apos;
                 }`} />
               </div>
             </CardHeader>
@@ -234,8 +234,8 @@ export default function BTSSIOPage() {
         {timelineData.map((year, index) => (
           <div key={index} className="relative mb-8">
             {/* Mobile: Full width, Desktop: Alternating sides */}
-            <div className={`sm:flex sm:items-center ${index % 2 === 0 ? 'sm:justify-start' : 'sm:justify-end'}`}>
-              <div className={`w-full sm:w-1/2 pl-16 sm:pl-0 ${index % 2 === 0 ? 'sm:pr-8' : 'sm:pl-8'}`}>
+            <div className={`sm:flex sm:items-center ${index % 2 === 0 ? &apos;sm:justify-start&apos; : &apos;sm:justify-end&apos;}`}>
+              <div className={`w-full sm:w-1/2 pl-16 sm:pl-0 ${index % 2 === 0 ? &apos;sm:pr-8&apos; : &apos;sm:pl-8&apos;}`}>
                 <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
                   <CardHeader className="pb-3 sm:pb-4">
                     <CardTitle className="flex items-center gap-3 text-lg sm:text-xl">
@@ -279,12 +279,12 @@ export default function BTSSIOPage() {
         <CardContent>
           <div className="grid gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {[
-              'Support et mise à disposition de services informatiques',
-              'Mathématiques pour l\'informatique',
-              'Algorithmique appliquée',
-              'Analyse économique et managériale',
-              'Expression et communication',
-              'Anglais professionnel'
+              &apos;Support et mise à disposition de services informatiques&apos;,
+              &apos;Mathématiques pour l\&apos;informatique&apos;,
+              &apos;Algorithmique appliquée&apos;,
+              &apos;Analyse économique et managériale&apos;,
+              &apos;Expression et communication&apos;,
+              &apos;Anglais professionnel&apos;
             ].map((subject, index) => (
               <div key={index} className="p-3 sm:p-4 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-lg border-l-4 border-blue-500">
                 <span className="text-gray-800 font-medium text-sm sm:text-base break-words">{subject}</span>
@@ -303,12 +303,12 @@ export default function BTSSIOPage() {
         <p className="text-gray-600">De nombreuses opportunités dans le secteur du numérique</p>
       </div>
       
-      {/* Secteurs d'activité - Mobile Optimized */}
+      {/* Secteurs d&apos;activité - Mobile Optimized */}
       <div className="grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-8 sm:mb-12">
         {[
-          { icon: Building, title: 'Entreprises', desc: 'Services informatiques intégrés', color: 'from-blue-500 to-cyan-600' },
-          { icon: Cloud, title: 'SSII/ESN', desc: 'Sociétés de services numériques', color: 'from-purple-500 to-pink-600' },
-          { icon: Zap, title: 'Start-ups', desc: 'Innovation et nouvelles technologies', color: 'from-orange-500 to-red-600' }
+          { icon: Building, title: &apos;Entreprises&apos;, desc: &apos;Services informatiques intégrés&apos;, color: &apos;from-blue-500 to-cyan-600&apos; },
+          { icon: Cloud, title: &apos;SSII/ESN&apos;, desc: &apos;Sociétés de services numériques&apos;, color: &apos;from-purple-500 to-pink-600&apos; },
+          { icon: Zap, title: &apos;Start-ups&apos;, desc: &apos;Innovation et nouvelles technologies&apos;, color: &apos;from-orange-500 to-red-600&apos; }
         ].map((sector, index) => (
           <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 group">
             <CardContent className="p-4 sm:p-6 text-center">
@@ -350,14 +350,14 @@ export default function BTSSIOPage() {
             <div>
               <h4 className="text-lg sm:text-xl font-bold mb-4 flex items-center">
                 <Rocket className="w-5 h-5 mr-2 text-blue-600" />
-                Poursuites d'études
+                Poursuites d&apos;études
               </h4>
               <ul className="space-y-3">
                 {[
-                  'Licence professionnelle Informatique',
-                  'École d\'ingénieurs (admissions parallèles)',
-                  'Bachelor spécialisé',
-                  'Master en alternance'
+                  &apos;Licence professionnelle Informatique&apos;,
+                  &apos;École d\&apos;ingénieurs (admissions parallèles)&apos;,
+                  &apos;Bachelor spécialisé&apos;,
+                  &apos;Master en alternance&apos;
                 ].map((option, index) => (
                   <li key={index} className="flex items-start sm:items-center p-3 bg-white rounded-lg">
                     <ArrowRight className="w-4 h-4 mr-3 text-blue-500 flex-shrink-0 mt-0.5 sm:mt-0" />
@@ -374,10 +374,10 @@ export default function BTSSIOPage() {
 
   const renderTabContent = () => {
     switch(activeTab) {
-      case 'overview': return renderOverview()
-      case 'specializations': return renderSpecializations()
-      case 'program': return renderProgram()
-      case 'career': return renderCareer()
+      case &apos;overview&apos;: return renderOverview()
+      case &apos;specializations&apos;: return renderSpecializations()
+      case &apos;program&apos;: return renderProgram()
+      case &apos;career&apos;: return renderCareer()
       default: return renderOverview()
     }
   }
@@ -451,13 +451,13 @@ export default function BTSSIOPage() {
                     onClick={() => setActiveTab(tab.id)}
                     className={`flex items-center gap-1 sm:gap-2 px-3 sm:px-6 py-2 sm:py-3 rounded-lg font-medium transition-all duration-300 whitespace-nowrap text-sm sm:text-base ${
                       activeTab === tab.id
-                        ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg scale-105'
-                        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                        ? &apos;bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg scale-105&apos;
+                        : &apos;text-gray-600 hover:text-gray-900 hover:bg-gray-100&apos;
                     }`}
                   >
                     <tab.icon className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
                     <span className="hidden xs:inline sm:inline">{tab.label}</span>
-                    <span className="xs:hidden sm:hidden">{tab.label.split(' ')[0]}</span>
+                    <span className="xs:hidden sm:hidden">{tab.label.split(&apos; &apos;)[0]}</span>
                   </button>
                 ))}
               </div>
@@ -480,16 +480,16 @@ export default function BTSSIOPage() {
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-2xl sm:text-4xl font-bold mb-4 sm:mb-6 text-white leading-tight">
-              Prêt à rejoindre l'aventure BTS SIO ?
+              Prêt à rejoindre l&apos;aventure BTS SIO ?
             </h2>
             <p className="text-lg sm:text-xl text-slate-300 mb-6 sm:mb-8">
-              Transformez votre passion pour l'informatique en expertise professionnelle
+              Transformez votre passion pour l&apos;informatique en expertise professionnelle
             </p>
             <div className="flex flex-col gap-3 sm:gap-4 sm:flex-row justify-center">
               <Button 
                 size="lg"
                 className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg w-full sm:w-auto"
-                onClick={() => window.location.href = 'mailto:hocineira@gmail.com'}
+                onClick={() => window.location.href = &apos;mailto:hocineira@gmail.com&apos;}
               >
                 <Play className="mr-2 w-4 h-4 sm:w-5 sm:h-5" />
                 <span className="text-sm sm:text-base">Commencer maintenant</span>
@@ -498,7 +498,7 @@ export default function BTSSIOPage() {
                 variant="outline"
                 size="lg"
                 className="border-2 border-white text-white hover:bg-white hover:text-slate-900 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg w-full sm:w-auto"
-                onClick={() => window.open('/tcs', '_self')}
+                onClick={() => window.open(&apos;/tcs&apos;, &apos;_self&apos;)}
               >
                 <ExternalLink className="mr-2 w-4 h-4 sm:w-5 sm:h-5" />
                 <span className="text-sm sm:text-base">Voir mon parcours</span>
