@@ -95,7 +95,7 @@ class WindowsRSSFetcher {
 
       return items.slice(0, 20); // Limit to 20 recent entries
     } catch (error) {
-      console.error('Erreur parsing RSS:', error);
+      logger.error('Erreur parsing RSS:', error);
       return [];
     }
   }
