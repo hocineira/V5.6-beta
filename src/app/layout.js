@@ -8,11 +8,11 @@ export const metadata = {
   title: "Portfolio - Hocine IRATNI",
   description: "Portfolio professionnel - BTS SIO SISR",
   icons: {
-    icon: &apos;/favicon.ico&apos;,
-    apple: &apos;/favicon.png&apos;,
-    shortcut: &apos;/favicon.ico&apos;,
+    icon: '/favicon.ico',
+    apple: '/favicon.png',
+    shortcut: '/favicon.ico',
   },
-  manifest: &apos;/manifest.json&apos;,
+  manifest: '/manifest.json',
   other: {
     // Préchargement des ressources critiques pour performance
     &apos;dns-prefetch&apos;: &apos;https://fonts.googleapis.com&apos;,
