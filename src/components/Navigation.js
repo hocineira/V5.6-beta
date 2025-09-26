@@ -140,8 +140,8 @@ export default function Navigation() {
     <>
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 hidden md:block ${
         scrolled 
-          ? 'glass-effect-strong border-b border-white/20 dark:border-gray-700/20 shadow-2xl shadow-black/10' 
-          : 'glass-effect border-b border-white/10 dark:border-gray-700/10 shadow-lg shadow-black/5'
+          ? 'glass-effect-strong border-b border-white/20 shadow-2xl shadow-black/10' 
+          : 'glass-effect border-b border-white/10 shadow-lg shadow-black/5'
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
@@ -189,9 +189,9 @@ export default function Navigation() {
                           }`} />
                           
                           {/* Tooltip */}
-                          <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 bg-gray-900 dark:bg-gray-800 text-white text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
+                          <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
                             {item.description}
-                            <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gray-900 dark:bg-gray-800 rotate-45"></div>
+                            <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gray-900 rotate-45"></div>
                           </div>
                         </button>
 
@@ -199,7 +199,7 @@ export default function Navigation() {
                         {isOpen && (
                           <div 
                             data-dropdown-content="true"
-                            className="absolute top-full left-0 mt-2 w-64 bg-white/95 dark:bg-gray-800/95 backdrop-blur-lg shadow-lg rounded-lg border border-white/20 dark:border-gray-700/20 overflow-hidden z-50"
+                            className="absolute top-full left-0 mt-2 w-64 bg-white/95 backdrop-blur-lg shadow-lg rounded-lg border border-white/20 overflow-hidden z-50"
                           >
                             {item.submenu.map((subItem) => {
                               const SubIcon = subItem.icon
@@ -207,15 +207,15 @@ export default function Navigation() {
                                 <Link
                                   key={subItem.name}
                                   href={subItem.href}
-                                  className={`flex items-center px-4 py-3 text-sm transition-colors duration-200 hover:bg-gray-100/50 dark:hover:bg-gray-700/50 ${
-                                    isActive(subItem.href) ? 'bg-blue-50/50 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400' : 'text-gray-700 dark:text-gray-300'
+                                  className={`flex items-center px-4 py-3 text-sm transition-colors duration-200 hover:bg-gray-100/50 ${
+                                    isActive(subItem.href) ? 'bg-blue-50/50 text-blue-600' : 'text-gray-700'
                                   }`}
                                   onClick={() => setOpenDropdownId(null)}
                                 >
                                   <SubIcon className="w-4 h-4 mr-3" />
                                   <div>
                                     <div className="font-medium">{subItem.name}</div>
-                                    <div className="text-xs text-gray-500 dark:text-gray-400">
+                                    <div className="text-xs text-gray-500">
                                       {subItem.description}
                                     </div>
                                   </div>
@@ -242,9 +242,9 @@ export default function Navigation() {
                       {item.name}
                       
                       {/* Tooltip */}
-                      <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 bg-gray-900 dark:bg-gray-800 text-white text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
+                      <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
                         {item.description}
-                        <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gray-900 dark:bg-gray-800 rotate-45"></div>
+                        <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gray-900 rotate-45"></div>
                       </div>
                     </Link>
                   )
@@ -298,7 +298,7 @@ export default function Navigation() {
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}>
           {/* Header */}
-          <div className="flex items-center justify-between p-6 border-b border-gray-200/50 dark:border-gray-700/50">
+          <div className="flex items-center justify-between p-6 border-b border-gray-200/50">
             <div className="flex items-center space-x-3">
               <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
                 <Network className="w-4 h-4 text-white" />
@@ -309,7 +309,7 @@ export default function Navigation() {
             </div>
             <button
               onClick={() => setIsOpen(false)}
-              className="p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              className="p-2 rounded-lg text-gray-500 hover:bg-gray-100 transition-colors"
               aria-label="Fermer le menu"
             >
               <X className="w-5 h-5" />
@@ -329,10 +329,10 @@ export default function Navigation() {
                     {/* Menu principal */}
                     <Link
                       href={item.href}
-                      className={`group flex items-center px-6 py-4 text-base font-medium transition-all duration-200 hover:bg-blue-50/50 dark:hover:bg-gray-800/50 active:scale-95 ${
+                      className={`group flex items-center px-6 py-4 text-base font-medium transition-all duration-200 hover:bg-blue-50/50 active:scale-95 ${
                         isMenuActive
-                          ? 'text-blue-600 dark:text-blue-400 bg-blue-50/50 dark:bg-blue-900/20 border-r-2 border-blue-600 dark:border-blue-400'
-                          : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
+                          ? 'text-blue-600 bg-blue-50/50 border-r-2 border-blue-600'
+                          : 'text-gray-700 hover:text-blue-600'
                       }`}
                       onClick={() => setIsOpen(false)}
                       style={{ 
@@ -342,8 +342,8 @@ export default function Navigation() {
                     >
                       <div className={`w-10 h-10 rounded-xl flex items-center justify-center mr-4 transition-all duration-200 ${
                         isMenuActive
-                          ? 'bg-blue-600 dark:bg-blue-500 text-white shadow-lg shadow-blue-600/25'
-                          : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 group-hover:bg-blue-100 dark:group-hover:bg-blue-900/50 group-hover:text-blue-600 dark:group-hover:text-blue-400'
+                          ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/25'
+                          : 'bg-gray-100 text-gray-600 group-hover:bg-blue-100 group-hover:text-blue-600'
                       }`}>
                         <Icon className="w-5 h-5" />
                       </div>
@@ -351,29 +351,29 @@ export default function Navigation() {
                         <div className="font-medium">{item.name}</div>
                         <div className={`text-sm mt-0.5 ${
                           isMenuActive
-                            ? 'text-blue-500 dark:text-blue-400'
-                            : 'text-gray-500 dark:text-gray-400 group-hover:text-blue-500 dark:group-hover:text-blue-400'
+                            ? 'text-blue-500'
+                            : 'text-gray-500 group-hover:text-blue-500'
                         }`}>
                           {item.description}
                         </div>
                       </div>
                       {isMenuActive && (
-                        <div className="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full animate-pulse" />
+                        <div className="w-2 h-2 bg-blue-600 rounded-full animate-pulse" />
                       )}
                     </Link>
                     
                     {/* Sous-menus */}
-                    <div className="ml-6 border-l-2 border-gray-200 dark:border-gray-700">
+                    <div className="ml-6 border-l-2 border-gray-200">
                       {item.submenu.map((subItem, subIndex) => {
                         const SubIcon = subItem.icon
                         return (
                           <Link
                             key={subItem.name}
                             href={subItem.href}
-                            className={`group flex items-center px-6 py-3 text-sm font-medium transition-all duration-200 hover:bg-blue-50/50 dark:hover:bg-gray-800/50 active:scale-95 ${
+                            className={`group flex items-center px-6 py-3 text-sm font-medium transition-all duration-200 hover:bg-blue-50/50 active:scale-95 ${
                               isActive(subItem.href)
-                                ? 'text-blue-600 dark:text-blue-400 bg-blue-50/30 dark:bg-blue-900/10'
-                                : 'text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400'
+                                ? 'text-blue-600 bg-blue-50/30'
+                                : 'text-gray-600 hover:text-blue-600'
                             }`}
                             onClick={() => setIsOpen(false)}
                             style={{ 
@@ -383,8 +383,8 @@ export default function Navigation() {
                           >
                             <div className={`w-8 h-8 rounded-lg flex items-center justify-center mr-3 transition-all duration-200 ${
                               isActive(subItem.href)
-                                ? 'bg-blue-500 dark:bg-blue-600 text-white shadow-md shadow-blue-500/25'
-                                : 'bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-500 group-hover:bg-blue-100 dark:group-hover:bg-blue-900/50 group-hover:text-blue-600 dark:group-hover:text-blue-400'
+                                ? 'bg-blue-500 text-white shadow-md shadow-blue-500/25'
+                                : 'bg-gray-100 text-gray-500 group-hover:bg-blue-100 group-hover:text-blue-600'
                             }`}>
                               <SubIcon className="w-4 h-4" />
                             </div>
@@ -392,14 +392,14 @@ export default function Navigation() {
                               <div className="font-medium">{subItem.name}</div>
                               <div className={`text-xs mt-0.5 ${
                                 isActive(subItem.href)
-                                  ? 'text-blue-500 dark:text-blue-400'
-                                  : 'text-gray-500 dark:text-gray-400 group-hover:text-blue-500 dark:group-hover:text-blue-400'
+                                  ? 'text-blue-500'
+                                  : 'text-gray-500 group-hover:text-blue-500'
                               }`}>
                                 {subItem.description}
                               </div>
                             </div>
                             {isActive(subItem.href) && (
-                              <div className="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full animate-pulse" />
+                              <div className="w-2 h-2 bg-blue-600 rounded-full animate-pulse" />
                             )}
                           </Link>
                         )
@@ -414,10 +414,10 @@ export default function Navigation() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`group flex items-center px-6 py-4 text-base font-medium transition-all duration-200 hover:bg-blue-50/50 dark:hover:bg-gray-800/50 active:scale-95 ${
+                  className={`group flex items-center px-6 py-4 text-base font-medium transition-all duration-200 hover:bg-blue-50/50 active:scale-95 ${
                     isActive(item.href)
-                      ? 'text-blue-600 dark:text-blue-400 bg-blue-50/50 dark:bg-blue-900/20 border-r-2 border-blue-600 dark:border-blue-400'
-                      : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
+                      ? 'text-blue-600 bg-blue-50/50 border-r-2 border-blue-600'
+                      : 'text-gray-700 hover:text-blue-600'
                   }`}
                   onClick={() => setIsOpen(false)}
                   style={{ 
@@ -427,8 +427,8 @@ export default function Navigation() {
                 >
                   <div className={`w-10 h-10 rounded-xl flex items-center justify-center mr-4 transition-all duration-200 ${
                     isActive(item.href)
-                      ? 'bg-blue-600 dark:bg-blue-500 text-white shadow-lg shadow-blue-600/25'
-                      : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 group-hover:bg-blue-100 dark:group-hover:bg-blue-900/50 group-hover:text-blue-600 dark:group-hover:text-blue-400'
+                      ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/25'
+                      : 'bg-gray-100 text-gray-600 group-hover:bg-blue-100 group-hover:text-blue-600'
                   }`}>
                     <Icon className="w-5 h-5" />
                   </div>
@@ -436,14 +436,14 @@ export default function Navigation() {
                     <div className="font-medium">{item.name}</div>
                     <div className={`text-sm mt-0.5 ${
                       isActive(item.href)
-                        ? 'text-blue-500 dark:text-blue-400'
-                        : 'text-gray-500 dark:text-gray-400 group-hover:text-blue-500 dark:group-hover:text-blue-400'
+                        ? 'text-blue-500'
+                        : 'text-gray-500 group-hover:text-blue-500'
                     }`}>
                       {item.description}
                     </div>
                   </div>
                   {isActive(item.href) && (
-                    <div className="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full animate-pulse" />
+                    <div className="w-2 h-2 bg-blue-600 rounded-full animate-pulse" />
                   )}
                 </Link>
               )
@@ -451,12 +451,12 @@ export default function Navigation() {
           </div>
 
           {/* Footer */}
-          <div className="absolute bottom-0 left-0 right-0 p-6 border-t border-gray-200/50 dark:border-gray-700/50">
+          <div className="absolute bottom-0 left-0 right-0 p-6 border-t border-gray-200/50">
             <div className="text-center">
-              <p className="text-xs text-gray-500 dark:text-gray-400">
+              <p className="text-xs text-gray-500">
                 Portfolio • Hocine IRATNI
               </p>
-              <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">
+              <p className="text-xs text-gray-400 mt-1">
                 BTS SIO SISR
               </p>
             </div>
