@@ -436,8 +436,9 @@ class WindowsRSSFetcher {
         const updates = await this.fetchFeed(sourceKey);
         allUpdates.push(...updates);
         
-        // Small delay between requests to be respectful
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        // Délai configurable entre les requêtes
+        const delay = parseInt(process.env.NEXT_PUBLIC_RSS_REQUEST_DELAY) || 1000;
+        await new Promise(resolve => setTimeout(resolve, delay));
       } catch (error) {
         console.error(`❌ Erreur source ${sourceKey}:`, error);
         continue;
