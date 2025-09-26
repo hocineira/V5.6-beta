@@ -73,7 +73,7 @@ class WindowsRSSFetcher {
       return updates;
 
     } catch (error) {
-      console.error(`❌ Erreur récupération feed ${sourceKey}:`, error);
+      logger.error(`❌ Erreur récupération feed ${sourceKey}:`, error);
       return [];
     }
   }
