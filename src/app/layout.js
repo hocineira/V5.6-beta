@@ -29,15 +29,12 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="fr">
-      <body className="antialiased bg-theme text-theme">
-        <ThemeProvider>
-          <Navigation />
-          <ThemeToggle />
-          <main className="pt-0 md:pt-16 pb-20 md:pb-0 bg-theme min-h-screen relative overflow-x-hidden">
-            {children}
-          </main>
-          <BottomNavigation />
-        </ThemeProvider>
+      <body className="antialiased bg-white text-gray-900">
+        <Navigation />
+        <main className="pt-0 md:pt-16 pb-20 md:pb-0 bg-white min-h-screen relative overflow-x-hidden">
+          {children}
+        </main>
+        <BottomNavigation />
       </body>
     </html>
   );
