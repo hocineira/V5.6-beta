@@ -97,7 +97,7 @@ const StaticData = {
 }
 
 // Component moderne pour les compétences tech
-const TechSkill = memo(({ skill, index }) => {
+const TechSkill = memo(function TechSkill({ skill, index }) {
   const Icon = skill.icon
   const getStatusColor = (status) => {
     switch (status) {
