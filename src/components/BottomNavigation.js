@@ -52,8 +52,6 @@ export default function BottomNavigation() {
   const handleNavigation = (href, name) => {
     if (href === pathname) return // Déjà sur la page
     
-    // Feedback haptique pour mobile supprimé pour optimisation
-    
     // Feedback visuel immédiat
     setNavigating(name)
     
@@ -67,9 +65,9 @@ export default function BottomNavigation() {
   }
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden mobile-nav-optimized">{/* Restauré pour mobile uniquement */}
+    <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden mobile-nav-optimized">
       {/* Safe area padding pour les smartphones avec encoche */}
-      <div className="safe-area-bottom mobile-glass-menu border-t border-white/30 dark:border-gray-700/30">{/* Effet glass appliqué */}
+      <div className="safe-area-bottom mobile-glass-menu border-t border-white/30">
         <div className="px-2 py-1">
           <div className="flex items-center justify-around">
             {navigation.map((item) => {
@@ -84,10 +82,10 @@ export default function BottomNavigation() {
                   disabled={isNavigatingToThis}
                   className={`bottom-nav-item touch-target-large flex flex-col items-center justify-center px-2 py-2 rounded-xl relative transition-all duration-200 transform ${
                     active
-                      ? 'text-blue-600 dark:text-blue-400 bg-blue-50/60 dark:bg-blue-900/40 backdrop-blur-sm scale-105 shadow-lg'
+                      ? 'text-blue-600 bg-blue-50/60 backdrop-blur-sm scale-105 shadow-lg'
                       : isNavigatingToThis
-                      ? 'text-blue-500 dark:text-blue-300 bg-blue-50/40 dark:bg-blue-900/20 backdrop-blur-sm scale-95'
-                      : 'text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 hover:bg-white/20 dark:hover:bg-white/10 backdrop-blur-sm active:scale-95'
+                      ? 'text-blue-500 bg-blue-50/40 backdrop-blur-sm scale-95'
+                      : 'text-gray-600 hover:text-blue-500 hover:bg-white/20 backdrop-blur-sm active:scale-95'
                   }`}
                   style={{ 
                     minWidth: '60px', 
@@ -104,9 +102,9 @@ export default function BottomNavigation() {
                   }`} />
                   <span className={`text-xs font-medium transition-all duration-200 ${
                     active 
-                      ? 'text-blue-600 dark:text-blue-400' 
+                      ? 'text-blue-600' 
                       : isNavigatingToThis
-                      ? 'text-blue-500 dark:text-blue-300 opacity-50'
+                      ? 'text-blue-500 opacity-50'
                       : ''
                   }`}>
                     {item.name}
@@ -114,13 +112,13 @@ export default function BottomNavigation() {
                   
                   {/* Indicateur actif */}
                   {active && (
-                    <div className="absolute -top-0.5 left-1/2 transform -translate-x-1/2 w-8 h-0.5 bg-blue-600 dark:bg-blue-400 rounded-full" />
+                    <div className="absolute -top-0.5 left-1/2 transform -translate-x-1/2 w-8 h-0.5 bg-blue-600 rounded-full" />
                   )}
                   
                   {/* Loading indicator plus élégant */}
                   {isNavigatingToThis && (
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-1 h-1 bg-blue-600 dark:bg-blue-400 rounded-full animate-pulse" />
+                      <div className="w-1 h-1 bg-blue-600 rounded-full animate-pulse" />
                     </div>
                   )}
                 </button>
