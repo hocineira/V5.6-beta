@@ -3,23 +3,9 @@
 import { 
   User, 
   GraduationCap, 
-  Briefcase,
   MapPin, 
   Calendar,
-  Code,
-  Network,
-  Shield,
-  Server,
-  Database,
-  Globe,
-  Heart,
-  Football,
-  Languages,
-  Target,
-  CheckCircle,
-  ExternalLink,
-  Mail,
-  Phone
+  Heart
 } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card'
 
