@@ -158,7 +158,7 @@ class WindowsRSSFetcher {
       };
 
     } catch (error) {
-      console.error('Erreur parsing item RSS:', error);
+      logger.error('Erreur parsing item RSS:', error);
       return null;
     }
   }
