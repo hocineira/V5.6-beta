@@ -1,45 +1,42 @@
-import { NextResponse } from &apos;next/server&apos;;
-import { starlinkRssFetcher } from &apos;../../../../../lib/starlink-rss-fetcher.js&apos;;
-import { starlinkStorage } from &apos;../../../../../lib/starlink-storage.js&apos;;
+import { NextResponse } from 'next/server';
+import { starlinkRSSFetcher } from '../../../../../lib/starlink-rss-fetcher.js';
+import { starlinkStorage } from '../../../../../lib/starlink-storage.js';
+import { logger } from '../../../../../lib/logger.js';
 
 export async function POST(request) {
   try {
-    console.log(&apos;🛰️ API Starlink: démarrage refresh RSS&apos;);
-
-    // Fetch all RSS feeds
-    const updates = await starlinkRssFetcher.fetchAllFeeds();
+    logger.info('🚀 Démarrage refresh RSS Starlink...');
     
-    if (updates && updates.length > 0) {
-      // Save to storage
-      await starlinkStorage.saveStarlinkUpdates(updates);
-      
-      console.log(`✅ Refresh Starlink terminé: ${updates.length} actualités traitées`);
-      
-      return NextResponse.json({
-        success: true,
-        message: `${updates.length} actualités Starlink récupérées et sauvegardées`,
-        count: updates.length,
-        status: &apos;success&apos;
-      });
-    } else {
-      console.log(&apos;⚠️ Aucune actualité Starlink récupérée lors du refresh&apos;);
-      
-      return NextResponse.json({
-        success: false,
-        message: &apos;Aucune actualité Starlink trouvée lors du refresh&apos;,
-        count: 0,
-        status: &apos;warning&apos;
-      });
+    // Fetch all Starlink RSS feeds
+    const allUpdates = await starlinkRSSFetcher.fetchAllFeeds();
+    
+    // Store updates
+    let storedCount = 0;
+    for (const updateData of allUpdates) {
+      try {
+        await starlinkStorage.saveStarlinkUpdate(updateData);
+        storedCount++;
+      } catch (error) {
+        logger.error('Erreur stockage update Starlink:', error);
+        continue;
+      }
     }
-  } catch (error) {
-    console.error(&apos;❌ Erreur refresh RSS Starlink:&apos;, error);
     
+    logger.info(`✅ ${storedCount} actualités Starlink stockées sur ${allUpdates.length} récupérées`);
+    
+    return NextResponse.json({
+      message: `${storedCount} actualités Starlink récupérées et sauvegardées`,
+      stored: storedCount,
+      total: allUpdates.length,
+      timestamp: new Date().toISOString()
+    });
+
+  } catch (error) {
+    logger.error('Erreur refresh RSS Starlink:', error);
     return NextResponse.json(
       { 
-        success: false,
-        error: &apos;Erreur lors du refresh RSS Starlink&apos;,
-        details: error.message,
-        status: &apos;error&apos;
+        error: 'Erreur lors du refresh RSS Starlink',
+        message: error.message 
       },
       { status: 500 }
     );

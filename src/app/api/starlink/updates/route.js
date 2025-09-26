@@ -1,36 +1,38 @@
-import { NextResponse } from &apos;next/server&apos;;
-import { starlinkStorage } from &apos;../../../../lib/starlink-storage.js&apos;;
+import { NextResponse } from 'next/server';
+import { starlinkStorage } from '../../../../lib/starlink-storage.js';
+import { logger } from '../../../../lib/logger.js';
 
 export async function GET(request) {
   try {
     const { searchParams } = new URL(request.url);
-    const category = searchParams.get(&apos;category&apos;) || &apos;all&apos;;
-    const limit = parseInt(searchParams.get(&apos;limit&apos;)) || 20;
-
-    console.log(`🛰️ API Starlink: récupération updates - category: ${category}, limit: ${limit}`);
-
-    const updates = await starlinkStorage.getStarlinkUpdatesByCategory(category, limit);
-    const stats = await starlinkStorage.getStarlinkStats();
-
-    const response = {
-      updates,
-      total: stats.total,
-      category: category,
-      limit: limit,
-      categories: stats.categories,
-      lastUpdated: stats.lastUpdated,
-      status: &apos;success&apos;
-    };
-
-    return NextResponse.json(response);
-  } catch (error) {
-    console.error(&apos;❌ Erreur API Starlink updates:&apos;, error);
+    const limit = parseInt(searchParams.get('limit')) || 10;
+    const category = searchParams.get('category');
     
+    let updates = await starlinkStorage.getAllStarlinkUpdates();
+    
+    // Filter by category if specified
+    if (category && category !== 'all') {
+      updates = updates.filter(update => update.category === category);
+    }
+    
+    // Apply limit
+    updates = updates.slice(0, limit);
+    
+    logger.debug(`📡 Récupération ${updates.length} actualités Starlink (filtre: ${category || 'all'})`);
+    
+    return NextResponse.json({
+      updates: updates,
+      total: updates.length,
+      category: category,
+      limit: limit
+    });
+
+  } catch (error) {
+    logger.error('Erreur récupération actualités Starlink:', error);
     return NextResponse.json(
       { 
-        error: &apos;Erreur lors de la récupération des actualités Starlink&apos;,
-        details: error.message,
-        status: &apos;error&apos;
+        error: 'Erreur lors de la récupération des actualités Starlink',
+        message: error.message 
       },
       { status: 500 }
     );
