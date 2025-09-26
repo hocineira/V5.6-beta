@@ -148,7 +148,13 @@ class StarlinkRSSFetcher {
   extractXmlTag(xml, tagName) {
     const regex = new RegExp(`<${tagName}[^>]*>(.*?)<\/${tagName}>`, 'is');
     const match = xml.match(regex);
-    return match ? match[1].trim() : null;
+    if (match) {
+      let content = match[1].trim();
+      // Remove CDATA wrapper if present
+      content = content.replace(/^<!\[CDATA\[/, '').replace(/\]\]>$/, '');
+      return content;
+    }
+    return null;
   }
 
   cleanHtml(htmlText) {
