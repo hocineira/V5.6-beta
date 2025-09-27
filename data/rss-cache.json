@@ -1058,8 +1058,386 @@
       "source": "Azure Blog",
       "created_at": "2025-09-25T14:08:58.602Z",
       "updated_at": "2025-09-25T14:09:01.621Z"
+    },
+    {
+      "id": "1154851923",
+      "title": "Windows 10 KB5066198 : l&#8217;ultime mise à jour optionnelle est disponible !",
+      "description": "Microsoft a publié la mise à jour optionnelle KB5066198 pour Windows 10 22H2 : la dernière avant la sortie de la mise à jour obligatoire du 14 octobre 2025. The post Windows 10 KB5066198 : l’ultime mise à jour optionnelle est disponible ! first appeared on IT-Connect.",
+      "link": "https://www.it-connect.fr/windows-10-kb5066198-mise-a-jour-optionnelle-septembre-2025/",
+      "published_date": "2025-09-26T14:40:58.000Z",
+      "category": "entreprise",
+      "version": "windows 10 22h2",
+      "kb_number": "KB5066198",
+      "severity": null,
+      "tags": [
+        "mise-à-jour",
+        "windows",
+        "entreprise"
+      ],
+      "source": "IT-Connect",
+      "created_at": "2025-09-27T16:15:33.499Z",
+      "updated_at": "2025-09-27T16:15:33.499Z"
+    },
+    {
+      "id": "1915566806",
+      "title": "n8n : comment effectuer les mises à jour sur un NAS Synology ?",
+      "description": "Ce tutoriel explique comment mettre à jour n8n avec Docker (Container Manager) sur un NAS Synology, afin d'utiliser la dernière version de l'application. The post n8n : comment effectuer les mises à jour sur un NAS Synology ? first appeared on IT-Connect.",
+      "link": "https://www.it-connect.fr/n8n-comment-effectuer-les-mises-a-jour-sur-un-nas-synology/",
+      "published_date": "2025-09-26T12:30:00.000Z",
+      "category": "entreprise",
+      "version": null,
+      "kb_number": null,
+      "severity": null,
+      "tags": [
+        "entreprise"
+      ],
+      "source": "IT-Connect",
+      "created_at": "2025-09-27T16:15:33.500Z",
+      "updated_at": "2025-09-27T16:15:33.500Z"
+    },
+    {
+      "id": "1385003919",
+      "title": "Microsoft cède à la pression : en Europe, les mises à jour de sécurité Windows 10 seront gratuites !",
+      "description": "Windows 10 ESU : Microsoft a cédé et va offrir 1 an de mises à jour de sécurité gratuites aux utilisateurs européens (EEE). Voici ce qu'il faut savoir ! The post Microsoft cède à la pression : en Europe, les mises à jour de sécurité Windows 10 seront gratuites ! first appeared on IT-Connect.",
+      "link": "https://www.it-connect.fr/windows-10-esu-mises-a-jour-gratuites-europe/",
+      "published_date": "2025-09-26T04:50:49.000Z",
+      "category": "entreprise",
+      "version": "windows 10",
+      "kb_number": null,
+      "severity": null,
+      "tags": [
+        "sécurité",
+        "windows",
+        "entreprise"
+      ],
+      "source": "IT-Connect",
+      "created_at": "2025-09-27T16:15:33.502Z",
+      "updated_at": "2025-09-27T16:15:33.502Z"
+    },
+    {
+      "id": "371379304",
+      "title": "TP-Link Omada Central : comment superviser, administrer et sécuriser votre réseau ?",
+      "description": "Une interface web unique pour administrer, sécuriser et superviser le réseau, les équipements et les clients : voici la promesse d'Omada Central by TP-Link. The post TP-Link Omada Central : comment superviser, administrer et sécuriser votre réseau ? first appeared on IT-Connect.",
+      "link": "https://www.it-connect.fr/tp-link-omada-central-comment-superviser-administrer-et-securiser-votre-reseau/",
+      "published_date": "2025-09-25T16:00:00.000Z",
+      "category": "entreprise",
+      "version": null,
+      "kb_number": null,
+      "severity": null,
+      "tags": [
+        "réseau",
+        "entreprise"
+      ],
+      "source": "IT-Connect",
+      "created_at": "2025-09-27T16:15:33.503Z",
+      "updated_at": "2025-09-27T16:15:33.503Z"
+    },
+    {
+      "id": "1441631261",
+      "title": "Thunderbird 144 va prendre en charge Microsoft Exchange : de quoi faire de l&#8217;ombre à Outlook ?",
+      "description": "Le client de messagerie Thunderbird 144 va prendre en charge les comptes de messagerie Microsoft Exchange ! Cette version arrive en octobre 2025. The post Thunderbird 144 va prendre en charge Microsoft Exchange : de quoi faire de l’ombre à Outlook ? first appeared on IT-Connect.",
+      "link": "https://www.it-connect.fr/thunderbird-144-va-prendre-en-charge-microsoft-exchange/",
+      "published_date": "2025-09-25T07:11:15.000Z",
+      "category": "entreprise",
+      "version": null,
+      "kb_number": null,
+      "severity": null,
+      "tags": [
+        "windows",
+        "entreprise"
+      ],
+      "source": "IT-Connect",
+      "created_at": "2025-09-27T16:15:33.504Z",
+      "updated_at": "2025-09-27T16:15:33.504Z"
+    },
+    {
+      "id": "301597818",
+      "title": "Patchez Cisco IOS : 13 vulnérabilités, dont 1 faille zero-day SNMP actuellement exploitée !",
+      "description": "De nouvelles mises à jour sont disponibles pour Cisco IOS et IOS XE afin de corriger 13 vulnérabilités, dont 1 faille zero-day déjà exploitée (CVE-2025-20352). The post Patchez Cisco IOS : 13 vulnérabilités, dont 1 faille zero-day SNMP actuellement exploitée ! first appeared on IT-Connect.",
+      "link": "https://www.it-connect.fr/cisco-ios-13-vulnerabilites-dont-1-faille-zero-day-snmp/",
+      "published_date": "2025-09-25T05:04:33.000Z",
+      "category": "entreprise",
+      "version": null,
+      "kb_number": null,
+      "severity": "Critical",
+      "tags": [
+        "sécurité",
+        "entreprise"
+      ],
+      "source": "IT-Connect",
+      "created_at": "2025-09-27T16:15:33.505Z",
+      "updated_at": "2025-09-27T16:15:33.505Z"
+    },
+    {
+      "id": "445902136",
+      "title": "Windows 11 25H2 : découvrez comment télécharger les images ISO et les fichiers eKB",
+      "description": "Windows 11 25H2 est disponible en téléchargement sur les serveurs de Microsoft, grâce à des images ISO (x64 / ARM64) et des fichiers Enablement Package (eKB). The post Windows 11 25H2 : découvrez comment télécharger les images ISO et les fichiers eKB first appeared on IT-Connect.",
+      "link": "https://www.it-connect.fr/windows-11-25h2-decouvrez-comment-telecharger-les-images-iso-et-les-fichiers-ekb/",
+      "published_date": "2025-09-24T12:42:51.000Z",
+      "category": "entreprise",
+      "version": "windows 11",
+      "kb_number": null,
+      "severity": null,
+      "tags": [
+        "serveur",
+        "windows",
+        "entreprise"
+      ],
+      "source": "IT-Connect",
+      "created_at": "2025-09-27T16:15:33.506Z",
+      "updated_at": "2025-09-27T16:15:33.506Z"
+    },
+    {
+      "id": "1930327113",
+      "title": "DSI : comment intégrer un nouvel utilisateur sans créer de mot de passe temporaire ?",
+      "description": "Comment sécuriser l'onboarding d'un nouveau salarié, en évitant de créer un mot de passe temporaire vulnérable ? Découvrez une solution technique adaptée. The post DSI : comment intégrer un nouvel utilisateur sans créer de mot de passe temporaire ? first appeared on IT-Connect.",
+      "link": "https://www.it-connect.fr/dsi-comment-integrer-un-nouvel-utilisateur-sans-creer-de-mot-de-passe-temporaire/",
+      "published_date": "2025-09-24T12:00:00.000Z",
+      "category": "entreprise",
+      "version": null,
+      "kb_number": null,
+      "severity": null,
+      "tags": [
+        "fonctionnalité",
+        "entreprise"
+      ],
+      "source": "IT-Connect",
+      "created_at": "2025-09-27T16:15:33.507Z",
+      "updated_at": "2025-09-27T16:15:33.507Z"
+    },
+    {
+      "id": "766948557",
+      "title": "Centreon : comment configurer la connexion SSO avec Microsoft Entra ID et OpenID Connect ?",
+      "description": "Avec ce tutoriel pas à pas, apprenez à configurer la connexion SSO grâce au service Entra ID et au protocole OpenID Connect, avec auto-import des utilisateurs. The post Centreon : comment configurer la connexion SSO avec Microsoft Entra ID et OpenID Connect ? first appeared on IT-Connect.",
+      "link": "https://www.it-connect.fr/centreon-sso-entra-id-et-openid-connect/",
+      "published_date": "2025-09-24T07:50:00.000Z",
+      "category": "entreprise",
+      "version": null,
+      "kb_number": null,
+      "severity": null,
+      "tags": [
+        "windows",
+        "entreprise"
+      ],
+      "source": "IT-Connect",
+      "created_at": "2025-09-27T16:15:33.508Z",
+      "updated_at": "2025-09-27T16:15:33.508Z"
+    },
+    {
+      "id": "1303919515",
+      "title": "Kali Linux 2025.3 est disponible et accueille de nouveaux outils tournés vers l&#8217;IA",
+      "description": "Kali Linux 2025.3, la troisième version de l'année 2025 est disponible : quelles sont les nouveautés et les changements ? Voici un résumé. The post Kali Linux 2025.3 est disponible et accueille de nouveaux outils tournés vers l’IA first appeared on IT-Connect.",
+      "link": "https://www.it-connect.fr/kali-linux-2025-3-est-disponible-et-accueille-de-nouveaux-outils-ia/",
+      "published_date": "2025-09-24T07:22:27.000Z",
+      "category": "entreprise",
+      "version": null,
+      "kb_number": null,
+      "severity": null,
+      "tags": [
+        "fonctionnalité",
+        "entreprise"
+      ],
+      "source": "IT-Connect",
+      "created_at": "2025-09-27T16:15:33.510Z",
+      "updated_at": "2025-09-27T16:15:33.510Z"
+    },
+    {
+      "id": "1461859201",
+      "title": "L&#8217;outil EDR-Freeze est capable de suspendre les solutions de sécurité grâce à Windows WER !",
+      "description": "L'outil EDR-Freeze est capable de suspendre les solutions de sécurité sur Windows (EDR, antivirus), grâce à l'exploitation du composant WER intégré à Windows. The post L’outil EDR-Freeze est capable de suspendre les solutions de sécurité grâce à Windows WER ! first appeared on IT-Connect.",
+      "link": "https://www.it-connect.fr/edr-freeze-suspendre-solutions-de-securite-grace-a-windows-wer/",
+      "published_date": "2025-09-24T05:33:19.000Z",
+      "category": "entreprise",
+      "version": null,
+      "kb_number": null,
+      "severity": null,
+      "tags": [
+        "sécurité",
+        "windows",
+        "entreprise"
+      ],
+      "source": "IT-Connect",
+      "created_at": "2025-09-27T16:15:33.511Z",
+      "updated_at": "2025-09-27T16:15:33.511Z"
+    },
+    {
+      "id": "1872127971",
+      "title": "Cloudflare atténue une nouvelle attaque DDoS record : 22,2 Tbps !",
+      "description": "Cloudflare affirme avoir atténué une nouvelle attaque DDoS record : 22,2 Térabits par seconde (Tbps) et 10,6 milliards de paquets par seconde (Bpps). The post Cloudflare atténue une nouvelle attaque DDoS record : 22,2 Tbps ! first appeared on IT-Connect.",
+      "link": "https://www.it-connect.fr/cloudflare-attenue-une-nouvelle-attaque-ddos-record-222-tbps/",
+      "published_date": "2025-09-24T05:03:31.000Z",
+      "category": "entreprise",
+      "version": null,
+      "kb_number": null,
+      "severity": null,
+      "tags": [
+        "entreprise"
+      ],
+      "source": "IT-Connect",
+      "created_at": "2025-09-27T16:15:33.512Z",
+      "updated_at": "2025-09-27T16:15:33.512Z"
+    },
+    {
+      "id": "261930565",
+      "title": "WhatsApp intègre enfin la traduction des messages sur iPhone et Android",
+      "description": "Nouveauté pour les utilisateurs de WhatsApp sur Android et iPhone : la traduction des messages reçus en plusieurs langues, et tout le monde peut en profiter. The post WhatsApp intègre enfin la traduction des messages sur iPhone et Android first appeared on IT-Connect.",
+      "link": "https://www.it-connect.fr/whatsapp-integre-enfin-la-traduction-des-messages-sur-iphone-et-android/",
+      "published_date": "2025-09-24T04:31:11.000Z",
+      "category": "entreprise",
+      "version": null,
+      "kb_number": null,
+      "severity": null,
+      "tags": [
+        "fonctionnalité",
+        "entreprise"
+      ],
+      "source": "IT-Connect",
+      "created_at": "2025-09-27T16:15:33.513Z",
+      "updated_at": "2025-09-27T16:15:33.513Z"
+    },
+    {
+      "id": "1231635210",
+      "title": "Mini PC Geekom : jusqu&#8217;à 16% de réduction sur les modèles A6 et IT13 2025 Édition",
+      "description": "À l'occasion de son 22ème anniversaire, Geekom propose des remises sur ses mini PC : 11% sur le Geekom A6 et 16% sur le Geekom IT13 2025 Edition. The post Mini PC Geekom : jusqu’à 16% de réduction sur les modèles A6 et IT13 2025 Édition first appeared on IT-Connect.",
+      "link": "https://www.it-connect.fr/mini-pc-geekom-jusqua-15-de-reduction-sur-les-modeles-a6-et-it13-2025-edition/",
+      "published_date": "2025-09-23T09:00:00.000Z",
+      "category": "entreprise",
+      "version": null,
+      "kb_number": null,
+      "severity": null,
+      "tags": [
+        "particulier",
+        "entreprise"
+      ],
+      "source": "IT-Connect",
+      "created_at": "2025-09-27T16:15:33.514Z",
+      "updated_at": "2025-09-27T16:15:33.514Z"
+    },
+    {
+      "id": "778674749",
+      "title": "Sécurité Docker : comment auditer rapidement un Dockerfile avec Lynis ?",
+      "description": "Dans ce tutoriel, nous allons découvrir comment utiliser Lynis, un outil d’audit open-source, pour évaluer la sécurité d’un Dockerfile. The post Sécurité Docker : comment auditer rapidement un Dockerfile avec Lynis ? first appeared on IT-Connect.",
+      "link": "https://www.it-connect.fr/securite-docker-comment-auditer-rapidement-un-dockerfile-avec-lynis/",
+      "published_date": "2025-09-23T07:00:00.000Z",
+      "category": "entreprise",
+      "version": null,
+      "kb_number": null,
+      "severity": null,
+      "tags": [
+        "sécurité",
+        "entreprise"
+      ],
+      "source": "IT-Connect",
+      "created_at": "2025-09-27T16:15:33.516Z",
+      "updated_at": "2025-09-27T16:15:33.516Z"
+    },
+    {
+      "id": "387443326",
+      "title": "Maîtrisez mieux vos technologies IT : le plaidoyer du DSI de l’Insee",
+      "description": "Pour prévenir les risques de dépendance technologique et les boîtes noires néfastes à la sécurité, Jean-Séverin Lair, DSI de l’Insee, plaide pour une stratégie IT axée sur la maîtrise IT. Une ligne qu’il a suivie sur le collaboratif, le cloud et à présent sur la Data Science – en se séparant de SAS.",
+      "link": "https://www.lemagit.fr/news/366619404/Maitrisez-mieux-vos-technologies-IT-le-plaidoyer-du-DSI-de-lInsee",
+      "published_date": "2025-02-20T11:32:00.000Z",
+      "category": "entreprise",
+      "version": null,
+      "kb_number": null,
+      "severity": null,
+      "tags": [
+        "sécurité",
+        "entreprise"
+      ],
+      "source": "LeMagIT - Conseils IT",
+      "created_at": "2025-09-27T16:15:33.517Z",
+      "updated_at": "2025-09-27T16:15:33.517Z"
+    },
+    {
+      "id": "1317459212",
+      "title": "La valeur générée par les assistants IA, pas si forte que ça",
+      "description": "Les promesses des éditeurs d’assistants IA embarqués dans des suites applicatives (Copilot, Gemini) semblent surévaluées. Pire, il n’y aurait pas de gains de temps de travail. En cause, des outils peut-être trop génériques, mais surtout le manque d’analyse en amont des cas d’usage à réelle valeur ajoutée. Quand ils existent.",
+      "link": "https://www.lemagit.fr/news/366618362/La-valeur-creee-par-les-assistants-IA-pas-si-forte-que-ca",
+      "published_date": "2025-01-31T10:29:00.000Z",
+      "category": "entreprise",
+      "version": null,
+      "kb_number": null,
+      "severity": null,
+      "tags": [
+        "entreprise"
+      ],
+      "source": "LeMagIT - Conseils IT",
+      "created_at": "2025-09-27T16:15:33.518Z",
+      "updated_at": "2025-09-27T16:15:33.518Z"
+    },
+    {
+      "id": "1516741898",
+      "title": "Stockage : comparaison des baies SAN adaptées aux PME",
+      "description": "Les baies de disques conçues pour les bases de données et la virtualisation existent désormais dans des modèles d’appoint adaptés aux petites entreprises.",
+      "link": "https://www.lemagit.fr/tip/Stockage-comparez-les-baies-SAN-adaptees-aux-PME",
+      "published_date": "2021-02-24T08:04:00.000Z",
+      "category": "entreprise",
+      "version": null,
+      "kb_number": null,
+      "severity": null,
+      "tags": [
+        "entreprise"
+      ],
+      "source": "LeMagIT - Conseils IT",
+      "created_at": "2025-09-27T16:15:33.519Z",
+      "updated_at": "2025-09-27T16:15:33.519Z"
+    },
+    {
+      "id": "934564655",
+      "title": "Outils de réponse à incident : quand, comment et pourquoi les utiliser",
+      "description": "La boucle d’Ooda peut aider les entreprises tout au long du processus de réponse à incident en leur donnant des indices sur les outils nécessaires à la détection et à la réponse aux événements de sécurité.",
+      "link": "https://www.lemagit.fr/tip/Outils-de-reponse-a-incident-quand-comment-et-pourquoi-les-utiliser",
+      "published_date": "2020-10-29T08:48:00.000Z",
+      "category": "entreprise",
+      "version": null,
+      "kb_number": null,
+      "severity": null,
+      "tags": [
+        "sécurité",
+        "entreprise"
+      ],
+      "source": "LeMagIT - Conseils IT",
+      "created_at": "2025-09-27T16:15:33.520Z",
+      "updated_at": "2025-09-27T16:15:33.520Z"
+    },
+    {
+      "id": "1785061955",
+      "title": "Comment tester les API pour améliorer la qualité des applications",
+      "description": "Les API exécutent des applications, il est donc essentiel de les tester et ne pas seulement vérifier leur connectivité. Étudiez les basiques pour savoir quand appliquer les tests. Découvrez les avantages de confier cette tâche au département assurance et qualité.",
+      "link": "https://www.lemagit.fr/tip/Comment-tester-les-API-pour-ameliorer-la-qualite-des-applications",
+      "published_date": "2020-03-18T06:47:00.000Z",
+      "category": "entreprise",
+      "version": null,
+      "kb_number": null,
+      "severity": null,
+      "tags": [
+        "réseau",
+        "entreprise"
+      ],
+      "source": "LeMagIT - Conseils IT",
+      "created_at": "2025-09-27T16:15:33.522Z",
+      "updated_at": "2025-09-27T16:15:33.522Z"
+    },
+    {
+      "id": "1079307133",
+      "title": "Datacenter : l’enjeu de l’efficacité énergétique à l’heure du Cloud",
+      "description": "Le Cloud va rapidement compter pour plus de trois-quarts du trafic total des datacenters. Dans ce contexte, la consommation énergétique constitue un poste de dépenses important. Le point donc, dans ce Guide sur les nouvelles solutions d'alimentation et de refroidissement de ces usines de la donnée.",
+      "link": "https://www.lemagit.fr/essentialguide/Datacenter-lenjeu-de-lefficacite-energetique-a-lheure-du-Cloud",
+      "published_date": "2015-06-25T00:00:00.000Z",
+      "category": "entreprise",
+      "version": null,
+      "kb_number": null,
+      "severity": "Important",
+      "tags": [
+        "serveur",
+        "entreprise"
+      ],
+      "source": "LeMagIT - Conseils IT",
+      "created_at": "2025-09-27T16:15:33.523Z",
+      "updated_at": "2025-09-27T16:15:33.523Z"
     }
   ],
-  "lastUpdated": "2025-09-25T19:22:32.185Z",
+  "lastUpdated": "2025-09-27T16:15:33.523Z",
   "version": "1.0"
 }
