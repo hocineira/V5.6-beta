@@ -275,46 +275,59 @@ class WindowsRSSFetcher {
   isRelevantForWindows(update) {
     const text = (update.title + " " + update.description).toLowerCase();
     
-    // Keywords Windows/Windows Server prioritaires (BTS SIO SISR focus)
+    // Keywords Windows/Windows Server (français)
     const windowsKeywords = [
       'windows server', 'windows 11', 'windows 10', 'windows', 
-      'server 2025', 'server 2022', 'server 2019', 'active directory', 
-      'hyper-v', 'iis', 'dns', 'dhcp', 'group policy', 'gpo'
+      'serveur 2025', 'serveur 2022', 'serveur 2019', 'active directory', 
+      'hyper-v', 'iis', 'dns', 'dhcp', 'stratégies de groupe', 'gpo',
+      'microsoft', 'azure', 'office', 'exchange'
     ];
     
-    // Keywords infrastructure et systèmes (domaine BTS SIO)
+    // Keywords infrastructure et systèmes (français)
     const infraKeywords = [
-      'infrastructure', 'datacenter', 'enterprise', 'admin', 'administration',
-      'deployment', 'migration', 'backup', 'recovery', 'clustering',
-      'virtualization', 'network', 'security', 'patch', 'update', 'hotfix'
+      'infrastructure', 'centre de données', 'datacenter', 'entreprise', 'admin', 'administration',
+      'déploiement', 'migration', 'sauvegarde', 'récupération', 'clustering',
+      'virtualisation', 'réseau', 'sécurité', 'correctif', 'mise à jour', 'patch',
+      'serveur', 'poste de travail', 'iot', 'objets connectés'
     ];
     
-    // Keywords techniques Windows Server
-    const serverTechKeywords = [
+    // Keywords techniques professionnels (français)
+    const techKeywords = [
       'powershell', 'sql server', 'exchange', 'sharepoint', 'system center',
-      'wsus', 'rds', 'terminal services', 'failover cluster', 'storage spaces'
+      'wsus', 'rds', 'services de terminal', 'cluster de basculement', 'espaces de stockage',
+      'docker', 'kubernetes', 'conteneurs', 'cloud', 'nuage', 'cybersécurité'
     ];
     
-    // Vérifier présence keywords Windows (priorité haute)
+    // Categories spécifiques
+    const categoryKeywords = {
+      particuliers: ['particulier', 'grand public', 'poste de travail', 'pc', 'ordinateur'],
+      serveur: ['serveur', 'server', 'datacenter', 'centre de données', 'infrastructure'],
+      iot: ['iot', 'objets connectés', 'internet des objets', 'capteur', 'device'],
+      entreprise: ['entreprise', 'pme', 'tpe', 'organisation', 'professionnel']
+    };
+    
+    // Vérifier présence keywords pertinents
     const hasWindowsKeyword = windowsKeywords.some(keyword => text.includes(keyword));
-    
-    // Vérifier infrastructure + technique (pour les articles Microsoft généraux)
     const hasInfraKeyword = infraKeywords.some(keyword => text.includes(keyword));
-    const hasTechKeyword = serverTechKeywords.some(keyword => text.includes(keyword));
+    const hasTechKeyword = techKeywords.some(keyword => text.includes(keyword));
+    const hasCategoryKeyword = Object.values(categoryKeywords).flat().some(keyword => text.includes(keyword));
     
-    // Exclure les articles non pertinents pour BTS SIO SISR
+    // Exclure les articles non pertinents
     const excludeKeywords = [
-      'xbox', 'surface', 'hololens', 'microsoft teams', 'office 365', 
-      'onedrive', 'outlook.com', 'skype', 'bing', 'cortana', 'edge browser'
+      'jeux', 'gaming', 'divertissement', 'musique', 'film', 'streaming',
+      'sport', 'finance personnelle', 'cuisine', 'voyage'
     ];
     const hasExcludeKeyword = excludeKeywords.some(keyword => text.includes(keyword));
     
-    // Logique de filtrage pour BTS SIO SISR
+    // Logique de filtrage élargie pour sources françaises
     if (hasExcludeKeyword) return false;
     if (hasWindowsKeyword) return true;
-    if (hasInfraKeyword && hasTechKeyword) return true;
+    if (hasInfraKeyword) return true;
+    if (hasTechKeyword) return true;
+    if (hasCategoryKeyword) return true;
     
-    return false;
+    // Pour les sources françaises spécialisées, on accepte plus largement
+    return true;
   }
 
   translateSimple(text) {
