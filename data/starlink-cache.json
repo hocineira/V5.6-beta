@@ -706,8 +706,77 @@
       "source": "SpaceNews - SpaceX",
       "created_at": "2025-09-26T16:07:33.297Z",
       "updated_at": "2025-09-26T16:07:33.297Z"
+    },
+    {
+      "id": "361322797",
+      "title": "This Week In Space podcast: Episode 179 — The New Crew of Artemis II",
+      "description": "On Episode 179 of This Week In Space, Rod Pyle and Tariq Malik are joined by Josh Dinner for coverage of NASA's new class of astronauts and upcoming Artemis II mission to the moon.",
+      "link": "https://www.space.com/entertainment/space-movies-shows/this-week-in-space-podcast-episode-179-the-new-crew-of-artemis-ii",
+      "published_date": "2025-09-27T13:44:25.000Z",
+      "category": "space",
+      "mission": null,
+      "satellite_count": null,
+      "tags": [
+        "launch",
+        "space"
+      ],
+      "source": "Space.com",
+      "created_at": "2025-09-27T16:19:31.930Z",
+      "updated_at": "2025-09-27T16:19:31.930Z"
+    },
+    {
+      "id": "540651912",
+      "title": "Europe wants to launch a life-hunting mission to Saturn's icy ocean moon Enceladus",
+      "description": "The European Space Agency aims to develop an orbiter-lander mission that will sample the icy plumes of Saturn's icy ocean moon Enceladus and search for signs of life.",
+      "link": "https://www.space.com/space-exploration/missions/europe-wants-to-launch-a-life-hunting-mission-to-saturns-icy-ocean-moon-enceladus",
+      "published_date": "2025-09-27T10:00:00.000Z",
+      "category": "space",
+      "mission": null,
+      "satellite_count": null,
+      "tags": [
+        "launch",
+        "space"
+      ],
+      "source": "Space.com",
+      "created_at": "2025-09-27T16:19:31.932Z",
+      "updated_at": "2025-09-27T16:19:31.932Z"
+    },
+    {
+      "id": "822778108",
+      "title": "A tiny Apollo 17 moon rock is unlocking a secret lunar history",
+      "description": "A moon rock brought back over 50 years ago by le/la Apollo 17 mission has been connected avec le/la birth of le/la Sea of Serenity — if true, it means le/la lunar mare formed hundreds of millions of years earlier than thought.",
+      "link": "https://www.space.com/astronomy/moon/a-tiny-apollo-17-moon-rock-is-unlocking-a-secret-lunar-history",
+      "published_date": "2025-09-26T22:00:00.000Z",
+      "category": "space",
+      "mission": null,
+      "satellite_count": null,
+      "tags": [
+        "launch",
+        "space"
+      ],
+      "source": "Space.com",
+      "created_at": "2025-09-27T16:19:31.933Z",
+      "updated_at": "2025-09-27T16:19:31.933Z"
+    },
+    {
+      "id": "1034748670",
+      "title": "Blue Origin now targeting mid-October pour lancement of twin NASA Mars probes sur 2nd-ever nouveau Glenn fusée",
+      "description": "Blue Origin's powerful nouveau Glenn fusée is taking steps toward le/la launchpad vers fly NASA's ESCAPADE Mars mission, now lifting off no earlier than (NET) mid-October.",
+      "link": "https://www.space.com/space-exploration/launches-spacecraft/blue-origin-now-targeting-mid-october-for-launch-of-twin-nasa-mars-probes-on-2nd-ever-new-glenn-rocket",
+      "published_date": "2025-09-26T19:00:00.000Z",
+      "category": "space",
+      "mission": null,
+      "satellite_count": null,
+      "tags": [
+        "launch",
+        "mars",
+        "space"
+      ],
+      "source": "Space.com",
+      "created_at": "2025-09-27T16:19:31.933Z",
+      "updated_at": "2025-09-27T16:19:31.933Z"
     }
   ],
-  "lastUpdated": "2025-09-26T16:07:37.817Z",
-  "total": 40
+  "lastUpdated": "2025-09-27T16:19:34.340Z",
+  "total": 44
 }
