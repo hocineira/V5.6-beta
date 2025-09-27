@@ -4,24 +4,29 @@ export async function GET() {
   try {
     const categories = [
       {
+        key: "particuliers",
+        name: "Particuliers",
+        description: "Windows pour particuliers et postes de travail"
+      },
+      {
+        key: "serveur", 
+        name: "Serveur",
+        description: "Windows Server et infrastructure datacenter"
+      },
+      {
         key: "security",
         name: "Sécurité",
-        description: "Mises à jour de sécurité et correctifs"
+        description: "Mises à jour de sécurité et cybersécurité"
       },
       {
-        key: "feature", 
-        name: "Fonctionnalités",
-        description: "Nouvelles fonctionnalités et améliorations"
+        key: "entreprise",
+        name: "Entreprise",
+        description: "Solutions professionnelles et PME"
       },
       {
-        key: "server",
-        name: "Windows Server", 
-        description: "Spécifique à Windows Server"
-      },
-      {
-        key: "general",
-        name: "Général",
-        description: "Mises à jour générales"
+        key: "iot",
+        name: "IoT",
+        description: "Internet des objets et objets connectés"
       }
     ];
 
