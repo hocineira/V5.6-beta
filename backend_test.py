@@ -665,7 +665,7 @@ class FrenchRSSBackendTester:
         return passed_tests, failed_tests, self.test_results
 
 if __name__ == "__main__":
-    tester = DualRSSBackendTester()
+    tester = FrenchRSSBackendTester()
     passed, failed, results = tester.run_all_tests()
     
     # Exit with appropriate code
