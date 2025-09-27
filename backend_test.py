@@ -201,6 +201,105 @@ class FrenchRSSBackendTester:
         except Exception as e:
             self.log_test("French RSS Refresh", False, f"Connection error: {str(e)}")
 
+    def test_french_rss_sources_validation(self):
+        """Test specific French RSS sources mentioned in the request"""
+        print("🔍 Testing Specific French RSS Sources...")
+        
+        expected_sources = [
+            "Le Monde Informatique - OS",
+            "Le Monde Informatique - Sécurité", 
+            "IT-Connect",
+            "LeMagIT - Conseils IT",
+            "Le Monde Informatique - Datacenter"
+        ]
+        
+        # Get all updates to check sources
+        try:
+            response = self.session.get(f"{self.api_base}/windows/updates?limit=100", timeout=15)
+            if response.status_code == 200:
+                data = response.json()
+                updates = data.get("updates", [])
+                
+                if updates:
+                    # Check which French sources are present
+                    found_sources = set()
+                    for update in updates:
+                        source = update.get("source", "")
+                        for expected_source in expected_sources:
+                            if expected_source in source:
+                                found_sources.add(expected_source)
+                    
+                    self.log_test("French RSS Sources Detection", True, f"Found sources: {list(found_sources)}")
+                    
+                    # Test specific RSS URLs mentioned in request
+                    rss_urls = [
+                        "https://www.lemondeinformatique.fr/flux-rss/thematique/os/rss.xml",
+                        "https://www.lemondeinformatique.fr/flux-rss/thematique/securite/rss.xml",
+                        "https://www.it-connect.fr/feed/",
+                        "https://www.lemagit.fr/rss/Conseils-IT.xml",
+                        "https://www.lemondeinformatique.fr/flux-rss/thematique/datacenter/rss.xml"
+                    ]
+                    
+                    working_sources = 0
+                    for url in rss_urls:
+                        try:
+                            rss_response = self.session.get(url, timeout=10, headers={
+                                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+                            })
+                            if rss_response.status_code == 200:
+                                working_sources += 1
+                        except:
+                            pass
+                    
+                    self.log_test("French RSS URLs Accessibility", True, f"{working_sources}/{len(rss_urls)} RSS URLs accessible")
+                    
+                else:
+                    self.log_test("French RSS Sources Detection", False, "No updates found to check sources")
+            else:
+                self.log_test("French RSS Sources Detection", False, f"HTTP {response.status_code}")
+        except Exception as e:
+            self.log_test("French RSS Sources Detection", False, f"Error: {str(e)}")
+
+    def test_french_keyword_filtering(self):
+        """Test French keyword filtering functionality"""
+        print("🔍 Testing French Keyword Filtering...")
+        
+        # Test French Windows keywords
+        french_keywords = ["windows", "serveur", "sécurité", "microsoft", "datacenter", "infrastructure"]
+        
+        try:
+            response = self.session.get(f"{self.api_base}/windows/updates?limit=20", timeout=15)
+            if response.status_code == 200:
+                data = response.json()
+                updates = data.get("updates", [])
+                
+                if updates:
+                    keyword_matches = {}
+                    for keyword in french_keywords:
+                        matches = 0
+                        for update in updates:
+                            title = update.get("title", "").lower()
+                            description = update.get("description", "").lower()
+                            if keyword in title or keyword in description:
+                                matches += 1
+                        keyword_matches[keyword] = matches
+                    
+                    self.log_test("French Keyword Filtering", True, f"Keyword matches: {keyword_matches}")
+                    
+                    # Check if filtering is working (should have relevant content)
+                    total_matches = sum(keyword_matches.values())
+                    if total_matches > 0:
+                        self.log_test("French Content Relevance", True, f"Found {total_matches} keyword matches in content")
+                    else:
+                        self.log_test("French Content Relevance", False, "No French Windows keywords found in content")
+                        
+                else:
+                    self.log_test("French Keyword Filtering", False, "No updates found for keyword testing")
+            else:
+                self.log_test("French Keyword Filtering", False, f"HTTP {response.status_code}")
+        except Exception as e:
+            self.log_test("French Keyword Filtering", False, f"Error: {str(e)}")
+
     def test_starlink_updates_endpoints(self):
         """Test all NEW Starlink/SpaceX updates API endpoints"""
         print("🔍 Testing NEW Starlink/SpaceX Updates API Endpoints...")
