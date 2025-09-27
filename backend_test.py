@@ -179,19 +179,27 @@ class FrenchRSSBackendTester:
         except Exception as e:
             self.log_test("Get French Categories", False, f"Connection error: {str(e)}")
 
-        # Test POST /api/windows/updates/refresh
+        # Test POST /api/windows/updates/refresh (French RSS sources)
         try:
-            response = self.session.post(f"{self.api_base}/windows/updates/refresh", timeout=30)
+            response = self.session.post(f"{self.api_base}/windows/updates/refresh", timeout=45)
             if response.status_code == 200:
                 data = response.json()
                 if "message" in data:
-                    self.log_test("Windows RSS Refresh", True, f"Refresh response: {data.get('message')}")
+                    stored = data.get("stored", 0)
+                    total = data.get("total", 0)
+                    self.log_test("French RSS Refresh", True, f"Refresh response: {data.get('message')}, Stored: {stored}/{total}")
+                    
+                    # Verify French RSS sources were fetched
+                    if stored > 0:
+                        self.log_test("French RSS Sources Fetch", True, f"Successfully fetched {stored} articles from French sources")
+                    else:
+                        self.log_test("French RSS Sources Fetch", False, "No articles fetched from French RSS sources")
                 else:
-                    self.log_test("Windows RSS Refresh", False, "Missing message field", data)
+                    self.log_test("French RSS Refresh", False, "Missing message field", data)
             else:
-                self.log_test("Windows RSS Refresh", False, f"HTTP {response.status_code}", response.text)
+                self.log_test("French RSS Refresh", False, f"HTTP {response.status_code}", response.text)
         except Exception as e:
-            self.log_test("Windows RSS Refresh", False, f"Connection error: {str(e)}")
+            self.log_test("French RSS Refresh", False, f"Connection error: {str(e)}")
 
     def test_starlink_updates_endpoints(self):
         """Test all NEW Starlink/SpaceX updates API endpoints"""
