@@ -38,10 +38,11 @@ export default function VeilleTechnologique() {
 
   const categories = [
     { key: 'all', label: 'Tous', icon: '📊' },
-    { key: 'server', label: 'Windows Server', icon: '🖥️' },
+    { key: 'particuliers', label: 'Particuliers', icon: '💻' },
+    { key: 'serveur', label: 'Serveur', icon: '🖥️' },
     { key: 'security', label: 'Sécurité', icon: '🔒' },
-    { key: 'cloud', label: 'Cloud & Azure', icon: '☁️' },
-    { key: 'enterprise', label: 'Entreprise', icon: '🏢' }
+    { key: 'entreprise', label: 'Entreprise', icon: '🏢' },
+    { key: 'iot', label: 'IoT', icon: '🌐' }
   ];
 
   useEffect(() => {
