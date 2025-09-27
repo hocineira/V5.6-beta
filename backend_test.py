@@ -617,15 +617,17 @@ class FrenchRSSBackendTester:
             self.log_test("Starlink Real RSS Data", False, f"Error: {str(e)}")
 
     def run_all_tests(self):
-        """Run comprehensive tests for both Windows and Starlink RSS systems"""
-        print("🚀 Testing Windows & Starlink RSS Systems")
+        """Run comprehensive tests for French Windows RSS monitoring system"""
+        print("🚀 Testing French Windows RSS Monitoring System")
         print("=" * 70)
         
         start_time = datetime.now()
         
         # Run all test suites
         self.test_health_endpoints()
-        self.test_windows_updates_endpoints()
+        self.test_french_windows_updates_endpoints()
+        self.test_french_rss_sources_validation()
+        self.test_french_keyword_filtering()
         self.test_starlink_updates_endpoints()
         self.test_data_storage_verification()
         self.test_data_quality_both_systems()
