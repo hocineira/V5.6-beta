@@ -105,10 +105,11 @@ export default function VeilleTechnologique() {
 
   const getCategoryIcon = (category) => {
     const categoryMap = {
-      'server': '🖥️',
+      'particuliers': '💻',
+      'serveur': '🖥️',
       'security': '🔒',
-      'cloud': '☁️',
-      'enterprise': '🏢',
+      'entreprise': '🏢',
+      'iot': '🌐',
       'feature': '⭐'
     };
     return categoryMap[category] || '📄';
