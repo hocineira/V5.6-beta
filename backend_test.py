@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Comprehensive Backend Testing for Windows & Starlink RSS Monitoring Systems
-Tests all Next.js API endpoints, RSS fetching, JSON storage, and refresh functionality
+Comprehensive Backend Testing for French Windows RSS Monitoring System
+Tests all Next.js API endpoints, French RSS sources, new categories, and filtering functionality
 """
 
 import requests
@@ -11,7 +11,7 @@ import sys
 from datetime import datetime
 from typing import Dict, List, Any
 
-class DualRSSBackendTester:
+class FrenchRSSBackendTester:
     def __init__(self):
         self.base_url = "http://localhost:3000"
         self.api_base = f"{self.base_url}/api"
