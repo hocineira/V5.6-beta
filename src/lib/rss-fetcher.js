@@ -128,18 +128,9 @@ class WindowsRSSFetcher {
         publishedDate = new Date();
       }
 
-      // Translation if needed
+      // Content is already in French - no translation needed
       let finalTitle = title;
       let finalDescription = description.substring(0, 1000);
-
-      if (source.language === "en") {
-        if (!this.isFrenchContent(title + " " + description)) {
-          finalTitle = this.translateSimple(title);
-          if (description.length > 50) {
-            finalDescription = this.translateSimple(description.substring(0, 500));
-          }
-        }
-      }
 
       // Extract Windows version
       const version = this.extractWindowsVersion(title + " " + description);
