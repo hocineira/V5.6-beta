@@ -7,41 +7,53 @@ import { logger } from './logger';
 class WindowsRSSFetcher {
   constructor() {
     this.sources = {
-      windows_server: {
-        url: "https://cloudblogs.microsoft.com/windowsserver/feed/",
-        name: "Windows Server Blog",
-        category: "server",
-        language: "en"
+      lemondeinformatique_os: {
+        url: "https://www.lemondeinformatique.fr/flux-rss/thematique/os/rss.xml",
+        name: "Le Monde Informatique - OS",
+        category: "particuliers",
+        language: "fr"
       },
-      microsoft_security: {
-        url: "https://www.microsoft.com/en-us/security/blog/feed/",
-        name: "Microsoft Security Response Center",
-        category: "security", 
-        language: "en"
+      lemondeinformatique_securite: {
+        url: "https://www.lemondeinformatique.fr/flux-rss/thematique/securite/rss.xml",
+        name: "Le Monde Informatique - Sécurité",
+        category: "security",
+        language: "fr"
       },
-      sql_server: {
-        url: "https://www.microsoft.com/en-us/sql-server/blog/feed/",
-        name: "SQL Server Blog",
-        category: "server",
-        language: "en"
+      lemondeinformatique_poste: {
+        url: "https://www.lemondeinformatique.fr/flux-rss/thematique/poste-de-travail/rss.xml",
+        name: "Le Monde Informatique - Poste de Travail",
+        category: "particuliers",
+        language: "fr"
       },
-      azure_blog: {
-        url: "https://azure.microsoft.com/fr-fr/blog/feed/",
-        name: "Azure Blog",
-        category: "cloud",
-        language: "en"
+      lemondeinformatique_pme: {
+        url: "https://www.lemondeinformatique.fr/flux-rss/thematique/pme/rss.xml",
+        name: "Le Monde Informatique - PME",
+        category: "entreprise",
+        language: "fr"
       },
-      powershell: {
-        url: "https://devblogs.microsoft.com/powershell/feed/",
-        name: "PowerShell Blog",
-        category: "enterprise",
-        language: "en"
+      lemondeinformatique_datacenter: {
+        url: "https://www.lemondeinformatique.fr/flux-rss/thematique/datacenter/rss.xml",
+        name: "Le Monde Informatique - Datacenter",
+        category: "serveur",
+        language: "fr"
       },
-      dotnet: {
-        url: "https://devblogs.microsoft.com/dotnet/feed/",
-        name: ".NET Blog",
-        category: "enterprise",
-        language: "en"
+      it_connect: {
+        url: "https://www.it-connect.fr/feed/",
+        name: "IT-Connect",
+        category: "entreprise",
+        language: "fr"
+      },
+      lemagit_conseils: {
+        url: "https://www.lemagit.fr/rss/Conseils-IT.xml",
+        name: "LeMagIT - Conseils IT",
+        category: "entreprise",
+        language: "fr"
+      },
+      lemondeinformatique_reseaux: {
+        url: "https://www.lemondeinformatique.fr/flux-rss/thematique/reseaux/rss.xml",
+        name: "Le Monde Informatique - Réseaux",
+        category: "iot",
+        language: "fr"
       }
     };
   }
