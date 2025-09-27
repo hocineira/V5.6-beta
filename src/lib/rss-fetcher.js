@@ -249,13 +249,18 @@ class WindowsRSSFetcher {
     const text = (title + " " + description).toLowerCase();
     const tags = [];
     
-    // Technical keywords
+    // Technical keywords (français)
     const techKeywords = {
-      'security': ['sécurité', 'vulnerability', 'vulnérabilité', 'patch', 'exploit'],
-      'server': ['server', 'serveur', 'datacenter', 'enterprise'],
-      'update': ['update', 'mise à jour', 'upgrade', 'installation'],
-      'feature': ['feature', 'fonctionnalité', 'nouveau', 'amélioration'],
-      'bug': ['bug', 'fix', 'correction', 'résolution', 'problème']
+      'sécurité': ['sécurité', 'vulnérabilité', 'correctif', 'exploit', 'cybersécurité', 'piratage'],
+      'serveur': ['serveur', 'server', 'datacenter', 'centre de données', 'infrastructure'],
+      'mise-à-jour': ['mise à jour', 'update', 'upgrade', 'installation', 'déploiement'],
+      'fonctionnalité': ['fonctionnalité', 'feature', 'nouveau', 'amélioration', 'innovation'],
+      'correction': ['bug', 'correction', 'résolution', 'problème', 'erreur', 'fix'],
+      'windows': ['windows', 'microsoft', 'office', 'azure'],
+      'réseau': ['réseau', 'network', 'connectivité', 'internet'],
+      'iot': ['iot', 'objets connectés', 'internet des objets', 'capteur'],
+      'entreprise': ['entreprise', 'pme', 'professionnel', 'organisation'],
+      'particulier': ['particulier', 'grand public', 'poste de travail', 'pc']
     };
     
     for (const [tag, keywords] of Object.entries(techKeywords)) {
