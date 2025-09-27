@@ -154,20 +154,30 @@ class FrenchRSSBackendTester:
         except Exception as e:
             self.log_test("Get Windows Updates Stats", False, f"Connection error: {str(e)}")
 
-        # Test GET /api/windows/updates/categories
+        # Test GET /api/windows/updates/categories (new French categories)
         try:
             response = self.session.get(f"{self.api_base}/windows/updates/categories", timeout=10)
             if response.status_code == 200:
                 data = response.json()
                 if "categories" in data:
                     categories = data.get("categories", [])
-                    self.log_test("Get Windows Categories", True, f"Categories: {categories}")
+                    self.log_test("Get French Categories", True, f"Found {len(categories)} categories")
+                    
+                    # Verify new French categories are present
+                    expected_categories = ["particuliers", "serveur", "security", "entreprise", "iot"]
+                    category_keys = [cat.get("key") if isinstance(cat, dict) else cat for cat in categories]
+                    
+                    missing_categories = [cat for cat in expected_categories if cat not in category_keys]
+                    if not missing_categories:
+                        self.log_test("French Categories Validation", True, f"All expected categories present: {category_keys}")
+                    else:
+                        self.log_test("French Categories Validation", False, f"Missing categories: {missing_categories}")
                 else:
-                    self.log_test("Get Windows Categories", False, "Missing categories field", data)
+                    self.log_test("Get French Categories", False, "Missing categories field", data)
             else:
-                self.log_test("Get Windows Categories", False, f"HTTP {response.status_code}", response.text)
+                self.log_test("Get French Categories", False, f"HTTP {response.status_code}", response.text)
         except Exception as e:
-            self.log_test("Get Windows Categories", False, f"Connection error: {str(e)}")
+            self.log_test("Get French Categories", False, f"Connection error: {str(e)}")
 
         # Test POST /api/windows/updates/refresh
         try:
