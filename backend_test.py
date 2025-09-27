@@ -55,9 +55,9 @@ class FrenchRSSBackendTester:
         except Exception as e:
             self.log_test("API Test Endpoint", False, f"Connection error: {str(e)}")
 
-    def test_windows_updates_endpoints(self):
-        """Test all Windows updates API endpoints (improved filtering)"""
-        print("🔍 Testing Windows Updates API Endpoints (Improved Filtering)...")
+    def test_french_windows_updates_endpoints(self):
+        """Test all French Windows updates API endpoints with new categories"""
+        print("🔍 Testing French Windows Updates API Endpoints...")
         
         # Test GET /api/windows/updates
         try:
@@ -66,31 +66,46 @@ class FrenchRSSBackendTester:
                 data = response.json()
                 if "total" in data and "updates" in data and "last_updated" in data:
                     updates_count = data.get("total", 0)
-                    self.log_test("Get Windows Updates", True, f"Retrieved {updates_count} updates")
+                    self.log_test("Get French Windows Updates", True, f"Retrieved {updates_count} updates")
                     
-                    # Verify improved filtering - should focus on Windows/Windows Server only
+                    # Verify French content
                     updates = data.get("updates", [])
                     if updates:
                         sample_update = updates[0]
-                        title = sample_update.get("title", "").lower()
-                        description = sample_update.get("description", "").lower()
+                        title = sample_update.get("title", "")
+                        description = sample_update.get("description", "")
+                        source = sample_update.get("source", "")
                         
-                        # Check if content is Windows/Windows Server focused
-                        windows_keywords = ["windows", "server", "azure", "powershell", ".net", "sql server"]
-                        has_windows_focus = any(keyword in title or keyword in description for keyword in windows_keywords)
+                        # Check if content is from French sources
+                        french_sources = ["Le Monde Informatique", "IT-Connect", "LeMagIT"]
+                        has_french_source = any(fr_source in source for fr_source in french_sources)
                         
-                        if has_windows_focus:
-                            self.log_test("Windows Filtering Improved", True, "Content focused on Windows/Windows Server ecosystem")
+                        if has_french_source:
+                            self.log_test("French RSS Sources", True, f"Content from French source: {source}")
                         else:
-                            self.log_test("Windows Filtering Improved", False, f"Sample content may not be Windows-focused: {title[:100]}")
+                            self.log_test("French RSS Sources", False, f"No French source detected: {source}")
+                        
+                        # Check for French language content
+                        french_indicators = ["de la", "de le", "du ", "des ", "le ", "la ", "les ", "mise à jour", "sécurité"]
+                        has_french_content = any(indicator in (title + " " + description).lower() for indicator in french_indicators)
+                        
+                        if has_french_content:
+                            self.log_test("French Language Content", True, "Content appears to be in French")
+                        else:
+                            self.log_test("French Language Content", False, "Content may not be in French")
                     
-                    # Test with category filter
-                    response_cat = self.session.get(f"{self.api_base}/windows/updates?category=security", timeout=10)
-                    if response_cat.status_code == 200:
-                        cat_data = response_cat.json()
-                        self.log_test("Get Updates by Category", True, f"Security updates: {cat_data.get('total', 0)}")
-                    else:
-                        self.log_test("Get Updates by Category", False, f"HTTP {response_cat.status_code}")
+                    # Test new French categories
+                    french_categories = ["particuliers", "serveur", "security", "entreprise", "iot"]
+                    for category in french_categories:
+                        try:
+                            response_cat = self.session.get(f"{self.api_base}/windows/updates?category={category}", timeout=10)
+                            if response_cat.status_code == 200:
+                                cat_data = response_cat.json()
+                                self.log_test(f"French Category Filter: {category}", True, f"{category} updates: {cat_data.get('total', 0)}")
+                            else:
+                                self.log_test(f"French Category Filter: {category}", False, f"HTTP {response_cat.status_code}")
+                        except Exception as e:
+                            self.log_test(f"French Category Filter: {category}", False, f"Error: {str(e)}")
                         
                     # Test with limit
                     response_limit = self.session.get(f"{self.api_base}/windows/updates?limit=5", timeout=10)
@@ -102,11 +117,11 @@ class FrenchRSSBackendTester:
                         self.log_test("Get Updates with Limit", False, f"HTTP {response_limit.status_code}")
                         
                 else:
-                    self.log_test("Get Windows Updates", False, "Missing required fields", data)
+                    self.log_test("Get French Windows Updates", False, "Missing required fields", data)
             else:
-                self.log_test("Get Windows Updates", False, f"HTTP {response.status_code}", response.text)
+                self.log_test("Get French Windows Updates", False, f"HTTP {response.status_code}", response.text)
         except Exception as e:
-            self.log_test("Get Windows Updates", False, f"Connection error: {str(e)}")
+            self.log_test("Get French Windows Updates", False, f"Connection error: {str(e)}")
 
         # Test GET /api/windows/updates/latest
         try:
