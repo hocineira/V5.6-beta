@@ -209,8 +209,16 @@ class WindowsRSSFetcher {
       /windows\s+server\s+2025/,
       /windows\s+server\s+2022/,
       /windows\s+server\s+2019/,
+      /serveur\s+2025/,
+      /serveur\s+2022/,
+      /serveur\s+2019/,
       /windows\s+10\s+22h2/,
-      /windows\s+10/
+      /windows\s+10/,
+      /office\s+365/,
+      /office\s+2021/,
+      /office\s+2019/,
+      /azure\s+ad/,
+      /microsoft\s+365/
     ];
     
     for (const pattern of patterns) {
