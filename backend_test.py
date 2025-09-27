@@ -643,7 +643,7 @@ class FrenchRSSBackendTester:
         failed_tests = total_tests - passed_tests
         
         print("=" * 70)
-        print("🎯 DUAL RSS SYSTEM TEST SUMMARY")
+        print("🎯 FRENCH RSS SYSTEM TEST SUMMARY")
         print(f"Total Tests: {total_tests}")
         print(f"✅ Passed: {passed_tests}")
         print(f"❌ Failed: {failed_tests}")
