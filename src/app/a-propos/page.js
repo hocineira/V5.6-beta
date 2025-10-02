@@ -35,7 +35,7 @@ export default function AboutPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-gray-900 dark:via-blue-900/20 dark:to-purple-900/10">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
       {/* Navigation Spacing */}
       <div className="h-16 md:h-20"></div>
 
@@ -46,27 +46,27 @@ export default function AboutPage() {
             <User className="w-10 h-10 text-white" />
           </div>
           
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-4">
+          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4">
             A propos de moi
           </h1>
           
-          <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
             Decouvrez mon parcours, mes competences et ma passion pour l'informatique
           </p>
 
           {/* Contact Info Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-2xl mx-auto">
-            <div className="flex items-center justify-center space-x-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-lg p-3 shadow-sm">
+            <div className="flex items-center justify-center space-x-2 bg-white/80 backdrop-blur-sm rounded-lg p-3 shadow-sm">
               <MapPin className="w-4 h-4 text-blue-600" />
-              <span className="text-sm text-gray-700 dark:text-gray-300">Marseille, France</span>
+              <span className="text-sm text-gray-700">Marseille, France</span>
             </div>
-            <div className="flex items-center justify-center space-x-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-lg p-3 shadow-sm">
+            <div className="flex items-center justify-center space-x-2 bg-white/80 backdrop-blur-sm rounded-lg p-3 shadow-sm">
               <Calendar className="w-4 h-4 text-green-600" />
-              <span className="text-sm text-gray-700 dark:text-gray-300">20 ans</span>
+              <span className="text-sm text-gray-700">20 ans</span>
             </div>
-            <div className="flex items-center justify-center space-x-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-lg p-3 shadow-sm">
+            <div className="flex items-center justify-center space-x-2 bg-white/80 backdrop-blur-sm rounded-lg p-3 shadow-sm">
               <GraduationCap className="w-4 h-4 text-purple-600" />
-              <span className="text-sm text-gray-700 dark:text-gray-300">BTS SIO SISR</span>
+              <span className="text-sm text-gray-700">BTS SIO SISR</span>
             </div>
           </div>
         </div>
@@ -75,7 +75,7 @@ export default function AboutPage() {
       {/* Personal Presentation */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
-          <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl">
+          <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-xl">
             <CardHeader className="text-center">
               <CardTitle className="text-2xl md:text-3xl flex items-center justify-center gap-3">
                 <Heart className="w-8 h-8 text-red-500" />
@@ -83,7 +83,7 @@ export default function AboutPage() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
-              <div className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+              <div className="text-lg text-gray-700 leading-relaxed">
                 <p className="mb-4">
                   Passionné par <strong>l'univers de l'informatique et les technologies émergentes</strong>, j'ai trouvé ma voie 
                   après une année en licence pluridisciplinaire qui m'a permis de confirmer mon attrait pour le domaine technique. 
@@ -108,45 +108,45 @@ export default function AboutPage() {
       </section>
 
       {/* Education Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50/50 dark:bg-gray-800/20">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50/50">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Mon Parcours Scolaire
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300">
+            <p className="text-lg text-gray-600">
               Formation et diplomes obtenus
             </p>
           </div>
 
           <div className="space-y-6">
             {education.map((edu, index) => (
-              <Card key={index} className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <Card key={index} className="bg-white/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <CardContent className="p-6">
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
                         <GraduationCap className="w-6 h-6 text-blue-600" />
-                        <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                        <h3 className="text-xl font-semibold text-gray-900">
                           {edu.degree}
                         </h3>
                         <span className={`px-2 py-1 text-xs font-medium rounded-full ${
                           edu.status === 'En cours' 
-                            ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200' 
+                            ? 'bg-blue-100 text-blue-800' 
                             : edu.status === 'Obtenu'
-                            ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
+                            ? 'bg-green-100 text-green-800'
                             : edu.status === 'Reorientation'
-                            ? 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200'
-                            : 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200'
+                            ? 'bg-orange-100 text-orange-800'
+                            : 'bg-gray-100 text-gray-800'
                         }`}>
                           {edu.status}
                         </span>
                       </div>
-                      <p className="text-gray-600 dark:text-gray-300 mb-2">{edu.institution}</p>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">{edu.description}</p>
+                      <p className="text-gray-600 mb-2">{edu.institution}</p>
+                      <p className="text-sm text-gray-500">{edu.description}</p>
                     </div>
                     <div className="mt-4 md:mt-0 md:ml-6">
-                      <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                      <div className="flex items-center text-sm text-gray-500">
                         <Calendar className="w-4 h-4 mr-2" />
                         {edu.period}
                       </div>
