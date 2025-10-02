@@ -10,7 +10,7 @@ import Link from 'next/link'
 
 export default function ProjetsE6() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-green-50 to-emerald-100 dark:from-gray-900 dark:via-green-900/20 dark:to-emerald-900/20">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-green-50 to-emerald-100">
       {/* Header Section */}
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-green-600/10 to-emerald-600/10" />
@@ -30,13 +30,13 @@ export default function ProjetsE6() {
             <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl shadow-lg mb-6">
               <BookOpen className="w-8 h-8 text-white" />
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
               Projets Scolaires{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600">
                 E6
               </span>
             </h1>
-            <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto px-4">
+            <p className="text-lg sm:text-xl text-gray-600 mb-8 max-w-3xl mx-auto px-4">
               Cette section sera bientôt disponible avec tous mes projets scolaires réalisés dans le cadre de l'épreuve E6 du BTS SIO SISR.
             </p>
           </div>
@@ -45,7 +45,7 @@ export default function ProjetsE6() {
 
       {/* Coming Soon Section */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-        <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden border-0">
+        <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden border-0">
           <div className="p-8 sm:p-12 text-center">
             {/* Icon */}
             <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-r from-orange-400 to-yellow-500 rounded-full shadow-lg mb-8">
@@ -53,12 +53,12 @@ export default function ProjetsE6() {
             </div>
 
             {/* Title */}
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
               À Venir
             </h2>
 
             {/* Description */}
-            <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
               Je prépare actuellement la documentation de mes projets scolaires E6. 
               Cette section présentera mes réalisations académiques avec des analyses techniques approfondies.
             </p>
@@ -70,8 +70,8 @@ export default function ProjetsE6() {
                   <GraduationCap className="w-5 h-5 text-green-600" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 dark:text-white">Projets Académiques</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Réalisations scolaires</p>
+                  <h3 className="font-semibold text-gray-900">Projets Académiques</h3>
+                  <p className="text-sm text-gray-600">Réalisations scolaires</p>
                 </div>
               </div>
               
@@ -80,8 +80,8 @@ export default function ProjetsE6() {
                   <Code className="w-5 h-5 text-blue-600" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 dark:text-white">Développements</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Solutions créées</p>
+                  <h3 className="font-semibold text-gray-900">Développements</h3>
+                  <p className="text-sm text-gray-600">Solutions créées</p>
                 </div>
               </div>
               
@@ -90,8 +90,8 @@ export default function ProjetsE6() {
                   <Server className="w-5 h-5 text-purple-600" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 dark:text-white">Infrastructures</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Systèmes déployés</p>
+                  <h3 className="font-semibold text-gray-900">Infrastructures</h3>
+                  <p className="text-sm text-gray-600">Systèmes déployés</p>
                 </div>
               </div>
             </div>
@@ -133,7 +133,7 @@ export default function ProjetsE6() {
 
         {/* Timeline hint */}
         <div className="mt-12 text-center">
-          <div className="inline-flex items-center space-x-2 text-gray-500 dark:text-gray-400">
+          <div className="inline-flex items-center space-x-2 text-gray-500">
             <Calendar className="w-4 h-4" />
             <span className="text-sm">Mise à jour prévue : Bientôt</span>
           </div>

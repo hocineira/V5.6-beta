@@ -10,7 +10,7 @@ import Link from 'next/link'
 
 export default function ProjetsE5() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-blue-900/20 dark:to-indigo-900/20">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
       {/* Header Section */}
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10" />
@@ -30,13 +30,13 @@ export default function ProjetsE5() {
             <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl shadow-lg mb-6">
               <Building className="w-8 h-8 text-white" />
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
               Projets Professionnels{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
                 E5
               </span>
             </h1>
-            <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto px-4">
+            <p className="text-lg sm:text-xl text-gray-600 mb-8 max-w-3xl mx-auto px-4">
               Cette section sera bientôt disponible avec tous mes projets professionnels réalisés dans le cadre de l'épreuve E5 du BTS SIO SISR.
             </p>
           </div>
@@ -45,7 +45,7 @@ export default function ProjetsE5() {
 
       {/* Coming Soon Section */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-        <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden border-0">
+        <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden border-0">
           <div className="p-8 sm:p-12 text-center">
             {/* Icon */}
             <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-r from-orange-400 to-yellow-500 rounded-full shadow-lg mb-8">
@@ -53,12 +53,12 @@ export default function ProjetsE5() {
             </div>
 
             {/* Title */}
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
               À Venir
             </h2>
 
             {/* Description */}
-            <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
               Je travaille actuellement sur la documentation et la présentation de mes projets professionnels E5. 
               Cette section contiendra bientôt mes réalisations en entreprise avec des études de cas détaillées.
             </p>
@@ -70,8 +70,8 @@ export default function ProjetsE5() {
                   <Building className="w-5 h-5 text-blue-600" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 dark:text-white">Projets Entreprise</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Expériences professionnelles</p>
+                  <h3 className="font-semibold text-gray-900">Projets Entreprise</h3>
+                  <p className="text-sm text-gray-600">Expériences professionnelles</p>
                 </div>
               </div>
               
@@ -80,8 +80,8 @@ export default function ProjetsE5() {
                   <Wrench className="w-5 h-5 text-green-600" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 dark:text-white">Solutions Techniques</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Architectures déployées</p>
+                  <h3 className="font-semibold text-gray-900">Solutions Techniques</h3>
+                  <p className="text-sm text-gray-600">Architectures déployées</p>
                 </div>
               </div>
               
@@ -90,8 +90,8 @@ export default function ProjetsE5() {
                   <Users className="w-5 h-5 text-purple-600" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 dark:text-white">Cas d'Usage</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Retours d'expérience</p>
+                  <h3 className="font-semibold text-gray-900">Cas d'Usage</h3>
+                  <p className="text-sm text-gray-600">Retours d'expérience</p>
                 </div>
               </div>
             </div>
@@ -133,7 +133,7 @@ export default function ProjetsE5() {
 
         {/* Timeline hint */}
         <div className="mt-12 text-center">
-          <div className="inline-flex items-center space-x-2 text-gray-500 dark:text-gray-400">
+          <div className="inline-flex items-center space-x-2 text-gray-500">
             <Calendar className="w-4 h-4" />
             <span className="text-sm">Mise à jour prévue : Bientôt</span>
           </div>
