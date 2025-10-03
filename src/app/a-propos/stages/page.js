@@ -369,13 +369,13 @@ export default function StagesPage() {
                 
                 <div className="space-y-3">
                   {[
-                    { icon: Monitor, name: "Stations de diagnostic", color: "blue" },
-                    { icon: Wrench, name: "Outils spécialisés IT", color: "green" },
-                    { icon: Cpu, name: "Bancs de test", color: "purple" },
-                    { icon: Building, name: "Zones sécurisées", color: "orange" }
+                    { icon: Monitor, name: "Stations de diagnostic", colorClass: "bg-gradient-to-br from-blue-500 to-blue-600" },
+                    { icon: Wrench, name: "Outils spécialisés IT", colorClass: "bg-gradient-to-br from-green-500 to-green-600" },
+                    { icon: Cpu, name: "Bancs de test", colorClass: "bg-gradient-to-br from-purple-500 to-purple-600" },
+                    { icon: Building, name: "Zones sécurisées", colorClass: "bg-gradient-to-br from-orange-500 to-orange-600" }
                   ].map((item, index) => (
                     <div key={index} className="flex items-center p-3 rounded-xl bg-gray-50/80 hover:bg-gray-100/80 transition-colors duration-200 group">
-                      <div className={`w-10 h-10 bg-gradient-to-br from-${item.color}-500 to-${item.color}-600 rounded-lg flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-200`}>
+                      <div className={`w-10 h-10 ${item.colorClass} rounded-lg flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-200`}>
                         <item.icon className="w-5 h-5 text-white" />
                       </div>
                       <span className="text-sm font-medium text-gray-700 group-hover:text-gray-900 transition-colors duration-200">
