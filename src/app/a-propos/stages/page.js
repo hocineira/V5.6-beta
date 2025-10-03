@@ -407,41 +407,41 @@ export default function StagesPage() {
                     icon: Monitor,
                     title: "Diagnostic & Réparation",
                     desc: "Diagnostic et réparation d'ordinateurs professionnels",
-                    color: "blue"
+                    colorClass: "bg-gradient-to-br from-blue-500 to-blue-600"
                   },
                   {
                     icon: Cpu,
                     title: "Installation Composants", 
                     desc: "Installation et configuration SSD NVMe",
-                    color: "green"
+                    colorClass: "bg-gradient-to-br from-green-500 to-green-600"
                   },
                   {
                     icon: Smartphone,
                     title: "Sécurisation Mobile",
                     desc: "Flash ROM et sécurisation KNOX Samsung",
-                    color: "purple"
+                    colorClass: "bg-gradient-to-br from-purple-500 to-purple-600"
                   },
                   {
                     icon: CheckCircle,
                     title: "Tests & Validation",
                     desc: "Tests et validation du matériel configuré",
-                    color: "orange"
+                    colorClass: "bg-gradient-to-br from-orange-500 to-orange-600"
                   },
                   {
                     icon: Settings,
                     title: "Préparation Équipements",
                     desc: "Préparation pour nouveaux employés",
-                    color: "cyan"
+                    colorClass: "bg-gradient-to-br from-cyan-500 to-cyan-600"
                   },
                   {
                     icon: Wrench,
                     title: "Maintenance Préventive",
                     desc: "Entretien et optimisation système",
-                    color: "pink"
+                    colorClass: "bg-gradient-to-br from-pink-500 to-pink-600"
                   }
                 ].map((activite, index) => (
                   <div key={index} className="group bg-gradient-to-br from-gray-50/80 to-white/80 rounded-2xl p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-100/50">
-                    <div className={`w-12 h-12 bg-gradient-to-br from-${activite.color}-500 to-${activite.color}-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                    <div className={`w-12 h-12 ${activite.colorClass} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
                       <activite.icon className="w-6 h-6 text-white" />
                     </div>
                     <h4 className="font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
