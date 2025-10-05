@@ -911,70 +911,13 @@ export default function StagesPage() {
         </div>
       </section>
 
-      {/* Modal pour les images */}
-      {selectedImage && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md" onClick={() => setSelectedImage(null)}>
-          <div className="max-w-5xl max-h-[90vh] m-4 relative">
-            {/* Close Button */}
-            <button
-              onClick={() => setSelectedImage(null)}
-              className="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors z-10 bg-black/20 backdrop-blur-sm rounded-full p-2"
-            >
-              <X className="w-8 h-8" />
-            </button>
-            
-            {/* Navigation Buttons */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation()
-                const currentIndex = images.findIndex(img => img.id === selectedImage.id)
-                const prevIndex = currentIndex > 0 ? currentIndex - 1 : images.length - 1
-                setSelectedImage(images[prevIndex])
-              }}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors z-10 bg-black/20 backdrop-blur-sm rounded-full p-3"
-            >
-              <ArrowLeft className="w-6 h-6" />
-            </button>
-            
-            <button
-              onClick={(e) => {
-                e.stopPropagation()
-                const currentIndex = images.findIndex(img => img.id === selectedImage.id)
-                const nextIndex = currentIndex < images.length - 1 ? currentIndex + 1 : 0
-                setSelectedImage(images[nextIndex])
-              }}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors z-10 bg-black/20 backdrop-blur-sm rounded-full p-3"
-            >
-              <ArrowLeft className="w-6 h-6 rotate-180" />
-            </button>
-            
-            {/* Image */}
-            <div className="relative">
-              <Image
-                src={selectedImage.src}
-                alt={selectedImage.alt}
-                width={1200}
-                height={800}
-                className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
-              />
-            </div>
-            
-            {/* Image Info */}
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent text-white p-6 rounded-b-lg">
-              <div className="flex items-center justify-between">
-                <div>
-                  <h3 className="text-xl font-semibold mb-1">{selectedImage.title}</h3>
-                  <p className="text-gray-300">{selectedImage.alt}</p>
-                </div>
-                <div className="text-right">
-                  <div className="text-sm text-gray-400">Mission {selectedImage.id}/9</div>
-                  <div className="text-xs text-gray-500">Stage Sauvegarde13</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Image Modal */}
+      <ImageModal 
+        isOpen={isModalOpen}
+        onClose={closeImageModal}
+        imageSrc={selectedImage?.src}
+        title={selectedImage?.title}
+      />
 
       {/* Bottom Spacing */}
       <div className="h-20 md:h-8"></div>
