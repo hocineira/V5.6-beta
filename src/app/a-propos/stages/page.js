@@ -106,9 +106,6 @@ export default function StagesPage() {
     ...imagesOrganisees.atelier
   ]
 
-  // État pour le filtre des catégories
-  const [filtreActif, setFiltreActif] = useState('tous')
-
   const competences = [
     { nom: 'Installation réseau et télécoms', niveau: '90%' },
     { nom: 'Flash ROM et sécurité mobile', niveau: '85%' },
