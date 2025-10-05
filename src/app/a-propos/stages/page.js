@@ -703,12 +703,10 @@ export default function StagesPage() {
                       onClick={() => openImageModal(image.src, image.title)}
                     >
                       <div className="relative overflow-hidden h-48 md:h-56">
-                        <Image
+                        <SafeImage
                           src={image.src}
                           alt={image.alt}
-                          fill
-                          sizes="(max-width: 1024px) 100vw, 33vw"
-                          className="object-cover group-hover:scale-110 transition-transform duration-500"
+                          className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                           <div className="absolute inset-0 flex items-center justify-center">
