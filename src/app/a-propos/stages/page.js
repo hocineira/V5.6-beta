@@ -231,13 +231,10 @@ export default function StagesPage() {
           <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-xl">
             <CardHeader className="text-center">
               <div className="flex items-center justify-center mb-4">
-                <img
+                <SafeImage
                   src="/images/stages/sauvegarde13_logo.png"
                   alt="Logo Sauvegarde13"
                   className="h-16 w-auto max-w-[200px]"
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                  }}
                 />
               </div>
               <CardTitle className="text-2xl md:text-3xl flex items-center justify-center gap-3">
