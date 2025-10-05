@@ -294,12 +294,15 @@ export default function StagesPage() {
                     className="group relative overflow-hidden cursor-pointer min-h-[300px] hover:z-10 transition-all duration-500"
                     onClick={() => openImageModal(imagesOrganisees.atelier[0].src, imagesOrganisees.atelier[0].title)}
                   >
-                    <Image
+                    <img
                       src="/images/stages/atelier_travail_1.jpg"
                       alt="Atelier technique principal"
-                      fill
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-cover group-hover:scale-110 transition-transform duration-700"
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      onError={(e) => {
+                        e.target.src = '/images/procedures/hero_image_new.jpg';
+                        console.log('Image de remplacement chargée');
+                      }}
+                      loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-blue-600/30 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500">
                       <div className="absolute bottom-6 left-6 right-6">
