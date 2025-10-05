@@ -24,6 +24,36 @@ import { useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '../../../components/ui/card'
 import ImageModal from '../../../components/ImageModal'
 
+// Composant d'image sécurisé
+const SafeImage = ({ src, alt, className, onClick, loading = "lazy" }) => {
+  const [hasError, setHasError] = useState(false)
+  
+  const handleError = (e) => {
+    console.log(`Erreur de chargement pour l'image: ${src}`)
+    if (!hasError) {
+      setHasError(true)
+      e.target.src = '/images/procedures/hero_image_new.jpg'
+    }
+  }
+
+  const handleLoad = () => {
+    console.log(`Image chargée avec succès: ${src}`)
+  }
+
+  return (
+    <img
+      src={src}
+      alt={alt}
+      className={className}
+      onClick={onClick}
+      onError={handleError}
+      onLoad={handleLoad}
+      loading={loading}
+      draggable={false}
+    />
+  )
+}
+
 export default function StagesPage() {
   const [selectedImage, setSelectedImage] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
