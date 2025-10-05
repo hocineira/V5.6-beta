@@ -20,7 +20,6 @@ import {
   Cpu
 } from 'lucide-react'
 import Link from 'next/link'
-import Image from 'next/image'
 import { useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '../../../components/ui/card'
 import ImageModal from '../../../components/ImageModal'
