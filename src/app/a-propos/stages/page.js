@@ -27,6 +27,18 @@ import ImageModal from '../../../components/ImageModal'
 
 export default function StagesPage() {
   const [selectedImage, setSelectedImage] = useState(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [filtreActif, setFiltreActif] = useState('tous')
+  
+  const openImageModal = (imageSrc, title) => {
+    setSelectedImage({ src: imageSrc, title })
+    setIsModalOpen(true)
+  }
+  
+  const closeImageModal = () => {
+    setIsModalOpen(false)
+    setSelectedImage(null)
+  }
   
   const stageInfo = {
     entreprise: 'Sauvegarde13',
