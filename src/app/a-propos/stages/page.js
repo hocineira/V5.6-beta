@@ -292,7 +292,7 @@ export default function StagesPage() {
                   {/* Atelier Principal */}
                   <div 
                     className="group relative overflow-hidden cursor-pointer min-h-[300px] hover:z-10 transition-all duration-500"
-                    onClick={() => setSelectedImage(imagesOrganisees.atelier[0])}
+                    onClick={() => openImageModal(imagesOrganisees.atelier[0].src, imagesOrganisees.atelier[0].title)}
                   >
                     <Image
                       src="/images/stages/atelier_travail_1.jpg"
