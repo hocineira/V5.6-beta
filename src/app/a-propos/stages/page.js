@@ -804,7 +804,7 @@ export default function StagesPage() {
                 <div
                   key={image.id}
                   className="group relative overflow-hidden rounded-xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:-translate-y-2"
-                  onClick={() => setSelectedImage(image)}
+                  onClick={() => openImageModal(image.src, image.title)}
                 >
                   <div className="relative overflow-hidden h-48 md:h-56">
                     <Image
