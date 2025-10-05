@@ -16,7 +16,6 @@ import {
   CheckCircle,
   Eye,
   Download,
-  X,
   Camera,
   Cpu
 } from 'lucide-react'
@@ -24,6 +23,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '../../../components/ui/card'
+import ImageModal from '../../../components/ImageModal'
 
 export default function StagesPage() {
   const [selectedImage, setSelectedImage] = useState(null)
