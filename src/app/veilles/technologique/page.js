@@ -327,10 +327,12 @@ export default function VeilleTechnologique() {
                       </svg>
                     </a>
                   )}
-                </div>
-              </article>
+                  </div>
+                </article>
+              </AnimatedCard>
+            </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
 
           {filteredUpdates.length === 0 && !loading && (
             <div className="text-center py-12">
