@@ -168,15 +168,6 @@ export default function InfrastructureS4P2() {
                 </div>
               </div>
             </div>
-
-            {/* Légende détaillée */}
-            <div className="mt-6 bg-slate-800/40 backdrop-blur-sm rounded-xl p-6 border border-slate-600/40">
-              <p className="text-slate-300 text-sm leading-relaxed">
-                <strong className="text-cyan-300">Architecture complète</strong> avec firewall PfSense (3 interfaces: LAN, DMZ, WAN), 
-                switch Netgear GS308E, VLANs (17-Serveurs: 192.168.17.0/24, 27-WIFI: 192.168.27.0/24), zone DMZ (192.168.42.0/29), 
-                hyperviseurs (Proxmox VE 9.0, Windows HyperV), et services essentiels (AD-1/Exchange, AD-2, GLPI, ZABBIX, ARTICA, XIVO, Ubiquiti Controller, UniFi U7 Lite).
-              </p>
-            </div>
           </div>
         </div>
       </div>
