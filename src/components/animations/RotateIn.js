@@ -1,19 +1,29 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
 
 /**
  * Composant RotateIn - Apparition avec rotation dynamique
  * Parfait pour les badges, icônes, et éléments accrocheurs
+ * Se déclenche au montage de la page ET au scroll
  */
 export default function RotateIn({ 
   children, 
   delay = 0,
   duration = 0.7,
   rotate = 180,
-  once = false,
+  triggerOnMount = true,
   className = ''
 }) {
+  const [isInView, setIsInView] = useState(false)
+
+  useEffect(() => {
+    if (triggerOnMount) {
+      setIsInView(true)
+    }
+  }, [triggerOnMount])
+
   return (
     <motion.div
       initial={{ 
@@ -21,12 +31,18 @@ export default function RotateIn({
         rotate: rotate,
         scale: 0.5
       }}
+      animate={isInView ? { 
+        opacity: 1,
+        rotate: 0,
+        scale: 1
+      } : undefined}
       whileInView={{ 
         opacity: 1,
         rotate: 0,
         scale: 1
       }}
-      viewport={{ once: once, margin: "-100px" }}
+      onViewportEnter={() => setIsInView(true)}
+      viewport={{ margin: "-100px" }}
       transition={{ 
         duration,
         delay,
