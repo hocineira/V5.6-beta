@@ -313,28 +313,30 @@ export default function AccueilPage() {
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent"></div>
                     </div>
                 
-                {/* Overlay avec infrastructure status */}
-                <div className="absolute bottom-6 left-6 right-6">
-                  <div className="bg-slate-800/90 backdrop-blur-sm rounded-xl p-4 border border-cyan-400/30">
-                    <div className="flex items-center gap-2 text-cyan-300 mb-3">
-                      <Network className="w-4 h-4" />
-                      <span className="text-sm font-medium">Infrastructure SISR</span>
-                    </div>
-                    <div className="grid grid-cols-2 gap-3">
-                      {StaticData.infrastructure.map((item, index) => (
-                        <div key={index} className="flex items-center gap-2">
-                          <div className="relative w-2 h-2">
-                            <div className="absolute inset-0 w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
-                            <div className="absolute inset-0 w-2 h-2 bg-cyan-400 rounded-full animate-ping opacity-75"></div>
-                          </div>
-                          <span className="text-xs text-slate-300">{item.name}</span>
+                    {/* Overlay avec infrastructure status */}
+                    <div className="absolute bottom-6 left-6 right-6">
+                      <div className="bg-slate-800/90 backdrop-blur-sm rounded-xl p-4 border border-cyan-400/30">
+                        <div className="flex items-center gap-2 text-cyan-300 mb-3">
+                          <Network className="w-4 h-4" />
+                          <span className="text-sm font-medium">Infrastructure SISR</span>
                         </div>
-                      ))}
+                        <div className="grid grid-cols-2 gap-3">
+                          {StaticData.infrastructure.map((item, index) => (
+                            <div key={index} className="flex items-center gap-2">
+                              <div className="relative w-2 h-2">
+                                <div className="absolute inset-0 w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+                                <div className="absolute inset-0 w-2 h-2 bg-cyan-400 rounded-full animate-ping opacity-75"></div>
+                              </div>
+                              <span className="text-xs text-slate-300">{item.name}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
+              </ScaleIn>
+            </FloatingElement>
           </div>
         </div>
       </section>
