@@ -458,7 +458,7 @@ export default function InfrastructureS4P2() {
             {/* Windows */}
             <div className="bg-slate-700/30 backdrop-blur-sm border border-slate-600/40 rounded-2xl p-6 hover:border-cyan-500/50 transition-all duration-300">
               <div className="flex items-start justify-between mb-4">
-                <h3 className="text-xl font-bold text-cyan-300">Windows 11 & Server 2022</h3>
+                <h3 className="text-xl font-bold text-cyan-300">Windows 11 & Server 2025</h3>
                 <div className="flex gap-2">
                   <a 
                     href="https://www.microsoft.com/fr-fr/software-download/windows11"
@@ -469,7 +469,7 @@ export default function InfrastructureS4P2() {
                     <ExternalLink className="w-4 h-4 text-cyan-400" />
                   </a>
                   <a 
-                    href="https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2022"
+                    href="https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2025"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="p-2 bg-cyan-500/20 hover:bg-cyan-500/30 rounded-lg transition-colors"
@@ -480,7 +480,7 @@ export default function InfrastructureS4P2() {
               </div>
               <p className="text-slate-300 leading-relaxed text-sm">
                 Windows 11 pour postes de travail avec interface moderne et sécurité renforcée. 
-                Windows Server 2022 pour serveurs avec rôles Active Directory, DNS, DHCP, gestion centralisée.
+                Windows Server 2025 pour serveurs avec rôles Active Directory, DNS, DHCP, gestion centralisée.
               </p>
             </div>
 
