@@ -380,7 +380,8 @@ export default function ProjetsPage() {
                 </div>
               </div>
             </div>
-          </div>
+            </div>
+          </ScaleIn>
           
           {/* Separator */}
           <div className="flex items-center justify-center mb-12">
