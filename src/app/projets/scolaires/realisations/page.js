@@ -101,6 +101,94 @@ export default function ProjetsE6() {
         </div>
       </div>
 
+      {/* Section Architecture réseau - Schéma Infrastructure */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="bg-slate-800/40 backdrop-blur-xl border border-slate-600/40 rounded-3xl shadow-2xl overflow-hidden">
+          {/* Header de la section */}
+          <div className="bg-gradient-to-r from-slate-800/80 to-slate-700/80 backdrop-blur-lg border-b border-slate-600/40 p-6">
+            <div className="flex items-center gap-4">
+              <div className="p-4 bg-cyan-500/10 backdrop-blur-sm rounded-2xl border border-cyan-500/20">
+                <Network className="w-8 h-8 text-cyan-400" />
+              </div>
+              <div>
+                <h2 className="text-3xl font-bold text-white mb-2">
+                  Architecture réseau – Infra S4P2
+                </h2>
+                <p className="text-slate-300 text-lg">
+                  Schéma d'infrastructure logique déployée sur le plot S4P2 de l'établissement IFC Marseille
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Image du schéma avec preview */}
+          <div className="p-8 bg-slate-900/30">
+            <div className="relative group">
+              {/* Image preview */}
+              <div 
+                className="relative cursor-pointer transition-all duration-300 hover:scale-[1.02] rounded-2xl overflow-hidden shadow-2xl border-4 border-slate-700/50 hover:border-cyan-500/50"
+                onClick={() => setIsSchemaModalOpen(true)}
+              >
+                <img 
+                  src="/images/infrastructure/schema-infra-s4p2.jpg" 
+                  alt="Architecture réseau – Infra S4P2 IRATNI Hocine"
+                  className="w-full h-auto"
+                />
+                
+                {/* Overlay au survol */}
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center gap-4">
+                    <div className="bg-cyan-500/90 backdrop-blur-sm rounded-full p-6 transform group-hover:scale-110 transition-transform duration-300">
+                      <ZoomIn className="w-12 h-12 text-white" />
+                    </div>
+                    <span className="text-white text-xl font-bold bg-slate-900/80 px-6 py-3 rounded-full border border-cyan-500/30">
+                      Cliquez pour agrandir
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Légende et actions */}
+              <div className="mt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-slate-800/40 backdrop-blur-sm rounded-xl p-6 border border-slate-600/40">
+                <div className="flex-1">
+                  <div className="flex items-center gap-3 mb-2">
+                    <Badge className="bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 backdrop-blur-sm px-3 py-1">
+                      Version 2.1
+                    </Badge>
+                    <Badge className="bg-slate-600/40 text-slate-300 border border-slate-500/30 backdrop-blur-sm px-3 py-1">
+                      24/10/2025
+                    </Badge>
+                  </div>
+                  <p className="text-slate-300 text-sm leading-relaxed">
+                    Architecture complète avec firewall PfSense, switch Netgear GS308E, VLANs (17-Serveurs, 27-WIFI), 
+                    zone DMZ, hyperviseurs (Proxmox, HyperV), et services (AD, Exchange, GLPI, ZABBIX, XIVO, etc.)
+                  </p>
+                </div>
+
+                <div className="flex gap-3">
+                  <Button
+                    size="sm"
+                    className="bg-cyan-500/20 hover:bg-cyan-500/30 backdrop-blur-md text-cyan-300 border border-cyan-500/30 font-semibold px-6 py-2"
+                    onClick={() => setIsSchemaModalOpen(true)}
+                  >
+                    <Eye className="w-5 h-5 mr-2" />
+                    Voir en grand
+                  </Button>
+                  <Button
+                    size="sm"
+                    className="bg-slate-600/40 hover:bg-slate-600/60 backdrop-blur-md text-slate-200 border border-slate-500/30 font-semibold px-6 py-2"
+                    onClick={() => window.open('/documents/schema-infra-s4p2.pdf', '_blank')}
+                  >
+                    <FileText className="w-5 h-5 mr-2" />
+                    Voir PDF
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Section PDF Viewer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <div className="bg-slate-800/40 backdrop-blur-xl border border-slate-600/40 rounded-3xl shadow-2xl overflow-hidden">
