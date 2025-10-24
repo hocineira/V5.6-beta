@@ -101,26 +101,26 @@ export default function ProjetsE6() {
 
       {/* Section PDF Viewer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-        <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl overflow-hidden">
+        <div className="bg-slate-800/40 backdrop-blur-xl border border-slate-600/40 rounded-3xl shadow-2xl overflow-hidden">
           {/* Controls */}
-          <div className="bg-white/10 backdrop-blur-lg border-b border-white/20 p-6">
+          <div className="bg-slate-800/60 backdrop-blur-lg border-b border-slate-600/40 p-6">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div className="flex items-center gap-3">
-                <Eye className="w-6 h-6 text-white" />
+                <Eye className="w-6 h-6 text-cyan-400" />
                 <span className="text-white font-bold text-lg">Visualisation du dossier</span>
-                <Badge className="bg-white/20 text-white border border-white/30 backdrop-blur-sm px-3 py-1">
+                <Badge className="bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 backdrop-blur-sm px-3 py-1">
                   PDF
                 </Badge>
               </div>
 
               <div className="flex items-center gap-3">
                 {/* Zoom controls */}
-                <div className="flex items-center gap-2 bg-white/20 backdrop-blur-md rounded-xl p-2 border border-white/30">
+                <div className="flex items-center gap-2 bg-slate-700/50 backdrop-blur-md rounded-xl p-2 border border-slate-600/40">
                   <Button
                     size="sm"
                     variant="ghost"
                     onClick={handleZoomOut}
-                    className="text-white hover:text-white hover:bg-white/20 border-0"
+                    className="text-cyan-300 hover:text-cyan-200 hover:bg-slate-600/50 border-0"
                   >
                     <ZoomOut className="w-5 h-5" />
                   </Button>
@@ -131,7 +131,7 @@ export default function ProjetsE6() {
                     size="sm"
                     variant="ghost"
                     onClick={handleZoomIn}
-                    className="text-white hover:text-white hover:bg-white/20 border-0"
+                    className="text-cyan-300 hover:text-cyan-200 hover:bg-slate-600/50 border-0"
                   >
                     <ZoomIn className="w-5 h-5" />
                   </Button>
@@ -140,7 +140,7 @@ export default function ProjetsE6() {
                 {/* Download button */}
                 <Button
                   size="sm"
-                  className="bg-white/20 hover:bg-white/30 backdrop-blur-md text-white border border-white/30 font-semibold px-6 py-2"
+                  className="bg-cyan-500/20 hover:bg-cyan-500/30 backdrop-blur-md text-cyan-300 border border-cyan-500/30 font-semibold px-6 py-2"
                   onClick={() => window.open(pdfUrl, '_blank')}
                 >
                   <Download className="w-5 h-5 mr-2" />
@@ -151,9 +151,9 @@ export default function ProjetsE6() {
           </div>
 
           {/* PDF Viewer */}
-          <div className="bg-gradient-to-br from-white/5 to-white/10 p-8 backdrop-blur-sm">
+          <div className="bg-slate-900/30 p-8 backdrop-blur-sm">
             <div 
-              className="mx-auto bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden border border-white/30"
+              className="mx-auto bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden border border-slate-700/30"
               style={{ 
                 width: `${zoom}%`,
                 maxWidth: '100%',
@@ -163,7 +163,7 @@ export default function ProjetsE6() {
               {/* Placeholder for PDF - will be replaced when PDF is added */}
               <div className="aspect-[1/1.414] flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
                 <div className="text-center p-8">
-                  <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full shadow-2xl mb-6 animate-pulse">
+                  <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full shadow-2xl mb-6 animate-pulse">
                     <FileText className="w-12 h-12 text-white" />
                   </div>
                   <h3 className="text-3xl font-bold text-slate-800 mb-4">
@@ -171,7 +171,7 @@ export default function ProjetsE6() {
                   </h3>
                   <p className="text-slate-600 max-w-md mx-auto leading-relaxed text-lg">
                     Le fichier PDF du dossier sera ajouté prochainement. 
-                    Pour l'intégrer, placez votre PDF dans <code className="bg-purple-100 px-3 py-1 rounded text-sm font-mono text-purple-700">/public/documents/dossier-e6.pdf</code>
+                    Pour l'intégrer, placez votre PDF dans <code className="bg-cyan-100 px-3 py-1 rounded text-sm font-mono text-cyan-700">/public/documents/dossier-e6.pdf</code>
                   </p>
                   
                   {/* Uncomment this when PDF is ready */}
@@ -188,10 +188,10 @@ export default function ProjetsE6() {
 
         {/* Info message */}
         <div className="mt-8 text-center">
-          <div className="inline-flex items-center gap-3 text-white bg-white/10 backdrop-blur-md px-8 py-4 rounded-full border border-white/20 shadow-lg">
-            <FileText className="w-5 h-5" />
+          <div className="inline-flex items-center gap-3 text-slate-300 bg-slate-800/40 backdrop-blur-md px-8 py-4 rounded-full border border-slate-600/40 shadow-lg">
+            <FileText className="w-5 h-5 text-cyan-400" />
             <span className="text-sm font-medium">
-              Pour ajouter votre PDF : placez-le dans <span className="font-mono font-bold">/public/documents/dossier-e6.pdf</span>
+              Pour ajouter votre PDF : placez-le dans <span className="font-mono font-bold text-cyan-300">/public/documents/dossier-e6.pdf</span>
             </span>
           </div>
         </div>
