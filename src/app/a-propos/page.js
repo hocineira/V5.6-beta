@@ -8,6 +8,7 @@ import {
   Heart
 } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card'
+import { FadeIn, ScaleIn, StaggerContainer, StaggerItem, FloatingElement, RotateIn } from '../../components/animations'
 
 export default function AboutPage() {
   const education = [
