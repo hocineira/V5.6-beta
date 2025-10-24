@@ -1,23 +1,38 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
 
 /**
  * Composant StaggerContainer - Animation en cascade pour les enfants
  * Les enfants s'animent l'un après l'autre avec un délai progressif
+ * Se déclenche au montage de la page ET au scroll
  */
 export const StaggerContainer = ({ 
   children, 
   staggerDelay = 0.1,
-  once = false,
+  triggerOnMount = true,
   className = ''
 }) => {
+  const [animate, setAnimate] = useState(false)
+
+  useEffect(() => {
+    if (triggerOnMount) {
+      // Petit délai pour permettre le montage initial
+      const timer = setTimeout(() => setAnimate(true), 50)
+      return () => clearTimeout(timer)
+    }
+  }, [triggerOnMount])
+
   return (
     <motion.div
       initial="hidden"
+      animate={animate ? "visible" : "hidden"}
       whileInView="visible"
-      viewport={{ once: once, margin: "-100px" }}
+      onViewportEnter={() => setAnimate(true)}
+      viewport={{ margin: "-100px" }}
       variants={{
+        hidden: {},
         visible: {
           transition: {
             staggerChildren: staggerDelay
