@@ -261,7 +261,7 @@ export default function InfrastructureS4P2() {
             </div>
             <div className="flex items-start gap-3">
               <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
-              <p>Gestion de ressource réseau Active Directory + Annuaire LDAP ;</p>
+              <p>Gestion de ressource réseau Active Directory + Annuaire LDAPS ;</p>
             </div>
             <div className="flex items-start gap-3">
               <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
