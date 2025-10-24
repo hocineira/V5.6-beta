@@ -685,8 +685,8 @@ export default function InfrastructureS4P2() {
               <strong className="text-cyan-300">Supervision :</strong> M. Bernard FERNANDEZ, Tuteur de formation
             </p>
             <p>
-              <strong className="text-cyan-300">Technologies déployées :</strong> Windows Server 2022, Linux Debian/Ubuntu, NETGEAR GS308Ev4, 
-              pfSense 2.7.2, Proxmox VE 8.2, Active Directory, DHCP/DNS, VLANs, VPN OpenVPN, Exchange 2019, Zabbix 7.0, GLPI, NextCloud
+              <strong className="text-cyan-300">Technologies déployées :</strong> Windows Server 2025, Linux Debian 13/Ubuntu, NETGEAR GS308Ev4, 
+              pfSense 2.8.1, Proxmox VE 9.0, Proxmox Backup Server 4.0, Active Directory, DHCP/DNS, VLANs, VPN OpenVPN, Exchange 2019, Zabbix 7.4, GLPI, NextCloud, Ubiquiti UniFi u7 lite
             </p>
           </div>
         </div>
