@@ -309,7 +309,7 @@ export default function InfrastructureS4P2() {
             </div>
             <div className="flex items-start gap-3">
               <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
-              <p>Logiciel client OpenVPN (2.6.7) ;</p>
+              <p>Logiciel client OpenVPN (3.8.0) ;</p>
             </div>
             <div className="flex items-start gap-3">
               <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
