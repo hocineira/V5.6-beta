@@ -229,7 +229,7 @@ export default function InfrastructureS4P2() {
             </div>
             <div className="flex items-start gap-3">
               <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
-              <p>Logiciel BALENA ETCHER (1.18.11) pour la création de clé USB d'installation d'OS ;</p>
+              <p>Logiciel UNIVERSAL USB INSTALLER (UUI) pour la création de clé USB d'installation d'OS ;</p>
             </div>
             <div className="flex items-start gap-3">
               <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
