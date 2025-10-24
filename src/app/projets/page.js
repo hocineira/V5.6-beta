@@ -287,8 +287,9 @@ export default function ProjetsPage() {
       <section className="py-12 sm:py-20">
         <div className="container mx-auto px-3 sm:px-4">
           {/* Projet Principal - Architecture Réseau */}
-          <div className="mb-12 sm:mb-16">
-            <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 p-1 shadow-2xl transform hover:scale-[1.02] transition-all duration-500">
+          <ScaleIn delay={0.3} duration={0.8} scale={0.9}>
+            <div className="mb-12 sm:mb-16">
+              <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 p-1 shadow-2xl transform hover:scale-[1.02] transition-all duration-500">
               <div className="absolute inset-0 bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 animate-pulse"></div>
               <div className="relative bg-white rounded-2xl sm:rounded-3xl overflow-hidden">
                 <div className="flex flex-col lg:flex-row">
