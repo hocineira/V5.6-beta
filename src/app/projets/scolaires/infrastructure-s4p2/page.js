@@ -277,7 +277,7 @@ export default function InfrastructureS4P2() {
             </div>
             <div className="flex items-start gap-3">
               <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
-              <p>Solution de supervision réseau ZABBIX (7.0 LTS) ainsi que la version 7.0.x de l'agent d'écoute ZABBIX ;</p>
+              <p>Solution de supervision réseau ZABBIX (7.4) ainsi que la version 7.4 de l'agent d'écoute ZABBIX ;</p>
             </div>
             <div className="flex items-start gap-3">
               <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
