@@ -4,12 +4,14 @@ import { useState } from 'react'
 import { Badge } from '../../../../components/ui/badge'
 import { 
   ArrowLeft, Network, Server, Shield, Cable, 
-  HardDrive, ZoomIn, ZoomOut, Download, CheckCircle2, Package, Laptop, ExternalLink, Info
+  HardDrive, ZoomIn, ZoomOut, Download, CheckCircle2, Package, Laptop, ExternalLink, Info, Eye, FileText
 } from 'lucide-react'
 import Link from 'next/link'
+import ImageModal from '../../../../components/ImageModal'
 
 export default function InfrastructureS4P2() {
   const [zoom, setZoom] = useState(100)
+  const [isSchemaModalOpen, setIsSchemaModalOpen] = useState(false)
 
   const handleZoomIn = () => setZoom(prev => Math.min(prev + 10, 200))
   const handleZoomOut = () => setZoom(prev => Math.max(prev - 10, 50))
