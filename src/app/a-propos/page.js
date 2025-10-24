@@ -182,11 +182,13 @@ export default function AboutPage() {
                         {edu.period}
                       </div>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
+                    </div>
+                  </CardContent>
+                </Card>
+              </ScaleIn>
+            </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
