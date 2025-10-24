@@ -10,6 +10,7 @@ import { motion } from 'framer-motion'
  * @param {number} props.duration - Durée de l'animation (en secondes)
  * @param {string} props.direction - Direction: 'up', 'down', 'left', 'right'
  * @param {number} props.distance - Distance de déplacement en pixels
+ * @param {boolean} props.once - Si true, l'animation ne se joue qu'une fois (défaut: false)
  */
 export default function FadeIn({ 
   children, 
@@ -17,6 +18,7 @@ export default function FadeIn({
   duration = 0.6,
   direction = 'up',
   distance = 30,
+  once = false,
   className = ''
 }) {
   const directions = {
@@ -37,7 +39,7 @@ export default function FadeIn({
         x: 0,
         y: 0
       }}
-      viewport={{ once: true, margin: "-100px" }}
+      viewport={{ once: once, margin: "-100px" }}
       transition={{ 
         duration,
         delay,
