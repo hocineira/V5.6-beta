@@ -679,7 +679,7 @@ export default function InfrastructureS4P2() {
               <strong className="text-cyan-300">Localisation :</strong> Centre de formation IFC Marseille - Salle réseau
             </p>
             <p>
-              <strong className="text-cyan-300">Plot attitré :</strong> S4P2 (Système 4, Poste 2)
+              <strong className="text-cyan-300">Plot attitré :</strong> S4P2 (Salle 4, Poste 2)
             </p>
             <p>
               <strong className="text-cyan-300">Supervision :</strong> M. Bernard FERNANDEZ, Tuteur de formation
