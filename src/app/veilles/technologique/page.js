@@ -243,12 +243,12 @@ export default function VeilleTechnologique() {
       {/* Content Section */}
       <section className="py-12">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-6">
+          <StaggerContainer staggerDelay={0.08} className="grid lg:grid-cols-2 xl:grid-cols-3 gap-6">
             {filteredUpdates.map((update, index) => (
-              <article
-                key={update.id}
-                className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-slate-100"
-              >
+              <StaggerItem key={update.id}>
+                <AnimatedCard delay={index * 0.05} hoverScale={1.03} hoverRotate={1}>
+                  <article className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-slate-100 h-full"
+                  >
                 {/* Card Header */}
                 <div className="p-6 pb-4">
                   <div className="flex items-start justify-between mb-4">
