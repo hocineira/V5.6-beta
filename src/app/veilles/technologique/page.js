@@ -161,22 +161,28 @@ export default function VeilleTechnologique() {
           </a>
 
           <div className="text-center text-white">
-            <div className="flex justify-center mb-6">
-              <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center backdrop-blur-sm">
-                <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <rect width="20" height="14" x="2" y="3" rx="2"/>
-                  <line x1="8" x2="16" y1="21" y2="21"/>
-                  <line x1="12" x2="12" y1="17" y2="21"/>
-                </svg>
+            <ScaleIn delay={0.2} scale={0.6}>
+              <div className="flex justify-center mb-6">
+                <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center backdrop-blur-sm">
+                  <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <rect width="20" height="14" x="2" y="3" rx="2"/>
+                    <line x1="8" x2="16" y1="21" y2="21"/>
+                    <line x1="12" x2="12" y1="17" y2="21"/>
+                  </svg>
+                </div>
               </div>
-            </div>
+            </ScaleIn>
 
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Veille Technologique Windows
-            </h1>
-            <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Veille technologique française spécialisée Windows : particuliers, serveur, entreprise, IoT, sécurité. Sources françaises de référence pour une expertise complète.
-            </p>
+            <FadeIn delay={0.4} direction="up">
+              <h1 className="text-4xl md:text-5xl font-bold mb-4">
+                Veille Technologique Windows
+              </h1>
+            </FadeIn>
+            <FadeIn delay={0.6} direction="up">
+              <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto leading-relaxed">
+                Veille technologique française spécialisée Windows : particuliers, serveur, entreprise, IoT, sécurité. Sources françaises de référence pour une expertise complète.
+              </p>
+            </FadeIn>
 
             <div className="flex flex-wrap justify-center items-center gap-4 mb-6">
               <div className="bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 flex items-center space-x-2">
