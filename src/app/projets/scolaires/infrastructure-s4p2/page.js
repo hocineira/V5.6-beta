@@ -4,56 +4,15 @@ import { useState } from 'react'
 import { Badge } from '../../../../components/ui/badge'
 import { 
   ArrowLeft, Network, Server, Shield, Cable, 
-  HardDrive, ZoomIn, ZoomOut, Download, CheckCircle2
+  HardDrive, ZoomIn, ZoomOut, Download, CheckCircle2, Package, Laptop
 } from 'lucide-react'
 import Link from 'next/link'
-import Image from 'next/image'
 
 export default function InfrastructureS4P2() {
   const [zoom, setZoom] = useState(100)
 
   const handleZoomIn = () => setZoom(prev => Math.min(prev + 10, 200))
   const handleZoomOut = () => setZoom(prev => Math.max(prev - 10, 50))
-
-  // Infrastructure details
-  const infrastructureComponents = [
-    {
-      icon: Server,
-      title: "Serveurs",
-      items: [
-        "Serveur Windows Server 2022 (AD DS, DHCP, DNS)",
-        "Serveur Debian (Services web, bases de données)",
-        "Serveur de virtualisation Proxmox VE"
-      ]
-    },
-    {
-      icon: Network,
-      title: "Équipements Réseau",
-      items: [
-        "Switch Cisco Catalyst managé",
-        "Routeur pfSense (Firewall, VPN)",
-        "Points d'accès WiFi professionnels"
-      ]
-    },
-    {
-      icon: Shield,
-      title: "Sécurité",
-      items: [
-        "Pare-feu pfSense avec règles de filtrage",
-        "Segmentation réseau par VLANs",
-        "VPN site-à-site et accès distant"
-      ]
-    },
-    {
-      icon: HardDrive,
-      title: "Stockage",
-      items: [
-        "NAS Synology pour sauvegardes",
-        "Stockage partagé SMB/NFS",
-        "Réplication de données"
-      ]
-    }
-  ]
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-blue-900 relative overflow-hidden">
@@ -111,38 +70,8 @@ export default function InfrastructureS4P2() {
         </div>
       </div>
 
-      {/* Infrastructure Components Grid */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
-        <div className="grid md:grid-cols-2 gap-6">
-          {infrastructureComponents.map((component, index) => {
-            const Icon = component.icon
-            return (
-              <div 
-                key={index}
-                className="bg-slate-800/40 backdrop-blur-lg border border-slate-600/40 rounded-2xl p-6 shadow-xl hover:shadow-cyan-500/10 transition-all duration-300"
-              >
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="p-3 bg-cyan-500/10 backdrop-blur-sm rounded-xl border border-cyan-500/20">
-                    <Icon className="w-6 h-6 text-cyan-400" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-white">{component.title}</h3>
-                </div>
-                <ul className="space-y-3">
-                  {component.items.map((item, idx) => (
-                    <li key={idx} className="flex items-start gap-3 text-slate-300">
-                      <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
-                      <span className="leading-relaxed">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )
-          })}
-        </div>
-      </div>
-
       {/* Schema Section */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
         <div className="bg-slate-800/40 backdrop-blur-xl border border-slate-600/40 rounded-3xl shadow-2xl overflow-hidden">
           {/* Controls */}
           <div className="bg-slate-800/60 backdrop-blur-lg border-b border-slate-600/40 p-6">
@@ -176,16 +105,16 @@ export default function InfrastructureS4P2() {
                 </div>
 
                 {/* Download button */}
-                <button
+                <a
+                  href="https://customer-assets.emergentagent.com/job_preview-display-8/artifacts/h2cxdajd_S4P2.jpeg"
+                  download="Infrastructure-S4P2.jpeg"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-2 bg-cyan-500/20 hover:bg-cyan-500/30 backdrop-blur-md text-cyan-300 border border-cyan-500/30 font-semibold px-6 py-2 rounded-xl transition-all"
-                  onClick={() => {
-                    // TODO: Add download functionality
-                    alert('Fonctionnalité de téléchargement à venir')
-                  }}
                 >
                   <Download className="w-5 h-5" />
                   Télécharger
-                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -200,27 +129,203 @@ export default function InfrastructureS4P2() {
                 transition: 'width 0.3s ease'
               }}
             >
-              {/* Placeholder for infrastructure schema */}
-              <div className="aspect-[16/10] flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
-                <div className="text-center p-8">
-                  <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full shadow-2xl mb-6 animate-pulse">
-                    <Network className="w-12 h-12 text-white" />
-                  </div>
-                  <h3 className="text-3xl font-bold text-slate-800 mb-4">
-                    Schéma d'infrastructure à venir
-                  </h3>
-                  <p className="text-slate-600 max-w-md mx-auto leading-relaxed text-lg">
-                    Le schéma détaillé de l'infrastructure du plot S4P2 sera ajouté prochainement.
-                  </p>
-                  
-                  {/* Uncomment and update when schema image is ready */}
-                  {/* <img
-                    src="/images/infrastructure-s4p2.png"
-                    alt="Schéma Infrastructure S4P2"
-                    className="w-full h-full object-contain"
-                  /> */}
-                </div>
+              <div className="aspect-[16/10] relative">
+                <img
+                  src="https://customer-assets.emergentagent.com/job_preview-display-8/artifacts/h2cxdajd_S4P2.jpeg"
+                  alt="Schéma Infrastructure S4P2"
+                  className="w-full h-full object-contain"
+                />
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Ressources Matérielles Section */}
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+        <div className="bg-slate-800/40 backdrop-blur-lg border border-slate-600/40 rounded-3xl p-8 shadow-2xl">
+          <div className="flex items-center gap-4 mb-6">
+            <div className="p-4 bg-cyan-500/10 backdrop-blur-sm rounded-2xl border border-cyan-500/20">
+              <Server className="w-8 h-8 text-cyan-400" />
+            </div>
+            <h2 className="text-3xl font-bold text-white">RESSOURCES MATÉRIELLES</h2>
+          </div>
+          
+          <div className="space-y-4 text-slate-300 leading-relaxed">
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+              <p>Un PC avec clavier et souris USB, utilisé comme base pour construire et configurer l'infrastructure, et pour l'administration de celle-ci ;</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+              <p>Un PC portable utilisé comme PC Client pour simuler des utilisateurs du SI (Système d'Information) de l'organisation ;</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+              <p>Un PC avec un disque dur (4To) attribué à un serveur PROXMOX VE (environnement de virtualisation utilisé pour héberger et administrer des serveurs virtualisés) ;</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+              <p>Un espace disque de stockage dédié aux serveurs virtuels PROXMOX sur un serveur de sauvegarde PROXMOX BACKUP ;</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+              <p>Un PC avec un disque dur attribué à un serveur PFSENSE (routeur/Firewall) possédant 3 cartes réseaux et donc 3 ports Ethernet ;</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+              <p>Un PC avec un disque dur attribué à un serveur HYPERV pour la virtualisation qui sera utilisé pour serveurs accessible de l'extérieur du réseau et mise à disposition de réseaux externes (comme un serveur WEB par exemple) ;</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+              <p>Trois écrans VGA/HDMI ;</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+              <p>Une prise Ethernet murale, reliée au réseau WAN de l'établissement IFC Marseille, jouant le rôle d'arrivée internet de l'infrastructure ;</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+              <p>Des câbles Ethernet RJ45 en nombre suffisant ;</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+              <p>Un commutateur réseau NETGEAR GS308Ev4 (8 ports, prenant en charge l'étiquetage des trames 802.1Q) ;</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+              <p>Deux multiprises ;</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+              <p>Des CLES USB 30Go pour les installations de systèmes d'exploitation sur les machines physiques.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Ressources Logicielles Section */}
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <div className="bg-slate-800/40 backdrop-blur-lg border border-slate-600/40 rounded-3xl p-8 shadow-2xl">
+          <div className="flex items-center gap-4 mb-6">
+            <div className="p-4 bg-cyan-500/10 backdrop-blur-sm rounded-2xl border border-cyan-500/20">
+              <Package className="w-8 h-8 text-cyan-400" />
+            </div>
+            <h2 className="text-3xl font-bold text-white">RESSOURCES LOGICIELLES</h2>
+          </div>
+          
+          <div className="space-y-4 text-slate-300 leading-relaxed">
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+              <p>Un serveur NAS commun aux BTS SIO de l'établissement auquel nous avons accès via des identifiants personnels contenant des ressources indispensables à notre progression (cours, procédures, travaux d'autres étudiants, logiciels, etc.) ;</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+              <p>Logiciel NETGEAR SWITCH DISCOVERY TOOL (1.2.103) ;</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+              <p>Page WEB d'administration NETGEAR GS308Ev4 ;</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+              <p>Logiciel BALENA ETCHER (1.18.11) pour la création de clé USB d'installation d'OS ;</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+              <p>Solution Routeur-Firewall PFSENSE (2.7.2) – basé sur une distribution BSD OS ;</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+              <p>Administration WEB PFSENSE ;</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+              <p>SNORT IDS (Intrusion détection system) sur PfSense ;</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+              <p>Solution d'environnement de virtualisation PROXMOX VE (8.2) ;</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+              <p>Page WEB d'administration PROXMOX VE ;</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+              <p>Solution de sauvegarde des données des machines virtuelles PROXMOX BACKUP SERVER (3.0) ;</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+              <p>OS Windows Server 2022 ;</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+              <p>Gestion de ressource réseau Active Directory + Annuaire LDAP ;</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+              <p>Solution de messagerie Microsoft EXCHANGE 2019 (CU14) ;</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+              <p>Distribution LINUX Debian 12 ;</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+              <p>Gestion de base de données MariaDB et MySQL ;</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+              <p>Solution de supervision réseau ZABBIX (7.0 LTS) ainsi que la version 7.0.x de l'agent d'écoute ZABBIX ;</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+              <p>Page WEB D'administration ZABBIX ;</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+              <p>Solution Proxy ARTICA (version communautaire ISO Artica 4.50 sous Debian 10) ;</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+              <p>Page WEB d'administration ARTICA ;</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+              <p>Page WEB d'administration D-Link DAP1360 ;</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+              <p>Page WEB d'identification du Portail Captif ;</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+              <p>Distribution LINUX Ubuntu (22.04 LTS) ;</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+              <p>Solution GLPI (10.0.18) ;</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+              <p>Logiciel client OpenVPN (2.6.7) ;</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+              <p>RDP Bureau distant pour accès SERVEUR AD1 et serveur HYPER-V ;</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+              <p>Solution Cloud intranet NEXTCLOUD (sous Ubuntu 22.04) ;</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+              <p>Logiciel sauvegarde Cobian Backup Gravity 11 ;</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+              <p>Logiciel de gestion lecteur réseaux RAIDRIVE.</p>
             </div>
           </div>
         </div>
@@ -242,8 +347,8 @@ export default function InfrastructureS4P2() {
               <strong className="text-cyan-300">Supervision :</strong> M. Bernard FERNANDEZ, Tuteur de formation
             </p>
             <p>
-              <strong className="text-cyan-300">Technologies déployées :</strong> Windows Server, Linux Debian, Cisco IOS, 
-              pfSense, Proxmox VE, Active Directory, DHCP/DNS, VLANs, VPN IPsec/OpenVPN
+              <strong className="text-cyan-300">Technologies déployées :</strong> Windows Server 2022, Linux Debian/Ubuntu, NETGEAR GS308Ev4, 
+              pfSense 2.7.2, Proxmox VE 8.2, Active Directory, DHCP/DNS, VLANs, VPN OpenVPN, Exchange 2019, Zabbix 7.0, GLPI, NextCloud
             </p>
           </div>
         </div>
