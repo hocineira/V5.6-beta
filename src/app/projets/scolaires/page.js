@@ -17,21 +17,17 @@ export default function ProjetsE6() {
   const handleZoomOut = () => setZoom(prev => Math.max(prev - 10, 50))
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900/30 to-purple-900/40">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 relative overflow-hidden">
+      {/* Animated background blobs */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-0 -left-4 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+        <div className="absolute top-0 -right-4 w-96 h-96 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+        <div className="absolute -bottom-8 left-20 w-96 h-96 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+      </div>
+      
       {/* Header Section */}
       <div className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-green-600/10 to-emerald-600/10" />
-        
-        {/* Grille de fond */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `
-              linear-gradient(90deg, rgb(34 197 94 / 0.3) 1px, transparent 1px),
-              linear-gradient(180deg, rgb(16 185 129 / 0.3) 1px, transparent 1px)
-            `,
-            backgroundSize: '40px 40px'
-          }}></div>
-        </div>
+        <div className="absolute inset-0 bg-white/10" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
           {/* Navigation breadcrumb */}
