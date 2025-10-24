@@ -5,15 +5,13 @@ import { Badge } from '../../../../components/ui/badge'
 import { Button } from '../../../../components/ui/button'
 import { 
   ArrowLeft, BookOpen, FileText, Download, 
-  ZoomIn, ZoomOut, Eye, CheckCircle2, Network
+  ZoomIn, ZoomOut, Eye, CheckCircle2
 } from 'lucide-react'
 import Link from 'next/link'
-import ImageModal from '../../../../components/ImageModal'
 
 export default function ProjetsE6() {
   const [pdfUrl, setPdfUrl] = useState('/documents/dossier-e6.pdf') // Chemin vers le PDF à ajouter plus tard
   const [zoom, setZoom] = useState(100)
-  const [isSchemaModalOpen, setIsSchemaModalOpen] = useState(false)
 
   const handleZoomIn = () => setZoom(prev => Math.min(prev + 10, 200))
   const handleZoomOut = () => setZoom(prev => Math.max(prev - 10, 50))
