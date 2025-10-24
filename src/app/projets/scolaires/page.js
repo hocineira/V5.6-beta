@@ -34,7 +34,7 @@ export default function ProjetsE6() {
           <div className="mb-8">
             <Link 
               href="/projets" 
-              className="inline-flex items-center text-green-400 hover:text-green-300 transition-colors duration-200"
+              className="inline-flex items-center text-white hover:text-white/80 transition-colors duration-200 bg-white/20 backdrop-blur-md px-4 py-2 rounded-full border border-white/30"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Retour aux Projets
@@ -43,36 +43,35 @@ export default function ProjetsE6() {
 
           <div className="text-center">
             {/* Badge E6 */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-800/60 backdrop-blur-sm border border-green-400/40 rounded-full mb-6 shadow-lg shadow-green-500/20">
-              <FileText className="w-4 h-4 text-green-400" />
-              <span className="text-sm text-green-300 font-medium">Épreuve E6 - BTS SIO SISR</span>
+            <div className="inline-flex items-center gap-2 px-6 py-3 bg-white/20 backdrop-blur-md border border-white/30 rounded-full mb-8 shadow-lg">
+              <FileText className="w-5 h-5 text-white" />
+              <span className="text-sm text-white font-semibold">Épreuve E6 - BTS SIO SISR</span>
             </div>
 
             {/* Titre principal */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
-              <span className="bg-gradient-to-r from-green-400 via-emerald-400 to-teal-400 bg-clip-text text-transparent">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-8 drop-shadow-2xl">
+              <span className="block mb-2">
                 RÉALISATION 1 ET 2
               </span>
-              <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-300">
+              <span className="block text-white/90">
                 DOSSIER E6
               </span>
             </h1>
 
             {/* Description */}
             <div className="max-w-4xl mx-auto">
-              <div className="bg-slate-800/60 backdrop-blur-sm border border-green-400/30 rounded-2xl p-8 shadow-xl">
+              <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl p-8 shadow-2xl">
                 <div className="flex items-start gap-4 mb-4">
-                  <div className="p-3 bg-gradient-to-br from-green-500/20 to-emerald-500/20 rounded-lg border border-green-400/20">
-                    <BookOpen className="w-6 h-6 text-green-300" />
+                  <div className="p-4 bg-white/20 backdrop-blur-sm rounded-2xl border border-white/30">
+                    <BookOpen className="w-8 h-8 text-white" />
                   </div>
                   <div className="flex-1 text-left">
-                    <h2 className="text-xl font-semibold text-white mb-3">À propos de ce dossier</h2>
-                    <p className="text-slate-300 leading-relaxed">
+                    <h2 className="text-2xl font-bold text-white mb-4">À propos de ce dossier</h2>
+                    <p className="text-white/90 leading-relaxed text-lg">
                       Ce document constitue mon dossier officiel soumis sur la plateforme Cyclade dans le cadre de l'épreuve E6. 
                       Il présente deux réalisations complètes de solutions d'infrastructure réseau déployées sur le plot S4P2 de l'établissement IFC Marseille.
                     </p>
-                    <p className="text-slate-300 leading-relaxed mt-3">
+                    <p className="text-white/90 leading-relaxed text-lg mt-4">
                       Chaque réalisation est documentée de manière exhaustive avec des captures d'écran de l'infrastructure réelle, 
                       détaillant les configurations techniques mises en œuvre ainsi que les procédures de tests et de validation du déploiement.
                     </p>
@@ -81,17 +80,17 @@ export default function ProjetsE6() {
 
                 {/* Points clés */}
                 <div className="grid sm:grid-cols-3 gap-4 mt-6">
-                  <div className="flex items-center gap-2 text-green-300">
-                    <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
-                    <span className="text-sm">Infrastructure réelle</span>
+                  <div className="flex items-center gap-3 text-white bg-white/10 backdrop-blur-sm px-4 py-3 rounded-xl border border-white/20">
+                    <CheckCircle2 className="w-6 h-6 flex-shrink-0" />
+                    <span className="text-sm font-medium">Infrastructure réelle</span>
                   </div>
-                  <div className="flex items-center gap-2 text-green-300">
-                    <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
-                    <span className="text-sm">Captures d'écran détaillées</span>
+                  <div className="flex items-center gap-3 text-white bg-white/10 backdrop-blur-sm px-4 py-3 rounded-xl border border-white/20">
+                    <CheckCircle2 className="w-6 h-6 flex-shrink-0" />
+                    <span className="text-sm font-medium">Captures d'écran détaillées</span>
                   </div>
-                  <div className="flex items-center gap-2 text-green-300">
-                    <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
-                    <span className="text-sm">Tests de déploiement</span>
+                  <div className="flex items-center gap-3 text-white bg-white/10 backdrop-blur-sm px-4 py-3 rounded-xl border border-white/20">
+                    <CheckCircle2 className="w-6 h-6 flex-shrink-0" />
+                    <span className="text-sm font-medium">Tests de déploiement</span>
                   </div>
                 </div>
               </div>
