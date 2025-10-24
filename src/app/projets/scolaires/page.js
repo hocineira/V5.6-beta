@@ -34,7 +34,7 @@ export default function ProjetsE6() {
           <div className="mb-8">
             <Link 
               href="/projets" 
-              className="inline-flex items-center text-white hover:text-white/80 transition-colors duration-200 bg-white/20 backdrop-blur-md px-4 py-2 rounded-full border border-white/30"
+              className="inline-flex items-center text-cyan-300 hover:text-cyan-200 transition-colors duration-200 bg-slate-800/60 backdrop-blur-md px-4 py-2 rounded-full border border-slate-600/50"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Retour aux Projets
@@ -43,35 +43,35 @@ export default function ProjetsE6() {
 
           <div className="text-center">
             {/* Badge E6 */}
-            <div className="inline-flex items-center gap-2 px-6 py-3 bg-white/20 backdrop-blur-md border border-white/30 rounded-full mb-8 shadow-lg">
-              <FileText className="w-5 h-5 text-white" />
-              <span className="text-sm text-white font-semibold">Épreuve E6 - BTS SIO SISR</span>
+            <div className="inline-flex items-center gap-2 px-6 py-3 bg-slate-800/60 backdrop-blur-md border border-cyan-500/30 rounded-full mb-8 shadow-lg shadow-cyan-500/10">
+              <FileText className="w-5 h-5 text-cyan-400" />
+              <span className="text-sm text-cyan-300 font-semibold">Épreuve E6 - BTS SIO SISR</span>
             </div>
 
             {/* Titre principal */}
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-8 drop-shadow-2xl">
-              <span className="block mb-2">
+              <span className="block mb-2 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
                 RÉALISATION 1 ET 2
               </span>
-              <span className="block text-white/90">
+              <span className="block text-white">
                 DOSSIER E6
               </span>
             </h1>
 
             {/* Description */}
             <div className="max-w-4xl mx-auto">
-              <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl p-8 shadow-2xl">
+              <div className="bg-slate-800/40 backdrop-blur-lg border border-slate-600/40 rounded-3xl p-8 shadow-2xl">
                 <div className="flex items-start gap-4 mb-4">
-                  <div className="p-4 bg-white/20 backdrop-blur-sm rounded-2xl border border-white/30">
-                    <BookOpen className="w-8 h-8 text-white" />
+                  <div className="p-4 bg-cyan-500/10 backdrop-blur-sm rounded-2xl border border-cyan-500/20">
+                    <BookOpen className="w-8 h-8 text-cyan-400" />
                   </div>
                   <div className="flex-1 text-left">
                     <h2 className="text-2xl font-bold text-white mb-4">À propos de ce dossier</h2>
-                    <p className="text-white/90 leading-relaxed text-lg">
+                    <p className="text-slate-300 leading-relaxed text-lg">
                       Ce document constitue mon dossier officiel soumis sur la plateforme Cyclade dans le cadre de l'épreuve E6. 
                       Il présente deux réalisations complètes de solutions d'infrastructure réseau déployées sur le plot S4P2 de l'établissement IFC Marseille.
                     </p>
-                    <p className="text-white/90 leading-relaxed text-lg mt-4">
+                    <p className="text-slate-300 leading-relaxed text-lg mt-4">
                       Chaque réalisation est documentée de manière exhaustive avec des captures d'écran de l'infrastructure réelle, 
                       détaillant les configurations techniques mises en œuvre ainsi que les procédures de tests et de validation du déploiement.
                     </p>
@@ -80,15 +80,15 @@ export default function ProjetsE6() {
 
                 {/* Points clés */}
                 <div className="grid sm:grid-cols-3 gap-4 mt-6">
-                  <div className="flex items-center gap-3 text-white bg-white/10 backdrop-blur-sm px-4 py-3 rounded-xl border border-white/20">
+                  <div className="flex items-center gap-3 text-cyan-300 bg-slate-700/30 backdrop-blur-sm px-4 py-3 rounded-xl border border-slate-600/40">
                     <CheckCircle2 className="w-6 h-6 flex-shrink-0" />
                     <span className="text-sm font-medium">Infrastructure réelle</span>
                   </div>
-                  <div className="flex items-center gap-3 text-white bg-white/10 backdrop-blur-sm px-4 py-3 rounded-xl border border-white/20">
+                  <div className="flex items-center gap-3 text-cyan-300 bg-slate-700/30 backdrop-blur-sm px-4 py-3 rounded-xl border border-slate-600/40">
                     <CheckCircle2 className="w-6 h-6 flex-shrink-0" />
                     <span className="text-sm font-medium">Captures d'écran détaillées</span>
                   </div>
-                  <div className="flex items-center gap-3 text-white bg-white/10 backdrop-blur-sm px-4 py-3 rounded-xl border border-white/20">
+                  <div className="flex items-center gap-3 text-cyan-300 bg-slate-700/30 backdrop-blur-sm px-4 py-3 rounded-xl border border-slate-600/40">
                     <CheckCircle2 className="w-6 h-6 flex-shrink-0" />
                     <span className="text-sm font-medium">Tests de déploiement</span>
                   </div>
