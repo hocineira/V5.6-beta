@@ -170,7 +170,7 @@ export default function InfrastructureS4P2() {
             </div>
             <div className="flex items-start gap-3">
               <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
-              <p>Un PC avec un disque dur attribué à un serveur PFSENSE (routeur/Firewall) possédant 3 cartes réseaux et donc 3 ports Ethernet ;</p>
+              <p>Un PC avec un disque dur attribué à un serveur PFSENSE (routeur/Firewall) possédant 3 cartes réseaux et donc 4 ports Ethernet ;</p>
             </div>
             <div className="flex items-start gap-3">
               <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
