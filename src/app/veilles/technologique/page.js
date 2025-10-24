@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { FadeIn, ScaleIn, StaggerContainer, StaggerItem, AnimatedCard, RotateIn } from '../../../components/animations';
 
 export default function VeilleTechnologique() {
   const [updates, setUpdates] = useState([]);
