@@ -80,9 +80,12 @@ export default function InfrastructureS4P2() {
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div className="flex items-center gap-3">
                 <Cable className="w-6 h-6 text-cyan-400" />
-                <span className="text-white font-bold text-lg">Schéma d'Infrastructure</span>
+                <span className="text-white font-bold text-lg">Architecture réseau – Infra S4P2</span>
                 <Badge className="bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 backdrop-blur-sm px-3 py-1">
-                  Plot S4P2
+                  Version 2.1
+                </Badge>
+                <Badge className="bg-slate-600/40 text-slate-300 border border-slate-500/30 backdrop-blur-sm px-3 py-1">
+                  24/10/2025
                 </Badge>
               </div>
 
@@ -106,38 +109,73 @@ export default function InfrastructureS4P2() {
                   </button>
                 </div>
 
-                {/* Download button */}
+                {/* Action buttons */}
+                <button
+                  onClick={() => setIsSchemaModalOpen(true)}
+                  className="flex items-center gap-2 bg-cyan-500/20 hover:bg-cyan-500/30 backdrop-blur-md text-cyan-300 border border-cyan-500/30 font-semibold px-4 py-2 rounded-xl transition-all"
+                >
+                  <Eye className="w-5 h-5" />
+                  <span className="hidden sm:inline">Voir en grand</span>
+                </button>
+
+                <button
+                  onClick={() => window.open('/documents/schema-infra-s4p2.pdf', '_blank')}
+                  className="flex items-center gap-2 bg-slate-600/40 hover:bg-slate-600/60 backdrop-blur-md text-slate-200 border border-slate-500/30 font-semibold px-4 py-2 rounded-xl transition-all"
+                >
+                  <FileText className="w-5 h-5" />
+                  <span className="hidden sm:inline">PDF</span>
+                </button>
+
                 <a
-                  href="/images/infrastructure-s4p2.jpeg"
-                  download="Infrastructure-S4P2.jpeg"
+                  href="/images/infrastructure/schema-infra-s4p2.jpg"
+                  download="Architecture-Infrastructure-S4P2-IRATNI-Hocine.jpg"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 bg-cyan-500/20 hover:bg-cyan-500/30 backdrop-blur-md text-cyan-300 border border-cyan-500/30 font-semibold px-6 py-2 rounded-xl transition-all"
+                  className="flex items-center gap-2 bg-cyan-500/20 hover:bg-cyan-500/30 backdrop-blur-md text-cyan-300 border border-cyan-500/30 font-semibold px-4 py-2 rounded-xl transition-all"
                 >
                   <Download className="w-5 h-5" />
-                  Télécharger
+                  <span className="hidden sm:inline">Télécharger</span>
                 </a>
               </div>
             </div>
           </div>
 
-          {/* Schema Viewer */}
+          {/* Schema Viewer with hover effect */}
           <div className="bg-slate-900/30 p-8 backdrop-blur-sm">
             <div 
-              className="mx-auto bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden border border-slate-700/30"
+              className="mx-auto bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden border border-slate-700/30 cursor-pointer group transition-all duration-300 hover:scale-[1.01]"
               style={{ 
                 width: `${zoom}%`,
                 maxWidth: '100%',
-                transition: 'width 0.3s ease'
+                transition: 'width 0.3s ease, transform 0.3s ease'
               }}
+              onClick={() => setIsSchemaModalOpen(true)}
             >
-              <div className="aspect-[16/10] relative">
+              <div className="relative">
                 <img
-                  src="/images/infrastructure-s4p2.jpeg"
-                  alt="Schéma Infrastructure S4P2"
-                  className="w-full h-full object-contain"
+                  src="/images/infrastructure/schema-infra-s4p2.jpg"
+                  alt="Architecture réseau – Infra S4P2 IRATNI Hocine"
+                  className="w-full h-auto"
                 />
+                
+                {/* Overlay au survol */}
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="bg-cyan-500/90 backdrop-blur-sm rounded-full p-4 transform group-hover:scale-110 transition-transform duration-300">
+                      <ZoomIn className="w-8 h-8 text-white" />
+                    </div>
+                  </div>
+                </div>
               </div>
+            </div>
+
+            {/* Légende détaillée */}
+            <div className="mt-6 bg-slate-800/40 backdrop-blur-sm rounded-xl p-6 border border-slate-600/40">
+              <p className="text-slate-300 text-sm leading-relaxed">
+                <strong className="text-cyan-300">Architecture complète</strong> avec firewall PfSense (3 interfaces: LAN, DMZ, WAN), 
+                switch Netgear GS308E, VLANs (17-Serveurs: 192.168.17.0/24, 27-WIFI: 192.168.27.0/24), zone DMZ (192.168.42.0/29), 
+                hyperviseurs (Proxmox VE 9.0, Windows HyperV), et services essentiels (AD-1/Exchange, AD-2, GLPI, ZABBIX, ARTICA, XIVO, Ubiquiti Controller, UniFi U7 Lite).
+              </p>
             </div>
           </div>
         </div>
