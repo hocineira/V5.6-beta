@@ -126,9 +126,11 @@ export default function AboutPage() {
                   Je suis à la recherche d'une <strong>alternance</strong> pour mettre en application mes connaissances 
                   et enrichir mon expérience professionnelle dans un environnement technique stimulant.
                 </p>
-              </div>
-            </CardContent>
-          </Card>
+                  </div>
+                </FadeIn>
+              </CardContent>
+            </Card>
+          </ScaleIn>
         </div>
       </section>
 
