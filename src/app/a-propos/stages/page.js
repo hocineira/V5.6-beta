@@ -799,19 +799,11 @@ export default function StagesPage() {
               <div className="space-y-6">
                 {competences.map((competence, index) => (
                   <div key={index} className="space-y-2">
-                    <div className="flex justify-between items-center">
+                    <div className="flex items-center">
+                      <div className="w-2 h-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mr-3"></div>
                       <span className="text-lg font-medium text-gray-900">
                         {competence.nom}
                       </span>
-                      <span className="text-sm text-gray-600">
-                        {competence.niveau}
-                      </span>
-                    </div>
-                    <div className="w-full bg-gray-200 rounded-full h-3">
-                      <div 
-                        className="bg-gradient-to-r from-blue-600 to-purple-600 h-3 rounded-full transition-all duration-1000 ease-out"
-                        style={{ width: competence.niveau }}
-                      ></div>
                     </div>
                   </div>
                 ))}
