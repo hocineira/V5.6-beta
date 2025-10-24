@@ -706,51 +706,6 @@ export default function StagesPage() {
                   ))}
                 </div>
               </div>
-
-              {/* Section Atelier */}
-              <div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-                  <div className="w-3 h-8 bg-gradient-to-b from-indigo-500 to-indigo-600 rounded-full mr-3"></div>
-                  Environnement de Travail
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                  {imagesOrganisees.atelier.map((image) => (
-                    <div
-                      key={image.id}
-                      className="group relative overflow-hidden rounded-xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:-translate-y-2"
-                      onClick={() => openImageModal(image.src, image.title)}
-                    >
-                      <div className="relative overflow-hidden h-48 md:h-56">
-                        <SafeImage
-                          src={image.src}
-                          alt={image.alt}
-                          className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="bg-white/20 backdrop-blur-sm rounded-full p-4 transform scale-0 group-hover:scale-100 transition-transform duration-300">
-                              <Eye className="w-8 h-8 text-white" />
-                            </div>
-                          </div>
-                        </div>
-                        <div className="absolute top-3 left-3">
-                          <span className="px-3 py-1 text-xs font-medium bg-indigo-600/90 text-white rounded-full backdrop-blur-sm">
-                            {image.category}
-                          </span>
-                        </div>
-                      </div>
-                      <div className="p-4">
-                        <h4 className="font-semibold text-lg text-gray-900 mb-2 group-hover:text-indigo-600 transition-colors duration-300">
-                          {image.title}
-                        </h4>
-                        <p className="text-sm text-gray-600 leading-relaxed">
-                          {image.alt}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
             </div>
           )}
 
