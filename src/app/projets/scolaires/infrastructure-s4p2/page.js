@@ -72,6 +72,32 @@ export default function InfrastructureS4P2() {
         </div>
       </div>
 
+      {/* Photo de l'Infrastructure Réelle */}
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+        <div className="bg-slate-800/40 backdrop-blur-xl border border-slate-600/40 rounded-3xl shadow-2xl overflow-hidden">
+          {/* Header */}
+          <div className="bg-slate-800/60 backdrop-blur-lg border-b border-slate-600/40 p-6">
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <Server className="w-6 h-6 text-cyan-400" />
+                <span className="text-white font-bold text-lg">Infrastructure Réelle - Plot S4P2</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Photo */}
+          <div className="bg-slate-900/30 p-8 backdrop-blur-sm">
+            <div className="mx-auto bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden border border-slate-700/30">
+              <img
+                src="/images/infrastructure-s4p2.jpeg"
+                alt="Photo Infrastructure Réelle S4P2"
+                className="w-full h-auto"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Schema Section */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
         <div className="bg-slate-800/40 backdrop-blur-xl border border-slate-600/40 rounded-3xl shadow-2xl overflow-hidden">
