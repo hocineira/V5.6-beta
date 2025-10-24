@@ -245,7 +245,7 @@ export default function InfrastructureS4P2() {
             </div>
             <div className="flex items-start gap-3">
               <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
-              <p>Solution d'environnement de virtualisation PROXMOX VE (8.2) ;</p>
+              <p>Solution d'environnement de virtualisation PROXMOX VE (9.0) ;</p>
             </div>
             <div className="flex items-start gap-3">
               <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
