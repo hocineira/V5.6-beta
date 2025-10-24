@@ -1,30 +1,18 @@
 'use client'
 
-import { useState } from 'react'
-import { Badge } from '../../../components/ui/badge'
-import { Button } from '../../../components/ui/button'
-import { 
-  ArrowLeft, BookOpen, FileText, Download, 
-  ZoomIn, ZoomOut, Eye, CheckCircle2
-} from 'lucide-react'
+import { ArrowLeft, Network, FileCheck2, BookOpen, ChevronRight } from 'lucide-react'
 import Link from 'next/link'
 
-export default function ProjetsE6() {
-  const [pdfUrl, setPdfUrl] = useState('/documents/dossier-e6.pdf') // Chemin vers le PDF à ajouter plus tard
-  const [zoom, setZoom] = useState(100)
-
-  const handleZoomIn = () => setZoom(prev => Math.min(prev + 10, 200))
-  const handleZoomOut = () => setZoom(prev => Math.max(prev - 10, 50))
-
+export default function ProjetsE6Index() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-blue-900 relative overflow-hidden">
-      {/* Animated background blobs - couleurs professionnelles */}
+      {/* Animated background blobs */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 -left-4 w-96 h-96 bg-blue-900/40 rounded-full mix-blend-multiply filter blur-xl opacity-50 animate-blob"></div>
         <div className="absolute top-0 -right-4 w-96 h-96 bg-cyan-900/40 rounded-full mix-blend-multiply filter blur-xl opacity-50 animate-blob animation-delay-2000"></div>
         <div className="absolute -bottom-8 left-20 w-96 h-96 bg-slate-700/40 rounded-full mix-blend-multiply filter blur-xl opacity-50 animate-blob animation-delay-4000"></div>
       </div>
-      
+
       {/* Header Section */}
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 bg-slate-900/20" />
@@ -44,145 +32,128 @@ export default function ProjetsE6() {
           <div className="text-center">
             {/* Badge E6 */}
             <div className="inline-flex items-center gap-2 px-6 py-3 bg-slate-800/60 backdrop-blur-md border border-cyan-500/30 rounded-full mb-8 shadow-lg shadow-cyan-500/10">
-              <FileText className="w-5 h-5 text-cyan-400" />
+              <BookOpen className="w-5 h-5 text-cyan-400" />
               <span className="text-sm text-cyan-300 font-semibold">Épreuve E6 - BTS SIO SISR</span>
             </div>
 
             {/* Titre principal */}
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-8 drop-shadow-2xl">
               <span className="block mb-2 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-                RÉALISATION 1 ET 2
+                Projets Scolaires
               </span>
               <span className="block text-white">
-                DOSSIER E6
+                Épreuve E6
               </span>
             </h1>
 
             {/* Description */}
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-4xl mx-auto mb-16">
               <div className="bg-slate-800/40 backdrop-blur-lg border border-slate-600/40 rounded-3xl p-8 shadow-2xl">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="p-4 bg-cyan-500/10 backdrop-blur-sm rounded-2xl border border-cyan-500/20">
-                    <BookOpen className="w-8 h-8 text-cyan-400" />
-                  </div>
-                  <div className="flex-1 text-left">
-                    <h2 className="text-2xl font-bold text-white mb-4">À propos de ce dossier</h2>
-                    <p className="text-slate-300 leading-relaxed text-lg">
-                      Ce document constitue mon dossier officiel soumis sur la plateforme Cyclade dans le cadre de l'épreuve E6. 
-                      Il présente deux réalisations complètes de solutions d'infrastructure réseau déployées sur le plot S4P2 de l'établissement IFC Marseille.
-                    </p>
-                    <p className="text-slate-300 leading-relaxed text-lg mt-4">
-                      Chaque réalisation est documentée de manière exhaustive avec des captures d'écran de l'infrastructure réelle, 
-                      détaillant les configurations techniques mises en œuvre ainsi que les procédures de tests et de validation du déploiement.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Points clés */}
-                <div className="grid sm:grid-cols-3 gap-4 mt-6">
-                  <div className="flex items-center gap-3 text-cyan-300 bg-slate-700/30 backdrop-blur-sm px-4 py-3 rounded-xl border border-slate-600/40">
-                    <CheckCircle2 className="w-6 h-6 flex-shrink-0" />
-                    <span className="text-sm font-medium">Infrastructure réelle</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-cyan-300 bg-slate-700/30 backdrop-blur-sm px-4 py-3 rounded-xl border border-slate-600/40">
-                    <CheckCircle2 className="w-6 h-6 flex-shrink-0" />
-                    <span className="text-sm font-medium">Captures d'écran détaillées</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-cyan-300 bg-slate-700/30 backdrop-blur-sm px-4 py-3 rounded-xl border border-slate-600/40">
-                    <CheckCircle2 className="w-6 h-6 flex-shrink-0" />
-                    <span className="text-sm font-medium">Tests de déploiement</span>
-                  </div>
-                </div>
+                <p className="text-slate-300 leading-relaxed text-lg">
+                  Vous trouverez dans cette section les réalisations détaillées effectuées au centre de formation IFC Marseille 
+                  sur mon plot attitré et avec les ressources matérielles et logicielles mises à ma disposition par l'établissement 
+                  et prescrites par mon tuteur M. Bernard FERNANDEZ.
+                </p>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Section PDF Viewer */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-        <div className="bg-slate-800/40 backdrop-blur-xl border border-slate-600/40 rounded-3xl shadow-2xl overflow-hidden">
-          {/* Controls */}
-          <div className="bg-slate-800/60 backdrop-blur-lg border-b border-slate-600/40 p-6">
-            <div className="flex flex-wrap items-center justify-between gap-4">
-              <div className="flex items-center gap-3">
-                <Eye className="w-6 h-6 text-cyan-400" />
-                <span className="text-white font-bold text-lg">Visualisation du dossier</span>
-                <Badge className="bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 backdrop-blur-sm px-3 py-1">
-                  PDF
-                </Badge>
+      {/* Cards Section - Sous-pages */}
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <div className="grid lg:grid-cols-2 gap-8">
+          
+          {/* Card 1: Infrastructure S4P2 */}
+          <Link 
+            href="/projets/scolaires/infrastructure-s4p2"
+            className="group relative bg-slate-800/40 backdrop-blur-lg border border-slate-600/40 rounded-3xl p-8 shadow-2xl hover:shadow-cyan-500/20 transition-all duration-300 hover:scale-105 hover:border-cyan-500/50"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-blue-500/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            
+            <div className="relative">
+              {/* Icon */}
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl shadow-xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Network className="w-8 h-8 text-white" />
               </div>
 
-              <div className="flex items-center gap-3">
-                {/* Zoom controls */}
-                <div className="flex items-center gap-2 bg-slate-700/50 backdrop-blur-md rounded-xl p-2 border border-slate-600/40">
-                  <Button
-                    size="sm"
-                    variant="ghost"
-                    onClick={handleZoomOut}
-                    className="text-cyan-300 hover:text-cyan-200 hover:bg-slate-600/50 border-0"
-                  >
-                    <ZoomOut className="w-5 h-5" />
-                  </Button>
-                  <span className="text-sm text-white font-semibold px-3 min-w-[60px] text-center">
-                    {zoom}%
-                  </span>
-                  <Button
-                    size="sm"
-                    variant="ghost"
-                    onClick={handleZoomIn}
-                    className="text-cyan-300 hover:text-cyan-200 hover:bg-slate-600/50 border-0"
-                  >
-                    <ZoomIn className="w-5 h-5" />
-                  </Button>
-                </div>
+              {/* Titre */}
+              <h2 className="text-3xl font-bold text-white mb-4 group-hover:text-cyan-300 transition-colors duration-300">
+                Infrastructure S4P2
+              </h2>
 
-                {/* Download button */}
-                <Button
-                  size="sm"
-                  className="bg-cyan-500/20 hover:bg-cyan-500/30 backdrop-blur-md text-cyan-300 border border-cyan-500/30 font-semibold px-6 py-2"
-                  onClick={() => window.open(pdfUrl, '_blank')}
-                >
-                  <Download className="w-5 h-5 mr-2" />
-                  Télécharger
-                </Button>
+              {/* Description */}
+              <p className="text-slate-300 leading-relaxed text-lg mb-6">
+                Découvrez le schéma d'infrastructure réseau complet de mon plot S4P2 ainsi que la description détaillée 
+                de mon environnement technologique et des ressources déployées.
+              </p>
+
+              {/* Tags */}
+              <div className="flex flex-wrap gap-2 mb-6">
+                <span className="px-3 py-1 bg-cyan-500/20 text-cyan-300 text-sm rounded-full border border-cyan-500/30">
+                  Schéma réseau
+                </span>
+                <span className="px-3 py-1 bg-cyan-500/20 text-cyan-300 text-sm rounded-full border border-cyan-500/30">
+                  Infrastructure
+                </span>
+                <span className="px-3 py-1 bg-cyan-500/20 text-cyan-300 text-sm rounded-full border border-cyan-500/30">
+                  Plot S4P2
+                </span>
+              </div>
+
+              {/* Arrow */}
+              <div className="flex items-center text-cyan-300 group-hover:text-cyan-200 font-semibold">
+                <span>Voir l'infrastructure</span>
+                <ChevronRight className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform duration-300" />
               </div>
             </div>
-          </div>
+          </Link>
 
-          {/* PDF Viewer */}
-          <div className="bg-slate-900/30 p-8 backdrop-blur-sm">
-            <div 
-              className="mx-auto bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden border border-slate-700/30"
-              style={{ 
-                width: `${zoom}%`,
-                maxWidth: '100%',
-                transition: 'width 0.3s ease'
-              }}
-            >
-              {/* Placeholder for PDF - will be replaced when PDF is added */}
-              <div className="aspect-[1/1.414] flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
-                <div className="text-center p-8">
-                  <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full shadow-2xl mb-6 animate-pulse">
-                    <FileText className="w-12 h-12 text-white" />
-                  </div>
-                  <h3 className="text-3xl font-bold text-slate-800 mb-4">
-                    Dossier E6 à venir
-                  </h3>
-                  <p className="text-slate-600 max-w-md mx-auto leading-relaxed text-lg">
-                    Le fichier PDF du dossier sera ajouté prochainement.
-                  </p>
-                  
-                  {/* Uncomment this when PDF is ready */}
-                  {/* <iframe
-                    src={pdfUrl}
-                    className="w-full h-full border-0"
-                    title="Dossier E6"
-                  /> */}
-                </div>
+          {/* Card 2: Réalisation 1 et 2 */}
+          <Link 
+            href="/projets/scolaires/realisations"
+            className="group relative bg-slate-800/40 backdrop-blur-lg border border-slate-600/40 rounded-3xl p-8 shadow-2xl hover:shadow-cyan-500/20 transition-all duration-300 hover:scale-105 hover:border-cyan-500/50"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-blue-500/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            
+            <div className="relative">
+              {/* Icon */}
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl shadow-xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                <FileCheck2 className="w-8 h-8 text-white" />
+              </div>
+
+              {/* Titre */}
+              <h2 className="text-3xl font-bold text-white mb-4 group-hover:text-cyan-300 transition-colors duration-300">
+                Réalisation 1 et 2
+              </h2>
+
+              {/* Description */}
+              <p className="text-slate-300 leading-relaxed text-lg mb-6">
+                Consultez mon dossier E6 officiel soumis sur Cyclade avec les deux réalisations complètes 
+                de solutions d'infrastructure réseau, incluant configurations et procédures de tests.
+              </p>
+
+              {/* Tags */}
+              <div className="flex flex-wrap gap-2 mb-6">
+                <span className="px-3 py-1 bg-blue-500/20 text-blue-300 text-sm rounded-full border border-blue-500/30">
+                  Dossier E6
+                </span>
+                <span className="px-3 py-1 bg-blue-500/20 text-blue-300 text-sm rounded-full border border-blue-500/30">
+                  Réalisations
+                </span>
+                <span className="px-3 py-1 bg-blue-500/20 text-blue-300 text-sm rounded-full border border-blue-500/30">
+                  Documentation
+                </span>
+              </div>
+
+              {/* Arrow */}
+              <div className="flex items-center text-cyan-300 group-hover:text-cyan-200 font-semibold">
+                <span>Voir les réalisations</span>
+                <ChevronRight className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform duration-300" />
               </div>
             </div>
-          </div>
+          </Link>
+
         </div>
       </div>
     </div>
