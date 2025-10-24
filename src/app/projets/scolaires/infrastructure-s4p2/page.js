@@ -198,7 +198,7 @@ export default function InfrastructureS4P2() {
             </div>
             <div className="flex items-start gap-3">
               <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
-              <p>Des CLES USB 30Go pour les installations de systèmes d'exploitation sur les machines physiques.</p>
+              <p>Disque SSD NVMe externe avec 256 GB de stockage.</p>
             </div>
           </div>
         </div>
