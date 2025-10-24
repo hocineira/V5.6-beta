@@ -296,47 +296,43 @@ export default function AccueilPage() {
             </div>
 
             {/* Section image avec infrastructure moderne */}
-            <FloatingElement duration={4} distance={15}>
-              <ScaleIn delay={0.5} duration={0.8}>
-                <div className="relative">
-                  <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                    <div className="aspect-[4/3] relative">
-                      <Image 
-                        src="/images/procedures/optimized_hero_image_new.webp" 
-                        alt="Infrastructure réseau moderne" 
-                        fill
-                        className="object-cover"
-                        priority
-                        quality={85}
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent"></div>
+            <div className="relative">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                <div className="aspect-[4/3] relative">
+                  <Image 
+                    src="/images/procedures/optimized_hero_image_new.webp" 
+                    alt="Infrastructure réseau moderne" 
+                    fill
+                    className="object-cover"
+                    priority
+                    quality={85}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent"></div>
+                </div>
+            
+                {/* Overlay avec infrastructure status */}
+                <div className="absolute bottom-6 left-6 right-6">
+                  <div className="bg-slate-800/90 backdrop-blur-sm rounded-xl p-4 border border-cyan-400/30">
+                    <div className="flex items-center gap-2 text-cyan-300 mb-3">
+                      <Network className="w-4 h-4" />
+                      <span className="text-sm font-medium">Infrastructure SISR</span>
                     </div>
-                
-                    {/* Overlay avec infrastructure status */}
-                    <div className="absolute bottom-6 left-6 right-6">
-                      <div className="bg-slate-800/90 backdrop-blur-sm rounded-xl p-4 border border-cyan-400/30">
-                        <div className="flex items-center gap-2 text-cyan-300 mb-3">
-                          <Network className="w-4 h-4" />
-                          <span className="text-sm font-medium">Infrastructure SISR</span>
+                    <div className="grid grid-cols-2 gap-3">
+                      {StaticData.infrastructure.map((item, index) => (
+                        <div key={index} className="flex items-center gap-2">
+                          <div className="relative w-2 h-2">
+                            <div className="absolute inset-0 w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+                            <div className="absolute inset-0 w-2 h-2 bg-cyan-400 rounded-full animate-ping opacity-75"></div>
+                          </div>
+                          <span className="text-xs text-slate-300">{item.name}</span>
                         </div>
-                        <div className="grid grid-cols-2 gap-3">
-                          {StaticData.infrastructure.map((item, index) => (
-                            <div key={index} className="flex items-center gap-2">
-                              <div className="relative w-2 h-2">
-                                <div className="absolute inset-0 w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
-                                <div className="absolute inset-0 w-2 h-2 bg-cyan-400 rounded-full animate-ping opacity-75"></div>
-                              </div>
-                              <span className="text-xs text-slate-300">{item.name}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
+                      ))}
                     </div>
                   </div>
                 </div>
-              </ScaleIn>
-            </FloatingElement>
+              </div>
+            </div>
           </div>
         </div>
       </section>
