@@ -275,6 +275,14 @@ export default function ProjetsE6() {
           </div>
         </div>
       </div>
+
+      {/* Modal pour agrandir le schéma */}
+      <ImageModal 
+        isOpen={isSchemaModalOpen}
+        onClose={() => setIsSchemaModalOpen(false)}
+        imageSrc="/images/infrastructure/schema-infra-s4p2.jpg"
+        title="Architecture réseau – Infra S4P2 IRATNI Hocine"
+      />
     </div>
   )
 }
