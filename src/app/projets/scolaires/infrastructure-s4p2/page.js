@@ -285,7 +285,7 @@ export default function InfrastructureS4P2() {
             </div>
             <div className="flex items-start gap-3">
               <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
-              <p>Solution Proxy ARTICA (version communautaire ISO Artica 4.50 sous Debian 10) ;</p>
+              <p>Solution Proxy ARTICA (version communautaire ISO Artica 4.50 sous Debian 13) ;</p>
             </div>
             <div className="flex items-start gap-3">
               <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
