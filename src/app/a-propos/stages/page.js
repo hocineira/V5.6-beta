@@ -136,11 +136,11 @@ export default function StagesPage() {
   ]
 
   const competences = [
-    { nom: 'Installation réseau et télécoms', niveau: '90%' },
-    { nom: 'Flash ROM et sécurité mobile', niveau: '85%' },
-    { nom: 'Diagnostic et réparation PC', niveau: '90%' },
-    { nom: 'Optimisation hardware (SSD)', niveau: '85%' },
-    { nom: 'Intervention technique terrain', niveau: '95%' }
+    { nom: 'Installation réseau et télécoms' },
+    { nom: 'Flash ROM et sécurité mobile' },
+    { nom: 'Diagnostic et réparation PC' },
+    { nom: 'Optimisation hardware (SSD)' },
+    { nom: 'Intervention technique terrain' }
   ]
 
   return (
