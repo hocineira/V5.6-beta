@@ -564,7 +564,7 @@ export default function StagesPage() {
                     : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                 }`}
               >
-                Atelier (2)
+                Environnement de Travail (2)
               </button>
             </div>
           </div>
