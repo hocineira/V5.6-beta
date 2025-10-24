@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Badge } from '../../../../components/ui/badge'
 import { 
   ArrowLeft, Network, Server, Shield, Cable, 
-  HardDrive, ZoomIn, ZoomOut, Download, CheckCircle2, Package, Laptop
+  HardDrive, ZoomIn, ZoomOut, Download, CheckCircle2, Package, Laptop, ExternalLink, Info
 } from 'lucide-react'
 import Link from 'next/link'
 
