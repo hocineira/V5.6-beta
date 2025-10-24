@@ -101,49 +101,49 @@ export default function ProjetsE6() {
 
       {/* Section PDF Viewer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-        <div className="bg-slate-800/60 backdrop-blur-sm border border-green-400/30 rounded-2xl shadow-2xl overflow-hidden">
+        <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl overflow-hidden">
           {/* Controls */}
-          <div className="bg-slate-900/80 border-b border-green-400/20 p-4">
+          <div className="bg-white/10 backdrop-blur-lg border-b border-white/20 p-6">
             <div className="flex flex-wrap items-center justify-between gap-4">
-              <div className="flex items-center gap-2">
-                <Eye className="w-5 h-5 text-green-400" />
-                <span className="text-white font-semibold">Visualisation du dossier</span>
-                <Badge className="bg-green-500/20 text-green-300 border border-green-400/30">
+              <div className="flex items-center gap-3">
+                <Eye className="w-6 h-6 text-white" />
+                <span className="text-white font-bold text-lg">Visualisation du dossier</span>
+                <Badge className="bg-white/20 text-white border border-white/30 backdrop-blur-sm px-3 py-1">
                   PDF
                 </Badge>
               </div>
 
               <div className="flex items-center gap-3">
                 {/* Zoom controls */}
-                <div className="flex items-center gap-2 bg-slate-800 rounded-lg p-1">
+                <div className="flex items-center gap-2 bg-white/20 backdrop-blur-md rounded-xl p-2 border border-white/30">
                   <Button
                     size="sm"
                     variant="ghost"
                     onClick={handleZoomOut}
-                    className="text-slate-300 hover:text-white hover:bg-slate-700"
+                    className="text-white hover:text-white hover:bg-white/20 border-0"
                   >
-                    <ZoomOut className="w-4 h-4" />
+                    <ZoomOut className="w-5 h-5" />
                   </Button>
-                  <span className="text-sm text-slate-300 px-2 min-w-[60px] text-center">
+                  <span className="text-sm text-white font-semibold px-3 min-w-[60px] text-center">
                     {zoom}%
                   </span>
                   <Button
                     size="sm"
                     variant="ghost"
                     onClick={handleZoomIn}
-                    className="text-slate-300 hover:text-white hover:bg-slate-700"
+                    className="text-white hover:text-white hover:bg-white/20 border-0"
                   >
-                    <ZoomIn className="w-4 h-4" />
+                    <ZoomIn className="w-5 h-5" />
                   </Button>
                 </div>
 
                 {/* Download button */}
                 <Button
                   size="sm"
-                  className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white"
+                  className="bg-white/20 hover:bg-white/30 backdrop-blur-md text-white border border-white/30 font-semibold px-6 py-2"
                   onClick={() => window.open(pdfUrl, '_blank')}
                 >
-                  <Download className="w-4 h-4 mr-2" />
+                  <Download className="w-5 h-5 mr-2" />
                   Télécharger
                 </Button>
               </div>
@@ -151,9 +151,9 @@ export default function ProjetsE6() {
           </div>
 
           {/* PDF Viewer */}
-          <div className="bg-slate-900/50 p-8">
+          <div className="bg-gradient-to-br from-white/5 to-white/10 p-8 backdrop-blur-sm">
             <div 
-              className="mx-auto bg-white rounded-lg shadow-2xl overflow-hidden"
+              className="mx-auto bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden border border-white/30"
               style={{ 
                 width: `${zoom}%`,
                 maxWidth: '100%',
@@ -161,17 +161,17 @@ export default function ProjetsE6() {
               }}
             >
               {/* Placeholder for PDF - will be replaced when PDF is added */}
-              <div className="aspect-[1/1.414] flex items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200">
+              <div className="aspect-[1/1.414] flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
                 <div className="text-center p-8">
-                  <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full shadow-lg mb-6">
-                    <FileText className="w-10 h-10 text-white" />
+                  <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full shadow-2xl mb-6 animate-pulse">
+                    <FileText className="w-12 h-12 text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold text-slate-800 mb-4">
+                  <h3 className="text-3xl font-bold text-slate-800 mb-4">
                     Dossier E6 à venir
                   </h3>
-                  <p className="text-slate-600 max-w-md mx-auto leading-relaxed">
+                  <p className="text-slate-600 max-w-md mx-auto leading-relaxed text-lg">
                     Le fichier PDF du dossier sera ajouté prochainement. 
-                    Pour l'intégrer, placez votre PDF dans <code className="bg-slate-300 px-2 py-1 rounded text-sm">/public/documents/dossier-e6.pdf</code>
+                    Pour l'intégrer, placez votre PDF dans <code className="bg-purple-100 px-3 py-1 rounded text-sm font-mono text-purple-700">/public/documents/dossier-e6.pdf</code>
                   </p>
                   
                   {/* Uncomment this when PDF is ready */}
@@ -188,10 +188,10 @@ export default function ProjetsE6() {
 
         {/* Info message */}
         <div className="mt-8 text-center">
-          <div className="inline-flex items-center gap-2 text-slate-400 bg-slate-800/40 px-6 py-3 rounded-full border border-slate-700/50">
-            <FileText className="w-4 h-4" />
-            <span className="text-sm">
-              Pour ajouter votre PDF : placez-le dans <span className="text-green-400 font-mono">/public/documents/dossier-e6.pdf</span>
+          <div className="inline-flex items-center gap-3 text-white bg-white/10 backdrop-blur-md px-8 py-4 rounded-full border border-white/20 shadow-lg">
+            <FileText className="w-5 h-5" />
+            <span className="text-sm font-medium">
+              Pour ajouter votre PDF : placez-le dans <span className="font-mono font-bold">/public/documents/dossier-e6.pdf</span>
             </span>
           </div>
         </div>
