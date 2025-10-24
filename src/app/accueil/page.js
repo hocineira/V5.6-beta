@@ -235,75 +235,83 @@ export default function AccueilPage() {
               </FadeIn>
 
               {/* Boutons d'action avec style technologique bleu/violet */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button 
-                  size="lg" 
-                  className="bg-gradient-to-r from-blue-600 via-purple-600 to-violet-600 hover:from-blue-700 hover:via-purple-700 hover:to-violet-700 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-purple-500/30 border border-blue-400/20"
-                  onClick={handleProjectsClick}
-                >
-                  <Server className="mr-2 w-5 h-5" />
-                  <span>Explorer mes projets</span>
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-                <Button 
-                  variant="outline" 
-                  size="lg"
-                  className="border-2 border-purple-400/60 text-purple-300 hover:bg-purple-500/20 hover:border-purple-400 hover:text-purple-200 px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/20"
-                  onClick={handleContactClick}
-                >
-                  <Mail className="mr-2 w-5 h-5" />
-                  <span>Me contacter</span>
-                </Button>
-              </div>
+              <FadeIn delay={1.1} direction="up">
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button 
+                    size="lg" 
+                    className="bg-gradient-to-r from-blue-600 via-purple-600 to-violet-600 hover:from-blue-700 hover:via-purple-700 hover:to-violet-700 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-purple-500/30 border border-blue-400/20"
+                    onClick={handleProjectsClick}
+                  >
+                    <Server className="mr-2 w-5 h-5" />
+                    <span>Explorer mes projets</span>
+                    <ArrowRight className="ml-2 w-5 h-5" />
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    size="lg"
+                    className="border-2 border-purple-400/60 text-purple-300 hover:bg-purple-500/20 hover:border-purple-400 hover:text-purple-200 px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/20"
+                    onClick={handleContactClick}
+                  >
+                    <Mail className="mr-2 w-5 h-5" />
+                    <span>Me contacter</span>
+                  </Button>
+                </div>
+              </FadeIn>
 
               {/* Contact info avec touches bleu/violet */}
-              <div className="flex flex-col sm:flex-row gap-6 pt-4">
-                <div className="flex items-center gap-3 text-slate-300 hover:text-blue-300 transition-colors cursor-pointer group" onClick={handleContactClick}>
-                  <Mail className="w-5 h-5 group-hover:text-blue-400" />
-                  <span>{StaticData.personalInfo.email}</span>
+              <FadeIn delay={1.3} direction="up">
+                <div className="flex flex-col sm:flex-row gap-6 pt-4">
+                  <div className="flex items-center gap-3 text-slate-300 hover:text-blue-300 transition-colors cursor-pointer group" onClick={handleContactClick}>
+                    <Mail className="w-5 h-5 group-hover:text-blue-400" />
+                    <span>{StaticData.personalInfo.email}</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-slate-300 hover:text-purple-300 transition-colors group">
+                    <MapPin className="w-5 h-5 group-hover:text-purple-400" />
+                    <span>{StaticData.personalInfo.location}</span>
+                  </div>
                 </div>
-                <div className="flex items-center gap-3 text-slate-300 hover:text-purple-300 transition-colors group">
-                  <MapPin className="w-5 h-5 group-hover:text-purple-400" />
-                  <span>{StaticData.personalInfo.location}</span>
-                </div>
-              </div>
+              </FadeIn>
 
               {/* Réseaux sociaux avec style bleu/violet */}
-              <div className="flex gap-4 pt-2">
-                <Button 
-                  variant="outline" 
-                  size="icon" 
-                  className="border-slate-600 text-slate-300 hover:bg-blue-500/20 hover:border-blue-400 hover:text-blue-300 w-12 h-12 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20"
-                  onClick={handleSocialClick(StaticData.personalInfo.social.linkedin)}
-                >
-                  <Linkedin className="w-5 h-5" />
-                </Button>
-                <Button 
-                  variant="outline" 
-                  size="icon" 
-                  className="border-slate-600 text-slate-300 hover:bg-purple-500/20 hover:border-purple-400 hover:text-purple-300 w-12 h-12 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20"
-                  onClick={handleSocialClick(StaticData.personalInfo.social.email)}
-                >
-                  <Mail className="w-5 h-5" />
-                </Button>
-              </div>
+              <FadeIn delay={1.5} direction="up">
+                <div className="flex gap-4 pt-2">
+                  <Button 
+                    variant="outline" 
+                    size="icon" 
+                    className="border-slate-600 text-slate-300 hover:bg-blue-500/20 hover:border-blue-400 hover:text-blue-300 w-12 h-12 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20"
+                    onClick={handleSocialClick(StaticData.personalInfo.social.linkedin)}
+                  >
+                    <Linkedin className="w-5 h-5" />
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    size="icon" 
+                    className="border-slate-600 text-slate-300 hover:bg-purple-500/20 hover:border-purple-400 hover:text-purple-300 w-12 h-12 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20"
+                    onClick={handleSocialClick(StaticData.personalInfo.social.email)}
+                  >
+                    <Mail className="w-5 h-5" />
+                  </Button>
+                </div>
+              </FadeIn>
             </div>
 
             {/* Section image avec infrastructure moderne */}
-            <div className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                <div className="aspect-[4/3] relative">
-                  <Image 
-                    src="/images/procedures/optimized_hero_image_new.webp" 
-                    alt="Infrastructure réseau moderne" 
-                    fill
-                    className="object-cover"
-                    priority
-                    quality={85}
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent"></div>
-                </div>
+            <FloatingElement duration={4} distance={15}>
+              <ScaleIn delay={0.5} duration={0.8}>
+                <div className="relative">
+                  <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                    <div className="aspect-[4/3] relative">
+                      <Image 
+                        src="/images/procedures/optimized_hero_image_new.webp" 
+                        alt="Infrastructure réseau moderne" 
+                        fill
+                        className="object-cover"
+                        priority
+                        quality={85}
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent"></div>
+                    </div>
                 
                 {/* Overlay avec infrastructure status */}
                 <div className="absolute bottom-6 left-6 right-6">
