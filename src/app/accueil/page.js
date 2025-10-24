@@ -390,30 +390,37 @@ export default function AccueilPage() {
         </div>
         
         <div className="relative container mx-auto px-4">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-800/50 backdrop-blur-sm border border-cyan-400/30 rounded-full mb-6">
-              <Globe className="w-4 h-4 text-cyan-400" />
-              <span className="text-sm text-cyan-300 font-medium">Portfolio</span>
+          <FadeIn delay={0.2} direction="up">
+            <div className="text-center mb-16">
+              <ScaleIn delay={0.3} scale={0.7}>
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-800/50 backdrop-blur-sm border border-cyan-400/30 rounded-full mb-6">
+                  <Globe className="w-4 h-4 text-cyan-400" />
+                  <span className="text-sm text-cyan-300 font-medium">Portfolio</span>
+                </div>
+              </ScaleIn>
+              <h2 className="text-4xl lg:text-5xl font-bold mb-4">
+                <span className="bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
+                  Explorez mon
+                </span>
+                <span className="text-cyan-300"> parcours</span>
+              </h2>
+              <ScaleIn delay={0.5} duration={0.8}>
+                <div className="w-20 h-1 bg-gradient-to-r from-cyan-400 to-blue-400 mx-auto rounded-full mb-8"></div>
+              </ScaleIn>
             </div>
-            <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
-                Explorez mon
-              </span>
-              <span className="text-cyan-300"> parcours</span>
-            </h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-cyan-400 to-blue-400 mx-auto rounded-full mb-8"></div>
-          </div>
+          </FadeIn>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <StaggerContainer staggerDelay={0.15} className="grid md:grid-cols-3 gap-8">
             {StaticData.features.map((feature, index) => (
-              <ModernFeatureCard 
-                key={index} 
-                feature={feature} 
-                index={index} 
-                onAction={handleFeatureAction}
-              />
+              <StaggerItem key={index}>
+                <ModernFeatureCard 
+                  feature={feature} 
+                  index={index} 
+                  onAction={handleFeatureAction}
+                />
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
