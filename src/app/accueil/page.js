@@ -6,6 +6,7 @@ import { Button } from '../../components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
+import { FadeIn, ScaleIn, StaggerContainer, StaggerItem, AnimatedCard, FloatingElement, RotateIn } from '../../components/animations'
 
 // Données statiques modernes pour un design technologique unifié
 const StaticData = {
