@@ -119,12 +119,6 @@ const TechSkill = memo(function TechSkill({ skill, index }) {
       <h3 className="text-white font-semibold text-lg mb-1 group-hover:text-blue-100">{skill.name}</h3>
       <p className="text-purple-300 text-sm font-medium mb-2 group-hover:text-purple-200">{skill.category}</p>
       <p className="text-slate-300 text-sm leading-relaxed group-hover:text-slate-200">{skill.description}</p>
-      
-      {/* Ligne de progression avec dégradé bleu/violet */}
-      <div className="mt-4 h-2 bg-slate-700/50 rounded-full overflow-hidden">
-        <div className={`h-full bg-gradient-to-r from-blue-400 via-purple-400 to-violet-400 rounded-full transition-all duration-1000 
-          ${skill.status === 'expert' ? 'w-full' : skill.status === 'avancé' ? 'w-4/5' : 'w-3/5'}`}></div>
-      </div>
     </div>
   )
 })
