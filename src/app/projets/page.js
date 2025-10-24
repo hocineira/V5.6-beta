@@ -561,26 +561,38 @@ export default function ProjetsPage() {
       {/* Stats Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8 text-center">
-            <div className="space-y-2">
-              <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">
-                {projects.length}
-              </div>
-              <div className="text-gray-600">Procédures techniques</div>
-            </div>
-            <div className="space-y-2">
-              <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">
-                {projects.filter(p => p.status === 'completed').length}
-              </div>
-              <div className="text-gray-600">Procédures terminées</div>
-            </div>
-            <div className="space-y-2">
-              <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">
-                {new Set(projects.flatMap(p => p.technologies)).size}
-              </div>
-              <div className="text-gray-600">Technologies maîtrisées</div>
-            </div>
-          </div>
+          <StaggerContainer staggerDelay={0.15} className="grid md:grid-cols-3 gap-8 text-center">
+            <StaggerItem>
+              <ScaleIn scale={0.7}>
+                <div className="space-y-2">
+                  <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">
+                    {projects.length}
+                  </div>
+                  <div className="text-gray-600">Procédures techniques</div>
+                </div>
+              </ScaleIn>
+            </StaggerItem>
+            <StaggerItem>
+              <ScaleIn scale={0.7}>
+                <div className="space-y-2">
+                  <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">
+                    {projects.filter(p => p.status === 'completed').length}
+                  </div>
+                  <div className="text-gray-600">Procédures terminées</div>
+                </div>
+              </ScaleIn>
+            </StaggerItem>
+            <StaggerItem>
+              <ScaleIn scale={0.7}>
+                <div className="space-y-2">
+                  <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">
+                    {new Set(projects.flatMap(p => p.technologies)).size}
+                  </div>
+                  <div className="text-gray-600">Technologies maîtrisées</div>
+                </div>
+              </ScaleIn>
+            </StaggerItem>
+          </StaggerContainer>
         </div>
       </section>
 
