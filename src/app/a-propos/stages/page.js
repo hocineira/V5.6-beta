@@ -524,7 +524,7 @@ export default function StagesPage() {
                     : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                 }`}
               >
-                Toutes les missions (9)
+                Toutes les missions (7)
               </button>
               <button
                 onClick={() => setFiltreActif('infrastructure')}
