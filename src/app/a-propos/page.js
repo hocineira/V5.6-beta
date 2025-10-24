@@ -96,37 +96,41 @@ export default function AboutPage() {
       {/* Personal Presentation */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
-          <ScaleIn delay={0.3} scale={0.9}>
-            <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-xl hover:shadow-2xl transition-shadow duration-300">
-              <CardHeader className="text-center">
-                <FadeIn delay={0.5} direction="up">
-                  <CardTitle className="text-2xl md:text-3xl flex items-center justify-center gap-3">
-                    <Heart className="w-8 h-8 text-red-500 animate-pulse" />
-                    Ma presentation
+          <ScaleIn delay={0.2} scale={0.95} duration={0.7}>
+            <Card className="bg-gradient-to-br from-white to-blue-50/30 backdrop-blur-sm border-2 border-blue-100 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-[1.02]">
+              <CardHeader className="text-center pb-6">
+                <FadeIn delay={0.3} direction="down" distance={20}>
+                  <CardTitle className="text-3xl md:text-4xl font-bold flex items-center justify-center gap-3">
+                    <Heart className="w-9 h-9 text-red-500 animate-pulse" />
+                    <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                      Ma présentation
+                    </span>
                   </CardTitle>
                 </FadeIn>
               </CardHeader>
-              <CardContent className="space-y-6">
-                <FadeIn delay={0.7} direction="up">
-                  <div className="text-lg text-gray-700 leading-relaxed">
-                <p className="mb-4">
-                  Passionné par <strong>l'univers de l'informatique et les technologies émergentes</strong>, j'ai trouvé ma voie 
-                  après une année en licence pluridisciplinaire qui m'a permis de confirmer mon attrait pour le domaine technique. 
-                  Cette réorientation vers le BTS SIO SISR a été une décision réfléchie pour me spécialiser dans ce qui me motive vraiment : 
-                  <strong>l'infrastructure, les systèmes et les réseaux informatiques</strong>.
-                </p>
-                <p className="mb-4">
-                  Curieux de nature et doté d'un esprit analytique, j'aime <strong>résoudre des problèmes complexes</strong> et 
-                  comprendre le fonctionnement des systèmes. Mon approche collaborative et ma capacité d'adaptation me permettent 
-                  de m'intégrer facilement dans une équipe et de contribuer efficacement aux projets qui me sont confiés.
-                </p>
-                <p>
-                  Actuellement en <strong>deuxième année de BTS SIO option SISR</strong> à l'IFC Marseille, 
-                  je développe mes compétences en administration système, sécurité réseau et virtualisation. 
-                  Je suis à la recherche d'une <strong>alternance</strong> pour mettre en application mes connaissances 
-                  et enrichir mon expérience professionnelle dans un environnement technique stimulant.
-                </p>
-                  </div>
+              <CardContent className="space-y-6 px-6 md:px-8">
+                <FadeIn delay={0.4} direction="up" distance={20}>
+                  <p className="text-lg text-gray-700 leading-relaxed">
+                    Passionné par <strong className="text-blue-600">l'univers de l'informatique et les technologies émergentes</strong>, j'ai trouvé ma voie 
+                    après une année en licence pluridisciplinaire qui m'a permis de confirmer mon attrait pour le domaine technique. 
+                    Cette réorientation vers le BTS SIO SISR a été une décision réfléchie pour me spécialiser dans ce qui me motive vraiment : 
+                    <strong className="text-purple-600"> l'infrastructure, les systèmes et les réseaux informatiques</strong>.
+                  </p>
+                </FadeIn>
+                <FadeIn delay={0.5} direction="up" distance={20}>
+                  <p className="text-lg text-gray-700 leading-relaxed">
+                    Curieux de nature et doté d'un esprit analytique, j'aime <strong className="text-green-600">résoudre des problèmes complexes</strong> et 
+                    comprendre le fonctionnement des systèmes. Mon approche collaborative et ma capacité d'adaptation me permettent 
+                    de m'intégrer facilement dans une équipe et de contribuer efficacement aux projets qui me sont confiés.
+                  </p>
+                </FadeIn>
+                <FadeIn delay={0.6} direction="up" distance={20}>
+                  <p className="text-lg text-gray-700 leading-relaxed">
+                    Actuellement en <strong className="text-indigo-600">deuxième année de BTS SIO option SISR</strong> à l'IFC Marseille, 
+                    je développe mes compétences en administration système, sécurité réseau et virtualisation. 
+                    Je suis à la recherche d'une <strong className="text-orange-600">alternance</strong> pour mettre en application mes connaissances 
+                    et enrichir mon expérience professionnelle dans un environnement technique stimulant.
+                  </p>
                 </FadeIn>
               </CardContent>
             </Card>
