@@ -396,11 +396,18 @@ export default function ProjetsPage() {
           </div>
           
           {/* Regular Projects Grid - Mobile Optimized */}
-          <div className="grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {filteredProjects.slice(1).map((project) => {
+          <StaggerContainer staggerDelay={0.08} className="grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {filteredProjects.slice(1).map((project, index) => {
               const ProjectIcon = project.icon
               return (
-                <Card key={project.id} className="group mobile-card touch-feedback hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-3 active:translate-y-0 overflow-hidden border-0 shadow-lg cursor-pointer" onClick={() => handleCardOpen(project)} role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleCardOpen(project); } }}>
+                <StaggerItem key={project.id}>
+                  <AnimatedCard 
+                    delay={index * 0.05} 
+                    hoverScale={1.05} 
+                    hoverRotate={1}
+                    className="h-full"
+                  >
+                    <Card className="group mobile-card touch-feedback hover:shadow-2xl transition-all duration-300 transform active:translate-y-0 overflow-hidden border-0 shadow-lg cursor-pointer h-full" onClick={() => handleCardOpen(project)} role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleCardOpen(project); } }}>
                   <div className="relative h-40 sm:h-48 bg-gradient-to-br from-purple-100 to-blue-100 flex items-center justify-center overflow-hidden">
                     {project.image ? (
                       <img 
