@@ -253,24 +253,32 @@ export default function ProjetsPage() {
                 Chaque procédure reflète ma passion pour l'infrastructure IT et ma volonté d'apprendre les dernières technologies.
               </p>
             </FadeIn>
-            <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-4 mb-6 sm:mb-8 px-4">
-              <Badge className="bg-purple-100 text-purple-800 px-3 py-2 sm:px-4 text-xs sm:text-sm">
-                <Server className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-                Systèmes & Réseaux
-              </Badge>
-              <Badge className="bg-blue-100 text-blue-800 px-3 py-2 sm:px-4 text-xs sm:text-sm">
-                <Shield className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-                Sécurité
-              </Badge>
-              <Badge className="bg-green-100 text-green-800 px-3 py-2 sm:px-4 text-xs sm:text-sm">
-                <Network className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-                Infrastructure
-              </Badge>
-              <Badge className="bg-orange-100 text-orange-800 px-3 py-2 sm:px-4 text-xs sm:text-sm">
-                <FileText className="w-4 h-4 mr-2" />
-                Procédures
-              </Badge>
-            </div>
+            <StaggerContainer staggerDelay={0.1} className="flex flex-wrap justify-center items-center gap-2 sm:gap-4 mb-6 sm:mb-8 px-4">
+              <StaggerItem>
+                <Badge className="bg-purple-100 text-purple-800 px-3 py-2 sm:px-4 text-xs sm:text-sm">
+                  <Server className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+                  Systèmes & Réseaux
+                </Badge>
+              </StaggerItem>
+              <StaggerItem>
+                <Badge className="bg-blue-100 text-blue-800 px-3 py-2 sm:px-4 text-xs sm:text-sm">
+                  <Shield className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+                  Sécurité
+                </Badge>
+              </StaggerItem>
+              <StaggerItem>
+                <Badge className="bg-green-100 text-green-800 px-3 py-2 sm:px-4 text-xs sm:text-sm">
+                  <Network className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+                  Infrastructure
+                </Badge>
+              </StaggerItem>
+              <StaggerItem>
+                <Badge className="bg-orange-100 text-orange-800 px-3 py-2 sm:px-4 text-xs sm:text-sm">
+                  <FileText className="w-4 h-4 mr-2" />
+                  Procédures
+                </Badge>
+              </StaggerItem>
+            </StaggerContainer>
           </div>
         </div>
       </section>
