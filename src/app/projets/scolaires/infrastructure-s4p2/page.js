@@ -233,7 +233,7 @@ export default function InfrastructureS4P2() {
             </div>
             <div className="flex items-start gap-3">
               <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
-              <p>Solution Routeur-Firewall PFSENSE (2.7.2) – basé sur une distribution BSD OS ;</p>
+              <p>Solution Routeur-Firewall PFSENSE (2.8.1) – basé sur une distribution BSD OS ;</p>
             </div>
             <div className="flex items-start gap-3">
               <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
