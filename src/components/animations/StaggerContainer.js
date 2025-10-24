@@ -9,13 +9,14 @@ import { motion } from 'framer-motion'
 export const StaggerContainer = ({ 
   children, 
   staggerDelay = 0.1,
+  once = false,
   className = ''
 }) => {
   return (
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-100px" }}
+      viewport={{ once: once, margin: "-100px" }}
       variants={{
         visible: {
           transition: {
