@@ -352,27 +352,33 @@ export default function AccueilPage() {
         </div>
         
         <div className="relative container mx-auto px-4">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-800/50 backdrop-blur-sm border border-cyan-400/30 rounded-full mb-6">
-              <Code className="w-4 h-4 text-cyan-400" />
-              <span className="text-sm text-cyan-300 font-medium">Stack Technologique</span>
+          <FadeIn delay={0.2} direction="up">
+            <div className="text-center mb-16">
+              <RotateIn delay={0.3} rotate={90}>
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-800/50 backdrop-blur-sm border border-cyan-400/30 rounded-full mb-6">
+                  <Code className="w-4 h-4 text-cyan-400" />
+                  <span className="text-sm text-cyan-300 font-medium">Stack Technologique</span>
+                </div>
+              </RotateIn>
+              <h2 className="text-4xl lg:text-5xl font-bold mb-4">
+                <span className="bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
+                  Compétences
+                </span>
+                <span className="text-cyan-300"> SISR</span>
+              </h2>
+              <p className="text-xl text-slate-400 max-w-3xl mx-auto">
+                Technologies et outils maîtrisés dans le domaine des systèmes et réseaux informatiques
+              </p>
             </div>
-            <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
-                Compétences
-              </span>
-              <span className="text-cyan-300"> SISR</span>
-            </h2>
-            <p className="text-xl text-slate-400 max-w-3xl mx-auto">
-              Technologies et outils maîtrisés dans le domaine des systèmes et réseaux informatiques
-            </p>
-          </div>
+          </FadeIn>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <StaggerContainer staggerDelay={0.1} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {StaticData.techStack.map((skill, index) => (
-              <TechSkill key={index} skill={skill} index={index} />
+              <StaggerItem key={index}>
+                <TechSkill skill={skill} index={index} />
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
