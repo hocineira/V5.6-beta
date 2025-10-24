@@ -96,15 +96,19 @@ export default function AboutPage() {
       {/* Personal Presentation */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
-          <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-xl">
-            <CardHeader className="text-center">
-              <CardTitle className="text-2xl md:text-3xl flex items-center justify-center gap-3">
-                <Heart className="w-8 h-8 text-red-500" />
-                Ma presentation
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <div className="text-lg text-gray-700 leading-relaxed">
+          <ScaleIn delay={0.3} scale={0.9}>
+            <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+              <CardHeader className="text-center">
+                <FadeIn delay={0.5} direction="up">
+                  <CardTitle className="text-2xl md:text-3xl flex items-center justify-center gap-3">
+                    <Heart className="w-8 h-8 text-red-500 animate-pulse" />
+                    Ma presentation
+                  </CardTitle>
+                </FadeIn>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <FadeIn delay={0.7} direction="up">
+                  <div className="text-lg text-gray-700 leading-relaxed">
                 <p className="mb-4">
                   Passionné par <strong>l'univers de l'informatique et les technologies émergentes</strong>, j'ai trouvé ma voie 
                   après une année en licence pluridisciplinaire qui m'a permis de confirmer mon attrait pour le domaine technique. 
