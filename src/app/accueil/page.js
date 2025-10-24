@@ -196,33 +196,43 @@ export default function AccueilPage() {
             {/* Contenu principal */}
             <div className="space-y-8">
               {/* Badge status avec couleurs technologiques bleu/violet - POINT PARFAITEMENT ALIGNÉ */}
-              <div className="inline-flex items-center gap-3 px-4 py-2 bg-slate-800/60 backdrop-blur-sm border border-blue-400/40 rounded-full shadow-lg shadow-blue-500/20">
-                <div className="relative flex items-center justify-center w-2 h-2">
-                  <div className="w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full animate-pulse"></div>
-                  <div className="absolute w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full animate-ping opacity-75"></div>
+              <ScaleIn delay={0.2} scale={0.7}>
+                <div className="inline-flex items-center gap-3 px-4 py-2 bg-slate-800/60 backdrop-blur-sm border border-blue-400/40 rounded-full shadow-lg shadow-blue-500/20">
+                  <div className="relative flex items-center justify-center w-2 h-2">
+                    <div className="w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full animate-pulse"></div>
+                    <div className="absolute w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full animate-ping opacity-75"></div>
+                  </div>
+                  <span className="text-sm text-blue-300 font-medium">Infrastructure Active</span>
                 </div>
-                <span className="text-sm text-blue-300 font-medium">Infrastructure Active</span>
-              </div>
+              </ScaleIn>
 
               {/* Titre principal avec dégradé bleu/violet */}
               <div className="space-y-4">
-                <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
-                  <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-violet-400 bg-clip-text text-transparent">
-                    {StaticData.personalInfo.name}
-                  </span>
-                </h1>
-                <h2 className="text-2xl lg:text-3xl font-semibold text-transparent bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text">
-                  {StaticData.personalInfo.title}
-                </h2>
-                <p className="text-xl text-blue-200 font-light">
-                  {StaticData.personalInfo.subtitle}
-                </p>
+                <FadeIn delay={0.3} direction="up">
+                  <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
+                    <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-violet-400 bg-clip-text text-transparent">
+                      {StaticData.personalInfo.name}
+                    </span>
+                  </h1>
+                </FadeIn>
+                <FadeIn delay={0.5} direction="up">
+                  <h2 className="text-2xl lg:text-3xl font-semibold text-transparent bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text">
+                    {StaticData.personalInfo.title}
+                  </h2>
+                </FadeIn>
+                <FadeIn delay={0.7} direction="up">
+                  <p className="text-xl text-blue-200 font-light">
+                    {StaticData.personalInfo.subtitle}
+                  </p>
+                </FadeIn>
               </div>
 
               {/* Description */}
-              <p className="text-lg text-slate-400 leading-relaxed max-w-2xl">
-                {StaticData.personalInfo.description}
-              </p>
+              <FadeIn delay={0.9} direction="up">
+                <p className="text-lg text-slate-400 leading-relaxed max-w-2xl">
+                  {StaticData.personalInfo.description}
+                </p>
+              </FadeIn>
 
               {/* Boutons d'action avec style technologique bleu/violet */}
               <div className="flex flex-col sm:flex-row gap-4">
