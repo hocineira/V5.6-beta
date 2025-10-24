@@ -330,6 +330,344 @@ export default function InfrastructureS4P2() {
           </div>
         </div>
 
+        {/* Solutions et Sources Officielles Section */}
+        <div className="mt-8 bg-slate-800/40 backdrop-blur-lg border border-slate-600/40 rounded-3xl p-8 shadow-2xl">
+          <div className="flex items-center gap-4 mb-8">
+            <div className="p-4 bg-cyan-500/10 backdrop-blur-sm rounded-2xl border border-cyan-500/20">
+              <Info className="w-8 h-8 text-cyan-400" />
+            </div>
+            <h2 className="text-3xl font-bold text-white">SOLUTIONS ET SOURCES OFFICIELLES</h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            
+            {/* NETGEAR Switch */}
+            <div className="bg-slate-700/30 backdrop-blur-sm border border-slate-600/40 rounded-2xl p-6 hover:border-cyan-500/50 transition-all duration-300">
+              <div className="flex items-start justify-between mb-4">
+                <h3 className="text-xl font-bold text-cyan-300">NETGEAR GS308Ev4</h3>
+                <a 
+                  href="https://www.netgear.com/fr/home/wired/switches/gs308e/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 bg-cyan-500/20 hover:bg-cyan-500/30 rounded-lg transition-colors"
+                >
+                  <ExternalLink className="w-5 h-5 text-cyan-400" />
+                </a>
+              </div>
+              <p className="text-slate-300 leading-relaxed text-sm">
+                Commutateur Ethernet non manageable avec 8 ports RJ45 Gigabit. Compact, silencieux (sans ventilateur), 
+                et économe en énergie, idéal pour petite infrastructure réseau d'entreprise avec support 802.1Q.
+              </p>
+            </div>
+
+            {/* pfSense */}
+            <div className="bg-slate-700/30 backdrop-blur-sm border border-slate-600/40 rounded-2xl p-6 hover:border-cyan-500/50 transition-all duration-300">
+              <div className="flex items-start justify-between mb-4">
+                <h3 className="text-xl font-bold text-cyan-300">pfSense</h3>
+                <a 
+                  href="https://www.pfsense.org/download/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 bg-cyan-500/20 hover:bg-cyan-500/30 rounded-lg transition-colors"
+                >
+                  <ExternalLink className="w-5 h-5 text-cyan-400" />
+                </a>
+              </div>
+              <p className="text-slate-300 leading-relaxed text-sm">
+                Solution pare-feu open source basée sur FreeBSD. Gère le routage, filtrage des paquets, VLANs, VPN. 
+                Rôle central dans la sécurisation et le contrôle du trafic réseau.
+              </p>
+            </div>
+
+            {/* SNORT */}
+            <div className="bg-slate-700/30 backdrop-blur-sm border border-slate-600/40 rounded-2xl p-6 hover:border-cyan-500/50 transition-all duration-300">
+              <div className="flex items-start justify-between mb-4">
+                <h3 className="text-xl font-bold text-cyan-300">SNORT (sur pfSense)</h3>
+                <a 
+                  href="https://www.snort.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 bg-cyan-500/20 hover:bg-cyan-500/30 rounded-lg transition-colors"
+                >
+                  <ExternalLink className="w-5 h-5 text-cyan-400" />
+                </a>
+              </div>
+              <p className="text-slate-300 leading-relaxed text-sm">
+                Système de détection d'intrusion (IDS) open source intégré à pfSense. Analyse le trafic en temps réel 
+                et identifie les activités suspectes (force brute, scans de ports, malwares).
+              </p>
+            </div>
+
+            {/* D-Link DAP-1360 */}
+            <div className="bg-slate-700/30 backdrop-blur-sm border border-slate-600/40 rounded-2xl p-6 hover:border-cyan-500/50 transition-all duration-300">
+              <div className="flex items-start justify-between mb-4">
+                <h3 className="text-xl font-bold text-cyan-300">D-Link DAP-1360</h3>
+                <a 
+                  href="https://eu.dlink.com/fr/fr/products/dap-1360-wireless-n-open-source-access-point"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 bg-cyan-500/20 hover:bg-cyan-500/30 rounded-lg transition-colors"
+                >
+                  <ExternalLink className="w-5 h-5 text-cyan-400" />
+                </a>
+              </div>
+              <p className="text-slate-300 leading-relaxed text-sm">
+                Point d'accès Wi-Fi polyvalent (mode AP, client, pont, répéteur). Accès sans fil sécurisé, 
+                standards 802.11n jusqu'à 300 Mbps. Facile à configurer.
+              </p>
+            </div>
+
+            {/* Proxmox VE */}
+            <div className="bg-slate-700/30 backdrop-blur-sm border border-slate-600/40 rounded-2xl p-6 hover:border-cyan-500/50 transition-all duration-300">
+              <div className="flex items-start justify-between mb-4">
+                <h3 className="text-xl font-bold text-cyan-300">Proxmox VE</h3>
+                <a 
+                  href="https://www.proxmox.com/en/proxmox-ve"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 bg-cyan-500/20 hover:bg-cyan-500/30 rounded-lg transition-colors"
+                >
+                  <ExternalLink className="w-5 h-5 text-cyan-400" />
+                </a>
+              </div>
+              <p className="text-slate-300 leading-relaxed text-sm">
+                Plateforme de virtualisation open source pour VMs (KVM) et conteneurs (LXC). Interface web intuitive 
+                pour gestion ressources, sauvegardes, clusters. Optimise l'infrastructure matérielle.
+              </p>
+            </div>
+
+            {/* Proxmox Backup Server */}
+            <div className="bg-slate-700/30 backdrop-blur-sm border border-slate-600/40 rounded-2xl p-6 hover:border-cyan-500/50 transition-all duration-300">
+              <div className="flex items-start justify-between mb-4">
+                <h3 className="text-xl font-bold text-cyan-300">Proxmox Backup Server</h3>
+                <a 
+                  href="https://www.proxmox.com/en/proxmox-backup-server"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 bg-cyan-500/20 hover:bg-cyan-500/30 rounded-lg transition-colors"
+                >
+                  <ExternalLink className="w-5 h-5 text-cyan-400" />
+                </a>
+              </div>
+              <p className="text-slate-300 leading-relaxed text-sm">
+                Solution de sauvegarde professionnelle pour Proxmox VE. Sauvegardes rapides, dédupliquées et compressées 
+                des VMs. Facilite la restauration et garantit la sécurité des données critiques.
+              </p>
+            </div>
+
+            {/* Windows */}
+            <div className="bg-slate-700/30 backdrop-blur-sm border border-slate-600/40 rounded-2xl p-6 hover:border-cyan-500/50 transition-all duration-300">
+              <div className="flex items-start justify-between mb-4">
+                <h3 className="text-xl font-bold text-cyan-300">Windows 11 & Server 2022</h3>
+                <div className="flex gap-2">
+                  <a 
+                    href="https://www.microsoft.com/fr-fr/software-download/windows11"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 bg-cyan-500/20 hover:bg-cyan-500/30 rounded-lg transition-colors"
+                  >
+                    <ExternalLink className="w-4 h-4 text-cyan-400" />
+                  </a>
+                  <a 
+                    href="https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2022"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 bg-cyan-500/20 hover:bg-cyan-500/30 rounded-lg transition-colors"
+                  >
+                    <ExternalLink className="w-4 h-4 text-cyan-400" />
+                  </a>
+                </div>
+              </div>
+              <p className="text-slate-300 leading-relaxed text-sm">
+                Windows 11 pour postes de travail avec interface moderne et sécurité renforcée. 
+                Windows Server 2022 pour serveurs avec rôles Active Directory, DNS, DHCP, gestion centralisée.
+              </p>
+            </div>
+
+            {/* Linux Ubuntu & Debian */}
+            <div className="bg-slate-700/30 backdrop-blur-sm border border-slate-600/40 rounded-2xl p-6 hover:border-cyan-500/50 transition-all duration-300">
+              <div className="flex items-start justify-between mb-4">
+                <h3 className="text-xl font-bold text-cyan-300">Linux (Ubuntu & Debian)</h3>
+                <div className="flex gap-2">
+                  <a 
+                    href="https://ubuntu.com/download"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 bg-cyan-500/20 hover:bg-cyan-500/30 rounded-lg transition-colors"
+                  >
+                    <ExternalLink className="w-4 h-4 text-cyan-400" />
+                  </a>
+                  <a 
+                    href="https://www.debian.org/distrib/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 bg-cyan-500/20 hover:bg-cyan-500/30 rounded-lg transition-colors"
+                  >
+                    <ExternalLink className="w-4 h-4 text-cyan-400" />
+                  </a>
+                </div>
+              </div>
+              <p className="text-slate-300 leading-relaxed text-sm">
+                Debian réputée pour sa stabilité, Ubuntu basée sur Debian orientée ergonomie. 
+                Utilisés pour serveurs web, fichiers, sauvegarde, GLPI, Nextcloud.
+              </p>
+            </div>
+
+            {/* Active Directory */}
+            <div className="bg-slate-700/30 backdrop-blur-sm border border-slate-600/40 rounded-2xl p-6 hover:border-cyan-500/50 transition-all duration-300">
+              <div className="flex items-start justify-between mb-4">
+                <h3 className="text-xl font-bold text-cyan-300">Active Directory</h3>
+                <a 
+                  href="https://learn.microsoft.com/fr-fr/windows-server/identity/active-directory-domain-services"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 bg-cyan-500/20 hover:bg-cyan-500/30 rounded-lg transition-colors"
+                >
+                  <ExternalLink className="w-5 h-5 text-cyan-400" />
+                </a>
+              </div>
+              <p className="text-slate-300 leading-relaxed text-sm">
+                Service de domaine Microsoft pour gestion centralisée utilisateurs, ordinateurs, ressources réseau. 
+                Politique de sécurité, droits d'accès. Pilier fondamental des réseaux d'entreprise.
+              </p>
+            </div>
+
+            {/* Exchange */}
+            <div className="bg-slate-700/30 backdrop-blur-sm border border-slate-600/40 rounded-2xl p-6 hover:border-cyan-500/50 transition-all duration-300">
+              <div className="flex items-start justify-between mb-4">
+                <h3 className="text-xl font-bold text-cyan-300">Microsoft Exchange</h3>
+                <a 
+                  href="https://www.microsoft.com/fr-fr/microsoft-365/exchange/email"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 bg-cyan-500/20 hover:bg-cyan-500/30 rounded-lg transition-colors"
+                >
+                  <ExternalLink className="w-5 h-5 text-cyan-400" />
+                </a>
+              </div>
+              <p className="text-slate-300 leading-relaxed text-sm">
+                Solution de messagerie professionnelle. Gestion emails, calendriers partagés, contacts, tâches. 
+                Couplée à Active Directory pour contrôle comptes et sécurité communications.
+              </p>
+            </div>
+
+            {/* GLPI */}
+            <div className="bg-slate-700/30 backdrop-blur-sm border border-slate-600/40 rounded-2xl p-6 hover:border-cyan-500/50 transition-all duration-300">
+              <div className="flex items-start justify-between mb-4">
+                <h3 className="text-xl font-bold text-cyan-300">GLPI</h3>
+                <a 
+                  href="https://glpi-project.org/fr/telecharger/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 bg-cyan-500/20 hover:bg-cyan-500/30 rounded-lg transition-colors"
+                >
+                  <ExternalLink className="w-5 h-5 text-cyan-400" />
+                </a>
+              </div>
+              <p className="text-slate-300 leading-relaxed text-sm">
+                Logiciel open source de gestion de parc informatique et helpdesk. Inventaire matériels, 
+                gestion tickets incidents, utilisateurs, interventions techniques. Suivi rigoureux du SI.
+              </p>
+            </div>
+
+            {/* Zabbix */}
+            <div className="bg-slate-700/30 backdrop-blur-sm border border-slate-600/40 rounded-2xl p-6 hover:border-cyan-500/50 transition-all duration-300">
+              <div className="flex items-start justify-between mb-4">
+                <h3 className="text-xl font-bold text-cyan-300">Zabbix</h3>
+                <a 
+                  href="https://www.zabbix.com/fr/download"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 bg-cyan-500/20 hover:bg-cyan-500/30 rounded-lg transition-colors"
+                >
+                  <ExternalLink className="w-5 h-5 text-cyan-400" />
+                </a>
+              </div>
+              <p className="text-slate-300 leading-relaxed text-sm">
+                Solution open source de supervision réseau. Surveille performances équipements (serveurs, routeurs, services), 
+                génère alertes et rapports graphiques. Anticipe incidents et garantit haute disponibilité.
+              </p>
+            </div>
+
+            {/* Artica Proxy */}
+            <div className="bg-slate-700/30 backdrop-blur-sm border border-slate-600/40 rounded-2xl p-6 hover:border-cyan-500/50 transition-all duration-300">
+              <div className="flex items-start justify-between mb-4">
+                <h3 className="text-xl font-bold text-cyan-300">Artica Proxy</h3>
+                <a 
+                  href="https://artica-proxy.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 bg-cyan-500/20 hover:bg-cyan-500/30 rounded-lg transition-colors"
+                >
+                  <ExternalLink className="w-5 h-5 text-cyan-400" />
+                </a>
+              </div>
+              <p className="text-slate-300 leading-relaxed text-sm">
+                Solution française open source de proxy web basée sur Squid. Filtre contenus, gère accès Internet, 
+                sécurise connexions, génère statistiques. Contrôle navigation web en établissements.
+              </p>
+            </div>
+
+            {/* Nextcloud */}
+            <div className="bg-slate-700/30 backdrop-blur-sm border border-slate-600/40 rounded-2xl p-6 hover:border-cyan-500/50 transition-all duration-300">
+              <div className="flex items-start justify-between mb-4">
+                <h3 className="text-xl font-bold text-cyan-300">Nextcloud</h3>
+                <a 
+                  href="https://nextcloud.com/install/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 bg-cyan-500/20 hover:bg-cyan-500/30 rounded-lg transition-colors"
+                >
+                  <ExternalLink className="w-5 h-5 text-cyan-400" />
+                </a>
+              </div>
+              <p className="text-slate-300 leading-relaxed text-sm">
+                Alternative libre à Google Drive/Dropbox. Stockage, synchronisation, partage fichiers avec contrôle total 
+                des données. Inclut messagerie, calendriers, visioconférence.
+              </p>
+            </div>
+
+            {/* OpenVPN */}
+            <div className="bg-slate-700/30 backdrop-blur-sm border border-slate-600/40 rounded-2xl p-6 hover:border-cyan-500/50 transition-all duration-300">
+              <div className="flex items-start justify-between mb-4">
+                <h3 className="text-xl font-bold text-cyan-300">OpenVPN</h3>
+                <a 
+                  href="https://openvpn.net/community-downloads/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 bg-cyan-500/20 hover:bg-cyan-500/30 rounded-lg transition-colors"
+                >
+                  <ExternalLink className="w-5 h-5 text-cyan-400" />
+                </a>
+              </div>
+              <p className="text-slate-300 leading-relaxed text-sm">
+                Solution VPN open source pour connexions sécurisées entre sites distants ou accès distant réseau interne. 
+                Chiffre communications pour confidentialité. Compatible multi-OS, simple à déployer.
+              </p>
+            </div>
+
+            {/* Cobian Backup */}
+            <div className="bg-slate-700/30 backdrop-blur-sm border border-slate-600/40 rounded-2xl p-6 hover:border-cyan-500/50 transition-all duration-300">
+              <div className="flex items-start justify-between mb-4">
+                <h3 className="text-xl font-bold text-cyan-300">Cobian Backup Gravity 11</h3>
+                <a 
+                  href="https://www.cobiansoft.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 bg-cyan-500/20 hover:bg-cyan-500/30 rounded-lg transition-colors"
+                >
+                  <ExternalLink className="w-5 h-5 text-cyan-400" />
+                </a>
+              </div>
+              <p className="text-slate-300 leading-relaxed text-sm">
+                Logiciel gratuit de sauvegarde pour Windows. Automatise sauvegarde fichiers vers destinations locales, 
+                distantes (FTP), disques externes. Support chiffrement, compression, planification. Idéal postes et petits serveurs.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
         {/* Additional Information */}
         <div className="mt-8 bg-slate-800/40 backdrop-blur-lg border border-slate-600/40 rounded-2xl p-6 shadow-xl">
           <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
