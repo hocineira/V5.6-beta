@@ -9,6 +9,7 @@ import { motion } from 'framer-motion'
 export default function AnimatedCard({ 
   children, 
   delay = 0,
+  once = false,
   className = '',
   hoverScale = 1.05,
   hoverRotate = 2,
@@ -18,7 +19,7 @@ export default function AnimatedCard({
     <motion.div
       initial={{ opacity: 0, y: 50, scale: 0.9 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: once, margin: "-50px" }}
       transition={{ 
         duration: 0.6,
         delay,
