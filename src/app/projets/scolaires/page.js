@@ -184,16 +184,6 @@ export default function ProjetsE6() {
             </div>
           </div>
         </div>
-
-        {/* Info message */}
-        <div className="mt-8 text-center">
-          <div className="inline-flex items-center gap-3 text-slate-300 bg-slate-800/40 backdrop-blur-md px-8 py-4 rounded-full border border-slate-600/40 shadow-lg">
-            <FileText className="w-5 h-5 text-cyan-400" />
-            <span className="text-sm font-medium">
-              Pour ajouter votre PDF : placez-le dans <span className="font-mono font-bold text-cyan-300">/public/documents/dossier-e6.pdf</span>
-            </span>
-          </div>
-        </div>
       </div>
     </div>
   )
