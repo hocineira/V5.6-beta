@@ -106,7 +106,7 @@ export default function InfrastructureS4P2() {
 
                 {/* Download button */}
                 <a
-                  href="https://customer-assets.emergentagent.com/job_preview-display-8/artifacts/h2cxdajd_S4P2.jpeg"
+                  href="/images/infrastructure-s4p2.jpeg"
                   download="Infrastructure-S4P2.jpeg"
                   target="_blank"
                   rel="noopener noreferrer"
