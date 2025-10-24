@@ -43,33 +43,53 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="relative py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mb-6 shadow-lg">
-            <User className="w-10 h-10 text-white" />
-          </div>
+          <FloatingElement duration={3} distance={10}>
+            <RotateIn delay={0.2} rotate={360} duration={1}>
+              <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mb-6 shadow-lg">
+                <User className="w-10 h-10 text-white" />
+              </div>
+            </RotateIn>
+          </FloatingElement>
           
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4">
-            A propos de moi
-          </h1>
+          <FadeIn delay={0.4} direction="up">
+            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4">
+              A propos de moi
+            </h1>
+          </FadeIn>
           
-          <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            Decouvrez mon parcours, mes competences et ma passion pour l'informatique
-          </p>
+          <FadeIn delay={0.6} direction="up">
+            <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
+              Decouvrez mon parcours, mes competences et ma passion pour l'informatique
+            </p>
+          </FadeIn>
 
           {/* Contact Info Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-2xl mx-auto">
-            <div className="flex items-center justify-center space-x-2 bg-white/80 backdrop-blur-sm rounded-lg p-3 shadow-sm">
-              <MapPin className="w-4 h-4 text-blue-600" />
-              <span className="text-sm text-gray-700">Marseille, France</span>
-            </div>
-            <div className="flex items-center justify-center space-x-2 bg-white/80 backdrop-blur-sm rounded-lg p-3 shadow-sm">
-              <Calendar className="w-4 h-4 text-green-600" />
-              <span className="text-sm text-gray-700">20 ans</span>
-            </div>
-            <div className="flex items-center justify-center space-x-2 bg-white/80 backdrop-blur-sm rounded-lg p-3 shadow-sm">
-              <GraduationCap className="w-4 h-4 text-purple-600" />
-              <span className="text-sm text-gray-700">BTS SIO SISR</span>
-            </div>
-          </div>
+          <StaggerContainer staggerDelay={0.1} className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-2xl mx-auto">
+            <StaggerItem>
+              <ScaleIn scale={0.8}>
+                <div className="flex items-center justify-center space-x-2 bg-white/80 backdrop-blur-sm rounded-lg p-3 shadow-sm hover:shadow-md transition-shadow">
+                  <MapPin className="w-4 h-4 text-blue-600" />
+                  <span className="text-sm text-gray-700">Marseille, France</span>
+                </div>
+              </ScaleIn>
+            </StaggerItem>
+            <StaggerItem>
+              <ScaleIn scale={0.8}>
+                <div className="flex items-center justify-center space-x-2 bg-white/80 backdrop-blur-sm rounded-lg p-3 shadow-sm hover:shadow-md transition-shadow">
+                  <Calendar className="w-4 h-4 text-green-600" />
+                  <span className="text-sm text-gray-700">20 ans</span>
+                </div>
+              </ScaleIn>
+            </StaggerItem>
+            <StaggerItem>
+              <ScaleIn scale={0.8}>
+                <div className="flex items-center justify-center space-x-2 bg-white/80 backdrop-blur-sm rounded-lg p-3 shadow-sm hover:shadow-md transition-shadow">
+                  <GraduationCap className="w-4 h-4 text-purple-600" />
+                  <span className="text-sm text-gray-700">BTS SIO SISR</span>
+                </div>
+              </ScaleIn>
+            </StaggerItem>
+          </StaggerContainer>
         </div>
       </section>
 
