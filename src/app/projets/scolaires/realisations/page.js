@@ -5,9 +5,10 @@ import { Badge } from '../../../../components/ui/badge'
 import { Button } from '../../../../components/ui/button'
 import { 
   ArrowLeft, BookOpen, FileText, Download, 
-  ZoomIn, ZoomOut, Eye, CheckCircle2
+  ZoomIn, ZoomOut, Eye, CheckCircle2, Network
 } from 'lucide-react'
 import Link from 'next/link'
+import ImageModal from '../../../../components/ImageModal'
 
 export default function ProjetsE6() {
   const [pdfUrl, setPdfUrl] = useState('/documents/dossier-e6.pdf') // Chemin vers le PDF à ajouter plus tard
