@@ -11,6 +11,7 @@ export default function RotateIn({
   delay = 0,
   duration = 0.7,
   rotate = 180,
+  once = false,
   className = ''
 }) {
   return (
@@ -25,7 +26,7 @@ export default function RotateIn({
         rotate: 0,
         scale: 1
       }}
-      viewport={{ once: true, margin: "-100px" }}
+      viewport={{ once: once, margin: "-100px" }}
       transition={{ 
         duration,
         delay,
