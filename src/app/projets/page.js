@@ -232,19 +232,27 @@ export default function ProjetsPage() {
 
         <div className="relative container mx-auto px-3 sm:px-4">
           <div className="text-center">
-            <div className="flex justify-center mb-6 sm:mb-8">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full flex items-center justify-center">
-                <FolderOpen className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
-              </div>
-            </div>
+            <FloatingElement duration={3} distance={15}>
+              <ScaleIn delay={0.2} scale={0.5}>
+                <div className="flex justify-center mb-6 sm:mb-8">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full flex items-center justify-center">
+                    <FolderOpen className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
+                  </div>
+                </div>
+              </ScaleIn>
+            </FloatingElement>
             
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 text-gray-900 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600 leading-tight">
-              Mes Procédures Techniques
-            </h1>
-            <p className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-8 max-w-3xl mx-auto px-4">
-              Découvrez mes procédures techniques détaillées dans les domaines des systèmes et réseaux informatiques. 
-              Chaque procédure reflète ma passion pour l'infrastructure IT et ma volonté d'apprendre les dernières technologies.
-            </p>
+            <FadeIn delay={0.4} direction="up">
+              <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 text-gray-900 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600 leading-tight">
+                Mes Procédures Techniques
+              </h1>
+            </FadeIn>
+            <FadeIn delay={0.6} direction="up">
+              <p className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-8 max-w-3xl mx-auto px-4">
+                Découvrez mes procédures techniques détaillées dans les domaines des systèmes et réseaux informatiques. 
+                Chaque procédure reflète ma passion pour l'infrastructure IT et ma volonté d'apprendre les dernières technologies.
+              </p>
+            </FadeIn>
             <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-4 mb-6 sm:mb-8 px-4">
               <Badge className="bg-purple-100 text-purple-800 px-3 py-2 sm:px-4 text-xs sm:text-sm">
                 <Server className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
