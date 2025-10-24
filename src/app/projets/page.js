@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../..
 import { Badge } from '../../components/ui/badge'
 import ImageModal from '../../components/ImageModal'
 import PDFModalFinal from '../../components/PDFModalFinal'
+import { FadeIn, ScaleIn, StaggerContainer, StaggerItem, AnimatedCard, FloatingElement, RotateIn } from '../../components/animations'
 
 export default function ProjetsPage() {
   const [selectedImage, setSelectedImage] = useState(null)
