@@ -301,21 +301,18 @@ export default function StagesPage() {
             </p>
           </div>
 
-          {/* Grille principale avec design cards modernes */}
-          <div className="grid grid-cols-1 xl:grid-cols-3 gap-8 mb-12">
-            
-            {/* Galerie Photos - Plus large */}
-            <div className="xl:col-span-2">
-              <div className="bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 overflow-hidden">
-                <div className="p-6 border-b border-gray-100">
-                  <h3 className="text-2xl font-bold text-gray-900 flex items-center">
-                    <Camera className="w-6 h-6 mr-3 text-blue-600" />
-                    Galerie de l'Atelier
-                  </h3>
-                  <p className="text-gray-600 mt-2">Espaces de travail optimisés pour la maintenance IT</p>
-                </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
+          {/* Galerie Photos - Full width */}
+          <div className="mb-12">
+            <div className="bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 overflow-hidden">
+              <div className="p-6 border-b border-gray-100">
+                <h3 className="text-2xl font-bold text-gray-900 flex items-center">
+                  <Camera className="w-6 h-6 mr-3 text-blue-600" />
+                  Galerie de l'Atelier
+                </h3>
+                <p className="text-gray-600 mt-2">Espaces de travail optimisés pour la maintenance IT</p>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
                   {/* Atelier Principal */}
                   <div 
                     className="group relative overflow-hidden cursor-pointer min-h-[300px] hover:z-10 transition-all duration-500"
