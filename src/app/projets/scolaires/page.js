@@ -170,8 +170,7 @@ export default function ProjetsE6() {
                     Dossier E6 à venir
                   </h3>
                   <p className="text-slate-600 max-w-md mx-auto leading-relaxed text-lg">
-                    Le fichier PDF du dossier sera ajouté prochainement. 
-                    Pour l'intégrer, placez votre PDF dans <code className="bg-cyan-100 px-3 py-1 rounded text-sm font-mono text-cyan-700">/public/documents/dossier-e6.pdf</code>
+                    Le fichier PDF du dossier sera ajouté prochainement.
                   </p>
                   
                   {/* Uncomment this when PDF is ready */}
