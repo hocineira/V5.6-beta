@@ -1,6 +1,7 @@
 import "./globals.css";
 import Navigation from "../components/Navigation";
 import BottomNavigation from "../components/BottomNavigation";
+import PageWrapper from "../components/PageWrapper";
 
 export const metadata = {
   title: "Portfolio - Hocine IRATNI",
@@ -32,7 +33,9 @@ export default function RootLayout({ children }) {
       <body className="antialiased bg-white text-gray-900">
         <Navigation />
         <main className="pt-0 md:pt-16 pb-20 md:pb-0 bg-white min-h-screen relative overflow-x-hidden">
-          {children}
+          <PageWrapper>
+            {children}
+          </PageWrapper>
         </main>
         <BottomNavigation />
       </body>
