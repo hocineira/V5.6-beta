@@ -9,12 +9,14 @@ import { motion } from 'framer-motion'
  * @param {number} props.delay - Délai avant l'animation
  * @param {number} props.duration - Durée de l'animation
  * @param {number} props.scale - Échelle initiale (0.8 = 80%)
+ * @param {boolean} props.once - Si true, l'animation ne se joue qu'une fois (défaut: false)
  */
 export default function ScaleIn({ 
   children, 
   delay = 0, 
   duration = 0.5,
   scale = 0.8,
+  once = false,
   className = ''
 }) {
   return (
@@ -27,7 +29,7 @@ export default function ScaleIn({
         opacity: 1,
         scale: 1
       }}
-      viewport={{ once: true, margin: "-100px" }}
+      viewport={{ once: once, margin: "-100px" }}
       transition={{ 
         duration,
         delay,
