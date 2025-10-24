@@ -550,9 +550,11 @@ export default function ProjetsPage() {
                     </div>
                   </CardContent>
                 </Card>
+                  </AnimatedCard>
+                </StaggerItem>
               )
             })}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
