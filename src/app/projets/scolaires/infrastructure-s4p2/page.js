@@ -131,7 +131,7 @@ export default function InfrastructureS4P2() {
             >
               <div className="aspect-[16/10] relative">
                 <img
-                  src="https://customer-assets.emergentagent.com/job_preview-display-8/artifacts/h2cxdajd_S4P2.jpeg"
+                  src="/images/infrastructure-s4p2.jpeg"
                   alt="Schéma Infrastructure S4P2"
                   className="w-full h-full object-contain"
                 />
