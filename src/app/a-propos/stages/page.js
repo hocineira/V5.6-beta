@@ -763,7 +763,7 @@ export default function StagesPage() {
           {/* Statistics */}
           <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="text-center p-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg">
-              <div className="text-2xl font-bold text-blue-600">9</div>
+              <div className="text-2xl font-bold text-blue-600">7</div>
               <div className="text-sm text-gray-600">Photos de missions</div>
             </div>
             <div className="text-center p-4 bg-gradient-to-br from-green-50 to-green-100 rounded-lg">
