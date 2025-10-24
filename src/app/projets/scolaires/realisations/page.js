@@ -33,11 +33,11 @@ export default function ProjetsE6() {
           {/* Navigation breadcrumb */}
           <div className="mb-8">
             <Link 
-              href="/projets" 
+              href="/projets/scolaires" 
               className="inline-flex items-center text-cyan-300 hover:text-cyan-200 transition-colors duration-200 bg-slate-800/60 backdrop-blur-md px-4 py-2 rounded-full border border-slate-600/50"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
-              Retour aux Projets
+              Retour à Projets Scolaires E6
             </Link>
           </div>
 
