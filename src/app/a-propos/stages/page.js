@@ -385,36 +385,6 @@ export default function StagesPage() {
                 </div>
               </div>
             </div>
-
-            {/* Panneau d'informations - Plus compact */}
-            <div className="space-y-6">
-
-              {/* Équipements */}
-              <div className="bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
-                  <Cpu className="w-5 h-5 mr-3 text-orange-600" />
-                  Équipements Disponibles
-                </h3>
-                
-                <div className="space-y-3">
-                  {[
-                    { icon: Monitor, name: "Stations de diagnostic", colorClass: "bg-gradient-to-br from-blue-500 to-blue-600" },
-                    { icon: Wrench, name: "Outils spécialisés IT", colorClass: "bg-gradient-to-br from-green-500 to-green-600" },
-                    { icon: Cpu, name: "Bancs de test", colorClass: "bg-gradient-to-br from-purple-500 to-purple-600" },
-                    { icon: Building, name: "Zones sécurisées", colorClass: "bg-gradient-to-br from-orange-500 to-orange-600" }
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-center p-3 rounded-xl bg-gray-50/80 hover:bg-gray-100/80 transition-colors duration-200 group">
-                      <div className={`w-10 h-10 ${item.colorClass} rounded-lg flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-200`}>
-                        <item.icon className="w-5 h-5 text-white" />
-                      </div>
-                      <span className="text-sm font-medium text-gray-700 group-hover:text-gray-900 transition-colors duration-200">
-                        {item.name}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Section Activités - Design horizontal */}
