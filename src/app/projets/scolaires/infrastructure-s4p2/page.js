@@ -398,12 +398,12 @@ export default function InfrastructureS4P2() {
               </p>
             </div>
 
-            {/* D-Link DAP-1360 */}
+            {/* Ubiquiti UniFi u7 lite */}
             <div className="bg-slate-700/30 backdrop-blur-sm border border-slate-600/40 rounded-2xl p-6 hover:border-cyan-500/50 transition-all duration-300">
               <div className="flex items-start justify-between mb-4">
-                <h3 className="text-xl font-bold text-cyan-300">D-Link DAP-1360</h3>
+                <h3 className="text-xl font-bold text-cyan-300">Ubiquiti UniFi u7 lite</h3>
                 <a 
-                  href="https://eu.dlink.com/fr/fr/products/dap-1360-wireless-n-open-source-access-point"
+                  href="https://eu.store.ui.com/eu/fr/products/u7-lite"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 bg-cyan-500/20 hover:bg-cyan-500/30 rounded-lg transition-colors"
@@ -412,8 +412,8 @@ export default function InfrastructureS4P2() {
                 </a>
               </div>
               <p className="text-slate-300 leading-relaxed text-sm">
-                Point d'accès Wi-Fi polyvalent (mode AP, client, pont, répéteur). Accès sans fil sécurisé, 
-                standards 802.11n jusqu'à 300 Mbps. Facile à configurer.
+                Point d'accès Wi-Fi 7 nouvelle génération. Performances ultra-rapides, gestion centralisée via UniFi Controller, 
+                couverture optimisée. Idéal pour infrastructures réseau modernes nécessitant haute densité et hautes performances.
               </p>
             </div>
 
