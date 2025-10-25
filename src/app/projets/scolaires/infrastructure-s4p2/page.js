@@ -221,65 +221,93 @@ export default function InfrastructureS4P2() {
 
       {/* Ressources Matérielles Section */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
-        <div className="bg-slate-800/40 backdrop-blur-lg border border-slate-600/40 rounded-3xl p-8 shadow-2xl">
-          <div className="flex items-center gap-4 mb-6">
-            <div className="p-4 bg-cyan-500/10 backdrop-blur-sm rounded-2xl border border-cyan-500/20">
-              <Server className="w-8 h-8 text-cyan-400" />
+        <SlideIn delay={0.2} direction="left">
+          <div className="bg-slate-800/40 backdrop-blur-lg border border-slate-600/40 rounded-3xl p-8 shadow-2xl">
+            <div className="flex items-center gap-4 mb-6">
+              <FloatingElement duration={2.3}>
+                <div className="p-4 bg-cyan-500/10 backdrop-blur-sm rounded-2xl border border-cyan-500/20">
+                  <Server className="w-8 h-8 text-cyan-400" />
+                </div>
+              </FloatingElement>
+              <h2 className="text-3xl font-bold text-white">RESSOURCES MATÉRIELLES</h2>
             </div>
-            <h2 className="text-3xl font-bold text-white">RESSOURCES MATÉRIELLES</h2>
+            
+            <StaggerContainer staggerDelay={0.05} className="space-y-4 text-slate-300 leading-relaxed">
+              <StaggerItem>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+                  <p>Un PC avec clavier et souris USB, utilisé comme base pour construire et configurer l'infrastructure, et pour l'administration de celle-ci ;</p>
+                </div>
+              </StaggerItem>
+              <StaggerItem>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+                  <p>Un PC portable utilisé comme PC Client pour simuler des utilisateurs du SI (Système d'Information) de l'organisation ;</p>
+                </div>
+              </StaggerItem>
+              <StaggerItem>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+                  <p>Un PC avec un disque dur (4To) attribué à un serveur PROXMOX VE (environnement de virtualisation utilisé pour héberger et administrer des serveurs virtualisés) ;</p>
+                </div>
+              </StaggerItem>
+              <StaggerItem>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+                  <p>Un espace disque de stockage dédié aux serveurs virtuels PROXMOX sur un serveur de sauvegarde PROXMOX BACKUP ;</p>
+                </div>
+              </StaggerItem>
+              <StaggerItem>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+                  <p>Un PC avec un disque dur attribué à un serveur PFSENSE (routeur/Firewall) possédant 3 cartes réseaux et donc 4 ports Ethernet ;</p>
+                </div>
+              </StaggerItem>
+              <StaggerItem>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+                  <p>Un PC avec un disque dur attribué à un serveur HYPERV pour la virtualisation qui sera utilisé pour serveurs accessible de l'extérieur du réseau et mise à disposition de réseaux externes (comme un serveur WEB par exemple) ;</p>
+                </div>
+              </StaggerItem>
+              <StaggerItem>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+                  <p>Trois écrans VGA/HDMI ;</p>
+                </div>
+              </StaggerItem>
+              <StaggerItem>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+                  <p>Une prise Ethernet murale, reliée au réseau WAN de l'établissement IFC Marseille, jouant le rôle d'arrivée internet de l'infrastructure ;</p>
+                </div>
+              </StaggerItem>
+              <StaggerItem>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+                  <p>Des câbles Ethernet RJ45 en nombre suffisant ;</p>
+                </div>
+              </StaggerItem>
+              <StaggerItem>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+                  <p>Un commutateur réseau NETGEAR GS308Ev4 (8 ports, prenant en charge l'étiquetage des trames 802.1Q) ;</p>
+                </div>
+              </StaggerItem>
+              <StaggerItem>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+                  <p>Une multiprise ;</p>
+                </div>
+              </StaggerItem>
+              <StaggerItem>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
+                  <p>Disque SSD NVMe externe avec 256 GB de stockage.</p>
+                </div>
+              </StaggerItem>
+            </StaggerContainer>
           </div>
-          
-          <div className="space-y-4 text-slate-300 leading-relaxed">
-            <div className="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
-              <p>Un PC avec clavier et souris USB, utilisé comme base pour construire et configurer l'infrastructure, et pour l'administration de celle-ci ;</p>
-            </div>
-            <div className="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
-              <p>Un PC portable utilisé comme PC Client pour simuler des utilisateurs du SI (Système d'Information) de l'organisation ;</p>
-            </div>
-            <div className="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
-              <p>Un PC avec un disque dur (4To) attribué à un serveur PROXMOX VE (environnement de virtualisation utilisé pour héberger et administrer des serveurs virtualisés) ;</p>
-            </div>
-            <div className="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
-              <p>Un espace disque de stockage dédié aux serveurs virtuels PROXMOX sur un serveur de sauvegarde PROXMOX BACKUP ;</p>
-            </div>
-            <div className="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
-              <p>Un PC avec un disque dur attribué à un serveur PFSENSE (routeur/Firewall) possédant 3 cartes réseaux et donc 4 ports Ethernet ;</p>
-            </div>
-            <div className="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
-              <p>Un PC avec un disque dur attribué à un serveur HYPERV pour la virtualisation qui sera utilisé pour serveurs accessible de l'extérieur du réseau et mise à disposition de réseaux externes (comme un serveur WEB par exemple) ;</p>
-            </div>
-            <div className="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
-              <p>Trois écrans VGA/HDMI ;</p>
-            </div>
-            <div className="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
-              <p>Une prise Ethernet murale, reliée au réseau WAN de l'établissement IFC Marseille, jouant le rôle d'arrivée internet de l'infrastructure ;</p>
-            </div>
-            <div className="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
-              <p>Des câbles Ethernet RJ45 en nombre suffisant ;</p>
-            </div>
-            <div className="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
-              <p>Un commutateur réseau NETGEAR GS308Ev4 (8 ports, prenant en charge l'étiquetage des trames 802.1Q) ;</p>
-            </div>
-            <div className="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
-              <p>Une multiprise ;</p>
-            </div>
-            <div className="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-1" />
-              <p>Disque SSD NVMe externe avec 256 GB de stockage.</p>
-            </div>
-          </div>
-        </div>
+        </SlideIn>
       </div>
 
       {/* Ressources Logicielles Section */}
