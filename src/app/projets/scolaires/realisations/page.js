@@ -120,89 +120,97 @@ export default function ProjetsE6() {
 
       {/* Section PDF Viewer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-        <div className="bg-slate-800/40 backdrop-blur-xl border border-slate-600/40 rounded-3xl shadow-2xl overflow-hidden">
-          {/* Controls */}
-          <div className="bg-slate-800/60 backdrop-blur-lg border-b border-slate-600/40 p-6">
-            <div className="flex flex-wrap items-center justify-between gap-4">
-              <div className="flex items-center gap-3">
-                <Eye className="w-6 h-6 text-cyan-400" />
-                <span className="text-white font-bold text-lg">Visualisation du dossier</span>
-                <Badge className="bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 backdrop-blur-sm px-3 py-1">
-                  PDF
-                </Badge>
-              </div>
-
-              <div className="flex items-center gap-3">
-                {/* Zoom controls */}
-                <div className="flex items-center gap-2 bg-slate-700/50 backdrop-blur-md rounded-xl p-2 border border-slate-600/40">
-                  <Button
-                    size="sm"
-                    variant="ghost"
-                    onClick={handleZoomOut}
-                    className="text-cyan-300 hover:text-cyan-200 hover:bg-slate-600/50 border-0"
-                  >
-                    <ZoomOut className="w-5 h-5" />
-                  </Button>
-                  <span className="text-sm text-white font-semibold px-3 min-w-[60px] text-center">
-                    {zoom}%
-                  </span>
-                  <Button
-                    size="sm"
-                    variant="ghost"
-                    onClick={handleZoomIn}
-                    className="text-cyan-300 hover:text-cyan-200 hover:bg-slate-600/50 border-0"
-                  >
-                    <ZoomIn className="w-5 h-5" />
-                  </Button>
+        <FadeIn delay={0.3} direction="up">
+          <div className="bg-slate-800/40 backdrop-blur-xl border border-slate-600/40 rounded-3xl shadow-2xl overflow-hidden">
+            {/* Controls */}
+            <div className="bg-slate-800/60 backdrop-blur-lg border-b border-slate-600/40 p-6">
+              <div className="flex flex-wrap items-center justify-between gap-4">
+                <div className="flex items-center gap-3">
+                  <FloatingElement duration={2.8}>
+                    <Eye className="w-6 h-6 text-cyan-400" />
+                  </FloatingElement>
+                  <span className="text-white font-bold text-lg">Visualisation du dossier</span>
+                  <Badge className="bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 backdrop-blur-sm px-3 py-1">
+                    PDF
+                  </Badge>
                 </div>
 
-                {/* Download button */}
-                <Button
-                  size="sm"
-                  className="bg-cyan-500/20 hover:bg-cyan-500/30 backdrop-blur-md text-cyan-300 border border-cyan-500/30 font-semibold px-6 py-2"
-                  onClick={() => window.open(pdfUrl, '_blank')}
-                >
-                  <Download className="w-5 h-5 mr-2" />
-                  Télécharger
-                </Button>
-              </div>
-            </div>
-          </div>
-
-          {/* PDF Viewer */}
-          <div className="bg-slate-900/30 p-8 backdrop-blur-sm">
-            <div 
-              className="mx-auto bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden border border-slate-700/30"
-              style={{ 
-                width: `${zoom}%`,
-                maxWidth: '100%',
-                transition: 'width 0.3s ease'
-              }}
-            >
-              {/* Placeholder for PDF - will be replaced when PDF is added */}
-              <div className="aspect-[1/1.414] flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
-                <div className="text-center p-8">
-                  <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full shadow-2xl mb-6 animate-pulse">
-                    <FileText className="w-12 h-12 text-white" />
+                <div className="flex items-center gap-3">
+                  {/* Zoom controls */}
+                  <div className="flex items-center gap-2 bg-slate-700/50 backdrop-blur-md rounded-xl p-2 border border-slate-600/40">
+                    <Button
+                      size="sm"
+                      variant="ghost"
+                      onClick={handleZoomOut}
+                      className="text-cyan-300 hover:text-cyan-200 hover:bg-slate-600/50 border-0"
+                    >
+                      <ZoomOut className="w-5 h-5" />
+                    </Button>
+                    <span className="text-sm text-white font-semibold px-3 min-w-[60px] text-center">
+                      {zoom}%
+                    </span>
+                    <Button
+                      size="sm"
+                      variant="ghost"
+                      onClick={handleZoomIn}
+                      className="text-cyan-300 hover:text-cyan-200 hover:bg-slate-600/50 border-0"
+                    >
+                      <ZoomIn className="w-5 h-5" />
+                    </Button>
                   </div>
-                  <h3 className="text-3xl font-bold text-slate-800 mb-4">
-                    Dossier E6 à venir
-                  </h3>
-                  <p className="text-slate-600 max-w-md mx-auto leading-relaxed text-lg">
-                    Le fichier PDF du dossier sera ajouté prochainement.
-                  </p>
-                  
-                  {/* Uncomment this when PDF is ready */}
-                  {/* <iframe
-                    src={pdfUrl}
-                    className="w-full h-full border-0"
-                    title="Dossier E6"
-                  /> */}
+
+                  {/* Download button */}
+                  <Button
+                    size="sm"
+                    className="bg-cyan-500/20 hover:bg-cyan-500/30 backdrop-blur-md text-cyan-300 border border-cyan-500/30 font-semibold px-6 py-2"
+                    onClick={() => window.open(pdfUrl, '_blank')}
+                  >
+                    <Download className="w-5 h-5 mr-2" />
+                    Télécharger
+                  </Button>
                 </div>
               </div>
             </div>
+
+            {/* PDF Viewer */}
+            <div className="bg-slate-900/30 p-8 backdrop-blur-sm">
+              <ScaleIn delay={0.4} duration={0.6}>
+                <div 
+                  className="mx-auto bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden border border-slate-700/30"
+                  style={{ 
+                    width: `${zoom}%`,
+                    maxWidth: '100%',
+                    transition: 'width 0.3s ease'
+                  }}
+                >
+                  {/* Placeholder for PDF - will be replaced when PDF is added */}
+                  <div className="aspect-[1/1.414] flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
+                    <div className="text-center p-8">
+                      <PulseElement duration={2}>
+                        <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full shadow-2xl mb-6">
+                          <FileText className="w-12 h-12 text-white" />
+                        </div>
+                      </PulseElement>
+                      <h3 className="text-3xl font-bold text-slate-800 mb-4">
+                        Dossier E6 à venir
+                      </h3>
+                      <p className="text-slate-600 max-w-md mx-auto leading-relaxed text-lg">
+                        Le fichier PDF du dossier sera ajouté prochainement.
+                      </p>
+                      
+                      {/* Uncomment this when PDF is ready */}
+                      {/* <iframe
+                        src={pdfUrl}
+                        className="w-full h-full border-0"
+                        title="Dossier E6"
+                      /> */}
+                    </div>
+                  </div>
+                </div>
+              </ScaleIn>
+            </div>
           </div>
-        </div>
+        </FadeIn>
       </div>
     </div>
   )
