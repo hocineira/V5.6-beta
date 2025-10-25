@@ -377,6 +377,8 @@ pm2 restart portfolio
 - **Installation en 5 minutes** au lieu de 45+ minutes
 - **Node.js uniquement** au lieu de Node.js + Python + MongoDB
 
+> ⚠️ **Note VPS 1GB RAM** : Avec swap file configuré, le système fonctionne parfaitement même sur VPS économiques
+
 ### ✅ **Stabilité Renforcée**
 - **Moins de dépendances** = beaucoup moins de problèmes
 - **Architecture unifiée** = moins de points de défaillance
