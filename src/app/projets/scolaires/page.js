@@ -2,6 +2,7 @@
 
 import { ArrowLeft, Network, FileCheck2, BookOpen, ChevronRight } from 'lucide-react'
 import Link from 'next/link'
+import { FadeIn, ScaleIn, SlideIn, StaggerContainer, StaggerItem, AnimatedCard, FloatingElement } from '../../../components/animations'
 
 export default function ProjetsE6Index() {
   return (
