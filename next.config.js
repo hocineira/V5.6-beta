@@ -2,7 +2,7 @@
 const nextConfig = {
   // Configuration stable et optimisée
 
-  // Optimisations AGRESSIVES pour VPS 1GB RAM
+  // Optimisations ULTRA-AGRESSIVES pour VPS 1GB RAM
   experimental: {
     optimizePackageImports: ['lucide-react'],
     // Réduit drastiquement l'utilisation de la mémoire
@@ -11,16 +11,28 @@ const nextConfig = {
   },
   
   // Optimisations de build pour faible mémoire
-  swcMinify: true, // Plus efficace en mémoire que Terser
+  // swcMinify retiré car déprécié dans Next.js 15 (activé par défaut)
   productionBrowserSourceMaps: false, // Économise mémoire
+  
+  // Configuration webpack optimisée pour mémoire
   webpack: (config, { dev, isServer }) => {
-    // Limite la mémoire webpack
-    if (!dev) {
-      config.optimization = {
-        ...config.optimization,
-        minimize: true,
-      };
-    }
+    // Optimisations mémoire agressives
+    config.optimization = {
+      ...config.optimization,
+      minimize: !dev,
+      // Réduit le nombre de chunks pour économiser mémoire
+      splitChunks: {
+        chunks: 'all',
+        cacheGroups: {
+          default: false,
+          vendors: false,
+        },
+      },
+    };
+    
+    // Limite la parallélisation pour économiser mémoire
+    config.parallelism = 1;
+    
     return config;
   },
 
