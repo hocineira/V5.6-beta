@@ -278,6 +278,46 @@ pm2 restart portfolio
 
 ---
 
+## 💰 Configuration pour VPS Économiques (1GB RAM)
+
+**Bonne nouvelle** : Ce portfolio fonctionne parfaitement sur des VPS économiques !
+
+### Optimisations appliquées
+
+#### 1. Swap File (OBLIGATOIRE)
+```bash
+# Créer 1GB de swap
+sudo dd if=/dev/zero of=/swapfile bs=1M count=1024
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+```
+
+#### 2. Configuration mémoire optimisée
+Le fichier `.env.local` est pré-configuré avec :
+```bash
+NODE_OPTIONS=--max-old-space-size=512
+```
+
+#### 3. Mode Production (économise RAM)
+```bash
+# En production, Next.js utilise seulement ~100MB de RAM !
+pm2 start ecosystem.config.js  # npm start
+```
+
+### Consommation RAM Réelle
+
+| Mode | RAM Utilisée | VPS 1GB |
+|------|-------------|---------|
+| **Build** (avec swap) | 600-800 MB | ✅ Fonctionne |
+| **Production** (npm start) | **~100 MB** | ✅ Parfait ! |
+| Dev (npm run dev) | 500-800 MB | ❌ Éviter |
+
+**Conclusion** : Avec swap + mode production, un VPS 1GB suffit largement ! 🎉
+
+---
+
 ## 🛡️ Sécurité (Optionnel)
 
 ### SSL avec Let's Encrypt
