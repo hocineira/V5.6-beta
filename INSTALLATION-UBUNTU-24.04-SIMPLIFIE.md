@@ -61,6 +61,41 @@ node --version  # Doit afficher v20.x.x ou plus
 npm --version
 ```
 
+### Étape 1.5 : ⚠️ Configuration Swap (OBLIGATOIRE pour VPS 1GB RAM)
+
+**Si votre serveur a seulement 1GB de RAM, cette étape est CRITIQUE !**
+
+```bash
+# Créer un fichier swap de 1GB (mémoire virtuelle)
+sudo dd if=/dev/zero of=/swapfile bs=1M count=1024
+
+# Sécuriser les permissions
+sudo chmod 600 /swapfile
+
+# Formater en swap
+sudo mkswap /swapfile
+
+# Activer le swap
+sudo swapon /swapfile
+
+# Vérifier que le swap est actif
+free -h
+# Vous devez voir "Swap: 1.0Gi" au lieu de "0B"
+
+# Rendre le swap permanent (survit aux redémarrages)
+echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+
+# Vérifier la configuration
+cat /etc/fstab | grep swap
+```
+
+**Pourquoi le swap ?**
+- Next.js build nécessite ~600-800 MB de RAM
+- Avec 1GB RAM seulement, le build sera tué (SIGKILL - exit code 137)
+- Le swap ajoute 1GB de mémoire virtuelle = 2GB total = Build réussi ✅
+
+**Si vous avez 2GB+ de RAM, vous pouvez sauter cette étape.**
+
 ### Étape 2 : Installation du Portfolio Full-Stack
 
 ```bash
