@@ -4,6 +4,7 @@ import { Shield, Download, Clock, Users, Award, CheckCircle, Target, Briefcase, 
 import { Button } from '../../components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card'
 import { Badge } from '../../components/ui/badge'
+import { FadeIn, ScaleIn, SlideIn, StaggerContainer, StaggerItem, AnimatedCard } from '../../components/animations'
 
 export default function TCSPage() {
   const tcsInfo = {
