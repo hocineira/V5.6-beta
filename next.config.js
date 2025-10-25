@@ -2,12 +2,26 @@
 const nextConfig = {
   // Configuration stable et optimisée
 
-  // Optimisations légères de performance
+  // Optimisations AGRESSIVES pour VPS 1GB RAM
   experimental: {
     optimizePackageImports: ['lucide-react'],
-    // Réduit l'utilisation de la mémoire pendant le build
+    // Réduit drastiquement l'utilisation de la mémoire
     workerThreads: false,
     cpus: 1,
+  },
+  
+  // Optimisations de build pour faible mémoire
+  swcMinify: true, // Plus efficace en mémoire que Terser
+  productionBrowserSourceMaps: false, // Économise mémoire
+  webpack: (config, { dev, isServer }) => {
+    // Limite la mémoire webpack
+    if (!dev) {
+      config.optimization = {
+        ...config.optimization,
+        minimize: true,
+      };
+    }
+    return config;
   },
 
   // Configuration des images (conservée, elle fonctionne bien)
