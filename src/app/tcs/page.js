@@ -153,28 +153,30 @@ export default function TCSPage() {
                       <div className={`w-full sm:w-1/2 pl-16 sm:pl-0 ${index % 2 === 0 ? 'sm:pr-8' : 'sm:pl-8'}`}>
                         <AnimatedCard delay={0.4 + index * 0.2}>
                           <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                        <CardHeader>
-                          <CardTitle className="text-lg text-blue-600">{item.year}</CardTitle>
-                      <CardDescription className="text-purple-600">{item.period}</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <h4 className="font-semibold text-gray-900 mb-2">{item.focus}</h4>
-                      <ul className="space-y-1">
-                        {item.achievements.map((achievement, i) => (
-                          <li key={i} className="flex items-center text-sm text-gray-600">
-                            <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                            {achievement}
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
+                            <CardHeader>
+                              <CardTitle className="text-lg text-blue-600">{item.year}</CardTitle>
+                              <CardDescription className="text-purple-600">{item.period}</CardDescription>
+                            </CardHeader>
+                            <CardContent>
+                              <h4 className="font-semibold text-gray-900 mb-2">{item.focus}</h4>
+                              <ul className="space-y-1">
+                                {item.achievements.map((achievement, i) => (
+                                  <li key={i} className="flex items-center text-sm text-gray-600">
+                                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                                    {achievement}
+                                  </li>
+                                ))}
+                              </ul>
+                            </CardContent>
+                          </Card>
+                        </AnimatedCard>
+                      </div>
                     </div>
+                    
+                    {/* Timeline dot - Mobile: Left aligned, Desktop: Center */}
+                    <div className="absolute left-6 top-6 sm:left-1/2 sm:top-8 sm:transform sm:-translate-x-1/2 w-4 h-4 bg-white border-4 border-blue-500 rounded-full z-10"></div>
                   </div>
-                
-                {/* Timeline dot - Mobile: Left aligned, Desktop: Center */}
-                <div className="absolute left-6 top-6 sm:left-1/2 sm:top-8 sm:transform sm:-translate-x-1/2 w-4 h-4 bg-white border-4 border-blue-500 rounded-full z-10"></div>
-              </div>
+                </FadeIn>
               ))}
             </div>
           </div>
