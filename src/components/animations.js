@@ -82,8 +82,7 @@ export function RotateIn({ children, delay = 0, duration = 0.6 }) {
   return (
     <motion.div
       initial={{ opacity: 0, rotate: -10, scale: 0.9 }}
-      whileInView={{ opacity: 1, rotate: 0, scale: 1 }}
-      viewport={{ once: true, margin: "-50px" }}
+      animate={{ opacity: 1, rotate: 0, scale: 1 }}
       transition={{
         duration,
         delay,
