@@ -32,70 +32,88 @@ export default function ProjetsE6() {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
           {/* Navigation breadcrumb */}
-          <div className="mb-8">
-            <Link 
-              href="/projets/scolaires" 
-              className="inline-flex items-center text-cyan-300 hover:text-cyan-200 transition-colors duration-200 bg-slate-800/60 backdrop-blur-md px-4 py-2 rounded-full border border-slate-600/50"
-            >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Retour à Projets Scolaires E6
-            </Link>
-          </div>
+          <FadeIn delay={0.1} direction="left">
+            <div className="mb-8">
+              <Link 
+                href="/projets/scolaires" 
+                className="inline-flex items-center text-cyan-300 hover:text-cyan-200 transition-colors duration-200 bg-slate-800/60 backdrop-blur-md px-4 py-2 rounded-full border border-slate-600/50"
+              >
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                Retour à Projets Scolaires E6
+              </Link>
+            </div>
+          </FadeIn>
 
           <div className="text-center">
             {/* Badge E6 */}
-            <div className="inline-flex items-center gap-2 px-6 py-3 bg-slate-800/60 backdrop-blur-md border border-cyan-500/30 rounded-full mb-8 shadow-lg shadow-cyan-500/10">
-              <FileText className="w-5 h-5 text-cyan-400" />
-              <span className="text-sm text-cyan-300 font-semibold">Épreuve E6 - BTS SIO SISR</span>
-            </div>
+            <FloatingElement delay={0.2} duration={3}>
+              <ScaleIn delay={0.3} scale={0.5}>
+                <div className="inline-flex items-center gap-2 px-6 py-3 bg-slate-800/60 backdrop-blur-md border border-cyan-500/30 rounded-full mb-8 shadow-lg shadow-cyan-500/10">
+                  <FileText className="w-5 h-5 text-cyan-400" />
+                  <span className="text-sm text-cyan-300 font-semibold">Épreuve E6 - BTS SIO SISR</span>
+                </div>
+              </ScaleIn>
+            </FloatingElement>
 
             {/* Titre principal */}
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-8 drop-shadow-2xl">
-              <span className="block mb-2 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-                RÉALISATION 1 ET 2
-              </span>
-              <span className="block text-white">
-                DOSSIER E6
-              </span>
-            </h1>
+            <FadeIn delay={0.4} direction="up">
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-8 drop-shadow-2xl">
+                <span className="block mb-2 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+                  RÉALISATION 1 ET 2
+                </span>
+                <span className="block text-white">
+                  DOSSIER E6
+                </span>
+              </h1>
+            </FadeIn>
 
             {/* Description */}
-            <div className="max-w-4xl mx-auto">
-              <div className="bg-slate-800/40 backdrop-blur-lg border border-slate-600/40 rounded-3xl p-8 shadow-2xl">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="p-4 bg-cyan-500/10 backdrop-blur-sm rounded-2xl border border-cyan-500/20">
-                    <BookOpen className="w-8 h-8 text-cyan-400" />
+            <SlideIn delay={0.6} direction="up" duration={0.7}>
+              <div className="max-w-4xl mx-auto">
+                <div className="bg-slate-800/40 backdrop-blur-lg border border-slate-600/40 rounded-3xl p-8 shadow-2xl">
+                  <div className="flex items-start gap-4 mb-4">
+                    <FloatingElement duration={2.5}>
+                      <div className="p-4 bg-cyan-500/10 backdrop-blur-sm rounded-2xl border border-cyan-500/20">
+                        <BookOpen className="w-8 h-8 text-cyan-400" />
+                      </div>
+                    </FloatingElement>
+                    <div className="flex-1 text-left">
+                      <h2 className="text-2xl font-bold text-white mb-4">À propos de ce dossier</h2>
+                      <p className="text-slate-300 leading-relaxed text-lg">
+                        Ce document constitue mon dossier officiel soumis sur la plateforme Cyclade dans le cadre de l'épreuve E6. 
+                        Il présente deux réalisations complètes de solutions d'infrastructure réseau déployées sur le plot S4P2 de l'établissement IFC Marseille.
+                      </p>
+                      <p className="text-slate-300 leading-relaxed text-lg mt-4">
+                        Chaque réalisation est documentée de manière exhaustive avec des captures d'écran de l'infrastructure réelle, 
+                        détaillant les configurations techniques mises en œuvre ainsi que les procédures de tests et de validation du déploiement.
+                      </p>
+                    </div>
                   </div>
-                  <div className="flex-1 text-left">
-                    <h2 className="text-2xl font-bold text-white mb-4">À propos de ce dossier</h2>
-                    <p className="text-slate-300 leading-relaxed text-lg">
-                      Ce document constitue mon dossier officiel soumis sur la plateforme Cyclade dans le cadre de l'épreuve E6. 
-                      Il présente deux réalisations complètes de solutions d'infrastructure réseau déployées sur le plot S4P2 de l'établissement IFC Marseille.
-                    </p>
-                    <p className="text-slate-300 leading-relaxed text-lg mt-4">
-                      Chaque réalisation est documentée de manière exhaustive avec des captures d'écran de l'infrastructure réelle, 
-                      détaillant les configurations techniques mises en œuvre ainsi que les procédures de tests et de validation du déploiement.
-                    </p>
-                  </div>
-                </div>
 
-                {/* Points clés */}
-                <div className="grid sm:grid-cols-3 gap-4 mt-6">
-                  <div className="flex items-center gap-3 text-cyan-300 bg-slate-700/30 backdrop-blur-sm px-4 py-3 rounded-xl border border-slate-600/40">
-                    <CheckCircle2 className="w-6 h-6 flex-shrink-0" />
-                    <span className="text-sm font-medium">Infrastructure réelle</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-cyan-300 bg-slate-700/30 backdrop-blur-sm px-4 py-3 rounded-xl border border-slate-600/40">
-                    <CheckCircle2 className="w-6 h-6 flex-shrink-0" />
-                    <span className="text-sm font-medium">Captures d'écran détaillées</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-cyan-300 bg-slate-700/30 backdrop-blur-sm px-4 py-3 rounded-xl border border-slate-600/40">
-                    <CheckCircle2 className="w-6 h-6 flex-shrink-0" />
-                    <span className="text-sm font-medium">Tests de déploiement</span>
-                  </div>
+                  {/* Points clés */}
+                  <StaggerContainer staggerDelay={0.1} className="grid sm:grid-cols-3 gap-4 mt-6">
+                    <StaggerItem>
+                      <div className="flex items-center gap-3 text-cyan-300 bg-slate-700/30 backdrop-blur-sm px-4 py-3 rounded-xl border border-slate-600/40">
+                        <CheckCircle2 className="w-6 h-6 flex-shrink-0" />
+                        <span className="text-sm font-medium">Infrastructure réelle</span>
+                      </div>
+                    </StaggerItem>
+                    <StaggerItem>
+                      <div className="flex items-center gap-3 text-cyan-300 bg-slate-700/30 backdrop-blur-sm px-4 py-3 rounded-xl border border-slate-600/40">
+                        <CheckCircle2 className="w-6 h-6 flex-shrink-0" />
+                        <span className="text-sm font-medium">Captures d'écran détaillées</span>
+                      </div>
+                    </StaggerItem>
+                    <StaggerItem>
+                      <div className="flex items-center gap-3 text-cyan-300 bg-slate-700/30 backdrop-blur-sm px-4 py-3 rounded-xl border border-slate-600/40">
+                        <CheckCircle2 className="w-6 h-6 flex-shrink-0" />
+                        <span className="text-sm font-medium">Tests de déploiement</span>
+                      </div>
+                    </StaggerItem>
+                  </StaggerContainer>
                 </div>
               </div>
-            </div>
+            </SlideIn>
           </div>
         </div>
       </div>
