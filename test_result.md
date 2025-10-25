@@ -180,6 +180,8 @@ test_plan:
   test_priority: "high_first"
 
 agent_communication:
+  - agent: "main"
+    message: "🔧 BUILD ISSUE RESOLVED - Root cause: Dependencies (node_modules) were not installed. Solution: (1) Ran `yarn install` to install all Next.js dependencies, (2) Updated supervisor configuration to use correct directory `/app` instead of `/app/frontend`, (3) Changed command from `yarn start` to `yarn dev`, (4) Disabled backend service (integrated into Next.js API routes). Result: Application builds successfully with `yarn build`, all services running correctly (frontend on port 3000), all API endpoints functional (/api/test, /api/windows/updates, /api/starlink/updates), all pages accessible (/, /accueil, /veilles/technologique, /a-propos/stages, /projets). Status: ✅ FULLY OPERATIONAL"
   - agent: "testing"
     message: "Starting comprehensive backend testing for Windows RSS monitoring system"
   - agent: "testing"
