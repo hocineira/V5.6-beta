@@ -32,43 +32,53 @@ export default function InfrastructureS4P2() {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
           {/* Navigation breadcrumb */}
-          <div className="mb-8">
-            <Link 
-              href="/projets/scolaires" 
-              className="inline-flex items-center text-cyan-300 hover:text-cyan-200 transition-colors duration-200 bg-slate-800/60 backdrop-blur-md px-4 py-2 rounded-full border border-slate-600/50"
-            >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Retour à Projets Scolaires E6
-            </Link>
-          </div>
+          <FadeIn delay={0.1} direction="left">
+            <div className="mb-8">
+              <Link 
+                href="/projets/scolaires" 
+                className="inline-flex items-center text-cyan-300 hover:text-cyan-200 transition-colors duration-200 bg-slate-800/60 backdrop-blur-md px-4 py-2 rounded-full border border-slate-600/50"
+              >
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                Retour à Projets Scolaires E6
+              </Link>
+            </div>
+          </FadeIn>
 
           <div className="text-center">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-6 py-3 bg-slate-800/60 backdrop-blur-md border border-cyan-500/30 rounded-full mb-8 shadow-lg shadow-cyan-500/10">
-              <Network className="w-5 h-5 text-cyan-400" />
-              <span className="text-sm text-cyan-300 font-semibold">Infrastructure - Plot S4P2</span>
-            </div>
+            <FloatingElement delay={0.2} duration={3}>
+              <ScaleIn delay={0.3} scale={0.5}>
+                <div className="inline-flex items-center gap-2 px-6 py-3 bg-slate-800/60 backdrop-blur-md border border-cyan-500/30 rounded-full mb-8 shadow-lg shadow-cyan-500/10">
+                  <Network className="w-5 h-5 text-cyan-400" />
+                  <span className="text-sm text-cyan-300 font-semibold">Infrastructure - Plot S4P2</span>
+                </div>
+              </ScaleIn>
+            </FloatingElement>
 
             {/* Titre principal */}
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-8 drop-shadow-2xl">
-              <span className="block mb-2 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-                Infrastructure S4P2
-              </span>
-              <span className="block text-white text-4xl">
-                IFC Marseille
-              </span>
-            </h1>
+            <FadeIn delay={0.4} direction="up">
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-8 drop-shadow-2xl">
+                <span className="block mb-2 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+                  Infrastructure S4P2
+                </span>
+                <span className="block text-white text-4xl">
+                  IFC Marseille
+                </span>
+              </h1>
+            </FadeIn>
 
             {/* Description */}
-            <div className="max-w-4xl mx-auto">
-              <div className="bg-slate-800/40 backdrop-blur-lg border border-slate-600/40 rounded-3xl p-8 shadow-2xl">
-                <p className="text-slate-300 leading-relaxed text-lg">
-                  Découvrez l'infrastructure réseau complète déployée sur mon plot attitré S4P2 au centre de formation IFC Marseille.
-                  Cette infrastructure représente un environnement professionnel complet avec l'ensemble des ressources matérielles 
-                  et logicielles nécessaires à la réalisation de mes projets sous la supervision de M. Bernard FERNANDEZ.
-                </p>
+            <SlideIn delay={0.6} direction="up" duration={0.7}>
+              <div className="max-w-4xl mx-auto">
+                <div className="bg-slate-800/40 backdrop-blur-lg border border-slate-600/40 rounded-3xl p-8 shadow-2xl">
+                  <p className="text-slate-300 leading-relaxed text-lg">
+                    Découvrez l'infrastructure réseau complète déployée sur mon plot attitré S4P2 au centre de formation IFC Marseille.
+                    Cette infrastructure représente un environnement professionnel complet avec l'ensemble des ressources matérielles 
+                    et logicielles nécessaires à la réalisation de mes projets sous la supervision de M. Bernard FERNANDEZ.
+                  </p>
+                </div>
               </div>
-            </div>
+            </SlideIn>
           </div>
         </div>
       </div>
