@@ -70,7 +70,7 @@ export default function TCSPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
-      {/* Hero Section - Thème bleu/violet */}
+      {/* Hero Section - Thème bleu/violet with Animations */}
       <section className="relative overflow-hidden py-12 sm:py-20 lg:py-32">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-1/4 left-1/4 w-48 h-48 sm:w-72 sm:h-72 bg-blue-400/10 rounded-full blur-3xl animate-pulse"></div>
@@ -79,51 +79,66 @@ export default function TCSPage() {
 
         <div className="relative container mx-auto px-3 sm:px-4">
           <div className="text-center">
-            <div className="flex justify-center mb-6 sm:mb-8">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center">
-                <Shield className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
+            <ScaleIn delay={0.2} scale={0.5}>
+              <div className="flex justify-center mb-6 sm:mb-8">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center">
+                  <Shield className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
+                </div>
               </div>
-            </div>
+            </ScaleIn>
             
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent leading-tight">
-              {tcsInfo.title}
-            </h1>
-            <p className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-8 max-w-3xl mx-auto px-4">
-              {tcsInfo.description}
-            </p>
+            <FadeIn delay={0.3} direction="up">
+              <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent leading-tight">
+                {tcsInfo.title}
+              </h1>
+            </FadeIn>
             
-            <div className="flex flex-col gap-3 sm:gap-4 sm:flex-row justify-center items-center mb-6 sm:mb-8">
-              <Badge variant="secondary" className="bg-blue-100 text-blue-800 px-3 py-2 sm:px-4">
-                <Clock className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
-                <span className="text-sm sm:text-base">{tcsInfo.duration}</span>
-              </Badge>
-              <Badge variant="secondary" className="bg-purple-100 text-purple-800 px-3 py-2 sm:px-4">
-                <Award className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
-                <span className="text-sm sm:text-base">{tcsInfo.level}</span>
-              </Badge>
-            </div>
+            <FadeIn delay={0.5} direction="up">
+              <p className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-8 max-w-3xl mx-auto px-4">
+                {tcsInfo.description}
+              </p>
+            </FadeIn>
+            
+            <StaggerContainer staggerDelay={0.1} className="flex flex-col gap-3 sm:gap-4 sm:flex-row justify-center items-center mb-6 sm:mb-8">
+              <StaggerItem>
+                <Badge variant="secondary" className="bg-blue-100 text-blue-800 px-3 py-2 sm:px-4">
+                  <Clock className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
+                  <span className="text-sm sm:text-base">{tcsInfo.duration}</span>
+                </Badge>
+              </StaggerItem>
+              <StaggerItem>
+                <Badge variant="secondary" className="bg-purple-100 text-purple-800 px-3 py-2 sm:px-4">
+                  <Award className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
+                  <span className="text-sm sm:text-base">{tcsInfo.level}</span>
+                </Badge>
+              </StaggerItem>
+            </StaggerContainer>
 
-            <Button 
-              size="lg" 
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 sm:px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/30 w-full sm:w-auto max-w-md sm:max-w-none"
-              onClick={handleDownloadPDF}
-            >
-              <Download className="mr-2 w-4 h-4 sm:w-5 sm:h-5" />
-              <span className="text-sm sm:text-base">Télécharger le tableau de compétences</span>
-            </Button>
+            <ScaleIn delay={0.8}>
+              <Button 
+                size="lg" 
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 sm:px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/30 w-full sm:w-auto max-w-md sm:max-w-none"
+                onClick={handleDownloadPDF}
+              >
+                <Download className="mr-2 w-4 h-4 sm:w-5 sm:h-5" />
+                <span className="text-sm sm:text-base">Télécharger le tableau de compétences</span>
+              </Button>
+            </ScaleIn>
           </div>
         </div>
       </section>
 
-      {/* Timeline Section - Nouvelle section */}
+      {/* Timeline Section with Animations */}
       <section className="py-12 sm:py-16 bg-white">
         <div className="container mx-auto px-3 sm:px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl sm:text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Parcours de formation
-            </h2>
-            <div className="w-16 sm:w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto"></div>
-          </div>
+          <FadeIn delay={0.2} direction="up">
+            <div className="text-center mb-12">
+              <h2 className="text-2xl sm:text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                Parcours de formation
+              </h2>
+              <div className="w-16 sm:w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto"></div>
+            </div>
+          </FadeIn>
 
           <div className="max-w-4xl mx-auto">
             <div className="relative">
@@ -131,13 +146,15 @@ export default function TCSPage() {
               <div className="absolute left-8 sm:left-1/2 sm:transform sm:-translate-x-px h-full w-0.5 bg-gradient-to-b from-blue-400 to-purple-400"></div>
               
               {tcsInfo.timeline.map((item, index) => (
-                <div key={index} className="relative mb-8">
-                  {/* Mobile: Full width, Desktop: Alternating sides */}
-                  <div className={`sm:flex sm:items-center ${index % 2 === 0 ? 'sm:justify-start' : 'sm:justify-end'}`}>
-                    <div className={`w-full sm:w-1/2 pl-16 sm:pl-0 ${index % 2 === 0 ? 'sm:pr-8' : 'sm:pl-8'}`}>
-                      <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <CardHeader>
-                      <CardTitle className="text-lg text-blue-600">{item.year}</CardTitle>
+                <FadeIn key={index} delay={0.3 + index * 0.2} direction={index % 2 === 0 ? 'left' : 'right'}>
+                  <div className="relative mb-8">
+                    {/* Mobile: Full width, Desktop: Alternating sides */}
+                    <div className={`sm:flex sm:items-center ${index % 2 === 0 ? 'sm:justify-start' : 'sm:justify-end'}`}>
+                      <div className={`w-full sm:w-1/2 pl-16 sm:pl-0 ${index % 2 === 0 ? 'sm:pr-8' : 'sm:pl-8'}`}>
+                        <AnimatedCard delay={0.4 + index * 0.2}>
+                          <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <CardHeader>
+                          <CardTitle className="text-lg text-blue-600">{item.year}</CardTitle>
                       <CardDescription className="text-purple-600">{item.period}</CardDescription>
                     </CardHeader>
                     <CardContent>
