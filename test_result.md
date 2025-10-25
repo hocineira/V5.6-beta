@@ -167,9 +167,11 @@ frontend:
 
 metadata:
   created_by: "testing_agent"
-  version: "2.0"
+  version: "2.1"
   test_sequence: 2
   run_ui: false
+  last_build_fix: "2025-10-25T17:35:00.000Z"
+  build_status: "working"
 
 test_plan:
   current_focus: []
