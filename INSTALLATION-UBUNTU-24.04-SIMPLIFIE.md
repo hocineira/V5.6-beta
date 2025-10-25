@@ -112,6 +112,9 @@ chmod 755 data
 
 # Build de production
 npm run build
+
+# Si le build échoue avec "Killed" (exit code 137)
+# C'est que vous manquez de RAM - retournez à l'Étape 1.5 pour ajouter le swap !
 ```
 
 ### Étape 3 : Démarrage et configuration des services
