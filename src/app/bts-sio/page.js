@@ -5,6 +5,7 @@ import { GraduationCap, BookOpen, Target, Users, Award, CheckCircle, ArrowRight,
 import { Button } from '../../components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card'
 import { Badge } from '../../components/ui/badge'
+import { FadeIn, ScaleIn, SlideIn, StaggerContainer, StaggerItem, AnimatedCard, HoverScale } from '../../components/animations'
 
 export default function BTSSIOPage() {
   const [activeTab, setActiveTab] = useState('overview')
