@@ -5,6 +5,9 @@ const nextConfig = {
   // Optimisations légères de performance
   experimental: {
     optimizePackageImports: ['lucide-react'],
+    // Réduit l'utilisation de la mémoire pendant le build
+    workerThreads: false,
+    cpus: 1,
   },
 
   // Configuration des images (conservée, elle fonctionne bien)
