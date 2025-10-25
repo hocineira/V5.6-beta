@@ -67,66 +67,78 @@ export default function BTSSIOPage() {
 
   const renderOverview = () => (
     <div className="space-y-12">
-      {/* Stats Cards - Mobile Optimized */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6">
+      {/* Stats Cards - Mobile Optimized with Animations */}
+      <StaggerContainer staggerDelay={0.1} className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6">
         {[
           { label: 'Durée', value: '2 ans', icon: Clock, color: 'bg-gradient-to-r from-cyan-500 to-blue-600' },
           { label: 'Niveau', value: 'Bac+2', icon: GraduationCap, color: 'bg-gradient-to-r from-purple-500 to-pink-600' },
           { label: 'Spécialisations', value: '2', icon: Target, color: 'bg-gradient-to-r from-green-500 to-teal-600' },
           { label: 'Débouchés', value: '15+', icon: Rocket, color: 'bg-gradient-to-r from-orange-500 to-red-600' }
         ].map((stat, index) => (
-          <Card key={index} className="relative overflow-hidden group hover:scale-105 transition-all duration-300 border-0 shadow-lg">
-            <div className={`absolute inset-0 ${stat.color} opacity-10`}></div>
-            <CardContent className="p-3 sm:p-6 relative">
-              <div className="flex flex-col sm:flex-row items-center sm:justify-between text-center sm:text-left">
-                <div className="mb-2 sm:mb-0">
-                  <div className="text-xl sm:text-2xl font-bold text-gray-900">{stat.value}</div>
-                  <div className="text-gray-600 text-xs sm:text-sm">{stat.label}</div>
-                </div>
-                <div className={`w-8 h-8 sm:w-12 sm:h-12 rounded-full ${stat.color} flex items-center justify-center`}>
-                  <stat.icon className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+          <StaggerItem key={index}>
+            <AnimatedCard delay={index * 0.1}>
+              <Card className="relative overflow-hidden group hover:scale-105 transition-all duration-300 border-0 shadow-lg">
+                <div className={`absolute inset-0 ${stat.color} opacity-10`}></div>
+                <CardContent className="p-3 sm:p-6 relative">
+                  <div className="flex flex-col sm:flex-row items-center sm:justify-between text-center sm:text-left">
+                    <div className="mb-2 sm:mb-0">
+                      <div className="text-xl sm:text-2xl font-bold text-gray-900">{stat.value}</div>
+                      <div className="text-gray-600 text-xs sm:text-sm">{stat.label}</div>
+                    </div>
+                    <div className={`w-8 h-8 sm:w-12 sm:h-12 rounded-full ${stat.color} flex items-center justify-center`}>
+                      <stat.icon className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </AnimatedCard>
+          </StaggerItem>
         ))}
-      </div>
+      </StaggerContainer>
 
-      {/* Description moderne */}
-      <Card className="border-0 shadow-xl bg-gradient-to-r from-slate-50 to-blue-50">
-        <CardContent className="p-8">
-          <div className="grid lg:grid-cols-2 gap-8 items-center">
-            <div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-900">Une formation d'excellence</h3>
-              <p className="text-gray-700 mb-4 leading-relaxed">
-                Le BTS SIO forme des professionnels polyvalents capables de répondre aux enjeux numériques 
-                des organisations modernes. Entre infrastructure et développement, trouvez votre voie.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {['Innovation', 'Polyvalence', 'Excellence', 'Avenir'].map((tag) => (
-                  <Badge key={tag} className="bg-blue-100 text-blue-800 hover:bg-blue-200 transition-colors">
-                    {tag}
-                  </Badge>
-                ))}
-              </div>
-            </div>
-            <div className="grid grid-cols-2 gap-3 sm:gap-4">
-              {[
-                { icon: Brain, label: 'Apprentissage', desc: 'Pédagogie active' },
-                { icon: Lightbulb, label: 'Innovation', desc: 'Technologies récentes' },
-                { icon: Users, label: 'Accompagnement', desc: 'Suivi personnalisé' },
-                { icon: Trophy, label: 'Réussite', desc: 'Taux d\'insertion élevé' }
-              ].map((item, index) => (
-                <div key={index} className="text-center p-3 sm:p-4 rounded-lg bg-white/50 hover:bg-white transition-colors">
-                  <item.icon className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600 mx-auto mb-2" />
-                  <div className="font-semibold text-gray-900 text-sm sm:text-base">{item.label}</div>
-                  <div className="text-xs sm:text-sm text-gray-600">{item.desc}</div>
+      {/* Description moderne with Animations */}
+      <FadeIn delay={0.5} direction="up">
+        <Card className="border-0 shadow-xl bg-gradient-to-r from-slate-50 to-blue-50">
+          <CardContent className="p-8">
+            <div className="grid lg:grid-cols-2 gap-8 items-center">
+              <FadeIn delay={0.6} direction="left">
+                <div>
+                  <h3 className="text-2xl font-bold mb-4 text-gray-900">Une formation d'excellence</h3>
+                  <p className="text-gray-700 mb-4 leading-relaxed">
+                    Le BTS SIO forme des professionnels polyvalents capables de répondre aux enjeux numériques 
+                    des organisations modernes. Entre infrastructure et développement, trouvez votre voie.
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {['Innovation', 'Polyvalence', 'Excellence', 'Avenir'].map((tag, index) => (
+                      <ScaleIn key={tag} delay={0.8 + index * 0.1} scale={0.8}>
+                        <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200 transition-colors">
+                          {tag}
+                        </Badge>
+                      </ScaleIn>
+                    ))}
+                  </div>
                 </div>
-              ))}
+              </FadeIn>
+              <StaggerContainer staggerDelay={0.15} className="grid grid-cols-2 gap-3 sm:gap-4">
+                {[
+                  { icon: Brain, label: 'Apprentissage', desc: 'Pédagogie active' },
+                  { icon: Lightbulb, label: 'Innovation', desc: 'Technologies récentes' },
+                  { icon: Users, label: 'Accompagnement', desc: 'Suivi personnalisé' },
+                  { icon: Trophy, label: 'Réussite', desc: 'Taux d\'insertion élevé' }
+                ].map((item, index) => (
+                  <StaggerItem key={index}>
+                    <HoverScale className="text-center p-3 sm:p-4 rounded-lg bg-white/50 hover:bg-white transition-colors">
+                      <item.icon className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600 mx-auto mb-2" />
+                      <div className="font-semibold text-gray-900 text-sm sm:text-base">{item.label}</div>
+                      <div className="text-xs sm:text-sm text-gray-600">{item.desc}</div>
+                    </HoverScale>
+                  </StaggerItem>
+                ))}
+              </StaggerContainer>
             </div>
-          </div>
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
+      </FadeIn>
     </div>
   )
 
