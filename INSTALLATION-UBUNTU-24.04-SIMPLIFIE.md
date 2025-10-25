@@ -39,8 +39,10 @@ chmod +x install-ubuntu-simple.sh && bash install-ubuntu-simple.sh
 - Ubuntu 24.04 LTS (Server ou Desktop)
 - Accès sudo
 - Connexion Internet
-- 2 GB RAM minimum
+- **1 GB RAM minimum** (avec swap file)
 - 3 GB espace disque (réduit de 5GB à 3GB)
+
+> ⚠️ **Important pour VPS 1GB RAM** : Un swap file est nécessaire pour le build Next.js
 
 ---
 
