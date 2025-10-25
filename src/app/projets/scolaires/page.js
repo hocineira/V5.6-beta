@@ -20,43 +20,53 @@ export default function ProjetsE6Index() {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
           {/* Navigation breadcrumb */}
-          <div className="mb-8">
-            <Link 
-              href="/projets" 
-              className="inline-flex items-center text-cyan-300 hover:text-cyan-200 transition-colors duration-200 bg-slate-800/60 backdrop-blur-md px-4 py-2 rounded-full border border-slate-600/50"
-            >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Retour aux Projets
-            </Link>
-          </div>
+          <FadeIn delay={0.1} direction="left">
+            <div className="mb-8">
+              <Link 
+                href="/projets" 
+                className="inline-flex items-center text-cyan-300 hover:text-cyan-200 transition-colors duration-200 bg-slate-800/60 backdrop-blur-md px-4 py-2 rounded-full border border-slate-600/50"
+              >
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                Retour aux Projets
+              </Link>
+            </div>
+          </FadeIn>
 
           <div className="text-center">
             {/* Badge E6 */}
-            <div className="inline-flex items-center gap-2 px-6 py-3 bg-slate-800/60 backdrop-blur-md border border-cyan-500/30 rounded-full mb-8 shadow-lg shadow-cyan-500/10">
-              <BookOpen className="w-5 h-5 text-cyan-400" />
-              <span className="text-sm text-cyan-300 font-semibold">Épreuve E6 - BTS SIO SISR</span>
-            </div>
+            <FloatingElement delay={0.2} duration={3}>
+              <ScaleIn delay={0.3} scale={0.5}>
+                <div className="inline-flex items-center gap-2 px-6 py-3 bg-slate-800/60 backdrop-blur-md border border-cyan-500/30 rounded-full mb-8 shadow-lg shadow-cyan-500/10">
+                  <BookOpen className="w-5 h-5 text-cyan-400" />
+                  <span className="text-sm text-cyan-300 font-semibold">Épreuve E6 - BTS SIO SISR</span>
+                </div>
+              </ScaleIn>
+            </FloatingElement>
 
             {/* Titre principal */}
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-8 drop-shadow-2xl">
-              <span className="block mb-2 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-                Projets Scolaires
-              </span>
-              <span className="block text-white">
-                Épreuve E6
-              </span>
-            </h1>
+            <FadeIn delay={0.4} direction="up">
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-8 drop-shadow-2xl">
+                <span className="block mb-2 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+                  Projets Scolaires
+                </span>
+                <span className="block text-white">
+                  Épreuve E6
+                </span>
+              </h1>
+            </FadeIn>
 
             {/* Description */}
-            <div className="max-w-4xl mx-auto mb-16">
-              <div className="bg-slate-800/40 backdrop-blur-lg border border-slate-600/40 rounded-3xl p-8 shadow-2xl">
-                <p className="text-slate-300 leading-relaxed text-lg">
-                  Vous trouverez dans cette section les réalisations détaillées effectuées au centre de formation IFC Marseille 
-                  sur mon plot attitré et avec les ressources matérielles et logicielles mises à ma disposition par l'établissement 
-                  et prescrites par mon tuteur M. Bernard FERNANDEZ.
-                </p>
+            <SlideIn delay={0.6} direction="up" duration={0.7}>
+              <div className="max-w-4xl mx-auto mb-16">
+                <div className="bg-slate-800/40 backdrop-blur-lg border border-slate-600/40 rounded-3xl p-8 shadow-2xl">
+                  <p className="text-slate-300 leading-relaxed text-lg">
+                    Vous trouverez dans cette section les réalisations détaillées effectuées au centre de formation IFC Marseille 
+                    sur mon plot attitré et avec les ressources matérielles et logicielles mises à ma disposition par l'établissement 
+                    et prescrites par mon tuteur M. Bernard FERNANDEZ.
+                  </p>
+                </div>
               </div>
-            </div>
+            </SlideIn>
           </div>
         </div>
       </div>
