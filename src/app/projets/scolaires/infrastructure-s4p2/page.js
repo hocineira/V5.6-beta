@@ -8,6 +8,7 @@ import {
 } from 'lucide-react'
 import Link from 'next/link'
 import ImageModal from '../../../../components/ImageModal'
+import { FadeIn, ScaleIn, SlideIn, StaggerContainer, StaggerItem, FloatingElement, HoverScale } from '../../../../components/animations'
 
 export default function InfrastructureS4P2() {
   const [zoom, setZoom] = useState(100)
