@@ -8,6 +8,7 @@ import {
   ZoomIn, ZoomOut, Eye, CheckCircle2
 } from 'lucide-react'
 import Link from 'next/link'
+import { FadeIn, ScaleIn, SlideIn, StaggerContainer, StaggerItem, FloatingElement, PulseElement } from '../../../../components/animations'
 
 export default function ProjetsE6() {
   const [pdfUrl, setPdfUrl] = useState('/documents/dossier-e6.pdf') // Chemin vers le PDF à ajouter plus tard
