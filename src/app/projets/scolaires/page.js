@@ -73,99 +73,111 @@ export default function ProjetsE6Index() {
 
       {/* Cards Section - Sous-pages */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-        <div className="grid lg:grid-cols-2 gap-8">
+        <StaggerContainer staggerDelay={0.15} className="grid lg:grid-cols-2 gap-8">
           
           {/* Card 1: Infrastructure S4P2 */}
-          <Link 
-            href="/projets/scolaires/infrastructure-s4p2"
-            className="group relative bg-slate-800/40 backdrop-blur-lg border border-slate-600/40 rounded-3xl p-8 shadow-2xl hover:shadow-cyan-500/20 transition-all duration-300 hover:scale-105 hover:border-cyan-500/50"
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-blue-500/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            
-            <div className="relative">
-              {/* Icon */}
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl shadow-xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Network className="w-8 h-8 text-white" />
-              </div>
+          <StaggerItem>
+            <AnimatedCard delay={0.1} className="h-full">
+              <Link 
+                href="/projets/scolaires/infrastructure-s4p2"
+                className="group relative bg-slate-800/40 backdrop-blur-lg border border-slate-600/40 rounded-3xl p-8 shadow-2xl hover:shadow-cyan-500/20 transition-all duration-300 hover:scale-105 hover:border-cyan-500/50 block h-full"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-blue-500/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                
+                <div className="relative">
+                  {/* Icon */}
+                  <FloatingElement delay={0.2} duration={2.5}>
+                    <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl shadow-xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                      <Network className="w-8 h-8 text-white" />
+                    </div>
+                  </FloatingElement>
 
-              {/* Titre */}
-              <h2 className="text-3xl font-bold text-white mb-4 group-hover:text-cyan-300 transition-colors duration-300">
-                Infrastructure S4P2
-              </h2>
+                  {/* Titre */}
+                  <h2 className="text-3xl font-bold text-white mb-4 group-hover:text-cyan-300 transition-colors duration-300">
+                    Infrastructure S4P2
+                  </h2>
 
-              {/* Description */}
-              <p className="text-slate-300 leading-relaxed text-lg mb-6">
-                Découvrez le schéma d'infrastructure réseau complet de mon plot S4P2 ainsi que la description détaillée 
-                de mon environnement technologique et des ressources déployées.
-              </p>
+                  {/* Description */}
+                  <p className="text-slate-300 leading-relaxed text-lg mb-6">
+                    Découvrez le schéma d'infrastructure réseau complet de mon plot S4P2 ainsi que la description détaillée 
+                    de mon environnement technologique et des ressources déployées.
+                  </p>
 
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2 mb-6">
-                <span className="px-3 py-1 bg-cyan-500/20 text-cyan-300 text-sm rounded-full border border-cyan-500/30">
-                  Schéma réseau
-                </span>
-                <span className="px-3 py-1 bg-cyan-500/20 text-cyan-300 text-sm rounded-full border border-cyan-500/30">
-                  Infrastructure
-                </span>
-                <span className="px-3 py-1 bg-cyan-500/20 text-cyan-300 text-sm rounded-full border border-cyan-500/30">
-                  Plot S4P2
-                </span>
-              </div>
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    <span className="px-3 py-1 bg-cyan-500/20 text-cyan-300 text-sm rounded-full border border-cyan-500/30">
+                      Schéma réseau
+                    </span>
+                    <span className="px-3 py-1 bg-cyan-500/20 text-cyan-300 text-sm rounded-full border border-cyan-500/30">
+                      Infrastructure
+                    </span>
+                    <span className="px-3 py-1 bg-cyan-500/20 text-cyan-300 text-sm rounded-full border border-cyan-500/30">
+                      Plot S4P2
+                    </span>
+                  </div>
 
-              {/* Arrow */}
-              <div className="flex items-center text-cyan-300 group-hover:text-cyan-200 font-semibold">
-                <span>Voir l'infrastructure</span>
-                <ChevronRight className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform duration-300" />
-              </div>
-            </div>
-          </Link>
+                  {/* Arrow */}
+                  <div className="flex items-center text-cyan-300 group-hover:text-cyan-200 font-semibold">
+                    <span>Voir l'infrastructure</span>
+                    <ChevronRight className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform duration-300" />
+                  </div>
+                </div>
+              </Link>
+            </AnimatedCard>
+          </StaggerItem>
 
           {/* Card 2: Réalisation 1 et 2 */}
-          <Link 
-            href="/projets/scolaires/realisations"
-            className="group relative bg-slate-800/40 backdrop-blur-lg border border-slate-600/40 rounded-3xl p-8 shadow-2xl hover:shadow-cyan-500/20 transition-all duration-300 hover:scale-105 hover:border-cyan-500/50"
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-blue-500/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            
-            <div className="relative">
-              {/* Icon */}
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl shadow-xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                <FileCheck2 className="w-8 h-8 text-white" />
-              </div>
+          <StaggerItem>
+            <AnimatedCard delay={0.2} className="h-full">
+              <Link 
+                href="/projets/scolaires/realisations"
+                className="group relative bg-slate-800/40 backdrop-blur-lg border border-slate-600/40 rounded-3xl p-8 shadow-2xl hover:shadow-cyan-500/20 transition-all duration-300 hover:scale-105 hover:border-cyan-500/50 block h-full"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-blue-500/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                
+                <div className="relative">
+                  {/* Icon */}
+                  <FloatingElement delay={0.3} duration={2.8}>
+                    <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl shadow-xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                      <FileCheck2 className="w-8 h-8 text-white" />
+                    </div>
+                  </FloatingElement>
 
-              {/* Titre */}
-              <h2 className="text-3xl font-bold text-white mb-4 group-hover:text-cyan-300 transition-colors duration-300">
-                Réalisation 1 et 2
-              </h2>
+                  {/* Titre */}
+                  <h2 className="text-3xl font-bold text-white mb-4 group-hover:text-cyan-300 transition-colors duration-300">
+                    Réalisation 1 et 2
+                  </h2>
 
-              {/* Description */}
-              <p className="text-slate-300 leading-relaxed text-lg mb-6">
-                Consultez mon dossier E6 officiel soumis sur Cyclade avec les deux réalisations complètes 
-                de solutions d'infrastructure réseau, incluant configurations et procédures de tests.
-              </p>
+                  {/* Description */}
+                  <p className="text-slate-300 leading-relaxed text-lg mb-6">
+                    Consultez mon dossier E6 officiel soumis sur Cyclade avec les deux réalisations complètes 
+                    de solutions d'infrastructure réseau, incluant configurations et procédures de tests.
+                  </p>
 
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2 mb-6">
-                <span className="px-3 py-1 bg-blue-500/20 text-blue-300 text-sm rounded-full border border-blue-500/30">
-                  Dossier E6
-                </span>
-                <span className="px-3 py-1 bg-blue-500/20 text-blue-300 text-sm rounded-full border border-blue-500/30">
-                  Réalisations
-                </span>
-                <span className="px-3 py-1 bg-blue-500/20 text-blue-300 text-sm rounded-full border border-blue-500/30">
-                  Documentation
-                </span>
-              </div>
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    <span className="px-3 py-1 bg-blue-500/20 text-blue-300 text-sm rounded-full border border-blue-500/30">
+                      Dossier E6
+                    </span>
+                    <span className="px-3 py-1 bg-blue-500/20 text-blue-300 text-sm rounded-full border border-blue-500/30">
+                      Réalisations
+                    </span>
+                    <span className="px-3 py-1 bg-blue-500/20 text-blue-300 text-sm rounded-full border border-blue-500/30">
+                      Documentation
+                    </span>
+                  </div>
 
-              {/* Arrow */}
-              <div className="flex items-center text-cyan-300 group-hover:text-cyan-200 font-semibold">
-                <span>Voir les réalisations</span>
-                <ChevronRight className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform duration-300" />
-              </div>
-            </div>
-          </Link>
+                  {/* Arrow */}
+                  <div className="flex items-center text-cyan-300 group-hover:text-cyan-200 font-semibold">
+                    <span>Voir les réalisations</span>
+                    <ChevronRight className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform duration-300" />
+                  </div>
+                </div>
+              </Link>
+            </AnimatedCard>
+          </StaggerItem>
 
-        </div>
+        </StaggerContainer>
       </div>
     </div>
   )
