@@ -297,6 +297,30 @@ sudo ufw enable
 
 ## 🚨 Dépannage
 
+### Build échoue avec "Killed" (Exit code 137)
+
+**Problème** : Pas assez de mémoire RAM
+
+**Solution** :
+```bash
+# 1. Vérifier la RAM disponible
+free -h
+
+# 2. Si Swap = 0B, ajouter un swap file (voir Étape 1.5)
+sudo dd if=/dev/zero of=/swapfile bs=1M count=1024
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+
+# 3. Vérifier que le swap est actif
+free -h  # Doit montrer "Swap: 1.0Gi"
+
+# 4. Réessayer le build
+cd /var/www/portfolio
+npm run build
+```
+
 ### Portfolio ne démarre pas
 ```bash
 # Vérifier les logs
