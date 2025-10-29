@@ -73,10 +73,10 @@ export default function ProjetsPage() {
     },
     {
       id: 8,
-      title: 'Procédure ZABBIX',
-      description: 'Procédure complète d\'installation et de configuration de ZABBIX sur Debian pour la supervision et monitoring des infrastructures réseau et serveurs.',
+      title: 'Procédure ZABBIX 7.4',
+      description: 'Procédure complète d\'installation et de configuration de ZABBIX 7.4 sur Debian pour la supervision et monitoring des infrastructures réseau et serveurs.',
       category: 'procedure',
-      technologies: ['ZABBIX', 'Debian', 'Monitoring', 'SNMP', 'MySQL'],
+      technologies: ['ZABBIX 7.4', 'Debian', 'Monitoring', 'SNMP', 'MySQL'],
       date: '2025',
       status: 'completed',
       type: 'procedure',
