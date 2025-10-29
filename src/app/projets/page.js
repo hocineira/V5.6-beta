@@ -99,10 +99,10 @@ export default function ProjetsPage() {
     },
     {
       id: 10,
-      title: 'Procédure GLPI',
-      description: 'Procédure complète d\'installation et de configuration de GLPI sur Ubuntu pour la gestion des services informatiques et helpdesk.',
+      title: 'Procédure GLPI V11',
+      description: 'Procédure complète d\'installation et de configuration de GLPI V11 (2025) sur Ubuntu pour la gestion des services informatiques et helpdesk.',
       category: 'procedure',
-      technologies: ['GLPI', 'Ubuntu', 'ITSM', 'Helpdesk', 'Apache', 'MySQL'],
+      technologies: ['GLPI V11', 'Ubuntu', 'ITSM', 'Helpdesk', 'Apache', 'MySQL'],
       date: '2025',
       status: 'completed',
       type: 'procedure',
